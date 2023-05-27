@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,10 +30,15 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class login_Activity extends AppCompatActivity {
     TextInputEditText mobilenumbertext;
+    TextInputLayout layoutnumber;
     CountryCodePicker codePicker;
+    Timer mytimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +46,7 @@ public class login_Activity extends AppCompatActivity {
         codePicker=findViewById(R.id.country_code);
         Button sendotpbutton = findViewById(R.id.sendotpbutton);
         mobilenumbertext = findViewById(R.id.mobilenumbertext);
-        TextInputLayout layoutnumber = findViewById(R.id.mobilenumberlayour);
+        layoutnumber = findViewById(R.id.mobilenumberlayour);
         ImageView backbutton = findViewById(R.id.backbutton);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +57,15 @@ public class login_Activity extends AppCompatActivity {
 
         InternetConnection nt = new InternetConnection(this);
 
-        TextInputLayout mobilenumberlayour = findViewById(R.id.mobilenumberlayour);
-        int country_code= codePicker.getSelectedCountryCodeAsInt();
+        mytimer = new Timer();
+        mytimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
 
-        mobilenumberlayour.setPrefixText(country_code+" ");
+                timermethod();
+
+            }
+        },0,1000);
 
 
         sendotpbutton.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +104,31 @@ public class login_Activity extends AppCompatActivity {
 
 
     }
+
+    private void timermethod()
+    {
+        this.runOnUiThread(time_click);
+    }
+
+    Runnable time_click = new Runnable() {
+
+        @Override
+        public void run() {
+
+//            mytimer.cancel();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    String country_code=codePicker.getSelectedCountryCode();
+                    layoutnumber.setPrefixText("+"+country_code+" ");
+
+                }
+            },1000);
+
+        }
+
+    };
 
 //    @Override
 //    protected void onStart() {

@@ -142,131 +142,78 @@
                         android:textColor="@color/text_color" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dateofbirthlayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+
+                <TextView
                     android:layout_width="match_parent"
+                    android:id="@+id/dateofbirth"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:hint="@string/date_of_birth"
+                    android:drawableEnd="@drawable/calendar_month"
+                    android:drawableTint="@color/hint_color"
                     android:textColorHint="@color/hint_color"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeColor="@color/primarycolor"
-                    app:endIconDrawable="@drawable/calendar_month"
-                    app:endIconMode="custom"
-                    app:endIconTint="@color/hint_color"
-                    app:hintTextColor="@color/primarycolor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7"
-                    app:prefixTextColor="@color/primarycolor">
-
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dateofbirth"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/countrylayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
                     android:layout_marginTop="20dp"
-                    android:hint="@string/country"
-                    android:textColorHint="@color/hint_color"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeColor="@color/primarycolor"
-                    app:endIconDrawable="@drawable/calendar_month"
-                    app:endIconMode="custom"
-                    app:endIconTint="@color/hint_color"
-                    app:hintTextColor="@color/primarycolor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7"
-                    app:prefixTextColor="@color/primarycolor">
+                    android:padding="15dp"
+                    android:background="@drawable/selecttextbg"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/country"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:hint="@string/country"-->
+<!--                    android:textColorHint="@color/hint_color"-->
+<!--                    android:textColor="@color/text_color"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:padding="15dp"-->
+<!--                    android:background="@drawable/selecttextbg"/>-->
 
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/country_code"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/selecttextbg"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    app:ccp_showFlag="false"
+                    app:ccp_showArrow="false"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="false"
+                    app:ccp_showFullName="true"/>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/country"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="@color/text_color" />
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp">
+                    <TextView
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/statelayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                        android:id="@+id/state"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
+                        android:textColorHint="@color/hint_color"
                         android:layout_weight="1"
                         android:hint="@string/state"
-                        android:textColorHint="@color/hint_color"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintTextColor="@color/primarycolor"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        app:prefixTextColor="@color/primarycolor">
+                        android:textColor="@color/text_color"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="16sp"
 
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/state"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/text_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/citylayout"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:padding="15dp"
+                        android:background="@drawable/selecttextbg"/>
+                    <TextView
+                        android:id="@+id/city"
                         android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_height="wrap_content"
                         android:hint="@string/city"
                         android:textColorHint="@color/hint_color"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintTextColor="@color/primarycolor"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7"
-                        app:prefixTextColor="@color/primarycolor">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/city"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/text_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:padding="15dp"
+                        android:background="@drawable/selecttextbg"/>
 
                 </LinearLayout>
 
@@ -282,14 +229,14 @@
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:layout_marginStart="15dp"
+                    android:id="@+id/gender"
                     android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/radioButton1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

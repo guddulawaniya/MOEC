@@ -7,8 +7,8 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,22 +21,30 @@
         android:theme="@style/Theme.MOEC"
         tools:targetApi="31">
         <activity
-            android:name=".registration_Activity"
+            android:name=".preference_Actvity"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".greeting_Activity"
             android:exported="false" />
+        <activity
+            android:name=".registration_Activity"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".verify_OTP_Activity"
             android:exported="false" />
         <activity
             android:name=".login_Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".view_Activity_before_login"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Splash_Screen"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
