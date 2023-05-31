@@ -1,10 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight">
         <item name="colorPrimaryVariant">@color/primarycolor</item>
         <item name="colorPrimary">@color/secondarycolor</item>
         <item name="colorOnPrimary">@color/background_blue_shadew</item>
     </style>
 
     <style name="Theme.MOEC" parent="Base.Theme.MOEC" />
+    <style name="DropDownItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

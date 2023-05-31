@@ -19,6 +19,7 @@ public class greeting_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), preference_Actvity.class));
+                finish();
             }
         });
     }

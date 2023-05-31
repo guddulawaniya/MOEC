@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5"
                 app:srcCompat="@drawable/arrow_back_ios"
-                app:tint="@color/black" />
+                app:tint="@color/secondarycolor" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,6 +60,7 @@
         android:layout_marginBottom="8dp"
         android:onClick="onclick"
         android:text="Next"
+        android:backgroundTint="@color/primarycolor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -87,7 +88,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:background="@color/secondarycolor" />
+                android:background="@color/primarycolor" />
 
             <View
                 android:id="@+id/view2"

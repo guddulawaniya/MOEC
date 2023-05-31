@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.telephony.SmsManager;
@@ -47,13 +49,6 @@ public class login_Activity extends AppCompatActivity {
         Button sendotpbutton = findViewById(R.id.sendotpbutton);
         mobilenumbertext = findViewById(R.id.mobilenumbertext);
         layoutnumber = findViewById(R.id.mobilenumberlayour);
-        ImageView backbutton = findViewById(R.id.backbutton);
-        backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
 
         InternetConnection nt = new InternetConnection(this);
 
@@ -66,6 +61,27 @@ public class login_Activity extends AppCompatActivity {
 
             }
         },0,1000);
+
+        mobilenumbertext.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (mobilenumbertext.getText().toString().length()>0)
+                {
+                    layoutnumber.setErrorEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
         sendotpbutton.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +106,10 @@ public class login_Activity extends AppCompatActivity {
                 }
                 else
                 {
+                    layoutnumber.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
                     layoutnumber.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
                     layoutnumber.setError("Required*");
+                    layoutnumber.setErrorTextColor(ColorStateList.valueOf(Color.RED));
                     mobilenumbertext.requestFocus();
                 }
             }

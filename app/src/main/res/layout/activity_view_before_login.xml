@@ -15,45 +15,27 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:text="Skip"
-        android:textColor="@color/hint_color"
+        android:textColor="@color/text_color"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/slider"
+    <FrameLayout
+        android:id="@+id/viewframelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skiptext"
-        app:sliderAnimationDuration="600"
-        app:sliderAutoCycleEnabled="false"
-        app:sliderIndicatorAnimationDuration="600"
-        app:sliderIndicatorEnabled="true"
-        app:sliderIndicatorGravity="center_horizontal|bottom"
-        app:sliderIndicatorMargin="15dp"
-        app:sliderIndicatorOrientation="horizontal"
-        app:sliderIndicatorPadding="2dp"
-        app:sliderIndicatorRadius="1.5dp"
-        app:sliderIndicatorSelectedColor="@color/primarycolor"
-        app:sliderIndicatorUnselectedColor="@color/background_blue_shadew">
+        app:layout_constraintTop_toBottomOf="@+id/skiptext" />
 
 
-    </com.smarteist.autoimageslider.SliderView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -68,26 +50,45 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:layout_marginStart="20dp"
-                android:visibility="invisible"
-
                 android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/secondarycolor"
-                android:text="Next"
+
+                android:backgroundTint="@color/primarycolor"
+                android:text="Get Started"
                 android:textSize="20dp"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ProgressBar
                 android:id="@+id/progress_bar"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:background="@drawable/ring_shape"
+
                 android:indeterminate="false"
+                android:progress="25"
                 android:progressDrawable="@drawable/circular_progress_bar"
+                android:progressTint="@color/primarycolor"
+                android:secondaryProgressTint="@color/background_blue_shadew"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/materialNestbbutton"
+                app:layout_constraintEnd_toEndOf="@+id/materialNestbbutton"
+                app:layout_constraintStart_toStartOf="@+id/materialNestbbutton"
+                app:layout_constraintTop_toTopOf="@+id/materialNestbbutton" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:indeterminate="false"
+                android:indeterminateTint="@color/secondarycolor"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/materialNestbbutton"
                 app:layout_constraintEnd_toEndOf="@+id/materialNestbbutton"
                 app:layout_constraintStart_toStartOf="@+id/materialNestbbutton"
@@ -95,8 +96,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/nextbuttonprogressbar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:backgroundTint="@color/primarycolor"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
@@ -109,10 +110,101 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp"
+
                     app:srcCompat="@drawable/arrow_forward"
                     app:tint="@color/white" />
+
+
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/welcomehint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:gravity="center"
+            android:text="Thanks for downloading MOEC"
+            android:textColor="@color/hint_color"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/viewframelayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+
+            android:elevation="0dp"
+            android:layout_width="10dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/white"
+
+            android:layout_height="10dp"
+            app:cardElevation="0dp"
+            android:layout_margin="3dp">
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="wrap_content"
+                android:background="@color/background_blue_shadew"
+                android:layout_height="wrap_content" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:elevation="0dp"
+            android:layout_width="10dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/background_blue_shadew"
+            android:layout_height="10dp"
+            app:cardElevation="0dp"
+            android:layout_margin="3dp">
+            <View
+                android:id="@+id/view2"
+                android:layout_width="wrap_content"
+                android:background="@color/background_blue_shadew"
+                android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:elevation="0dp"
+            android:layout_width="10dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/background_blue_shadew"
+            android:layout_height="10dp"
+            app:cardElevation="0dp"
+            android:layout_margin="3dp">
+            <View
+                android:id="@+id/view3"
+                android:layout_width="wrap_content"
+                android:background="@color/background_blue_shadew"
+                android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+
+            android:elevation="0dp"
+            android:layout_width="10dp"
+            app:cardCornerRadius="50dp"
+            android:backgroundTint="@color/background_blue_shadew"
+            android:layout_height="10dp"
+            app:cardElevation="0dp"
+            android:layout_margin="3dp">
+            <View
+                android:id="@+id/view4"
+                android:layout_width="wrap_content"
+                android:background="@color/background_blue_shadew"
+                android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 

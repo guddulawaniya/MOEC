@@ -10,7 +10,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
@@ -28,13 +30,10 @@ import java.util.Calendar;
 public class registration_Activity extends AppCompatActivity {
 
     TextInputEditText firstname,lastname,emailaddress,referralcode;
-    TextView dateofbirth;
-    String country;
-    TextView state;
-    TextView city;
+    AutoCompleteTextView country,state,city,dateofbirth;
     RadioGroup gender;
-    CountryCodePicker codePicker;
-    TextInputLayout fisrtnamelayout,lastnamelayout,emailaddresslayout,dateofbirthlayout,countrylayout,statelayout,citylayout,
+    TextView codePicker;
+    TextInputLayout fisrtnamelayout,lastnamelayout,emailaddresslayout,countrylayout,
             referralcodelayout;
 
     private Calendar calendar;
@@ -45,7 +44,6 @@ public class registration_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        ImageView backbutton = findViewById(R.id.backbutton);
         TextView changenumber = findViewById(R.id.changenumber);
          firstname = findViewById(R.id.firstname);
          lastname = findViewById(R.id.lastname);
@@ -56,8 +54,8 @@ public class registration_Activity extends AppCompatActivity {
          city = findViewById(R.id.city);
          gender = findViewById(R.id.gender);
          referralcode = findViewById(R.id.referralcode);
-         codePicker = findViewById(R.id.country_code);
-        country = codePicker.getTextView_selectedCountry().toString();
+         codePicker = findViewById(R.id.country);
+
 
          fisrtnamelayout = findViewById(R.id.firstnamelayout);
          lastnamelayout = findViewById(R.id.lastnamelayout);
@@ -67,8 +65,16 @@ public class registration_Activity extends AppCompatActivity {
         textwatch(firstname,fisrtnamelayout);
         textwatch(lastname,lastnamelayout);
         textwatch(emailaddress,emailaddresslayout);
+        Dialog dialog = new Dialog(getApplicationContext());
 
+        codePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Toast.makeText(registration_Activity.this, "Coming soon ", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
         Button submitbutton = findViewById(R.id.submitbutton);
@@ -126,11 +132,6 @@ public class registration_Activity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), login_Activity.class));
                 finish();
             }
-        }); backbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
         });
     }
 
@@ -143,7 +144,7 @@ public class registration_Activity extends AppCompatActivity {
                 !(lastname.getText().toString().isEmpty()) &&
                 !(Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) &&
                 !(dateofbirth.getText().toString().isEmpty()) &&
-                !(country.isEmpty()))
+                !(country.getText().toString().isEmpty()))
 
         {
             startActivity(new Intent(getApplicationContext(), greeting_Activity.class));
@@ -170,7 +171,7 @@ public class registration_Activity extends AppCompatActivity {
 
 
         }
-        else if (country.isEmpty()) {
+        else if (country.getText().toString().isEmpty()) {
             codePicker.setAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
 
         }

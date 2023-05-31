@@ -79,6 +79,8 @@ public class verify_OTP_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                startActivity(new Intent(verify_OTP_Activity.this, registration_Activity.class));
+                finish();
                 String enterotpinboxs=pinView.getText().toString();
 
                 if (sendotp.equals(enterotpinboxs) && nt.isConnected())
@@ -89,8 +91,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
 
 
                     Toast.makeText(verify_OTP_Activity.this, "Verified", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(verify_OTP_Activity.this, registration_Activity.class));
-                    finish();
+
                 } else if (!nt.isConnected()) {
                     startActivity(new Intent(verify_OTP_Activity.this,offline_Activity.class));
                     finish();
