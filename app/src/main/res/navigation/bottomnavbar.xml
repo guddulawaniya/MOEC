@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomnavbar"
+    app:startDestination="@id/dashboard">
+
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.example.moec.dashboard_fragment"
+        android:label="fragment_dashboard_fragment"
+        tools:layout="@layout/fragment_dashboard_fragment" />
+    <fragment
+        android:id="@+id/program"
+        android:name="com.example.moec.program_fragment"
+        android:label="fragment_program_fragment"
+        tools:layout="@layout/fragment_program_fragment" />
+    <fragment
+        android:id="@+id/application"
+        android:name="com.example.moec.application_fragment"
+        android:label="fragment_application_fragment"
+        tools:layout="@layout/fragment_application_fragment" />
+    <fragment
+        android:id="@+id/community"
+        android:name="com.example.moec.community_fragment"
+        android:label="fragment_community_fragment"
+        tools:layout="@layout/fragment_community_fragment" />
+    <fragment
+        android:id="@+id/insight"
+        android:name="com.example.moec.insights_fragment"
+        android:label="fragment_insights_fragment"
+        tools:layout="@layout/fragment_insights_fragment" />
+</navigation>

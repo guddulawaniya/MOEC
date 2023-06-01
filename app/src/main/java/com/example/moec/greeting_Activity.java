@@ -13,7 +13,7 @@ public class greeting_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_greeting);
-
+        getSupportActionBar().hide();
         Button preferencebutton = findViewById(R.id.preferencebutton);
         preferencebutton.setOnClickListener(new View.OnClickListener() {
             @Override

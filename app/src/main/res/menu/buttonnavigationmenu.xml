@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Dashboard"
+        android:id="@+id/dashboard"
+        android:icon="@drawable/dashboard_icon"/>
+    <item android:title="Programs"
+        android:id="@+id/program"
+        android:icon="@drawable/program_icon"/>
+    <item android:title="Applications"
+        android:id="@+id/application"
+        android:icon="@drawable/application_icon"/>
+    <item android:title="Community"
+        android:id="@+id/community"
+        android:icon="@drawable/community_icon"/>
+    <item android:title="Insights"
+        android:id="@+id/insight"
+        android:icon="@drawable/insights_icon"/>
+</menu>

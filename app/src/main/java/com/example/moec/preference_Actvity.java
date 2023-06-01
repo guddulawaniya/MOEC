@@ -24,6 +24,7 @@ public class preference_Actvity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference_actvity);
 
+        getSupportActionBar().hide();
 
         index  = findViewById(R.id.indexingtext);
         Button nextbutton = findViewById(R.id.nextbutton);

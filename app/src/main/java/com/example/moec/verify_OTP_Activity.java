@@ -83,6 +83,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
                 finish();
                 String enterotpinboxs=pinView.getText().toString();
 
+                getSupportActionBar().hide();
                 if (sendotp.equals(enterotpinboxs) && nt.isConnected())
                 {
                     SharedPreferences.Editor editor = getSharedPreferences(SHARE_PREFE,MODE_PRIVATE).edit();

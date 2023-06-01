@@ -23,6 +23,7 @@ public class Splash_Screen extends AppCompatActivity {
         image.startAnimation(ani);
 
         InternetConnection nt = new InternetConnection(getApplicationContext());
+        getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
             @Override

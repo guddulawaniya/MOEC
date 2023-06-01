@@ -51,7 +51,7 @@ public class login_Activity extends AppCompatActivity {
         layoutnumber = findViewById(R.id.mobilenumberlayour);
 
         InternetConnection nt = new InternetConnection(this);
-
+        getSupportActionBar().hide();
         mytimer = new Timer();
         mytimer.schedule(new TimerTask() {
             @Override

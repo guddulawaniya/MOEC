@@ -9,6 +9,8 @@
     <style name="Theme.MOEC" parent="Base.Theme.MOEC" />
     <style name="DropDownItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:textColor">@android:color/black</item>
+
     </style>
+
 
 </resources>
