@@ -30,10 +30,13 @@ public class dashboard_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_dashboard_fragment, container, false);
-         student  = view.findViewById(R.id.student);
-         scout  = view.findViewById(R.id.scout);
 
-        ImageView like = view.findViewById(R.id.favouratebutton);
+
+        ImageView refine_icon = view.findViewById(R.id.refine_icon);
+        ImageView like = view.findViewById(R.id.favourate_icon_toolbar);
+        TextView tooltitle = view.findViewById(R.id.toolbartitle);
+        tooltitle.setText("Dashboard");
+        refine_icon.setVisibility(View.GONE);
         LinearLayout notification = view.findViewById(R.id.notification);
 
         like.setOnClickListener(new View.OnClickListener() {
@@ -54,80 +57,80 @@ public class dashboard_fragment extends Fragment {
 
         textCartItemCount = view.findViewById(R.id.notification_badge);
 
-        setupBadge();
-
-
-        replaceFragment(id);
-        student.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (id==0)
-                {
-                    id++;
-                    replaceFragment(id);
-                }
-
-
-            }
-        });
-        scout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (id==1)
-                {
-                    id--;
-                    replaceFragment(id);
-                }
 
 
 
-            }
-        });
+//        replaceFragment(id);
+//        student.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (id==0)
+//                {
+//                    id++;
+//                    replaceFragment(id);
+//                }
+//
+//
+//            }
+//        });
+//        scout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (id==1)
+//                {
+//                    id--;
+//                    replaceFragment(id);
+//                }
+//
+//
+//
+//            }
+//        });
 
         return view;
     }
 
-    void changecolor(int id)
-    {
-        if (id==1)
-        {
-            student.setBackground(getResources().getDrawable(R.drawable.selectedtablayoutbg));
-            student.setTextColor(getResources().getColor(R.color.white));
-            scout.setBackground(getResources().getDrawable(R.color.background_blue_shadew));
-            scout.setTextColor(getResources().getColor(R.color.text_color));
-        }
-        else {
-            student.setBackground(getResources().getDrawable(R.color.background_blue_shadew));
-            student.setTextColor(getResources().getColor(R.color.text_color));
+//    void changecolor(int id)
+//    {
+//        if (id==1)
+//        {
+//            student.setBackground(getResources().getDrawable(R.drawable.selectedtablayoutbg));
+//            student.setTextColor(getResources().getColor(R.color.white));
+//            scout.setBackground(getResources().getDrawable(R.color.background_blue_shadew));
+//            scout.setTextColor(getResources().getColor(R.color.text_color));
+//        }
+//        else {
+//            student.setBackground(getResources().getDrawable(R.color.background_blue_shadew));
+//            student.setTextColor(getResources().getColor(R.color.text_color));
+//
+//            scout.setBackground(getResources().getDrawable(R.drawable.selectedtablayoutbg));
+//            scout.setTextColor(getResources().getColor(R.color.white));
+//        }
+//
+//    }
 
-            scout.setBackground(getResources().getDrawable(R.drawable.selectedtablayoutbg));
-            scout.setTextColor(getResources().getColor(R.color.white));
-        }
-
-    }
-
-    void replaceFragment(int id)
-    {
-        scout_Fragment scout_fragment = new scout_Fragment();
-        student_Fragment student_fragment = new student_Fragment();
-        FragmentManager manager = getFragmentManager();
-        androidx.fragment.app.FragmentTransaction fragmentTransaction = manager.beginTransaction();
-       if (id==1)
-       {
-           changecolor(1);
-           fragmentTransaction.replace(R.id.mainframelayout,student_fragment);
-
-
-       }
-       else
-       {
-           changecolor(id);
-           fragmentTransaction.replace(R.id.mainframelayout,scout_fragment);
-
-       }
-        fragmentTransaction.commit();
-
-    }
+//    void replaceFragment(int id)
+//    {
+//        scout_Fragment scout_fragment = new scout_Fragment();
+//        student_Fragment student_fragment = new student_Fragment();
+//        FragmentManager manager = getFragmentManager();
+//        androidx.fragment.app.FragmentTransaction fragmentTransaction = manager.beginTransaction();
+//       if (id==1)
+//       {
+//           changecolor(1);
+//           fragmentTransaction.replace(R.id.mainframelayout,student_fragment);
+//
+//
+//       }
+//       else
+//       {
+//           changecolor(id);
+//           fragmentTransaction.replace(R.id.mainframelayout,scout_fragment);
+//
+//       }
+//        fragmentTransaction.commit();
+//
+//    }
 
 
     @Override

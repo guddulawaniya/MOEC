@@ -2,11 +2,19 @@ package com.example.moec;
 
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,18 +22,28 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    private ActionBar toolbar;
+    private String[] menus ={"Latest","Favorite","Cart","Profile"};
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
 
+        getSupportActionBar().hide();
+
         CardView profile = findViewById(R.id.profile);
+        ImageView Refine = findViewById(R.id.refine_icon);
+        TextView toolbartitle = findViewById(R.id.toolbartitle);
+        toolbartitle.setText("Dashboard");
+
+        Refine.setVisibility(View.GONE);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,7 +51,10 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
-        getSupportActionBar().hide();
+
+
+
+
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -44,5 +65,6 @@ public class MainActivity extends AppCompatActivity{
         NavigationUI.setupWithNavController(navigationView, navController);
 
     }
+
 
 }

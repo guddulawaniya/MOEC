@@ -7,4 +7,5 @@
         android:title="notification"
         app:actionLayout="@layout/badge_layout"
         app:showAsAction="always"/>
+
 </menu>
