@@ -6,7 +6,7 @@
         android:topRightRadius="30dp"
         />
     <solid
-        android:color="@color/primarycolor"/>
+        android:color="@color/background_blue_shadew"/>
 
 
 </shape>

@@ -104,6 +104,7 @@
                 android:background="@color/white"
                 android:hint="Search"
                 android:padding="5dp"
+                android:textColorHint="@color/hint_color"
                 android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/searchbutton"

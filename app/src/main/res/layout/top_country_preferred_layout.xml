@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical">
 
 
     <HorizontalScrollView
@@ -63,7 +64,7 @@
                             android:gravity="center"
                             android:text="Canada"
                             android:textColor="@color/text_color"
-                            android:textSize="20dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -103,7 +104,7 @@
                             android:gravity="center"
                             android:text="Australia"
                             android:textColor="@color/text_color"
-                            android:textSize="20dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -143,7 +144,7 @@
                             android:gravity="center"
                             android:text="United Kingdom"
                             android:textColor="@color/text_color"
-                            android:textSize="20dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -184,7 +185,7 @@
                             android:gravity="center"
                             android:text="New Zealand"
                             android:textColor="@color/text_color"
-                            android:textSize="20dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -224,7 +225,7 @@
                             android:gravity="center"
                             android:text="Australia"
                             android:textColor="@color/text_color"
-                            android:textSize="20dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -264,7 +265,7 @@
                             android:gravity="center"
                             android:text="United Kingdom"
                             android:textColor="@color/text_color"
-                            android:textSize="20dp" />
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

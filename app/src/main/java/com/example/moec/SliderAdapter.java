@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder> {
 
-    int[] images = {R.drawable.image1,R.drawable.image2,R.drawable.image3,R.drawable.image4};
+    int[] images = {R.drawable.slider1,R.drawable.slider2,R.drawable.slider3};
 
 
     @Override

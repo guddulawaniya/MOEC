@@ -7,6 +7,8 @@ import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -18,6 +20,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.slider.Slider;
+import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
+
 public class dashboard_fragment extends Fragment {
 
     public dashboard_fragment() {
@@ -26,11 +34,57 @@ public class dashboard_fragment extends Fragment {
     TextView student,scout,textCartItemCount;
     int id =1,mCartItemCount=100;
 
+    ArrayList<interest_module> list;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_dashboard_fragment, container, false);
 
+
+        SliderView sliderView = view.findViewById(R.id.slider);
+        SliderAdapter adapterslider = new SliderAdapter();
+        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+        sliderView.setSliderAdapter(adapterslider);
+        sliderView.setScrollTimeInSec(3);
+        sliderView.setAutoCycle(true);
+        sliderView.startAutoCycle();
+
+        CardView profile = view.findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
+        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton2);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), New_Application.class));
+            }
+        });
+        list = new ArrayList<>();
+
+        list.add(new interest_module(R.drawable.architecture,"Architecture"));
+        list.add(new interest_module(R.drawable.computer,"Computer Science"));
+        list.add(new interest_module(R.drawable.graphic_design,"Design"));
+        list.add(new interest_module(R.drawable.engineering,"Engineering"));
+        list.add(new interest_module(R.drawable.business,"Business"));
+        list.add(new interest_module(R.drawable.hospitality,"Hospitality & Tourism"));
+        list.add(new interest_module(R.drawable.humanities,"Humanities & Social Science"));
+        list.add(new interest_module(R.drawable.law,"Law"));
+        list.add(new interest_module(R.drawable.management,"Management"));
+        list.add(new interest_module(R.drawable.marketing,"Marketing & Advertising"));
+        list.add(new interest_module(R.drawable.news,"Media & Journalism"));
+        list.add(new interest_module(R.drawable.medical_symbol,"Medical"));
+        list.add(new interest_module(R.drawable.creative_thinking,"Performing and Creative Arts"));
+        list.add(new interest_module(R.drawable.science,"Science"));
+        list.add(new interest_module(R.drawable.sports,"Sport & Nutrition"));
+        list.add(new interest_module(R.drawable.translation,"Languages"));
+        list.add(new interest_module(R.drawable.education,"Education"));
 
         ImageView refine_icon = view.findViewById(R.id.refine_icon);
         ImageView like = view.findViewById(R.id.favourate_icon_toolbar);
@@ -38,6 +92,14 @@ public class dashboard_fragment extends Fragment {
         tooltitle.setText("Dashboard");
         refine_icon.setVisibility(View.GONE);
         LinearLayout notification = view.findViewById(R.id.notification);
+
+
+        RecyclerView recyclerView = view.findViewById(R.id.interest_recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+
+        interest_area_Adapter adapter = new interest_area_Adapter(list);
+        recyclerView.setAdapter(adapter);
+
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override

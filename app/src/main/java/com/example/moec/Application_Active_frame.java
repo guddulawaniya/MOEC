@@ -38,6 +38,8 @@ public class Application_Active_frame extends Fragment {
         explorebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(getContext(), New_Application.class));
+
 
             }
         });

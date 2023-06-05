@@ -22,7 +22,8 @@
             android:id="@+id/backbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/arrow_back_ios" />
+            app:srcCompat="@drawable/arrow_back_ios"
+            app:tint="@color/text_color" />
 
         <TextView
             android:id="@+id/toolbar_title"

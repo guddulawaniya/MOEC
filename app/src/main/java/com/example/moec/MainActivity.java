@@ -24,9 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
-    private ActionBar toolbar;
-    private String[] menus ={"Latest","Favorite","Cart","Profile"};
+
 
 
     @Override
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
 
         getSupportActionBar().hide();
 
@@ -47,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                drawerlayout.openDrawer(Gravity.LEFT);
+                draweropen();
 
             }
         });
@@ -67,4 +64,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    void draweropen()
+    {
+        DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
+
+        drawerlayout.openDrawer(Gravity.LEFT);
+    }
 }

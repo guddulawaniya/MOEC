@@ -21,6 +21,15 @@
         android:theme="@style/Theme.MOEC"
         tools:targetApi="31">
         <activity
+            android:name=".Student_timeline_activity"
+            android:exported="false" />
+        <activity
+            android:name=".post_activity"
+            android:exported="false" />
+        <activity
+            android:name=".New_Application"
+            android:exported="false" />
+        <activity
             android:name=".program_preference_Activity"
             android:exported="false" />
         <activity
