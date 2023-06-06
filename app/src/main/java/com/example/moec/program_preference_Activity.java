@@ -16,7 +16,9 @@ public class program_preference_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_program_preference);
         getSupportActionBar().hide();
         TextView toolbartitle = findViewById(R.id.toolbar_title);
+        TextView clearbutton = findViewById(R.id.cleartext);
         toolbartitle.setText("Preferences");
+        clearbutton.setVisibility(View.GONE);
         ImageView backbutton = findViewById(R.id.backbutton);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override

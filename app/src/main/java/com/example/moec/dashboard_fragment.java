@@ -1,6 +1,7 @@
 package com.example.moec;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -28,8 +29,6 @@ import java.util.ArrayList;
 
 public class dashboard_fragment extends Fragment {
 
-    public dashboard_fragment() {
-    }
 
     TextView student,scout,textCartItemCount;
     int id =1,mCartItemCount=100;
@@ -49,7 +48,35 @@ public class dashboard_fragment extends Fragment {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
+        ImageView phoneicon = view.findViewById(R.id.phoneimage);
         CardView profile = view.findViewById(R.id.profile);
+        CardView setpreference_student = view.findViewById(R.id.setpreference_student);
+        CardView addapplicationcard = view.findViewById(R.id.addapplicationcard);
+
+        phoneicon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:7037282643"));
+                startActivity(intent);
+
+            }
+        });
+
+
+        setpreference_student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), program_preference_Activity.class));
+            }
+        });
+        addapplicationcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), New_Application.class));
+            }
+        });
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

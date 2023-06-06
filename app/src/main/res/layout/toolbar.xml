@@ -91,7 +91,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
-            android:background="@drawable/selecttextbg"
+            android:background="@drawable/searchbarbg"
             android:gravity="center"
             android:orientation="horizontal">
 

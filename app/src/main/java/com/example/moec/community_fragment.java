@@ -18,8 +18,6 @@ import com.smarteist.autoimageslider.SliderView;
 
 public class community_fragment extends Fragment {
 
-    public community_fragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -14,12 +14,18 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo_symbol_colour"
+        android:icon="@mipmap/ic_launcher_squar"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo_symbol_colour"
+        android:roundIcon="@mipmap/ic_launcher_squar"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOEC"
         tools:targetApi="31">
+        <activity
+            android:name=".Program_details"
+            android:exported="false" />
+        <activity
+            android:name=".Refine_Activity"
+            android:exported="false" />
         <activity
             android:name=".Student_timeline_activity"
             android:exported="false" />

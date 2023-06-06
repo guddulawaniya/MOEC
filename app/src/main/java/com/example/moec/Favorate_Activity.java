@@ -29,6 +29,8 @@ public class Favorate_Activity extends AppCompatActivity {
 
 
         TextView descri_no_found = findViewById(R.id.descri_no_found);
+        TextView cleartext = findViewById(R.id.cleartext);
+        cleartext.setVisibility(View.GONE);
 
         TextView toolbartitle = findViewById(R.id.toolbar_title);
         toolbartitle.setText("Shortlisted Program");

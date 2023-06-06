@@ -70,4 +70,51 @@ public class MainActivity extends AppCompatActivity {
 
         drawerlayout.openDrawer(Gravity.LEFT);
     }
+
+
+    dashboard_fragment dashboard_fragment = new dashboard_fragment();
+    program_fragment program_fragment = new program_fragment();
+    application_fragment application_fragment = new application_fragment();
+    community_fragment community_fragment = new community_fragment();
+    insights_fragment insights_fragment = new insights_fragment();
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//        switch (item.getItemId()) {
+//            case R.id.dashboard:
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.framelayout, dashboard_fragment)
+//                        .commit();
+//                return true;
+//
+//            case R.id.program:
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.framelayout, program_fragment)
+//                        .commit();
+//                return true;
+//
+//            case R.id.application:
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.framelayout, application_fragment)
+//                        .commit();
+//                return true;
+//            case R.id.community:
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.framelayout, community_fragment)
+//                        .commit();
+//                return true;
+//
+//            case R.id.insight:
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.framelayout, insights_fragment)
+//                        .commit();
+//                return true;
+//        }
+//        return false;
+//    }
 }

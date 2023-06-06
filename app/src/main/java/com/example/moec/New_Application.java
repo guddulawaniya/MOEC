@@ -21,7 +21,8 @@ public class New_Application extends AppCompatActivity {
         getSupportActionBar().hide();
         TextView title = findViewById(R.id.toolbar_title);
         ImageView canclebutton = findViewById(R.id.backbutton);
-
+        TextView cleartext = findViewById(R.id.cleartext);
+        cleartext.setVisibility(View.GONE);
 
         canclebutton.setImageResource(R.drawable.close_icon);
 

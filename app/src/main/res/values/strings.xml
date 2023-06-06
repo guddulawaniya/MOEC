@@ -24,4 +24,9 @@
     <string name="overall">Overall</string>
     <string name="percentage">Percentage (%)</string>
     <string name="i_will_share_the_details_later">I will share the details later</string>
+
+    <array name="initial_slider_values">
+        <item>20.0</item>
+        <item>70.0</item>
+    </array>
 </resources>

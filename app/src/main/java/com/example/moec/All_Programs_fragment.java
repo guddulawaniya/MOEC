@@ -47,7 +47,7 @@ public class All_Programs_fragment extends Fragment {
         list.add(new module_all_program("Geography BA (Hons) with Pacement",duration+"Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
         list.add(new module_all_program("Geography BA (Hons) with Pacement",duration+"Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
 
-        All_program_Adapter adapter = new All_program_Adapter(list);
+        All_program_Adapter adapter = new All_program_Adapter(list,getContext());
         recyclerView.setAdapter(adapter);
 
         return view;

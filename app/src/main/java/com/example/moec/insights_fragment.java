@@ -20,8 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.shuhart.stepview.StepView;
 
 
-public class
-insights_fragment extends Fragment {
+public class insights_fragment extends Fragment {
 
 
 

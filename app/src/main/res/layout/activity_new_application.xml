@@ -378,39 +378,28 @@
                 <!-- Inside text input layout add
                   an auto complete text view
                     and make its input type to none-->
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/newtextbg"
+                    android:gravity="center"
+                    android:padding="10dp"
                     android:layout_marginTop="5dp"
+                    android:background="@drawable/newtextbg"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:gravity="center"
-                        android:padding="10dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:src="@drawable/add_icon"
+                        app:tint="@color/text_color" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/add_icon"
-                            app:tint="@color/text_color" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:text=" Upload Documents"
-                            android:gravity="center"
-                            android:textColor="@color/black" />
-
-                    </LinearLayout>
-
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:text=" Upload Documents"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 

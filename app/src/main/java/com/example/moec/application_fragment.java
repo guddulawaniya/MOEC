@@ -21,9 +21,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class application_fragment extends Fragment {
 
-    public application_fragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
