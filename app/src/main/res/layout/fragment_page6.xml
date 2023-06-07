@@ -25,20 +25,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/oswald"
             android:text="Passport Details"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Enter your passport Number"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/text_color"
-            android:textSize="14sp"
-            />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -46,11 +38,13 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintEnabled="false"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             app:boxCornerRadiusBottomEnd="8dp"
+            android:hint="Enter passport number"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
+            app:hintTextColor="@color/primarycolor"
+            android:textColorHint="@color/hint_color"
             app:boxCornerRadiusTopStart="8dp"
             app:boxStrokeColor="@color/primarycolor">
 
@@ -59,21 +53,21 @@
                 android:id="@+id/listeninginput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Enter passport number"
+                android:fontFamily="@font/poppins"
                 android:inputType="numberDecimal"
                 android:padding="10dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color" />
+                android:textColor="@color/text_color" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
             android:id="@+id/checkBox"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/hint_color"
+            android:layout_marginTop="10dp"
             android:buttonTint="@color/buttonbgcolor"
-            android:text="@string/i_will_share_the_details_later" />
+            android:fontFamily="@font/poppins"
+            android:text="@string/i_will_share_the_details_later"
+            android:textColor="@color/hint_color" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

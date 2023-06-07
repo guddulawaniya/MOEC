@@ -34,6 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/oswald"
             android:text="English Test Score"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -63,6 +64,7 @@
                 android:layout_weight="1"
                 android:background="@color/text_color"
                 android:dropDownSelector="@color/background_blue_shadew"
+                android:fontFamily="@font/poppins"
                 android:inputType="none"
                 android:text="Choose Programming language"
                 android:textColor="@color/text_color" />
@@ -98,6 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
+                    android:fontFamily="@font/oswald"
                     android:layout_marginTop="20dp"
                     android:text="Enter IELTS Score"
                     android:textColor="@color/black"
@@ -109,6 +112,7 @@
                     android:id="@+id/secoundlinear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:orientation="vertical"
@@ -118,6 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/oswald"
                         android:text="Verbal"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -151,6 +156,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Score"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -175,6 +181,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Percentile(%)"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -188,6 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/oswald"
                         android:text="Quantative"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -221,6 +229,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Score"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -245,6 +254,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Percentile(%)"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -258,6 +268,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/oswald"
                         android:text="Reasoning"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -291,6 +302,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Score"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -315,6 +327,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Percentile(%)"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -330,7 +343,8 @@
                         android:layout_marginTop="20dp"
                         android:text="Total"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/oswald" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -361,6 +375,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Score"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -385,6 +400,7 @@
                             <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="Percentile(%)"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -410,6 +426,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/oswald"
                         android:text="@string/overall"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
@@ -433,6 +450,7 @@
                             android:hint="0"
                             android:inputType="numberDecimal"
                             android:padding="10dp"
+                            android:fontFamily="@font/poppins"
                             android:textColor="@color/text_color"
                             android:textColorHint="@color/hint_color" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -443,7 +461,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:id="@+id/scorelinearlayout"
@@ -461,6 +479,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
+                            android:fontFamily="@font/oswald"
                             android:text="@string/reading"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -489,6 +508,7 @@
                                 android:id="@+id/readinginputfields"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="0"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -501,6 +521,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/oswald"
                             android:text="@string/listening"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -523,6 +544,7 @@
                                 android:id="@+id/listeninginput"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="0"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -535,6 +557,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/oswald"
                             android:text="@string/overall"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -557,6 +580,7 @@
                                 android:id="@+id/overallinput"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="0"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -581,6 +605,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
+                            android:fontFamily="@font/oswald"
                             android:text="@string/writing"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -603,6 +628,7 @@
                                 android:id="@+id/writinginuput"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="0"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"
@@ -615,6 +641,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/oswald"
                             android:text="@string/speaking"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
@@ -637,6 +664,7 @@
                                 android:id="@+id/speakinginput"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
                                 android:hint="0"
                                 android:inputType="numberDecimal"
                                 android:padding="10dp"

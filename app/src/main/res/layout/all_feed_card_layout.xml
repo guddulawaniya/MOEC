@@ -50,6 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/oswald"
                     android:text="Arvindera Singh"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -60,6 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
                     android:text="7 Hours ago"
                     android:textColor="@color/hint_color"
                     android:textSize="12sp" />
@@ -80,6 +82,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins"
             android:text="anyone going to canada on 22 aug from air France flight."
             android:textColor="@color/text_color" />
 
@@ -140,6 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
                     android:text="0 Find Helpful"
                     android:textColor="@color/text_color" />
 
@@ -148,6 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
                     android:text="0 comments"
                     android:textColor="@color/text_color" />
             </LinearLayout>

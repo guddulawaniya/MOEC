@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -31,6 +33,19 @@ public class program_fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), Refine_Activity.class));
+            }
+        });
+
+        CardView profile = view.findViewById(R.id.profile);
+
+        DrawerLayout drawerlayout = view.findViewById(R.id.drawerlayout);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                drawerlayout.openDrawer(GravityCompat.START);
+
             }
         });
 

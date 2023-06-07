@@ -3,15 +3,6 @@ package com.example.moec;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.cardview.widget.CardView;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,8 +12,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.slider.Slider;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
@@ -52,6 +49,21 @@ public class dashboard_fragment extends Fragment {
         CardView profile = view.findViewById(R.id.profile);
         CardView setpreference_student = view.findViewById(R.id.setpreference_student);
         CardView addapplicationcard = view.findViewById(R.id.addapplicationcard);
+        CardView testcard = view.findViewById(R.id.testcard);
+        CardView sop_Guidance = view.findViewById(R.id.sop_Guidance);
+
+        testcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), test_Activity.class));
+            }
+        });
+        sop_Guidance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), test_Activity.class));
+            }
+        });
 
         phoneicon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,10 +88,13 @@ public class dashboard_fragment extends Fragment {
                 startActivity(new Intent(getContext(), New_Application.class));
             }
         });
-
+        DrawerLayout drawerlayout = view.findViewById(R.id.drawerlayout);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                drawerlayout.openDrawer(GravityCompat.START);
 
             }
         });

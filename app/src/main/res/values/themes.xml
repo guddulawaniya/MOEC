@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight">
         <item name="colorPrimaryVariant">@color/primarycolor</item>
@@ -17,10 +17,6 @@
         <item name="fontFamily">@font/poppins</item>
     </style>
 
-    <style name="BottomNavigationView.Active" parent="@style/TextAppearance.AppCompat.Caption">
-        <item name="android:textSize">15sp</item>
-        <item name="fontFamily">@font/poppins</item>
-    </style>
     <style name="Base.Widget.MaterialComponents.Slider." parent="Theme.MaterialComponents">
         <item name="colorPrimary">@color/primarycolor</item>
         <item name="colorOnPrimary">@color/background_blue_shadew</item>

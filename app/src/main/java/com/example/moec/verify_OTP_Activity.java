@@ -37,6 +37,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_otp);
+        getSupportActionBar().hide();
 
         pinView=findViewById(R.id.pinview);
         Button verifybutton = findViewById(R.id.verifybuttonotp);

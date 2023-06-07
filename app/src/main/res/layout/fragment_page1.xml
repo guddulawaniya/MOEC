@@ -71,6 +71,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center"
                                 android:text="Australia"
                                 android:textColor="@color/text_color" />
@@ -104,6 +105,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center"
                                 android:text="Canada"
                                 android:textColor="@color/text_color" />
@@ -137,6 +139,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center"
                                 android:text="Germany"
                                 android:textColor="@color/text_color" />
@@ -179,6 +182,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center"
                                 android:text="New Zealand"
                                 android:textColor="@color/text_color" />
@@ -212,6 +216,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center"
                                 android:text="United Kingdom"
                                 android:textColor="@color/text_color" />
@@ -245,6 +250,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
+                                android:fontFamily="@font/poppins"
                                 android:gravity="center"
                                 android:text="United States"
                                 android:textColor="@color/text_color" />
@@ -267,9 +273,11 @@
                         android:text="All"
                         android:textColor="@color/hint_color" />
 
-                    <ListView
-                        android:id="@+id/listview"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
                         android:choiceMode="singleChoice"
+
+                        android:layout_margin="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="500dp" />
                 </LinearLayout>
@@ -293,6 +301,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/oswald"
             android:text="Preferred country"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -301,6 +310,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="You can select only one destination"
             android:textColor="@color/hint_color"
             android:textSize="12sp" />
@@ -309,6 +319,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins"
             android:text="Most Preferred Destination"
             android:textColor="@color/hint_color"
             android:textSize="10sp" />

@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/oswald"
         android:text="No Program Found"
         android:textColor="@color/text_color"
         android:textSize="16sp"
@@ -49,6 +50,7 @@
         android:layout_width="213dp"
         android:layout_height="35dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
         android:gravity="center"
         android:text="No programfound , Kindly update your Preferences"
         android:textColor="@color/hint_color"
@@ -62,9 +64,10 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="47dp"
+        android:backgroundTint="@color/primarycolor"
+        android:fontFamily="@font/oswald"
         android:text="Update Preferences"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/primarycolor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descri_no_found" />
 </androidx.constraintlayout.widget.ConstraintLayout>

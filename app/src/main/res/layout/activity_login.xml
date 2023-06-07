@@ -43,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
+                    android:fontFamily="@font/oswald"
                     android:text="@string/study_aboard"
                     android:textColor="@color/primarycolor"
                     android:textSize="23sp" />
@@ -51,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:fontFamily="@font/oswald"
                     android:text="@string/login_heading"
                     android:textColor="@color/heading_color"
                     android:textSize="16sp"
@@ -59,6 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:layout_marginTop="5dp"
                     android:text="@string/login_hint_text"
                     android:textColor="@color/hint_color"
@@ -108,6 +111,7 @@
                             android:id="@+id/mobilenumbertext"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/poppins"
                             android:inputType="number"
                             android:maxLength="10"
                             android:textColor="@color/text_color" />
@@ -125,12 +129,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/primarycolor"
         android:elevation="7dp"
         android:text="Send OTP"
-        android:backgroundTint="@color/primarycolor"
+        android:fontFamily="@font/oswald"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -138,12 +143,13 @@
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/poppins"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/policy_text"
-        android:textColorHighlight="@color/hint_color"
+        android:textColorHint="@color/hint_color"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/sendotpbutton"
-        app:layout_constraintStart_toStartOf="@+id/sendotpbutton"
-        app:layout_constraintTop_toBottomOf="@+id/sendotpbutton" />
+        app:layout_constraintStart_toStartOf="@+id/sendotpbutton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/oswald"
             android:text="Student Timeline"
             android:textColor="@color/black"
             android:textSize="12sp"
@@ -105,6 +106,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins"
                         android:text="Step-2"
                         android:textColor="@color/text_color"
                         android:textSize="14sp"
@@ -152,6 +154,7 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="3dp"
                             android:layout_marginEnd="3dp"
+                            android:fontFamily="@font/poppins"
                             android:gravity="center"
                             android:minWidth="50dp"
                             android:padding="4dp"
@@ -178,7 +181,8 @@
                         android:gravity="center_vertical"
                         android:text="Initial Call"
                         android:textColor="@color/text_color"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins" />
 
                     <ImageView
                         android:id="@+id/imageView14"
@@ -205,20 +209,22 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/oswald"
+                android:text="Recent Applications"
                 android:textColor="@color/black"
                 android:textSize="11dp"
-                android:textStyle="bold"
-                android:layout_alignParentStart="true"
-                android:text="Recent Applications" />
+                android:textStyle="bold" />
 
             <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/hint_color"
-                android:textSize="11dp"
                 android:layout_alignParentEnd="true"
-                android:text="View All" />
+                android:fontFamily="@font/poppins"
+                android:text="View All"
+                android:textColor="@color/hint_color"
+                android:textSize="11dp" />
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

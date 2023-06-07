@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     android:layout_marginTop="8dp"
+    android:layout_marginBottom="15dp"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -40,7 +42,6 @@
             android:id="@+id/linearLayout8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +64,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/oswald"
             android:id="@+id/toolbartitle"
             android:padding="4dp"
             android:text="Program"
@@ -81,67 +83,79 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchfield"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
+            android:paddingStart="8dp"
+
+            android:backgroundTint="@color/primarycolor"
+            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="8dp"
             android:background="@drawable/searchbarbg"
             android:gravity="center"
             android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/searchtext"
+                    android:fontFamily="@font/poppins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+android:layout_margin="2dp"
+                    android:background="@drawable/textbg"
+                    android:hint="Search"
+                    android:padding="8dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color"
+                    android:singleLine="true" />
 
 
-            <EditText
-                android:id="@+id/searchtext"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:background="@color/white"
-                android:hint="Search"
-                android:padding="5dp"
-                android:textColorHint="@color/hint_color"
-                android:singleLine="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/searchbutton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/searchbutton"
-                android:layout_width="50dp"
-                android:layout_height="0dp"
-                android:backgroundTint="@color/primarycolor"
-                app:cardCornerRadius="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/searchtext"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imageView11"
-                    android:layout_width="match_parent"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchbutton"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:backgroundTint="@color/primarycolor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/searchtext"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    android:src="@drawable/search_icon"
-                    app:tint="@color/white" />
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="6dp"
 
-            </androidx.cardview.widget.CardView>
+                        android:src="@drawable/search_icon"
+                        app:tint="@color/white" />
+
+                </androidx.cardview.widget.CardView>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/refine_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="16dp"
+
             android:background="@drawable/selecttextbg"
             android:padding="5dp"
             android:src="@drawable/tune_icon"

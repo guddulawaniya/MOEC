@@ -37,6 +37,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@color/primarycolor"
+            android:fontFamily="@font/oswald"
             android:text="Apply for this program" />
     </LinearLayout>
 
@@ -59,6 +60,7 @@
             android:id="@+id/textView19"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
             android:text="Grade 12 with minimum 75% from a recognised institution"
             android:textColorHighlight="@color/hint_color"
             android:textSize="14sp" />
