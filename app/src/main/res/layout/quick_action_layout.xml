@@ -1,287 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="15dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/addapplicationcard"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:elevation="4dp"
-                android:minWidth="80dp"
-                android:minHeight="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp"
-                app:cardMaxElevation="3dp"
-                app:cardPreventCornerOverlap="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:padding="2dp"
-                        app:srcCompat="@drawable/description_icon"
-                        app:tint="@color/primarycolor" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:text="Add Application"
-                        android:textColor="@color/text_color" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/testcard"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:elevation="8dp"
-                android:minWidth="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                app:cardMaxElevation="5dp"
-                app:cardPreventCornerOverlap="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minWidth="100dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:padding="2dp"
-                        app:srcCompat="@drawable/description_icon"
-                        app:tint="#4A887A" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:text="IELTS Test Booking"
-                        android:textColor="@color/text_color" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_columnWeight="1"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:elevation="8dp"
-                android:minWidth="80dp"
-                android:minHeight="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                app:cardMaxElevation="5dp"
-                app:cardPreventCornerOverlap="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minWidth="100dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:padding="2dp"
-                        app:srcCompat="@drawable/description_icon"
-                        app:tint="#4A887A" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:text="GIC Account"
-                        android:textColor="@color/text_color" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/quickcard"
+        android:layout_width="150dp"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/white"
+        android:elevation="4dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:cardMaxElevation="3dp"
+        app:cardPreventCornerOverlap="false"
+        android:minWidth="100dp"
+      >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/sop_Guidance"
+            <ImageView
+
+                android:id="@+id/actionIconimage"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="2dp"
+                app:srcCompat="@drawable/application"
+                app:tint="@color/primarycolor" />
+
+            <TextView
+                android:id="@+id/quiokiconText"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:elevation="8dp"
-                android:minWidth="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                app:cardMaxElevation="5dp"
-                app:cardPreventCornerOverlap="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minWidth="100dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:padding="2dp"
-                        app:srcCompat="@drawable/description_icon"
-                        app:tint="#4A887A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:text="SOP Guidance"
-                        android:textColor="@color/text_color" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:elevation="8dp"
-                android:minWidth="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                app:cardMaxElevation="5dp"
-                app:cardPreventCornerOverlap="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minWidth="100dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:padding="2dp"
-                        app:srcCompat="@drawable/description_icon"
-                        app:tint="#4A887A" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:text="Find Accommodation"
-                        android:textColor="@color/text_color" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:elevation="8dp"
-                android:minWidth="80dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="5dp"
-                app:cardMaxElevation="5dp"
-                app:cardPreventCornerOverlap="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:minWidth="100dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:padding="2dp"
-                        app:srcCompat="@drawable/description_icon"
-                        app:tint="#4A887A" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center"
-                        android:text="Education Loan"
-                        android:textColor="@color/text_color" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="Add Application"
+                android:textColor="@color/text_color" />
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

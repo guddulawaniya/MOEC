@@ -74,6 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
         <TextView
+            android:id="@+id/profiledetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/person_outline_24"
@@ -87,10 +88,11 @@
             app:drawableTint="@color/text_color" />
 
         <TextView
+            android:id="@+id/application"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/description_icon"
+            android:drawableStart="@drawable/application_icon_svg"
             android:drawableEnd="@drawable/arrow_right"
             android:drawablePadding="15dp"
             android:gravity="center_vertical"
@@ -101,6 +103,7 @@
             app:drawableTint="@color/text_color" />
 
         <TextView
+            android:id="@+id/sidebarPreferenece"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -115,6 +118,7 @@
             app:drawableTint="@color/text_color" />
 
         <TextView
+            android:id="@+id/sidedocument_upload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

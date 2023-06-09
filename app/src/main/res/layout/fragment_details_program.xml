@@ -51,11 +51,11 @@
                 app:chipStrokeColor="#DDE8FA" />
 
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:background="#D3D2D2" />
+                android:background="@color/divider_color" />
 
 
             <TextView
@@ -80,11 +80,11 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#D3D2D2" />
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
 
             <TextView
 
@@ -108,11 +108,11 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#D3D2D2" />
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
 
             <TextView
 
@@ -328,11 +328,11 @@
             </com.google.android.material.chip.ChipGroup>
 
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#D3D2D2" />
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
 
             <TextView
 
@@ -356,11 +356,11 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#D3D2D2" />
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
 
             <TextView
 
@@ -384,11 +384,11 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#D3D2D2" />
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -448,11 +448,11 @@
             </LinearLayout>
 
 
-            <com.google.android.material.divider.MaterialDivider
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="15dp"
-                android:background="#D3D2D2" />
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
 
 
             <LinearLayout

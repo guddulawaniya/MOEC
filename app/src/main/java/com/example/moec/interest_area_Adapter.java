@@ -1,5 +1,6 @@
 package com.example.moec;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import java.util.ArrayList;
 public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Adapter.viewholder> {
 
     ArrayList<interest_module> list ;
+     int lastItemSelectedPos = -1;
+    int selectedItemPos = -1;
+
 
     public interest_area_Adapter(ArrayList<interest_module> list) {
         this.list = list;
@@ -32,7 +36,6 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
         holder.image.setImageResource(module.getImage());
         holder.textview.setText(module.getText());
 
-
     }
 
     @Override
@@ -47,6 +50,7 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
             super(itemView);
             image = itemView.findViewById(R.id.interest_image);
             textview = itemView.findViewById(R.id.interest_title);
+
         }
     }
 }

@@ -28,7 +28,7 @@ public class Application_Active_frame extends Fragment {
 
         title.setText("No Application Found");
         ImageView imageView = view.findViewById(R.id.no_found_image_icon);
-        imageView.setImageResource(R.drawable.documents);
+        imageView.setImageResource(R.drawable.application_icon_svg);
 
 
         Button explorebutton = view.findViewById(R.id.nofoundbutton);

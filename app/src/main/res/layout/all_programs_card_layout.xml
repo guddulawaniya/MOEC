@@ -46,7 +46,7 @@
                     android:singleLine="true"
                     android:text="Geography BA (Hons) with Pacement"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -67,8 +67,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:drawableStart="@drawable/location"
+                    android:drawableStart="@drawable/location_10"
                     android:drawablePadding="8dp"
+                    android:layout_marginStart="-2dp"
                     android:drawableTint="@color/hint_color"
                     android:fontFamily="@font/poppins"
                     android:text="United Kingdom"
@@ -157,18 +158,11 @@
 
         </LinearLayout>
 
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/divider"
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/primarycolor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout13" />
+
+            android:background="@color/divider_color" />
     </LinearLayout>
 
 

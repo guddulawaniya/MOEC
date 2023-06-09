@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:scrollbars="none"
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/white"
+        android:minWidth="200dp"
+        android:minHeight="150dp"
+        android:elevation="7dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="3dp"
+        app:cardPreventCornerOverlap="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
@@ -18,327 +27,40 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/universityimage"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/acadia_universiti_logo" />
+
+            <TextView
+                android:id="@+id/univeristyname"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:text="Acadia University"
+                android:textColor="@color/text_color"
+                android:textSize="14dp" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:elevation="8dp"
-                    android:minWidth="200dp"
-                    android:minHeight="150dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardMaxElevation="5dp"
-                    app:cardPreventCornerOverlap="false">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:minWidth="100dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:padding="15dp"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/acadia_universiti_logo" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/oswald"
-                            android:gravity="center"
-                            android:text="Acadia University"
-                            android:textColor="@color/text_color"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:gravity="center"
-                            android:text="Course37+"
-                            android:textColor="@color/hint_color"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:elevation="8dp"
-                    android:minWidth="200dp"
-                    android:minHeight="150dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardMaxElevation="5dp"
-                    app:cardPreventCornerOverlap="false">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:minWidth="100dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:padding="15dp"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/acsenda_school" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/oswald"
-                            android:gravity="center"
-                            android:text="Acadia University"
-                            android:textColor="@color/text_color"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:gravity="center"
-                            android:text="Course37+"
-                            android:textColor="@color/hint_color"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:elevation="8dp"
-                    android:minWidth="200dp"
-                    android:minHeight="150dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardMaxElevation="5dp"
-                    app:cardPreventCornerOverlap="false">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:minWidth="100dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:padding="15dp"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/acadia_universiti_logo" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/oswald"
-                            android:gravity="center"
-                            android:text="Acadia University"
-                            android:textColor="@color/text_color"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:gravity="center"
-                            android:text="Course37+"
-                            android:textColor="@color/hint_color"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:elevation="8dp"
-                    android:minWidth="200dp"
-                    android:minHeight="150dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardMaxElevation="5dp"
-                    app:cardPreventCornerOverlap="false">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:minWidth="100dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:padding="15dp"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/acsenda_school" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/oswald"
-                            android:gravity="center"
-                            android:text="Acadia University"
-                            android:textColor="@color/text_color"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:gravity="center"
-                            android:text="Course37+"
-                            android:textColor="@color/hint_color"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:elevation="8dp"
-                    android:minWidth="200dp"
-                    android:minHeight="150dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardMaxElevation="5dp"
-                    app:cardPreventCornerOverlap="false">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:minWidth="100dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:padding="15dp"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/acadia_universiti_logo" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/oswald"
-                            android:gravity="center"
-                            android:text="Acadia University"
-                            android:textColor="@color/text_color"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:gravity="center"
-                            android:text="Course37+"
-                            android:textColor="@color/hint_color"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:elevation="8dp"
-                    android:minWidth="200dp"
-                    android:minHeight="150dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp"
-                    app:cardMaxElevation="5dp"
-                    app:cardPreventCornerOverlap="false">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:minWidth="100dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:padding="15dp"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/acsenda_school" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/oswald"
-                            android:gravity="center"
-                            android:text="Acadia University"
-                            android:textColor="@color/text_color"
-                            android:textSize="14dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:gravity="center"
-                            android:text="Course37+"
-                            android:textColor="@color/hint_color"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/universitycourses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="Course37+"
+                android:textColor="@color/hint_color"
+                android:textSize="12dp" />
         </LinearLayout>
-    </HorizontalScrollView>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

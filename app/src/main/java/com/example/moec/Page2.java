@@ -22,9 +22,27 @@ public class Page2 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_page2, container, false);
 
-        ArrayList<interest_module> list = new ArrayList<>();
+        // finding ids
+
         RecyclerView recyclerView = view.findViewById(R.id.interest_recyclerview);
+
+
+        // instance of array list
+        ArrayList<interest_module> list = new ArrayList<>();
+
+
+        // object of interest Adapter
+        interest_area_Adapter adapter = new interest_area_Adapter(list);
+
+
+
+
+       // set layout manager on recyclerview
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
+
+        recyclerView.setAdapter(adapter);
+
+        // add data on list
 
         list.add(new interest_module(R.drawable.architecture,"Architecture"));
         list.add(new interest_module(R.drawable.computer,"Computer Science"));
@@ -43,8 +61,8 @@ public class Page2 extends Fragment {
         list.add(new interest_module(R.drawable.sports,"Sport & Nutrition"));
         list.add(new interest_module(R.drawable.translation,"Languages"));
         list.add(new interest_module(R.drawable.education,"Education"));
-        interest_area_Adapter adapter = new interest_area_Adapter(list);
-        recyclerView.setAdapter(adapter);
+
+
 
 
         return view;

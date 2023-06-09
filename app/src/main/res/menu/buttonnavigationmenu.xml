@@ -9,7 +9,7 @@
         android:icon="@drawable/program_icon"/>
     <item android:title="Applications"
         android:id="@+id/application"
-        android:icon="@drawable/application_icon"/>
+        android:icon="@drawable/plus_icon_square"/>
     <item android:title="Community"
         android:id="@+id/community"
         android:icon="@drawable/community_icon"/>

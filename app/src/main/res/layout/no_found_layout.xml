@@ -16,10 +16,10 @@
         app:cardMaxElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.183">
+        app:layout_constraintVertical_bias="0.329">
 
         <ImageView
             android:id="@+id/no_found_image_icon"
@@ -63,11 +63,12 @@
         android:id="@+id/nofoundbutton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="76dp"
         android:backgroundTint="@color/primarycolor"
         android:fontFamily="@font/oswald"
         android:text="Update Preferences"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descri_no_found" />
 </androidx.constraintlayout.widget.ConstraintLayout>

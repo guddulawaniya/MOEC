@@ -3,6 +3,7 @@ package com.example.moec;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -35,7 +36,7 @@ public class community_fragment extends Fragment {
         ImageView refine = view.findViewById(R.id.refine_icon);
         ImageView like  = view.findViewById(R.id.favourate_icon_toolbar);
 
-        FloatingActionButton floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        CardView floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

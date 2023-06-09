@@ -24,7 +24,7 @@ public class Archived_fragment extends Fragment {
 
         TextView descri_no_found = view.findViewById(R.id.descri_no_found);
         ImageView imageView = view.findViewById(R.id.no_found_image_icon);
-        imageView.setImageResource(R.drawable.documents);
+        imageView.setImageResource(R.drawable.application_icon_svg);
 
         TextView title = view.findViewById(R.id.title);
 
