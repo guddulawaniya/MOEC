@@ -36,7 +36,6 @@ public class insights_fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_insights_fragment, container, false);
 
-        LinearLayout searchfield = view.findViewById(R.id.searchfield);
         stepView = view.findViewById(R.id.step_view);
 
         CardView studenttimeline = view.findViewById(R.id.studenttimelinecard);
@@ -47,16 +46,10 @@ public class insights_fragment extends Fragment {
             }
         });
 
-        searchfield.setVisibility(View.GONE);
-        ImageView favorate = view.findViewById(R.id.favourate_icon_toolbar);
-        favorate.setVisibility(View.GONE);
-        TextView tooltitle = view.findViewById(R.id.toolbartitle);
         steptext = view.findViewById(R.id.steptext);
         steptitle = view.findViewById(R.id.steptitle);
-        tooltitle.setText("Insights");
         progressbar(stepcount);
 
-        searchfield.setVisibility(View.GONE);
 
         TextView descri_no_found = view.findViewById(R.id.descri_no_found);
         TextView title = view.findViewById(R.id.title);

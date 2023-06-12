@@ -7,237 +7,253 @@
     android:background="@drawable/background_gradient_color">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profile"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-
-        android:layout_marginStart="16dp"
-
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/hint_color"
-        app:cardCornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/profile_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/user_icon" />
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Guddu lawaniya"
-        android:textColor="@color/text_color"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/profile"
-        app:layout_constraintStart_toEndOf="@+id/profile"
-        app:layout_constraintTop_toTopOf="@+id/profile"
-        app:layout_constraintVertical_bias="0.346" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Student"
-        android:textColor="@color/hint_color"
-        android:textSize="11sp"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/hint_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
-
-        <TextView
-            android:id="@+id/profiledetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/person_outline_24"
-            android:drawableEnd="@drawable/arrow_right"
-            android:drawablePadding="15dp"
-            android:gravity="center_vertical"
-            android:text="My Profile (20%)"
-            android:textColor="@color/text_color"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:drawableTint="@color/text_color" />
-
-        <TextView
-            android:id="@+id/application"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/application_icon_svg"
-            android:drawableEnd="@drawable/arrow_right"
-            android:drawablePadding="15dp"
-            android:gravity="center_vertical"
-            android:text="My Application"
-            android:textColor="@color/text_color"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:drawableTint="@color/text_color" />
-
-        <TextView
-            android:id="@+id/sidebarPreferenece"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/star_icon"
-            android:drawableEnd="@drawable/arrow_right"
-            android:drawablePadding="15dp"
-            android:gravity="center_vertical"
-            android:text="My Preferences"
-            android:textColor="@color/text_color"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:drawableTint="@color/text_color" />
-
-        <TextView
-            android:id="@+id/sidedocument_upload"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableStart="@drawable/documents"
-            android:drawableEnd="@drawable/arrow_right"
-            android:drawablePadding="15dp"
-            android:gravity="center_vertical"
-            android:text="My Documents"
-            android:textColor="@color/text_color"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:drawableTint="@color/text_color" />
-    </LinearLayout>
-
-    <View
-
-        android:id="@+id/view"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="19dp"
-        android:background="@color/hint_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
-
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:drawableStart="@drawable/mood_icon"
-        android:drawableEnd="@drawable/arrow_right"
-        android:drawablePadding="15dp"
-        android:gravity="center_vertical"
-        android:text="Help &amp; Support"
-        android:textColor="@color/text_color"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:drawableTint="@color/text_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="App Version 1.0"
-        android:textColor="@color/white"
-        android:textSize="10sp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/divider3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            app:lottie_url="https://assets6.lottiefiles.com/packages/lf20_ehegqmwn.json"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
-            <TextView
-
+            <LinearLayout
+                android:id="@+id/profilelinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Refer a Friend"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
 
+                    android:backgroundTint="@color/hint_color"
+                    app:cardCornerRadius="50dp">
+
+                    <ImageView
+                        android:id="@+id/profile_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/user_icon" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guddu lawaniya"
+                        android:textColor="@color/text_color"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Student"
+                        android:textColor="@color/hint_color"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="19dp"
+                android:background="@color/divider_color" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Copy &amp; Share Code"
-                android:textColor="@color/iconcolor"
-                android:textSize="10dp" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profiledetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/person_outline_24"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="My Profile (20%)"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/text_color" />
+
+                <TextView
+                    android:id="@+id/sideapplication"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:drawableStart="@drawable/application_icon_svg"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="My Application"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/text_color" />
+
+                <TextView
+                    android:id="@+id/sidebarPreferenece"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:drawableStart="@drawable/star_icon"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="My Preferences"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/text_color" />
+
+                <TextView
+                    android:id="@+id/sidedocument_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:drawableStart="@drawable/documents"
+                    android:drawableEnd="@drawable/arrow_right"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="My Documents"
+                    android:textColor="@color/text_color"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/text_color" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="409dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/mood_icon"
+                android:drawableEnd="@drawable/arrow_right"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:text="Help &amp; Support"
+                android:textColor="@color/text_color"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:drawableTint="@color/text_color" />
+
         </LinearLayout>
-    </LinearLayout>
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="407dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="4dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="407dp"
+                android:layout_height="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hint_color" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+<!--                <com.airbnb.lottie.LottieAnimationView-->
+<!--                    android:id="@+id/animationView"-->
+<!--                    android:layout_width="120dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:lottie_autoPlay="true"-->
+<!--                    app:lottie_loop="true"-->
+<!--                    app:lottie_url="https://assets6.lottiefiles.com/packages/lf20_ehegqmwn.json" />-->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Refer a Friend"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Copy &amp; Share Code"
+                        android:textColor="@color/iconcolor"
+                        android:textSize="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="App Version 1.0"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

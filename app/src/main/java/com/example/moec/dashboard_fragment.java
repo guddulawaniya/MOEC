@@ -28,8 +28,7 @@ import java.util.prefs.Preferences;
 public class dashboard_fragment extends Fragment {
 
 
-    TextView student,scout,textCartItemCount;
-    int id =1,mCartItemCount=100;
+
 
     ArrayList<interest_module> list;
     ArrayList<Quick_Action_Module> quickList;
@@ -41,14 +40,7 @@ public class dashboard_fragment extends Fragment {
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_dashboard_fragment, container, false);
 
-        TextView uploaddata = view.findViewById(R.id.sidedocument_upload);
-        uploaddata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), My_documents_upload.class);
-                startActivity(intent);
-            }
-        });
+
 
         SliderView sliderView = view.findViewById(R.id.slider);
         SliderAdapter adapterslider = new SliderAdapter();
@@ -62,7 +54,6 @@ public class dashboard_fragment extends Fragment {
         quickList = new ArrayList<>();
         university_list = new ArrayList<>();
         ImageView phoneicon = view.findViewById(R.id.phoneimage);
-        CardView profile = view.findViewById(R.id.profile);
         CardView setpreference_student = view.findViewById(R.id.setpreference_student);
 
 
@@ -113,6 +104,9 @@ public class dashboard_fragment extends Fragment {
         quickRecyclerview.setAdapter(quickAdapter);
 
 
+
+
+
         phoneicon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,17 +124,6 @@ public class dashboard_fragment extends Fragment {
                 startActivity(new Intent(getContext(), program_preference_Activity.class));
             }
         });
-        DrawerLayout drawerlayout = view.findViewById(R.id.drawerlayout);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                drawerlayout.openDrawer(GravityCompat.START);
-
-            }
-        });
-
 
 
         CardView floatingActionButton = view.findViewById(R.id.floatingActionButton2);
@@ -170,12 +153,7 @@ public class dashboard_fragment extends Fragment {
         list.add(new interest_module(R.drawable.translation,"Languages"));
         list.add(new interest_module(R.drawable.education,"Education"));
 
-        ImageView refine_icon = view.findViewById(R.id.refine_icon);
-        ImageView like = view.findViewById(R.id.favourate_icon_toolbar);
-        TextView tooltitle = view.findViewById(R.id.toolbartitle);
-        tooltitle.setText("Dashboard");
-        refine_icon.setVisibility(View.GONE);
-        LinearLayout notification = view.findViewById(R.id.notification);
+
 
 
         RecyclerView recyclerView = view.findViewById(R.id.interest_recyclerview);
@@ -185,45 +163,10 @@ public class dashboard_fragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), Favorate_Activity.class));
-
-            }
-        });
-        notification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), Notification_Activity.class));
-            }
-        });
 
 
 
-        textCartItemCount = view.findViewById(R.id.notification_badge);
-        TextView view_all  = view.findViewById(R.id.view_all);
-        TextView application  = view.findViewById(R.id.application);
-        TextView sidebarPreferenece  = view.findViewById(R.id.sidebarPreferenece);
-        TextView profiledetails  = view.findViewById(R.id.profiledetails);
-        sidebarPreferenece.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), program_preference_Activity.class));
-            }
-        });
-        application.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), New_Application.class));
-            }
-        });
-        profiledetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), profile_dashboard.class));
-            }
-        });
+
 
 
 
@@ -316,20 +259,6 @@ public class dashboard_fragment extends Fragment {
         return false;
     }
 
-    private void setupBadge() {
 
-        if (textCartItemCount != null) {
-            if (mCartItemCount == 0) {
-                if (textCartItemCount.getVisibility() != View.GONE) {
-                    textCartItemCount.setVisibility(View.GONE);
-                }
-            } else {
-                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
-                if (textCartItemCount.getVisibility() != View.VISIBLE) {
-                    textCartItemCount.setVisibility(View.VISIBLE);
-                }
-            }
-        }
-    }
 
 }

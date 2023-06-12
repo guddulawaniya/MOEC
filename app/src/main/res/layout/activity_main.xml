@@ -8,26 +8,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <fragment
+        <include
+            android:id="@+id/include5"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toStartOf="@+id/Frame_laout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/Frame_laout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
             android:id="@+id/Frame_laout"
-            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:navGraph="@navigation/bottomnavbar" />
+            app:layout_constraintTop_toBottomOf="@+id/include5"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"

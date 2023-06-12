@@ -1,6 +1,7 @@
 package com.example.moec;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -36,19 +37,31 @@ public class Quick_Action_Adapter extends RecyclerView.Adapter<Quick_Action_Adap
 
     @Override
     public void onBindViewHolder(@NonNull viewdholder holder, int position) {
+        int id = position;
         Quick_Action_Module module = list.get(position);
         holder.imageView.setImageResource(module.getIconimage());
         holder.countryname.setText(module.getTitletext());
 
-//        int id = getItemCount();
-//        Toast.makeText(context, "result"+id, Toast.LENGTH_SHORT).show();
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            for (int i=0;i<list.size();++i)
-//            {
-//                if (i==1)
-//                    holder.quickcard.setCardBackgroundColor(context.getColor(R.color.background_blue_shadew));
-//            }
-//            }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (id)
+                {
+                    case 0: context.startActivity(new Intent(context, New_Application.class));
+                    break;
+                    case 1: context.startActivity(new Intent(context, test_Activity.class));
+                    break;
+                    case 2: context.startActivity(new Intent(context, GIC_registration.class));
+                    break;
+                    case 3: context.startActivity(new Intent(context, SOP_Guidance_Activity.class));
+                    break;
+                    case 4: context.startActivity(new Intent(context, Accommodation_Activity.class));
+                    break;
+                    case 5: context.startActivity(new Intent(context, Loan_details_Activity.class));
+                    break;
+                }
+            }
+        });
 
 
     }

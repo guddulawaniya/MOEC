@@ -55,7 +55,15 @@ public class profile_dashboard extends AppCompatActivity {
         TextView my_preference_profile = findViewById(R.id.my_preference_profile);
         TextView cleartext = findViewById(R.id.cleartext);
         toolbartitle.setText("My Profile");
-        cleartext.setVisibility(View.GONE);
+        cleartext.setText("");
+        cleartext.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_settings_24, 0);
+
+        cleartext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Setting_Actvity.class));
+            }
+        });
 
         ImageView backbutton = findViewById(R.id.backbutton);
         backbutton.setOnClickListener(new View.OnClickListener() {

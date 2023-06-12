@@ -27,13 +27,9 @@ public class application_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_application_fragment, container, false);
 
-        LinearLayout searchfield = view.findViewById(R.id.searchfield);
 
-        searchfield.setVisibility(View.GONE);
-        ImageView favorate = view.findViewById(R.id.favourate_icon_toolbar);
-        favorate.setVisibility(View.GONE);
-        TextView tooltitle = view.findViewById(R.id.toolbartitle);
-        tooltitle.setText("Application");
+
+
 
 
         TabLayout tabLayout = view.findViewById(R.id.programtabs);

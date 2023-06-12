@@ -33,8 +33,7 @@ public class community_fragment extends Fragment {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
-        ImageView refine = view.findViewById(R.id.refine_icon);
-        ImageView like  = view.findViewById(R.id.favourate_icon_toolbar);
+
 
         CardView floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -47,10 +46,6 @@ public class community_fragment extends Fragment {
         ViewPager viewPager = view.findViewById(R.id.programviewpager);
         TabLayout tabLayout = view.findViewById(R.id.programtabs);
 
-        like.setVisibility(View.GONE);
-        refine.setVisibility(View.GONE);
-        TextView tooltitle = view.findViewById(R.id.toolbartitle);
-        tooltitle.setText("Community");
 
 
         community_tabs_adapter adapter = new community_tabs_adapter(getChildFragmentManager());

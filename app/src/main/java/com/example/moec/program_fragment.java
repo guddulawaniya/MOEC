@@ -24,35 +24,10 @@ public class program_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=        inflater.inflate(R.layout.fragment_program_fragment, container, false);
+        View view  =        inflater.inflate(R.layout.fragment_program_fragment, container, false);
         TabLayout tabLayout = view.findViewById(R.id.programtabs);
         ViewPager viewPager = view.findViewById(R.id.programviewpager);
 
-        ImageView refine_icon = view.findViewById(R.id.refine_icon);
-        refine_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), Refine_Activity.class));
-            }
-        });
-
-        CardView profile = view.findViewById(R.id.profile);
-
-        DrawerLayout drawerlayout = view.findViewById(R.id.drawerlayout);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                drawerlayout.openDrawer(GravityCompat.START);
-
-            }
-        });
-
-
-
-        TextView tooltitle = view.findViewById(R.id.toolbartitle);
-        tooltitle.setText("Programs");
 
 
 
