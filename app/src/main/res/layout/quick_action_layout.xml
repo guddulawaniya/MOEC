@@ -12,10 +12,10 @@
         android:layout_margin="10dp"
         android:layout_weight="1"
         android:backgroundTint="@color/white"
-        android:elevation="4dp"
+        android:elevation="2dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        app:cardMaxElevation="3dp"
+        app:cardElevation="1dp"
+        app:cardMaxElevation="2dp"
         app:cardPreventCornerOverlap="false"
         android:minWidth="100dp"
       >

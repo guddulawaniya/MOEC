@@ -37,6 +37,7 @@ public class Page1 extends Fragment {
 
         RecyclerView recyclerView =  view.findViewById(R.id.recyclerview);
         RecyclerView mostpreferedRecyclerview =  view.findViewById(R.id.mostpreferedRecyclerview);
+        recyclerView.setNestedScrollingEnabled(false);
 
 
         // instances array list
@@ -58,7 +59,7 @@ public class Page1 extends Fragment {
 
         // object Adapters
 
-        list_adapter list_adapter = new list_adapter(list,getContext());
+        countryList_Adapter list_adapter = new countryList_Adapter(list,getContext());
         most_prefered_destination_Adapter mostAdapter = new most_prefered_destination_Adapter(mostpreferedlist);
 
 

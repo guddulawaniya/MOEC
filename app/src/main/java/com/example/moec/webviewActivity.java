@@ -21,7 +21,6 @@ public class webviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
-        getSupportActionBar().hide();
 
         TextView toolbartitle  = findViewById(R.id.toolbar_title);
         WebView webview  = findViewById(R.id.webview);
@@ -32,23 +31,16 @@ public class webviewActivity extends AppCompatActivity {
         webview.setWebViewClient(new WebViewClient());
 
         Intent intent = getIntent();
-        Boolean id = intent.getBooleanExtra("id",false);
-        if (id)
-        {
-            webview.loadUrl("https://www.meridean.org/terms-conditions");
-            toolbartitle.setText("Terms of Use");
 
-        }
-        else
-        {
+        String url = intent.getStringExtra("url");
+        String title = intent.getStringExtra("titlename");
 
-            webview.loadUrl("https://www.meridean.org/contact");
-            toolbartitle.setText("Contact Us");
 
-        }
+        webview.loadUrl(url);
+        toolbartitle.setText(title);
+
 
         TextView cleatext = findViewById(R.id.cleartext);
-
         cleatext.setVisibility(View.GONE);
 
         ImageView backbutton = findViewById(R.id.backbutton);
@@ -61,6 +53,7 @@ public class webviewActivity extends AppCompatActivity {
 
 
     }
+
 
     public class WebViewClient extends android.webkit.WebViewClient {
         @Override

@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimaryVariant">@color/primarycolor</item>
         <item name="colorPrimary">@color/secondarycolor</item>
         <item name="colorOnPrimary">@color/background_blue_shadew</item>
@@ -9,6 +9,15 @@
     <style name="Theme.MOEC" parent="Base.Theme.MOEC" />
     <style name="DropDownItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:textColor">@color/background_blue_shadew</item>
+
+
+    </style>
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:strokeColor">@color/primarycolor</item>
+        <item name="android:topLeftRadius">20dp</item>
+        <item name="android:topRightRadius">20dp</item>
 
     </style>
 
@@ -26,6 +35,15 @@
     <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/primarycolor</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/buttonbgcolor</item>
+    </style>
+
+    <style name="Widget.App.Radio" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/buttonbgcolor</item>
     </style>
 
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">

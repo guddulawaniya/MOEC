@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -79,14 +80,12 @@ public class Quick_Action_Adapter extends RecyclerView.Adapter<Quick_Action_Adap
         CardView quickcard;
         public viewdholder(@NonNull View itemView) {
             super(itemView);
-
             imageView = itemView.findViewById(R.id.actionIconimage);
             countryname = itemView.findViewById(R.id.quiokiconText);
             quickcard = itemView.findViewById(R.id.quickcard);
 
         }
     }
-
 
 }
 class Quick_Action_Module{

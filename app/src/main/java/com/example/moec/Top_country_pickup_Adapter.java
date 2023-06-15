@@ -1,6 +1,7 @@
 package com.example.moec;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,37 @@ public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country
         Top_country_module module = list.get(position);
         holder.imageView.setImageResource(module.getCountryimage());
         holder.countryname.setText(module.getCountryname());
+        int id = position;
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, webviewActivity.class);
+                switch (id)
+                {
+                    case 0:
+                        intent.putExtra("url","https://www.meridean.org/study-in-canada");
+                        intent.putExtra("titlename","Canada");
+                        break;
+                    case 1:
+                        intent.putExtra("url","https://www.meridean.org/study-in-australia");
+                        intent.putExtra("titlename","Australia");
+                        break;
+                    case 2:  intent.putExtra("url","https://www.merideanoverseas.in/study-in-uk");
+                        intent.putExtra("titlename","United Kingdom");
+                        break;
+                    case 3:   intent.putExtra("url","https://www.meridean.org/study-in-usa");
+                        intent.putExtra("titlename","United States");
+                        break;
+                    case 4:   intent.putExtra("url","https://www.merideanoverseas.in/cost-of-study-in-newzealand");
+                        intent.putExtra("titlename","New Zealand");
+                        break;
+                }
+
+
+                context.startActivity(intent);
+            }
+        });
 
     }
 

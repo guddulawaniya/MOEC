@@ -79,19 +79,14 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:backgroundTint="@color/background_blue_shadew"
-                            android:elevation="4dp"
-                            app:cardCornerRadius="6dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/border_outline"
+                                android:layout_height="50dp">
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -116,15 +111,25 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/oswald"
-                                        android:text="Guddu lawaniya"
+                                        android:text="Counselor Name "
                                         android:textColor="@color/text_color"
-                                        android:textSize="14sp" />
+                                        android:textSize="16sp" />
                                 </LinearLayout>
+
+                                <View
+                                    android:id="@+id/divider10"
+                                    android:layout_width="2dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="20dp"
+                                    android:layout_toStartOf="@+id/phoneimage"
+                                    android:background="#231A519E" />
+
 
                                 <ImageView
                                     android:id="@+id/phoneimage"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="40dp"
                                     android:layout_height="match_parent"
+                                    android:padding="3dp"
                                     android:layout_alignParentTop="true"
                                     android:layout_alignParentEnd="true"
                                     android:layout_alignParentBottom="true"
@@ -133,7 +138,6 @@
 
 
                             </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -148,7 +152,7 @@
                                 android:fontFamily="@font/oswald"
                                 android:text="Recommended Programs"
                                 android:textColor="@color/text_color"
-                                android:textSize="18sp"
+                                android:textSize="20sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -226,7 +230,7 @@
                             android:fontFamily="@font/oswald"
                             android:text="Quick Actions"
                             android:textColor="@color/text_color"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -251,7 +255,7 @@
                             android:fontFamily="@font/oswald"
                             android:text="Top Preferred Countries"
                             android:textColor="@color/text_color"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
 
@@ -276,7 +280,7 @@
                             android:fontFamily="@font/oswald"
                             android:text="Interests"
                             android:textColor="@color/text_color"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -300,7 +304,7 @@
                             android:fontFamily="@font/oswald"
                             android:text="Refre &amp; Earn"
                             android:textColor="@color/text_color"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <androidx.cardview.widget.CardView
@@ -309,9 +313,9 @@
                             android:layout_height="100dp"
                             android:layout_margin="16dp"
                             android:backgroundTint="@color/white"
-                            android:elevation="5dp"
+                            android:elevation="2dp"
                             app:cardCornerRadius="10dp"
-                            app:cardElevation="3dp"
+                            app:cardElevation="1dp"
 
                             app:cardPreventCornerOverlap="false">
 
@@ -348,7 +352,8 @@
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/poppins"
                                         android:text="Refer a Friend"
-                                        android:textColor="@color/text_color" />
+                                        android:textSize="16dp"
+                                        android:textColor="@color/white" />
 
                                     <TextView
 
@@ -356,7 +361,7 @@
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/oswald"
                                         android:text="Earn your tution fee"
-                                        android:textColor="@color/black"
+                                        android:textColor="@color/text_color"
                                         android:textSize="10dp"
                                         android:textStyle="bold" />
 
@@ -368,7 +373,7 @@
                                         android:autoLink="all"
                                         android:fontFamily="@font/poppins"
                                         android:text="Copy &amp; share your referral code"
-                                        android:textColor="@color/black"
+                                        android:textColor="@color/text_color"
                                         android:textSize="10dp" />
                                 </LinearLayout>
                             </LinearLayout>
@@ -390,24 +395,23 @@
                             android:fontFamily="@font/oswald"
                             android:text="Latest Study Aboard updates"
                             android:textColor="@color/text_color"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="250dp"
+                            android:layout_height="300dp"
                             android:layout_margin="15dp"
                             android:backgroundTint="@color/white"
-                            android:elevation="5dp"
+                            android:elevation="2dp"
+                            app:cardElevation="1dp"
                             app:cardCornerRadius="10dp"
-                            app:cardElevation="3dp"
                             app:cardPreventCornerOverlap="false">
 
                             <LinearLayout
 
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
                                 android:background="@color/white"
                                 android:orientation="vertical"
                                 app:layout_constraintBottom_toTopOf="@+id/divider3"
@@ -420,13 +424,16 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
+                                    android:minHeight="120dp"
                                     android:scaleType="fitXY"
                                     app:srcCompat="@drawable/group_image" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginTop="10dp"
+                                    android:layout_marginEnd="10dp"
                                     android:fontFamily="@font/oswald"
                                     android:singleLine="true"
                                     android:text="Study in Canada Quotes For International Student 2023"
@@ -437,16 +444,20 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginTop="3dp"
+                                    android:layout_marginEnd="10dp"
                                     android:fontFamily="@font/poppins"
                                     android:text="Canada has long been a beacob for international students seeking quality education in a diverse and welcoming eviroment. From its picturesque landscapes to its world-renowned universities,its no wo.."
                                     android:textColor="@color/hint_color"
-                                    android:textSize="14sp" />
+                                    android:textSize="12sp" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="10dp"
                                     android:fontFamily="@font/poppins"
                                     android:text="30 May 2023"
                                     android:textColor="@color/black"
@@ -472,7 +483,7 @@
                             android:fontFamily="@font/oswald"
                             android:text="Universities"
                             android:textColor="@color/text_color"
-                            android:textSize="16sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <androidx.recyclerview.widget.RecyclerView

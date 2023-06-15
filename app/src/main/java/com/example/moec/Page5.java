@@ -13,15 +13,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Page5 extends Fragment {
 
-    TextView reading,writing,listening,speaking,overall,total;
-
-    TextInputEditText readinginputtext, writinginput,listeninginput,speakinginput,overallinput,totalinput,percent1,percent2;
-    TextInputLayout readinglayout, writinglayout,listeninglayout,speakinglayout,overalllayout,totallayout,percentlayout1,percentlayout2;
+    TextView reading,writing,listening,speaking,overall;
+    TextInputLayout readinglayout, writinglayout,listeninglayout,speakinglayout,overalllayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +28,7 @@ public class Page5 extends Fragment {
         String[] list = {"I don't have this","I will appear soon","IELTS","PTE","TOEFL","Duoling English Test","GRE","GMAT"};
         View view = inflater.inflate(R.layout.fragment_page5, container, false);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item ,list);
 
         AutoCompleteTextView selectexam = view.findViewById(R.id.selectexam_dropdown);
         LinearLayout linear2 = view.findViewById(R.id.secoundlinear);
@@ -49,11 +46,7 @@ public class Page5 extends Fragment {
         overalllayout = view.findViewById(R.id.overallinputlayout);
 
         TextView examtitle = view.findViewById(R.id.examtitle);
-
-
-        TextInputLayout overall = view.findViewById(R.id.readinginputfieldslayout);
-
-
+        selectexam.setDropDownBackgroundResource(R.color.background_blue_shadew);
 
         selectexam.setAdapter(adapter);
 
@@ -61,7 +54,7 @@ public class Page5 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                examtitle.setText("Enter "+list[i]+"Score");
+                examtitle.setText("Enter "+list[i]+ "Score");
                 if (i<2)
                 {
                     examtitle.setVisibility(View.GONE);

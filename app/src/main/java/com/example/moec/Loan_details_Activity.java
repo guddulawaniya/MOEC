@@ -15,7 +15,7 @@ public class Loan_details_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loan_details);
 
-        getSupportActionBar().hide();
+
         ImageView backbutton = findViewById(R.id.backbutton);
         TextView headingtext = findViewById(R.id.headingtext);
 

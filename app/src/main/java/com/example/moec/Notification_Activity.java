@@ -14,7 +14,7 @@ public class Notification_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-        getSupportActionBar().hide();
+
         ImageView backbutton = findViewById(R.id.backbutton);
         TextView toolbartitle = findViewById(R.id.toolbar_title);
         toolbartitle.setText("Notifications");

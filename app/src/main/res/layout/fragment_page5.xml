@@ -41,33 +41,35 @@
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
+            app:endIconDrawable="@drawable/arrow_down"
+            app:endIconTint="@color/hint_color"
+            app:hintEnabled="false"
             app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/primarycolor"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:boxStrokeColor="@color/primarycolor">
 
             <!-- Inside text input layout add
                   an auto complete text view
                     and make its input type to none-->
             <AutoCompleteTextView
                 android:id="@+id/selectexam_dropdown"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/text_color"
                 android:dropDownSelector="@color/background_blue_shadew"
                 android:fontFamily="@font/poppins"
                 android:inputType="none"
+                android:padding="10dp"
+
                 android:text="Choose Programming language"
-                android:textColor="@color/text_color" />
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,6 +81,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -93,15 +96,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/examtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/oswald"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/oswald"
                     android:text="Enter IELTS Score"
                     android:textColor="@color/black"
                     android:textSize="11sp"
@@ -144,8 +147,8 @@
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:hintEnabled="false"
                             app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -172,10 +175,10 @@
                             android:layout_weight="1"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -213,12 +216,12 @@
                             android:layout_marginEnd="10dp"
                             android:layout_weight="1"
                             android:textColorHint="@color/hint_color"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
                             app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -242,13 +245,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            app:hintEnabled="false"
                             android:layout_weight="1"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -284,7 +287,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="10dp"
-                            app:hintEnabled="false"
                             android:layout_weight="1"
                             android:textColorHint="@color/hint_color"
                             app:boxCornerRadiusBottomEnd="8dp"
@@ -292,6 +294,7 @@
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
                             app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -317,11 +320,11 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             app:boxCornerRadiusBottomEnd="8dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -341,10 +344,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:fontFamily="@font/oswald"
                         android:text="Total"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/oswald" />
+                        android:textSize="14sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -362,9 +365,9 @@
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusTopStart="8dp"
                             app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -389,12 +392,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -435,22 +438,22 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:hintEnabled="false"
                         android:layout_marginTop="5dp"
                         app:boxCornerRadiusBottomEnd="8dp"
                         app:boxCornerRadiusBottomStart="8dp"
                         app:boxCornerRadiusTopEnd="8dp"
                         app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor">
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:hintEnabled="false">
 
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:fontFamily="@font/poppins"
                             android:hint="0"
                             android:inputType="numberDecimal"
                             android:padding="10dp"
-                            android:fontFamily="@font/poppins"
                             android:textColor="@color/text_color"
                             android:textColorHint="@color/hint_color" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -461,15 +464,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/scorelinearlayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginBottom="20dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -494,9 +497,9 @@
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusTopStart="8dp"
                             app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="parent"
@@ -531,13 +534,13 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:hintEnabled="false"
                             android:layout_marginTop="5dp"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -568,12 +571,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -617,11 +620,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             app:boxCornerRadiusBottomEnd="8dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -652,12 +655,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            app:hintEnabled="false"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor">
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
                             <com.google.android.material.textfield.TextInputEditText

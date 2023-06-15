@@ -18,7 +18,6 @@ public class New_Application extends AppCompatActivity {
         setContentView(R.layout.activity_new_application);
 
 
-        getSupportActionBar().hide();
         TextView title = findViewById(R.id.toolbar_title);
         ImageView canclebutton = findViewById(R.id.backbutton);
         TextView cleartext = findViewById(R.id.cleartext);
@@ -44,6 +43,7 @@ public class New_Application extends AppCompatActivity {
 
         close_button_bottomsheet close_button_bottomsheet = new close_button_bottomsheet();
         close_button_bottomsheet.show(getSupportFragmentManager(),"alertfragment");
+
 
     }
 }

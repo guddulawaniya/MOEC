@@ -40,10 +40,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             app:boxCornerRadiusBottomEnd="8dp"
-            android:hint="Enter passport number"
+            app:hintEnabled="false"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
-            app:hintTextColor="@color/primarycolor"
             android:textColorHint="@color/hint_color"
             app:boxCornerRadiusTopStart="8dp"
             app:boxStrokeColor="@color/primarycolor">
@@ -54,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins"
-                android:inputType="numberDecimal"
+                android:hint="Enter passport number"
                 android:padding="10dp"
                 android:textColor="@color/text_color" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +63,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            app:useMaterialThemeColors="false"
+            android:paddingStart="10dp"
+            style="@style/Widget.App.CheckBox"
             android:buttonTint="@color/buttonbgcolor"
             android:fontFamily="@font/poppins"
             android:text="@string/i_will_share_the_details_later"

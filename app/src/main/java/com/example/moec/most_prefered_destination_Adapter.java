@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
 
     ArrayList<most_prefered_destination_module> list;
 
+
+    private int checkedPosition = -1;
     public most_prefered_destination_Adapter(ArrayList<most_prefered_destination_module> list) {
         this.list = list;
     }
@@ -32,6 +35,8 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
         most_prefered_destination_module module = list.get(position);
         holder.image.setImageResource(module.getImage());
         holder.textview.setText(module.getText());
+        holder.bind();
+
 
     }
 
@@ -44,11 +49,35 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
     public class viewholder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView textview;
+        CardView selectedcard;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.countryimagemost);
             textview = itemView.findViewById(R.id.countrynamemost);
+            selectedcard = itemView.findViewById(R.id.selectedcard);
 
+
+        }
+
+
+        void bind() {
+
+                if (checkedPosition == getAdapterPosition()) {
+                    selectedcard.setVisibility(View.VISIBLE);
+                } else {
+                    selectedcard.setVisibility(View.GONE);
+                }
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedcard.setVisibility(View.VISIBLE);
+                    if (checkedPosition != getAdapterPosition()) {
+                        notifyItemChanged(checkedPosition);
+                        checkedPosition = getAdapterPosition();
+                    }
+                }
+            });
         }
     }
 }

@@ -65,10 +65,10 @@ public class dashboard_fragment extends Fragment {
         university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada,"Canada"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.australia_flag,"Australia"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada,"Canada"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.australia_flag,"Australia"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada,"Canada"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.australia_flag,"Australia"));
+        topcountry_pickup_list.add(new Top_country_module(R.drawable.uk_flag,"United Kingdom"));
+        topcountry_pickup_list.add(new Top_country_module(R.drawable.us_flag,"United States"));
+        topcountry_pickup_list.add(new Top_country_module(R.drawable.germany_flag,"Germany"));
+        topcountry_pickup_list.add(new Top_country_module(R.drawable.zealand_flag,"New Zealand"));
 
 
 

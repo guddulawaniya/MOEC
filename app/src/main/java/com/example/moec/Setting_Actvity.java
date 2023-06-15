@@ -47,7 +47,8 @@ public class Setting_Actvity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), webviewActivity.class);
-                intent.putExtra("id",true);
+                intent.putExtra("url","https://www.meridean.org/terms-conditions");
+                intent.putExtra("titlename","Terms of Use");
                 startActivity(intent);
 
             }
@@ -56,7 +57,8 @@ public class Setting_Actvity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), webviewActivity.class);
-                intent.putExtra("id",false);
+                intent.putExtra("url","https://www.meridean.org/contact");
+                intent.putExtra("titlename","Contact Us");
                 startActivity(intent);
 
             }

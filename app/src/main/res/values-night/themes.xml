@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.MOEC" parent="Theme.Material3.DayNight.NoActionBar">
 
         <item name="colorPrimaryVariant">@color/primarycolor</item>
         <item name="colorPrimary">@color/secondarycolor</item>

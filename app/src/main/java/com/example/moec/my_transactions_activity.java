@@ -14,7 +14,7 @@ public class my_transactions_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_transactions);
-        getSupportActionBar().hide();
+
 
         TextView clearText = findViewById(R.id.cleartext);
         TextView desci = findViewById(R.id.descri_no_found);

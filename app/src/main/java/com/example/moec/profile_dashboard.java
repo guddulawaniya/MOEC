@@ -44,7 +44,7 @@ public class profile_dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_dashboard);
-        getSupportActionBar().hide();
+
 
         TextView toolbartitle = findViewById(R.id.toolbar_title);
         TextView basic_information = findViewById(R.id.basic_information);

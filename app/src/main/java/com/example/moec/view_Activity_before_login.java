@@ -34,7 +34,6 @@ public class view_Activity_before_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_before_login);
-        getSupportActionBar().hide();
 
          progress = findViewById(R.id.progressBar);
          progress.setProgress(ContextCompat.getColor(this, R.color.secondarycolor));

@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 
 public class Page3 extends Fragment {
 
@@ -18,7 +21,8 @@ public class Page3 extends Fragment {
     String[] list = {"10th","12th","Undergraduate","Graduate","Postgraduate Certificate/Diploma","Master Degree"};
 
 
-    TextView highper,interper,underper,graduateper,postper,masterper;
+    TextInputEditText highper,interper,underper,graduateper,postper,masterper;
+    TextInputLayout highperlayout,interperlayout,underperlayout,graduateperlayout,postperlayout,masterperlayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +45,14 @@ public class Page3 extends Fragment {
          graduateper = view.findViewById(R.id.graduatepercent);
          postper = view.findViewById(R.id.postpercent);
          masterper = view.findViewById(R.id.masterpercent);
+
+         // layout ids
+        highperlayout = view.findViewById(R.id.highpercentlayout);
+        interperlayout = view.findViewById(R.id.interpercentlayout);
+        underperlayout = view.findViewById(R.id.undergraduatepercentlayout);
+        graduateperlayout = view.findViewById(R.id.graduatepercentlayout);
+        postperlayout = view.findViewById(R.id.postpercentlayout);
+        masterperlayout = view.findViewById(R.id.masterpercentlayout);
 
 
 
@@ -91,26 +103,26 @@ public class Page3 extends Fragment {
 
     void showdTextview(int id )
     {
-        highper.setVisibility(View.GONE);
-        interper.setVisibility(View.GONE);
-        underper.setVisibility(View.GONE);
-        graduateper.setVisibility(View.GONE);
-        postper.setVisibility(View.GONE);
-        masterper.setVisibility(View.GONE);
+        highperlayout.setVisibility(View.GONE);
+        interperlayout.setVisibility(View.GONE);
+        underperlayout.setVisibility(View.GONE);
+        graduateperlayout.setVisibility(View.GONE);
+        postperlayout.setVisibility(View.GONE);
+        masterperlayout.setVisibility(View.GONE);
 
         switch (id)
         {
-            case 1:  highper.setVisibility(View.VISIBLE);
+            case 1:  highperlayout.setVisibility(View.VISIBLE);
             break;
-            case 2:  interper.setVisibility(View.VISIBLE);
+            case 2:  interperlayout.setVisibility(View.VISIBLE);
             break;
-            case 3:  underper.setVisibility(View.VISIBLE);
+            case 3:  underperlayout.setVisibility(View.VISIBLE);
             break;
-            case 4:  graduateper.setVisibility(View.VISIBLE);
+            case 4:  graduateperlayout.setVisibility(View.VISIBLE);
             break;
-            case 5:  postper.setVisibility(View.VISIBLE);
+            case 5:  postperlayout.setVisibility(View.VISIBLE);
             break;
-            case 6: masterper.setVisibility(View.VISIBLE);
+            case 6: masterperlayout.setVisibility(View.VISIBLE);
             break;
         }
 

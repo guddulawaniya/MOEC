@@ -44,7 +44,6 @@ public class registration_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        getSupportActionBar().hide();
         TextView changenumber = findViewById(R.id.changenumber);
          firstname = findViewById(R.id.firstname);
          lastname = findViewById(R.id.lastname);

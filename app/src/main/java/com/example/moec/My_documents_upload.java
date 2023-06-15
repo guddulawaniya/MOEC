@@ -14,7 +14,6 @@ public class My_documents_upload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_documents_upload);
-        getSupportActionBar().hide();
 
         LinearLayout documentlieanr = findViewById(R.id.documentlinear);
         LinearLayout englishtestLinear = findViewById(R.id.englishtestLinear);

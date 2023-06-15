@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     ImageView Refine;
     LinearLayout searchfield;
     ImageView favorate;
+    BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
 
 
          searchfield = findViewById(R.id.searchfield);
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
 
-        BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
+         navigationView = findViewById(R.id.bottomNavigationView);
         navigationView
                 .setOnNavigationItemSelectedListener(this);
         navigationView.setSelectedItemId(R.id.dashboard);
@@ -160,16 +160,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (R.id.dashboard==item.getItemId())
         {
             Refine.setVisibility(View.GONE);
+            searchfield.setVisibility(View.VISIBLE);
+            favorate.setVisibility(View.VISIBLE);
             toolbartitle.setText("Dashboard");
             replacefragment(dashboard_fragment);
         }
         else if (R.id.program==item.getItemId())
         {
+
             Refine.setVisibility(View.VISIBLE);
             toolbartitle.setText("Program");
+            favorate.setVisibility(View.VISIBLE);
+            searchfield.setVisibility(View.VISIBLE);
             replacefragment(program_fragment);
         }
         else if (R.id.application==item.getItemId()) {
+
+
             Refine.setVisibility(View.GONE);
             toolbartitle.setText("Application");
             replacefragment(application_fragment);
@@ -177,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             favorate.setVisibility(View.GONE);
         }
         else if (R.id.community==item.getItemId()) {
+
             Refine.setVisibility(View.GONE);
             favorate.setVisibility(View.GONE);
             toolbartitle.setText("Community");
@@ -186,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         else if (R.id.insight==item.getItemId()) {
             Refine.setVisibility(View.GONE);
             toolbartitle.setText("Insight");
+            searchfield.setVisibility(View.GONE);
+            favorate.setVisibility(View.GONE);
             replacefragment(insights_fragment);
 
         }

@@ -1,10 +1,16 @@
 package com.example.moec;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,31 +18,38 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
+
+import com.shuhart.stepview.StepView;
 
 public class preference_Actvity extends AppCompatActivity {
 
-    int id=1;
     TextView index;
-    int indexingid =1;
-    View view1,view2,view3,view4,view5,view6,view7;
+    StepView stepView;
+    int stepcount=1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preference_actvity);
 
-        getSupportActionBar().hide();
 
         index  = findViewById(R.id.indexingtext);
+        stepView = findViewById(R.id.step_view);
+
+        progressbar(stepcount);
+
         Button nextbutton = findViewById(R.id.nextbutton);
         ImageView backbutton = findViewById(R.id.backbutton);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (id>1)
+
+                stepcount--;
+
+                if (stepcount>0)
                 {
-                    id--;
-                    index.setText(id+" of 7");
-                    onclicksetfragment(id);
+                    progressbar(stepcount);
                 }
                 else
                 {
@@ -46,31 +59,22 @@ public class preference_Actvity extends AppCompatActivity {
             }
         });
 
-        view1 = findViewById(R.id.view1);
-        view2 = findViewById(R.id.view2);
-        view3 = findViewById(R.id.view3);
-        view4 = findViewById(R.id.view4);
-        view5 = findViewById(R.id.view5);
-        view6 = findViewById(R.id.view6);
-        view7 = findViewById(R.id.view7);
-        onclicksetfragment(id);
 
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (id<8)
+
+
+                stepcount++;
+                if (stepcount<9)
                 {
-                    id++;
-                    index.setText(id+" of 7");
-                    onclicksetfragment(id);
+                    progressbar(stepcount);
                 }
+
             }
         });
 
     }
-
-
-
 
     void replaceFragment(Fragment fragment)
     {
@@ -80,50 +84,49 @@ public class preference_Actvity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    public void onclicksetfragment(int id) {
-        switch (id)
+
+    void progressbar(int stepcount)
+    {
+        index.setText(stepcount+" of 7 ");
+        stepView.getState()
+                .animationType(StepView.ANIMATION_LINE)
+                .nextStepLineColor(ContextCompat.getColor(getApplicationContext(), R.color.background_blue_shadew))
+                .doneStepMarkColor(ContextCompat.getColor(getApplicationContext(), R.color.white))
+                .stepsNumber(8)
+                .nextStepCircleEnabled(false)
+                .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
+                .stepLineWidth(6)
+                .commit();
+
+        stepView.go(stepcount,true);
+        switch (stepcount)
         {
-            case 1: Page1 page1 = new Page1();
-                replaceFragment(page1);
-                index.setText(id+" of 7");
-                view2.setBackgroundColor(Color.parseColor("#e7eef6"));
-                view1.setBackgroundColor(Color.parseColor("#1a519e"));
-                break;
-            case 2: Page2 page2 = new Page2();
-                replaceFragment(page2);
-                view3.setBackgroundColor(Color.parseColor("#e7eef6"));
-                view2.setBackgroundColor(Color.parseColor("#1a519e"));
-
-                break;
-            case 3: Page3 page3 = new Page3();
-                replaceFragment(page3);
-                view4.setBackgroundColor(Color.parseColor("#e7eef6"));
-                view3.setBackgroundColor(Color.parseColor("#1a519e"));
-
-                break;
-            case 4: Page4 page4 = new Page4();
-                replaceFragment(page4);
-                view5.setBackgroundColor(Color.parseColor("#e7eef6"));
-
-                view4.setBackgroundColor(Color.parseColor("#1a519e"));
-                break;
-            case 5: Page5 page5 = new Page5();
-                replaceFragment(page5);
-                view6.setBackgroundColor(Color.parseColor("#e7eef6"));
-                view5.setBackgroundColor(Color.parseColor("#1a519e"));
-                break;
-            case 6: Page6 page6 = new Page6();
-                replaceFragment(page6);
-                view7.setBackgroundColor(Color.parseColor("#e7eef6"));
-                view6.setBackgroundColor(Color.parseColor("#1a519e"));
-                break;
-            case 7: Page7 page7 = new Page7();
-                view7.setBackgroundColor(Color.parseColor("#1a519e"));
-                replaceFragment(page7);
-                break;
-            case 8:
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+            case 1:Page1 page1 = new Page1();
+            replaceFragment(page1);
+            break;
+            case 2:Page2 page2 = new Page2();
+            replaceFragment(page2);
+            break;
+            case 3:Page3 page3 = new Page3();
+            replaceFragment(page3);
+            break;
+            case 4:Page4 page4 = new Page4();
+            replaceFragment(page4);
+            break;
+            case 5:Page5 page5 = new Page5();
+            replaceFragment(page5);
+            break;
+            case 6:Page6 page6 = new Page6();
+            replaceFragment(page6);
+            break;
+            case 7:Page7 page7 = new Page7();
+            replaceFragment(page7);
+            break;
+            case 8:startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+            break;
         }
+
+
     }
 }

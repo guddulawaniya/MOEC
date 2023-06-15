@@ -15,6 +15,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +37,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class login_Activity extends AppCompatActivity {
-    TextInputEditText mobilenumbertext;
-    TextInputLayout layoutnumber;
+    EditText mobilenumbertext;
+
     CountryCodePicker codePicker;
-    Timer mytimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,41 +48,8 @@ public class login_Activity extends AppCompatActivity {
         codePicker=findViewById(R.id.country_code);
         Button sendotpbutton = findViewById(R.id.sendotpbutton);
         mobilenumbertext = findViewById(R.id.mobilenumbertext);
-        layoutnumber = findViewById(R.id.mobilenumberlayour);
 
         InternetConnection nt = new InternetConnection(this);
-        getSupportActionBar().hide();
-        mytimer = new Timer();
-        mytimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-                timermethod();
-
-            }
-        },0,1000);
-
-        mobilenumbertext.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (mobilenumbertext.getText().toString().length()>0)
-                {
-                    layoutnumber.setErrorEnabled(false);
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
 
         sendotpbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +63,6 @@ public class login_Activity extends AppCompatActivity {
                     sendotpnumbers sm = new sendotpnumbers(getApplicationContext());
                     sm.execute(sendotpurl);
 
-
                     Intent intent = new Intent(getApplicationContext(),verify_OTP_Activity.class);
                     intent.putExtra("otp",sendotp);
                     intent.putExtra("number",mobilenumbertext.getText().toString());
@@ -106,10 +72,7 @@ public class login_Activity extends AppCompatActivity {
                 }
                 else
                 {
-                    layoutnumber.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
-                    layoutnumber.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
-                    layoutnumber.setError("Required*");
-                    layoutnumber.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+                    mobilenumbertext.setError("Please Enter Mobile number");
                     mobilenumbertext.requestFocus();
                 }
             }
@@ -123,30 +86,6 @@ public class login_Activity extends AppCompatActivity {
 
     }
 
-    private void timermethod()
-    {
-        this.runOnUiThread(time_click);
-    }
-
-    Runnable time_click = new Runnable() {
-
-        @Override
-        public void run() {
-
-//            mytimer.cancel();
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    String country_code=codePicker.getSelectedCountryCode();
-                    layoutnumber.setPrefixText("+"+country_code+" ");
-
-                }
-            },1000);
-
-        }
-
-    };
 
 //    @Override
 //    protected void onStart() {

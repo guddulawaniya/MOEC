@@ -24,6 +24,7 @@
     <string name="overall">Overall</string>
     <string name="percentage">Percentage (%)</string>
     <string name="i_will_share_the_details_later">I will share the details later</string>
+    <string name="loginview_descripation"><![CDATA[Meridean Overseas Education is a leading study abroad agency, dedicated to providing students with comprehensive support and guidance on studying abroad programs in UK, USA, Canada, Australia & Europe.]]></string>
 
     <array name="initial_slider_values">
         <item>20.0</item>
