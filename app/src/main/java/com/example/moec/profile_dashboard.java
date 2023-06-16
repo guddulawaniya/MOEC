@@ -1,12 +1,5 @@
 package com.example.moec;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,24 +12,27 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+
+import com.example.moec.loginActivity.login_Activity_with_mobile_no;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 
 public class profile_dashboard extends AppCompatActivity {
 
     int SELECT_PICTURE =200;
-    ImageView setimage;
-
-
     ImageView userpic;
-    private static final int GalleryPick = 1;
+
     private static final int CAMERA_REQUEST = 100;
     private static final int STORAGE_REQUEST = 200;
-    private static final int IMAGEPICK_GALLERY_REQUEST = 300;
-    private static final int IMAGE_PICKCAMERA_REQUEST = 400;
+
     String cameraPermission[];
     String storagePermission[];
 
@@ -92,7 +88,7 @@ public class profile_dashboard extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), login_Activity.class));
+                startActivity(new Intent(getApplicationContext(), login_Activity_with_mobile_no.class));
                 finish();
             }
         });

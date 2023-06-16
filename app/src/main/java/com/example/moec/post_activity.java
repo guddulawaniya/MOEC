@@ -1,11 +1,11 @@
 package com.example.moec;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class post_activity extends AppCompatActivity {
 
@@ -14,7 +14,7 @@ public class post_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-        getSupportActionBar().hide();
+
         TextView title = findViewById(R.id.toolbar_title);
         ImageView canclebutton = findViewById(R.id.backbutton);
 

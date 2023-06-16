@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/bottomsheet_bg"
 
-    tools:context=".close_button_bottomsheet">
+    tools:context=".BottomSheets.close_button_bottomsheet">
 
 
     <LinearLayout

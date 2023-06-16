@@ -13,7 +13,7 @@ public class change_passcode_Actvity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_passcode_actvity);
-        getSupportActionBar().hide();
+
         ImageView backbutton = findViewById(R.id.backbutton);
         TextView cleartext = findViewById(R.id.cleartext);
         TextView toolbartitle  = findViewById(R.id.toolbar_title);

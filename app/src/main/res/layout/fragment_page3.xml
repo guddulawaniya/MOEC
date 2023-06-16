@@ -1,353 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/framelayout"
     android:background="@color/white"
-    tools:context=".Page3">
-
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/oswald"
-            android:text="Education Qualifications"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:text="Select your highest Qualification"
-            android:textColor="@color/hint_color"
-            android:textSize="12sp" />
-
-    </LinearLayout>
+    tools:context=".LoginAfter_Steps.Page3">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ScrollView
+        <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="24dp"
-                android:orientation="vertical"
+                android:fontFamily="@font/oswald"
+                android:text="Education Qualifications"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Select your highest Qualification"
+                android:textColor="@color/hint_color"
+                android:textSize="12sp" />
 
+        </LinearLayout>
 
-                <RadioGroup
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/group"
-                    android:layout_marginBottom="30dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="24dp"
+                    android:orientation="vertical"
 
-                    <RadioButton
-                        android:id="@+id/radioButtonhigh"
+                    >
+
+
+                    <RadioGroup
+                        android:id="@+id/group"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.App.Radio"
-                        android:fontFamily="@font/poppins"
-                        android:paddingStart="15dp"
-                        android:text="10th"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp" />
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="30dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:id="@+id/highpercentlayout"
-                        android:visibility="gone"
-                        android:layout_marginBottom="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintEnabled="false">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <RadioButton
+                            android:id="@+id/radioButtonhigh"
+                            style="@style/Widget.App.Radio"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/highpercent"
+                            android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
-                            android:hint="Enter Percentage (%)"
-                            android:inputType="numberDecimal"
-                            android:padding="10dp"
-                            android:textSize="14sp"
+                            android:paddingStart="15dp"
+                            android:text="10th"
                             android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:textSize="13sp" />
 
-                    <View
-
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtoninter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        style="@style/Widget.App.Radio"
-                        android:paddingStart="15dp"
-                        android:text="12th"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:id="@+id/interpercentlayout"
-                        android:layout_marginEnd="20dp"
-                        android:visibility="gone"
-                        android:layout_marginBottom="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintEnabled="false">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/highpercentlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/interpercent"
-                            android:fontFamily="@font/poppins"
-                            android:hint="Enter Percentage (%)"
-                            android:inputType="numberDecimal"
-                            android:padding="10dp"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtonunder"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        style="@style/Widget.App.Radio"
-                        android:paddingStart="15dp"
-                        android:text="Undergraduate"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:visibility="gone"
-                        android:id="@+id/undergraduatepercentlayout"
-                        android:layout_marginBottom="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintEnabled="false">
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:visibility="gone"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
-                        <com.google.android.material.textfield.TextInputEditText
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/highpercent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
+                                android:hint="Enter Percentage (%)"
+                                android:inputType="numberDecimal"
+                                android:padding="10dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/undergraduatepercent"
-                            android:fontFamily="@font/poppins"
-                            android:hint="Enter Percentage (%)"
-                            android:inputType="numberDecimal"
-                            android:padding="10dp"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtongraduate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        style="@style/Widget.App.Radio"
-                        android:paddingStart="15dp"
-                        android:text="Graduate"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:visibility="gone"
-                        android:id="@+id/graduatepercentlayout"
-                        android:layout_marginBottom="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintEnabled="false">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <RadioButton
+                            android:id="@+id/radioButtoninter"
+                            style="@style/Widget.App.Radio"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/graduatepercent"
+                            android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
-                            android:hint="Enter Percentage (%)"
-                            android:inputType="numberDecimal"
-                            android:padding="10dp"
-                            android:textSize="14sp"
+                            android:paddingStart="15dp"
+                            android:text="12th"
                             android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:textSize="13sp" />
 
-                    <View
-
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtonpost"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:paddingStart="15dp"
-                        style="@style/Widget.App.Radio"
-                        android:text="Postgraduate Certificate/Diploma"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp" />
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:visibility="gone"
-                        android:id="@+id/postpercentlayout"
-                        android:layout_marginBottom="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintEnabled="false">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/interpercentlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/postpercent"
-                            android:fontFamily="@font/poppins"
-                            android:hint="Enter Percentage (%)"
-                            android:inputType="numberDecimal"
-                            android:padding="10dp"
-                            android:textSize="14sp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="?android:attr/listDivider" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtonmaster"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.App.Radio"
-                        android:fontFamily="@font/poppins"
-                        android:paddingStart="15dp"
-                        android:text="Master Degree"
-                        android:textColor="@color/text_color"
-                        android:textSize="13sp" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:visibility="gone"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
 
 
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/interpercent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
+                                android:hint="Enter Percentage (%)"
+                                android:inputType="numberDecimal"
+                                android:padding="10dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:visibility="gone"
-                        android:id="@+id/masterpercentlayout"
-                        android:layout_marginBottom="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:boxStrokeColor="@color/primarycolor"
-                        app:hintEnabled="false">
-
-
-                        <com.google.android.material.textfield.TextInputEditText
+                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/masterpercent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonunder"
+                            style="@style/Widget.App.Radio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
-                            android:hint="Enter Percentage (%)"
-                            android:inputType="numberDecimal"
-                            android:padding="10dp"
-                            android:textSize="14sp"
+                            android:paddingStart="15dp"
+                            android:text="Undergraduate"
                             android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </RadioGroup>
-            </LinearLayout>
-        </ScrollView>
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/undergraduatepercentlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:visibility="gone"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/undergraduatepercent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
+                                android:hint="Enter Percentage (%)"
+                                android:inputType="numberDecimal"
+                                android:padding="10dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtongraduate"
+                            style="@style/Widget.App.Radio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:paddingStart="15dp"
+                            android:text="Graduate"
+                            android:textColor="@color/text_color"
+                            android:textSize="13sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/graduatepercentlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:visibility="gone"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/graduatepercent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
+                                android:hint="Enter Percentage (%)"
+                                android:inputType="numberDecimal"
+                                android:padding="10dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonpost"
+                            style="@style/Widget.App.Radio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:paddingStart="15dp"
+                            android:text="Postgraduate Certificate/Diploma"
+                            android:textColor="@color/text_color"
+                            android:textSize="13sp" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/postpercentlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:visibility="gone"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/postpercent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
+                                android:hint="Enter Percentage (%)"
+                                android:inputType="numberDecimal"
+                                android:padding="10dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonmaster"
+                            style="@style/Widget.App.Radio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins"
+                            android:paddingStart="15dp"
+                            android:text="Master Degree"
+                            android:textColor="@color/text_color"
+                            android:textSize="13sp" />
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/masterpercentlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:visibility="gone"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:hintEnabled="false">
+
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/masterpercent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:fontFamily="@font/poppins"
+                                android:hint="Enter Percentage (%)"
+                                android:inputType="numberDecimal"
+                                android:padding="10dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </RadioGroup>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/nextbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:minWidth="300dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="10dp"
+        android:onClick="onclick"
+        android:text="Next"
+        android:backgroundTint="@color/primarycolor" />
+</FrameLayout>

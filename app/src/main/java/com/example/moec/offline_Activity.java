@@ -31,7 +31,7 @@ public class offline_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offline);
 
-        getSupportActionBar().hide();
+
         mytimer = new Timer();
         mytimer.schedule(new TimerTask() {
             @Override

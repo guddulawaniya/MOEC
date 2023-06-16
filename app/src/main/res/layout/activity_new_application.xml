@@ -54,6 +54,7 @@
                       an auto complete text view
                         and make its input type to none-->
                     <AutoCompleteTextView
+                        android:id="@+id/programSelection"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -63,8 +64,8 @@
                         android:inputType="none"
                         android:padding="14dp"
                         android:paddingStart="10dp"
-                        android:textColor="@color/text_color"
 
+                        android:textColor="@color/text_color"
                         android:textColorHint="@color/hint_color" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -379,13 +380,14 @@
                   an auto complete text view
                     and make its input type to none-->
                 <LinearLayout
+                    android:id="@+id/uploadlinear"
                     android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:padding="10dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/newtextbg"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -397,8 +399,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:text=" Upload Documents"
                         android:gravity="center"
+                        android:text=" Upload Documents"
                         android:textColor="@color/black" />
 
                 </LinearLayout>

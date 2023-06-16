@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context=".login_Activity">
+    tools:context=".loginActivity.login_Activity_with_mobile_no">
 
 
     <LinearLayout
@@ -98,7 +98,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="5dp"
-                        android:background="@color/background_blue_shadew" />
+                        android:background="@color/primarycolor" />
 
                     <EditText
                         android:id="@+id/mobilenumbertext"
@@ -111,8 +111,9 @@
                         android:fontFamily="@font/poppins"
                         android:hint="mobile number"
                         android:paddingStart="10dp"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/hint_color"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -140,10 +141,12 @@
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
-        android:fontFamily="@font/poppins"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
         android:text="@string/policy_text"
+        android:textColor="@color/hint_color"
         android:textColorHint="@color/hint_color"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

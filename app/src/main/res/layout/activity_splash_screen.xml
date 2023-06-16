@@ -5,34 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient_color"
-    tools:context=".Splash_Screen">
+    tools:context=".loginActivity.Splash_Screen">
 
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/studenttext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/logo_symbol_colour" />
-
-    <TextView
-        android:id="@+id/studenttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Students"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:fontFamily="@font/oswald"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_symbol_colour" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/bottomsheet_bg"
     android:layout_height="wrap_content"
-    tools:context=".Add_bank_detail_bottomsheet">
+    tools:context=".BottomSheets.Add_bank_detail_bottomsheet">
 
 
     <ImageView

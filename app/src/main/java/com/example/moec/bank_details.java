@@ -1,13 +1,14 @@
 package com.example.moec;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.moec.BottomSheets.Add_bank_detail_bottomsheet;
 
 public class bank_details extends AppCompatActivity {
 
@@ -15,7 +16,6 @@ public class bank_details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_details);
-        getSupportActionBar().hide();
 
         ImageView backbutton = findViewById(R.id.backbutton);
         ImageView no_found_image_icon = findViewById(R.id.no_found_image_icon);

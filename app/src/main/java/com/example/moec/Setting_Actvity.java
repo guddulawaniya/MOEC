@@ -1,7 +1,5 @@
 package com.example.moec;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,13 +8,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.moec.loginActivity.login_Activity_with_mobile_no;
+
 public class Setting_Actvity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_actvity);
-        getSupportActionBar().hide();
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("You are leaving your current session to log in to your new account. Can we proceed?");
@@ -24,7 +26,7 @@ public class Setting_Actvity extends AppCompatActivity {
 
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
 
-           startActivity(new Intent(Setting_Actvity.this, login_Activity.class));
+           startActivity(new Intent(Setting_Actvity.this, login_Activity_with_mobile_no.class));
            finish();
         });
 

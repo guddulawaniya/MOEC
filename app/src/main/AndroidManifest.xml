@@ -97,38 +97,46 @@
             android:name=".preference_Actvity"
             android:exported="true" >
 
+
         </activity>
         <activity
             android:name=".greeting_Activity"
             android:exported="false" />
         <activity
-            android:name=".registration_Activity"
+            android:name=".loginActivity.registration_Activity"
             android:exported="true" />
         <activity
-            android:name=".verify_OTP_Activity"
+            android:name=".loginActivity.verify_OTP_Activity"
             android:exported="false" />
         <activity
-            android:name=".login_Activity"
+            android:name=".loginActivity.login_Activity_with_mobile_no"
             android:exported="true" />
         <activity
-            android:name=".view_Activity_before_login"
+            android:name=".loginActivity.view_Activity_before_login"
             android:exported="true" />
         <activity
-            android:name=".Splash_Screen"
+            android:name=".loginActivity.login_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".loginActivity.Forget_password"
+            android:exported="true" />
+        <activity
+            android:name=".loginActivity.Splash_Screen"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing">
+
+
+
 
         </activity>
     </application>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".dashboard_fragment">
+    tools:context=".BottomNavigation_Fragment.dashboard_fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -61,17 +61,8 @@
                         android:layout_height="80dp"
                         android:layout_centerInParent="true"
                         app:sliderAnimationDuration="600"
-                        app:sliderAutoCycleDirection="back_and_forth"
                         app:sliderIndicatorAnimationDuration="600"
-                        app:sliderIndicatorEnabled="true"
-                        app:sliderIndicatorGravity="center_horizontal|bottom"
-                        app:sliderIndicatorMargin="15dp"
-                        app:sliderIndicatorOrientation="horizontal"
-                        app:sliderIndicatorPadding="3dp"
-                        app:sliderIndicatorRadius="2dp"
-                        app:sliderIndicatorSelectedColor="@color/primarycolor"
-                        app:sliderIndicatorUnselectedColor="@color/background_blue_shadew"
-                        app:sliderScrollTimeInSec="1" />
+                        app:sliderIndicatorEnabled="false"/>
 
                     <LinearLayout
                         android:id="@+id/linearLayout11"

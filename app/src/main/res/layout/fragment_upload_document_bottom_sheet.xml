@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/background_blue_shadew"
     android:orientation="vertical"
-    tools:context=".upload_document_bottom_sheet">
+    tools:context=".BottomSheets.upload_document_bottom_sheet">
 
 
     <androidx.cardview.widget.CardView

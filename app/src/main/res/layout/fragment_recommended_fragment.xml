@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".Recommended_fragment">
+    tools:context=".Fragments.Recommended_fragment">
 
     <include layout="@layout/no_found_layout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

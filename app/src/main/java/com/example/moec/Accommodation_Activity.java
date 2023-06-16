@@ -1,12 +1,12 @@
 package com.example.moec;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Accommodation_Activity extends AppCompatActivity {
 
@@ -15,7 +15,6 @@ public class Accommodation_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accommodation);
 
-        getSupportActionBar().hide();
         ImageView backbutton = findViewById(R.id.backbutton);
         TextView headingtext = findViewById(R.id.headingtext);
 

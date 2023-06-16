@@ -12,4 +12,5 @@
     <color name="iconcolor">#C1BEBE</color>
     <color name="divider_color">#E6E6E6</color>
     <color name="background_color">#FFFFFFFF</color>
+    <color name="error_color">#EA0606</color>
 </resources>

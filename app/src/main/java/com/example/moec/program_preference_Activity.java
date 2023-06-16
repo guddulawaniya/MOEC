@@ -1,13 +1,11 @@
 package com.example.moec;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class program_preference_Activity extends AppCompatActivity {
 
@@ -19,8 +17,6 @@ public class program_preference_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_preference);
 
-        // hide Action bar
-        getSupportActionBar().hide();
 
         // finding the ids Textview toolbar
         TextView toolbartitle = findViewById(R.id.toolbar_title);

@@ -42,7 +42,7 @@
                 android:fontFamily="@font/oswald"
                 android:text="Preferences"
                 android:textColor="@color/heading_color"
-                android:textSize="17sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/backbutton"
@@ -86,7 +86,7 @@
             android:fontFamily="@font/poppins"
             android:text="3 of 7"
             android:textColor="@color/text_color"
-            android:textSize="8sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/backbutton"
@@ -100,25 +100,34 @@
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/nextbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onclick"
-        android:text="Next"
-        android:backgroundTint="@color/primarycolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/nextbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/primarycolor"
+            android:minWidth="300dp"
+            android:onClick="onclick"
+            android:text="Next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mostpreferedRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"/>
 
 
+    </FrameLayout>
 
 
 </LinearLayout>

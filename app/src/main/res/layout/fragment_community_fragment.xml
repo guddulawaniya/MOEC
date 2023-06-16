@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".community_fragment">
+    tools:context=".BottomNavigation_Fragment.community_fragment">
 
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/slider"

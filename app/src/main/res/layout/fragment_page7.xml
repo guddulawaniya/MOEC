@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Page7">
+    tools:context=".LoginAfter_Steps.Page7">
 
     <LinearLayout
+        android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
@@ -22,53 +23,119 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Set Pass code"
+            android:text="Set Password"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
 
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/listeninglayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:endIconMode="password_toggle"
-            app:hintEnabled="false"
-            app:endIconTint="@color/hint_color"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/primarycolor">
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="35dp"
+            android:orientation="vertical">
 
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/listeninginput"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="numberPassword"
-                android:hint="Create 4 Digit Pass code"
-                android:padding="10dp"
-                android:textSize="14dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Password"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+
+            <com.chaos.view.PinView
+                android:id="@+id/pinview"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                android:cursorVisible="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:itemBackground="@color/white"
+                android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
-                android:textColor="@color/text_color" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:textSize="20dp"
+                app:cursorColor="@color/primarycolor"
+                app:hideLineWhenFilled="false"
+                app:itemCount="4"
+                app:itemHeight="50dp"
+                app:itemRadius="10dp"
+                app:itemWidth="50dp"
+                app:lineColor="@color/otplinecolor">
+
+            </com.chaos.view.PinView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="Re-Enter Password"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+
+            <com.chaos.view.PinView
+                android:id="@+id/conformpin"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                android:cursorVisible="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:itemBackground="@color/white"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="20dp"
+                app:cursorColor="@color/primarycolor"
+                app:hideLineWhenFilled="false"
+                app:itemCount="4"
+                app:itemHeight="50dp"
+                app:itemRadius="10dp"
+                app:itemWidth="50dp"
+                app:lineColor="@color/otplinecolor">
+
+            </com.chaos.view.PinView>
+
+
+        </LinearLayout>
 
         <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_marginTop="10dp"
+            android:id="@+id/passcheck"
+            style="@style/Widget.App.CheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.App.CheckBox"
-            android:textColor="@color/hint_color"
+            android:layout_marginTop="20dp"
             android:buttonTint="@color/buttonbgcolor"
-            android:text="Remember passcode for future login" />
+            android:text="Remember passcode for future login"
+            android:textColor="@color/hint_color" />
+
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/nextbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primarycolor"
+        android:minWidth="300dp"
+        android:onClick="onclick"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

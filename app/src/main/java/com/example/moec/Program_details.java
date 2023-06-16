@@ -1,13 +1,14 @@
 package com.example.moec;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.moec.Tabs_Adapters.program_details_tab_Adapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class Program_details extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class Program_details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_details);
-        getSupportActionBar().hide();
+
         TextView title = findViewById(R.id.toolbar_title);
 
         ImageView backbutton = findViewById(R.id.backbutton);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".verify_OTP_Activity">
+    tools:context=".loginActivity.verify_OTP_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,8 +69,8 @@
                     android:fontFamily="@font/oswald"
                     android:gravity="center"
                     android:inputType="number"
-                    android:textColor="@color/text_color"
                     android:itemBackground="@color/white"
+                    android:textColor="@color/text_color"
                     android:textSize="25dp"
                     app:cursorColor="@color/primarycolor"
                     app:hideLineWhenFilled="false"

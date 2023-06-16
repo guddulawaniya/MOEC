@@ -6,7 +6,7 @@
     <string name="login_heading">Login or Create account</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="study_aboard">Study Aboard</string>
-    <string name="policy_text"><![CDATA[By clicking , I accept the Term & Condition and Privacy Policy]]></string>
+    <string name="policy_text"><![CDATA[By clicking , I accept the Term & \nCondition and Privacy Policy]]></string>
     <string name="email_address">Email Address</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>

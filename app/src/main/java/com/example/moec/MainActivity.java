@@ -15,6 +15,11 @@ import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.moec.BottomNavigation_Fragment.dashboard_fragment;
+import com.example.moec.BottomNavigation_Fragment.application_fragment;
+import com.example.moec.BottomNavigation_Fragment.community_fragment;
+import com.example.moec.BottomNavigation_Fragment.insights_fragment;
+import com.example.moec.BottomNavigation_Fragment.program_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView
@@ -148,11 +153,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
-    dashboard_fragment dashboard_fragment = new dashboard_fragment();
-    program_fragment program_fragment = new program_fragment();
-    application_fragment application_fragment = new application_fragment();
-    community_fragment community_fragment = new community_fragment();
-    insights_fragment insights_fragment = new insights_fragment();
+    com.example.moec.BottomNavigation_Fragment.dashboard_fragment dashboard_fragment = new dashboard_fragment();
+    com.example.moec.BottomNavigation_Fragment.program_fragment program_fragment = new program_fragment();
+    com.example.moec.BottomNavigation_Fragment.application_fragment application_fragment = new application_fragment();
+    com.example.moec.BottomNavigation_Fragment.community_fragment community_fragment = new community_fragment();
+    com.example.moec.BottomNavigation_Fragment.insights_fragment insights_fragment = new insights_fragment();
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
