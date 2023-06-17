@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioButton;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.moec.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -55,15 +53,6 @@ public class Page3 extends Fragment {
         masterperlayout = view.findViewById(R.id.masterpercentlayout);
 
 
-        Button nextbutton = view.findViewById(R.id.nextbutton);
-        nextbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Page4 page4 = new Page4();
-                replaceFragment(page4);
-
-            }
-        });
 
 
 
@@ -137,12 +126,5 @@ public class Page3 extends Fragment {
             break;
         }
 
-    }
-    void replaceFragment(Fragment fragment)
-    {
-        FragmentManager manager = getChildFragmentManager();
-        androidx.fragment.app.FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout, fragment);
-        fragmentTransaction.commit();
     }
 }

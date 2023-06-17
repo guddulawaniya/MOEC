@@ -7,12 +7,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.moec.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -32,15 +30,6 @@ public class Page5 extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item ,list);
 
-        Button nextbutton = view.findViewById(R.id.nextbutton);
-        nextbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Page7 page5 = new Page7();
-                replaceFragment(page5);
-
-            }
-        });
 
         AutoCompleteTextView selectexam = view.findViewById(R.id.selectexam_dropdown);
 
@@ -118,11 +107,4 @@ public class Page5 extends Fragment {
 
     }
 
-    void replaceFragment(Fragment fragment)
-    {
-        FragmentManager manager = getChildFragmentManager();
-        androidx.fragment.app.FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout, fragment);
-        fragmentTransaction.commit();
-    }
 }

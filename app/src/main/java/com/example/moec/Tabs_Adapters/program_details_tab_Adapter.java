@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.moec.Fragments.details_fragment_program;
 import com.example.moec.Fragments.Requirements_fragments;
+import com.example.moec.Fragments.details_fragment_program;
 
 public class program_details_tab_Adapter extends FragmentPagerAdapter {
 

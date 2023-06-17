@@ -55,7 +55,7 @@ public class Page1 extends Fragment {
 
 
         // object Adapters
-        most_prefered_destination_Adapter mostAdapter = new most_prefered_destination_Adapter(mostpreferedlist);
+        most_prefered_destination_Adapter mostAdapter = new most_prefered_destination_Adapter(mostpreferedlist,getContext());
 
 
         // set adapter on recycler view

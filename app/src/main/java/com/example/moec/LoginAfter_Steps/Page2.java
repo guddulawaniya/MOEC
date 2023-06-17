@@ -1,15 +1,11 @@
 package com.example.moec.LoginAfter_Steps;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,25 +27,6 @@ public class Page2 extends Fragment {
         // finding ids
 
         RecyclerView recyclerView = view.findViewById(R.id.interest_recyclerview);
-       Button nextbutton = view.findViewById(R.id.nextbutton);
-        SharedPreferences preferences = getContext().getSharedPreferences("changedFragments", Context.MODE_PRIVATE);
-
-        String indexid = preferences.getString("Fragmentid",null);
-
-
-
-       nextbutton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-
-               SharedPreferences.Editor editor = getContext().getSharedPreferences("changedFragments", Context.MODE_PRIVATE).edit();
-               editor.putString("Fragmentid", String.valueOf(3));
-               editor.commit();
-                Page3 page3 = new Page3();
-               replaceFragment(page3);
-
-           }
-       });
 
 
         // instance of array list
@@ -91,12 +68,5 @@ public class Page2 extends Fragment {
 
 
         return view;
-    }
-    void replaceFragment(Fragment fragment)
-    {
-        FragmentManager manager = getChildFragmentManager();
-        androidx.fragment.app.FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.replace(R.id.framelayout, fragment);
-        fragmentTransaction.commit();
     }
 }

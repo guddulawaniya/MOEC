@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.moec.JavaClass.config;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;

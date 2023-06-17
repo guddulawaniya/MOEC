@@ -1,5 +1,7 @@
 package com.example.moec.Adapters;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +22,14 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
 
 
     ArrayList<most_prefered_destination_module> list;
+    Context context;
+
 
 
     private int checkedPosition = -1;
-    public most_prefered_destination_Adapter(ArrayList<most_prefered_destination_module> list) {
+    public most_prefered_destination_Adapter(ArrayList<most_prefered_destination_module> list,Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -41,7 +46,6 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
         holder.textview.setText(module.getText());
         holder.bind();
 
-
     }
 
 
@@ -51,6 +55,9 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
+
+
+
         ImageView image;
         TextView textview;
         CardView selectedcard;
@@ -63,17 +70,22 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
             ringlinear = itemView.findViewById(R.id.ringlinear);
 
 
+
         }
 
 
         void bind() {
 
                 if (checkedPosition == getAdapterPosition()) {
+
                     selectedcard.setVisibility(View.VISIBLE);
                     ringlinear.setVisibility(View.VISIBLE);
                 } else {
                     selectedcard.setVisibility(View.INVISIBLE);
                     ringlinear.setVisibility(View.INVISIBLE);
+                    SharedPreferences.Editor editor = context.getSharedPreferences("selectcountry",Context.MODE_PRIVATE).edit();
+                    editor.putInt("position",checkedPosition);
+                    editor.commit();
                 }
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +94,10 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
                     selectedcard.setVisibility(View.VISIBLE);
                     ringlinear.setVisibility(View.VISIBLE);
                     if (checkedPosition != getAdapterPosition()) {
+
                         notifyItemChanged(checkedPosition);
                         checkedPosition = getAdapterPosition();
+
                     }
                 }
             });

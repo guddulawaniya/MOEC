@@ -15,15 +15,14 @@ import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import com.example.moec.BottomNavigation_Fragment.dashboard_fragment;
 import com.example.moec.BottomNavigation_Fragment.application_fragment;
 import com.example.moec.BottomNavigation_Fragment.community_fragment;
+import com.example.moec.BottomNavigation_Fragment.dashboard_fragment;
 import com.example.moec.BottomNavigation_Fragment.insights_fragment;
 import com.example.moec.BottomNavigation_Fragment.program_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView
-        .OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
          searchfield = findViewById(R.id.searchfield);
          favorate = findViewById(R.id.favourate_icon_toolbar);
@@ -153,11 +151,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
+
+
+
     com.example.moec.BottomNavigation_Fragment.dashboard_fragment dashboard_fragment = new dashboard_fragment();
     com.example.moec.BottomNavigation_Fragment.program_fragment program_fragment = new program_fragment();
     com.example.moec.BottomNavigation_Fragment.application_fragment application_fragment = new application_fragment();
     com.example.moec.BottomNavigation_Fragment.community_fragment community_fragment = new community_fragment();
     com.example.moec.BottomNavigation_Fragment.insights_fragment insights_fragment = new insights_fragment();
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -180,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             replacefragment(program_fragment);
         }
         else if (R.id.application==item.getItemId()) {
-
 
             Refine.setVisibility(View.GONE);
             toolbartitle.setText("Application");
