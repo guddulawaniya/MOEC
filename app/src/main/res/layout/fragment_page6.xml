@@ -1,75 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:id="@+id/page6"
     android:background="@color/white"
-    tools:context=".LoginAfter_Steps.Page6">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/linearLayout12"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
+        android:orientation="vertical">
 
-        <TextView
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/oswald"
-            android:text="Passport Details"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Set Password"
+                android:textColor="@color/black"
+                android:fontFamily="@font/oswald"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/required_icon"/>
+        </LinearLayout>
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/listeninglayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:hintEnabled="false"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            android:textColorHint="@color/hint_color"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/primarycolor">
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="35dp"
+            android:orientation="vertical">
 
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/listeninginput"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter Password"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+
+            <com.chaos.view.PinView
+                android:id="@+id/setpassword"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                android:cursorVisible="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:itemBackground="@color/white"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="20dp"
+                app:cursorColor="@color/primarycolor"
+                app:hideLineWhenFilled="false"
+                app:itemCount="4"
+                app:itemHeight="50dp"
+                app:itemRadius="10dp"
+                app:itemWidth="50dp"
+                app:lineColor="@color/otplinecolor">
+
+            </com.chaos.view.PinView>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:text="Re-Enter Password"
+                android:textColor="@color/text_color"
+                android:textSize="16sp" />
+
+            <com.chaos.view.PinView
+                android:id="@+id/comfirmpassword"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="15dp"
+                android:cursorVisible="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:hint="0"
+                android:inputType="number"
+                android:itemBackground="@color/white"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="20dp"
+                app:cursorColor="@color/primarycolor"
+                app:hideLineWhenFilled="false"
+                app:itemCount="4"
+                app:itemHeight="50dp"
+                app:itemRadius="10dp"
+                app:itemWidth="50dp"
+                app:lineColor="@color/otplinecolor">
+
+            </com.chaos.view.PinView>
+
+            <TextView
+                android:id="@+id/notmatchedtext"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/poppins"
-                android:hint="Enter passport number"
-                android:padding="10dp"
-                android:textColor="@color/text_color" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:text="Password not matched"
+                android:textColor="#EF0303" />
+
+
+        </LinearLayout>
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/passcheck"
+            style="@style/Widget.App.CheckBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:useMaterialThemeColors="false"
-            android:paddingStart="10dp"
-            style="@style/Widget.App.CheckBox"
+            android:layout_marginTop="20dp"
             android:buttonTint="@color/buttonbgcolor"
-            android:fontFamily="@font/poppins"
-            android:text="@string/i_will_share_the_details_later"
+            android:text="Remember passcode for future login"
             android:textColor="@color/hint_color" />
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

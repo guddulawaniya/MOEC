@@ -155,15 +155,8 @@ public class login_Activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if (Patterns.EMAIL_ADDRESS.matcher(emailidlg.getText().toString()).matches())
-                {
-                    emaillayoutlg.setErrorEnabled(false);
-                } else if (emailidlg.getText().toString().length() > 0) {
-                    emaillayoutlg.setError("Invalid Email Address");
-                    emailidlg.requestFocus();
-                }
 
-
+                emaillayoutlg.setErrorEnabled(false);
             }
 
             @Override

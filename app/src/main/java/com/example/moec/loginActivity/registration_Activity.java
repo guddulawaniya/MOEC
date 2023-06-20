@@ -1,7 +1,5 @@
 package com.example.moec.loginActivity;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,13 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moec.R;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -67,6 +66,29 @@ public class registration_Activity extends AppCompatActivity {
         country.setAdapter(countryAdapter);
         country.setDropDownBackgroundResource(R.color.background_blue_shadew);
 
+        MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker().setTheme(R.style.Theme_App);
+        materialDateBuilder.setTitleText("Date of Birth");
+        final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
+
+
+
+        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Object selection) {
+                dateofbirth.setText(materialDatePicker.getHeaderText());
+
+            }
+        });
+
+        dateofbirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                materialDatePicker.show(getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
+
+            }
+        });
+
 
 
 
@@ -90,7 +112,6 @@ public class registration_Activity extends AppCompatActivity {
         textwatch(firstname,fisrtnamelayout);
         textwatch(lastname,lastnamelayout);
         textwatch(emailaddress,emailaddresslayout);
-        Dialog dialog = new Dialog(getApplicationContext());
 
 
         Button submitbutton = findViewById(R.id.submitbutton);
@@ -99,34 +120,6 @@ public class registration_Activity extends AppCompatActivity {
             public void onClick(View view) {
 
                 submitbuttondata();
-            }
-        });
-
-        dateofbirth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                 calendar = Calendar.getInstance();
-                 year = calendar.get(Calendar.YEAR);
-                 month = calendar.get(Calendar.MONTH);
-                 day = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-
-                      registration_Activity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-
-                                dateofbirth.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
-                            }
-                        },
-
-                        year, month, day);
-
-                datePickerDialog.show();
             }
         });
 
@@ -140,7 +133,6 @@ public class registration_Activity extends AppCompatActivity {
         if (!(firstname.getText().toString().isEmpty()) &&
                 !(lastname.getText().toString().isEmpty()) && (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) &&
                 !(dateofbirth.getText().toString().isEmpty()))
-
         {
             startActivity(new Intent(getApplicationContext(), verify_OTP_Activity.class));
             finish();
@@ -203,4 +195,5 @@ public class registration_Activity extends AppCompatActivity {
         });
 
     }
+
 }

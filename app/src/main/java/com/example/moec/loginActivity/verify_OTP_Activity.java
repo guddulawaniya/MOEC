@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.chaos.view.PinView;
 import com.example.moec.JavaClass.InternetConnection;
-import com.example.moec.JavaClass.sendotpnumbers;
 import com.example.moec.R;
 import com.example.moec.greeting_Activity;
 import com.example.moec.offline_Activity;
@@ -30,7 +29,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
     PinView pinView;
     TextView resendotp;
 
-    String sendotp;
+    String sendotp="1234";
     static final String SHARE_PREFE = "share_prefs";
 
     String url = "https://api.datagenit.com/sms?auth=D!~7113Zz8MHFw1mQ&senderid=MOECOE&msisdn=";
@@ -48,8 +47,9 @@ public class verify_OTP_Activity extends AppCompatActivity {
 //        String email = intent.getStringExtra("email");
 //        String pass = intent.getStringExtra("pass");
 //        String name = intent.getStringExtra("name");
-        sendotp = intent.getStringExtra("otp");
+        //sendotp = intent.getStringExtra("otp");
         resendotp = findViewById(R.id.resendotp);
+        Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
 
         InternetConnection nt = new InternetConnection(getApplicationContext());
         timecounter();
@@ -64,12 +64,13 @@ public class verify_OTP_Activity extends AppCompatActivity {
                             "to login for Staff panel is "+sendotp+" This OTP will expire in 10 minutes Regards, Meridean Overseas Edu Con Pvt Ltd";
 
                     rdcheck=false;
-//                    sendotp= new DecimalFormat("0000").format(new Random().nextInt(9999));
+//                  sendotp= new DecimalFormat("0000").format(new Random().nextInt(9999));
                     sendotp="1234";
                     String s = url + number + "&message=" + sms;
                     timecounter();
-                    sendotpnumbers sm = new sendotpnumbers(getApplication());
-                    sm.execute(s);
+                    Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
+//                    sendotpnumbers sm = new sendotpnumbers(getApplication());
+//                    sm.execute(s);
 
                 }
 
@@ -85,13 +86,14 @@ public class verify_OTP_Activity extends AppCompatActivity {
         verifybutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
-                finish();
+
 
                 String enterotpinboxs=pinView.getText().toString();
 
                 if (sendotp.equals(enterotpinboxs) && nt.isConnected())
                 {
+                    startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
+                    finish();
 
                     SharedPreferences.Editor editor = getSharedPreferences(SHARE_PREFE,MODE_PRIVATE).edit();
                     editor.putString("contactnumber",number);

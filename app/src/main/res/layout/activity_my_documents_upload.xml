@@ -24,11 +24,12 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/textView18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/oswald"
+                    android:fontFamily="@font/poppins"
                     android:text="Education"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -105,7 +106,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/oswald"
+                    android:fontFamily="@font/poppins"
                     android:text="Englis Test Score"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -181,7 +182,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/oswald"
+                    android:fontFamily="@font/poppins"
                     android:text="Work Exprience"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -257,7 +258,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/oswald"
+                    android:fontFamily="@font/poppins"
                     android:text="Passport"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -333,7 +334,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/oswald"
+                    android:fontFamily="@font/poppins"
                     android:text="Other"
                     android:textColor="@color/black"
                     android:textSize="16sp"

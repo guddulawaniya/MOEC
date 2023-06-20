@@ -3,5 +3,5 @@
     <!-- Use for the item to be input, set the value as the default to disable it -->
 <!--    <item android:color="@color/button_icon_color" android:state_selected="true" />-->
     <item android:color="@color/primarycolor" android:state_focused="true" />
-    <item android:color="@color/secondarycolor" />
+    <item android:color="@color/hint_color" />
 </selector>

@@ -27,6 +27,7 @@ import com.example.moec.ModulesClass.Univerity_Course_Module;
 import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.New_Application;
 import com.example.moec.R;
+import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -42,6 +43,8 @@ public class dashboard_fragment extends Fragment {
     ArrayList<Univerity_Course_Module> university_list;
 
     ArrayList<Top_country_module> topcountry_pickup_list;
+
+    onClickInterface onclickInterface;
 
 
     int[] images = {R.drawable.slider1,R.drawable.slider2,R.drawable.slider3};
@@ -75,8 +78,8 @@ public class dashboard_fragment extends Fragment {
         university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada,"Canada"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.australia_flag,"Australia"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.uk_flag,"United Kingdom"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.us_flag,"United States"));
+        topcountry_pickup_list.add(new Top_country_module(R.drawable.uk_flag,"UK"));
+        topcountry_pickup_list.add(new Top_country_module(R.drawable.us_flag,"USA"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.germany_flag,"Germany"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.zealand_flag,"New Zealand"));
 
@@ -157,11 +160,11 @@ public class dashboard_fragment extends Fragment {
         list.add(new interest_module(R.drawable.law,"Law"));
         list.add(new interest_module(R.drawable.management,"Management"));
         list.add(new interest_module(R.drawable.marketing,"Marketing \n& Advertising"));
-        list.add(new interest_module(R.drawable.news,"Media \n& Journalism"));
+        list.add(new interest_module(R.drawable.media___communication,"Media \n& Journalism"));
         list.add(new interest_module(R.drawable.medical_symbol,"Medical"));
         list.add(new interest_module(R.drawable.creative_thinking,"Performing \n& Creative Arts"));
         list.add(new interest_module(R.drawable.science,"Science"));
-        list.add(new interest_module(R.drawable.sports,"Sport \n& Nutrition"));
+        list.add(new interest_module(R.drawable.sports___fitness,"Sport \n& Nutrition"));
         list.add(new interest_module(R.drawable.translation,"Languages"));
         list.add(new interest_module(R.drawable.education,"Education"));
 
@@ -171,7 +174,7 @@ public class dashboard_fragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.interest_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
 
-        interest_area_Adapter adapter = new interest_area_Adapter(list);
+        interest_area_Adapter adapter = new interest_area_Adapter(list,onclickInterface);
         recyclerView.setAdapter(adapter);
 
 

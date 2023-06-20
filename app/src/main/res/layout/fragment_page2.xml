@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="gone"
+    android:visibility="visible"
     android:orientation="vertical"
     android:id="@+id/page2"
-    android:background="@color/white"
-    tools:context=".LoginAfter_Steps.Page2">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,13 +26,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Area of interest"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Area of Interest"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/required_icon"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

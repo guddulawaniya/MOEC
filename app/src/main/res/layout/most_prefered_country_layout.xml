@@ -34,12 +34,11 @@
                 android:id="@+id/ringlinear"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="7dp"
                 android:background="@drawable/ring_shape"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/countrynamemost"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,30 +46,20 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/itemcard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="3dp"
-                android:backgroundTint="@color/white"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="2dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ringlinear"
-                app:layout_constraintEnd_toEndOf="@+id/ringlinear"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/ringlinear"
-                app:layout_constraintTop_toTopOf="@+id/ringlinear"
-                app:layout_constraintVertical_bias="0.5">
+
 
                 <ImageView
                     android:id="@+id/countryimagemost"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
+                    android:layout_width="80dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/australia_flag" />
-
-            </androidx.cardview.widget.CardView>
+                    android:layout_height="80dp"
+                    android:src="@drawable/australia_flag"
+                    app:layout_constraintBottom_toBottomOf="@+id/ringlinear"
+                    app:layout_constraintEnd_toEndOf="@+id/ringlinear"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/ringlinear"
+                    app:layout_constraintTop_toTopOf="@+id/ringlinear"
+                    app:layout_constraintVertical_bias="0.5"/>
 
 
             <TextView
@@ -78,15 +67,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/poppins"
                 android:gravity="center"
+                android:singleLine="true"
                 android:text="Australia"
                 android:textColor="@color/text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/ringlinear"
-                app:layout_constraintStart_toStartOf="@+id/itemcard"
+                app:layout_constraintStart_toStartOf="@+id/ringlinear"
                 app:layout_constraintTop_toBottomOf="@+id/ringlinear" />
 
             <androidx.cardview.widget.CardView

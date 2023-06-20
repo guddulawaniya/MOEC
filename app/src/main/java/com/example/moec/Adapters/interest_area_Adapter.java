@@ -13,20 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.R;
+import com.example.moec.onClickInterface;
 
 import java.util.ArrayList;
 
 public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Adapter.viewholder> {
 
     ArrayList<interest_module> list ;
-     int lastItemSelectedPos = -1;
-    int selectedItemPos = -1;
-
     private int checkedPosition = -1;
+    onClickInterface onclickInterface;
 
-
-    public interest_area_Adapter(ArrayList<interest_module> list) {
+    public interest_area_Adapter(ArrayList<interest_module> list, onClickInterface onclickInterface) {
         this.list = list;
+        this.onclickInterface = onclickInterface;
     }
 
     @NonNull
@@ -42,6 +41,23 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
         holder.image.setImageResource(module.getImage());
         holder.textview.setText(module.getText());
         holder.bind();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.selectedcard.setVisibility(View.VISIBLE);
+                holder.ringlinear.setVisibility(View.VISIBLE);
+
+                int position=holder.getAdapterPosition();
+                onclickInterface.setClick(position);
+                checkedPosition = position;
+
+                if (checkedPosition != holder.getAdapterPosition()) {
+                    notifyItemChanged(checkedPosition);
+                }
+                notifyDataSetChanged();
+
+            }
+        });
 
     }
 
@@ -66,8 +82,8 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
 
 
         }
-        void bind() {
 
+        void bind() {
             if (checkedPosition == getAdapterPosition()) {
                 selectedcard.setVisibility(View.VISIBLE);
                 ringlinear.setVisibility(View.VISIBLE);
@@ -75,18 +91,6 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
                 selectedcard.setVisibility(View.INVISIBLE);
                 ringlinear.setVisibility(View.INVISIBLE);
             }
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    selectedcard.setVisibility(View.VISIBLE);
-                    ringlinear.setVisibility(View.VISIBLE);
-                    if (checkedPosition != getAdapterPosition()) {
-                        notifyItemChanged(checkedPosition);
-                        checkedPosition = getAdapterPosition();
-                    }
-                }
-            });
         }
     }
 }

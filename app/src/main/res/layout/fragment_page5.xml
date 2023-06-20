@@ -5,690 +5,223 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:visibility="gone"
+    android:visibility="visible"
     android:id="@+id/page5"
-    android:background="@color/white"
-    tools:context=".LoginAfter_Steps.Page5">
+    android:background="@color/white">
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical" >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/oswald"
-                android:text="English Test Score"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_margin="20dp"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald"
+                    android:text="I want to study in"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:src="@drawable/required_icon" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:boxStrokeColor="@color/primarycolor"
-                app:endIconDrawable="@drawable/arrow_down"
-                app:endIconTint="@color/hint_color"
-                app:hintEnabled="false">
+                android:layout_margin="16dp"
+                android:orientation="vertical">
 
-
-                <AutoCompleteTextView
-                    android:id="@+id/selectexam_dropdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:dropDownSelector="@color/background_blue_shadew"
-                    android:fontFamily="@font/poppins"
-                    android:inputType="none"
-                    android:padding="10dp"
-
-                    android:text="Choose Programming language"
-                    android:textColor="@color/text_color"
-                    android:textSize="13sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:background="@color/hint_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
-
-        <LinearLayout
-            android:id="@+id/completelinear"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider2"
-            app:layout_constraintVertical_bias="1.0">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/ieltslinear"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/examtitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:fontFamily="@font/oswald"
-                        android:text="Enter IELTS Score"
-                        android:textColor="@color/black"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card1"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ielts_image" />
+                    </androidx.cardview.widget.CardView>
+
 
                     <LinearLayout
-                        android:id="@+id/secoundlinear"
+                        android:id="@+id/ieltsinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:orientation="vertical"
                         android:visibility="gone">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Verbal"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="1"
-                                android:textColorHint="@color/hint_color"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                                app:prefixTextColor="@color/primarycolor">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Score"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Percentile(%)"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Quantative"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="1"
-                                android:textColorHint="@color/hint_color"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                                app:prefixTextColor="@color/primarycolor">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Score"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Percentile(%)"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Reasoning"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="1"
-                                android:textColorHint="@color/hint_color"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                                app:prefixTextColor="@color/primarycolor">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Score"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Percentile(%)"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Total"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="10dp"
-                                android:layout_weight="1"
-                                android:textColorHint="@color/hint_color"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                                app:prefixTextColor="@color/primarycolor">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Score"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="Percentile(%)"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-
+                        <include layout="@layout/marks_input_layout" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/linear3"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ptelinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
 
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="@string/overall"
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            app:boxCornerRadiusBottomEnd="8dp"
-                            app:boxCornerRadiusBottomStart="8dp"
-                            app:boxCornerRadiusTopEnd="8dp"
-                            app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor"
-                            app:hintEnabled="false">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/pte_image" />
 
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/poppins"
-                                android:hint="0"
-                                android:inputType="numberDecimal"
-                                android:padding="10dp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:id="@+id/linear1"
+                        android:id="@+id/pteinputlayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:visibility="gone">
 
-                        <LinearLayout
-                            android:id="@+id/scorelinearlayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="20dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:id="@+id/readingtext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:fontFamily="@font/oswald"
-                                android:text="@string/reading"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/readinginputfieldslayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:textColorHint="@color/hint_color"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                                app:prefixTextColor="@color/primarycolor">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/readinginputfields"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="0"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <TextView
-                                android:id="@+id/listeningtext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:fontFamily="@font/oswald"
-                                android:text="@string/listening"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/listeninglayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/listeninginput"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="0"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <TextView
-                                android:id="@+id/overalltext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:fontFamily="@font/oswald"
-                                android:text="@string/overall"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/overallinputlayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/overallinput"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="0"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/writingtext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:fontFamily="@font/oswald"
-                                android:text="@string/writing"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/writinginputlayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/writinginuput"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="0"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                            <TextView
-                                android:id="@+id/speakingtext"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:fontFamily="@font/oswald"
-                                android:text="@string/speaking"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/speakinginputlayout"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                app:boxCornerRadiusBottomEnd="8dp"
-                                app:boxCornerRadiusBottomStart="8dp"
-                                app:boxCornerRadiusTopEnd="8dp"
-                                app:boxCornerRadiusTopStart="8dp"
-                                app:boxStrokeColor="@color/primarycolor"
-                                app:hintEnabled="false">
-
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/speakinginput"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:fontFamily="@font/poppins"
-                                    android:hint="0"
-                                    android:inputType="numberDecimal"
-                                    android:padding="10dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/hint_color" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-
-                        </LinearLayout>
+                        <include layout="@layout/marks_input_layout" />
                     </LinearLayout>
                 </LinearLayout>
-            </ScrollView>
 
+                <LinearLayout
+                    android:id="@+id/toefllinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card3"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/toefl_image" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:id="@+id/toeflinputlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <include layout="@layout/marks_input_layout" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearduoling"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+                        <ImageView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:padding="5dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/duolingo_image" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:id="@+id/duolinggoinputlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <include layout="@layout/doualing_exam_layout" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/donotLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins"
+                            android:text="I don't have this "
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
 
 </LinearLayout>

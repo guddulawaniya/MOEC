@@ -37,7 +37,6 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginTop="2dp"
-                android:layout_marginBottom="7dp"
                 android:background="@drawable/ring_shape"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -51,8 +50,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/itemcard"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
                 android:layout_margin="3dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="50dp"
@@ -68,9 +67,10 @@
                     android:id="@+id/interest_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="15dp"
                     android:layout_gravity="center"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/australia_flag" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/marketing" />
 
             </androidx.cardview.widget.CardView>
 
@@ -96,7 +96,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="right"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="5dp"
                 android:backgroundTint="@color/background_blue_shadew"
                 android:visibility="visible"
                 app:cardCornerRadius="50dp"

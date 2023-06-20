@@ -52,35 +52,65 @@
                     android:textSize="13dp" />
 
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
-
-                    <TextView
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center_vertical"
-                        android:text="First Name "
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
 
-                    <TextView
-                        android:layout_width="match_parent"
+                            android:fontFamily="@font/poppins"
+                            android:text="@string/first_name"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center_vertical"
-                        android:text="Last Name"
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:layout_marginStart="20dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/poppins"
+                            android:text="@string/last_name"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+
+
+
+
+
+
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="2dp"
@@ -162,15 +192,31 @@
 
                 </LinearLayout>
 
-                <TextView
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Email"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp" />
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="top"
+                        android:text="@string/email_address"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
+
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/emailaddresslayout"
@@ -206,15 +252,30 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <TextView
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Date of Birth"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp" />
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/date_of_birth"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
 
 
                 <TextView
@@ -236,15 +297,30 @@
                     android:textSize="14sp" />
 
 
-                <TextView
+
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Country"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp" />
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/country"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
@@ -291,27 +367,52 @@
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
-
-                    <TextView
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center_vertical"
-                        android:text="State"
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
 
-                    <TextView
-                        android:layout_width="match_parent"
+                            android:fontFamily="@font/poppins"
+                            android:text="@string/state"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:gravity="center_vertical"
-                        android:text="City"
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp" />
+                        android:layout_marginStart="20dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/poppins"
+                            android:text="@string/city"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -356,15 +457,30 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Gender"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="Gender"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
 
                 <RadioGroup
                     android:id="@+id/gender"

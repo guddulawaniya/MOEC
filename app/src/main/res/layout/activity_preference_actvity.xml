@@ -106,7 +106,7 @@
         <include layout="@layout/fragment_page3"/>
         <include layout="@layout/fragment_page4"/>
         <include layout="@layout/fragment_page5"/>
-        <include layout="@layout/fragment_page7"/>
+        <include layout="@layout/fragment_page6"/>
     </LinearLayout>
 
 

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:id="@+id/page3"
-    android:visibility="gone"
+    android:visibility="visible"
     android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".LoginAfter_Steps.Page3">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,14 +25,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/oswald"
-                android:text="Education Qualifications"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/oswald"
+                    android:text="Education Qualifications"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/required_icon"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,6 +124,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:hint="Enter Percentage (%)"
                                 android:inputType="numberDecimal"
+                                android:maxLength="5"
                                 android:padding="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
@@ -157,6 +172,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:hint="Enter Percentage (%)"
                                 android:inputType="numberDecimal"
+                                android:maxLength="5"
                                 android:padding="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
@@ -206,7 +222,8 @@
                                 android:padding="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
-                                android:textSize="14sp" />
+                                android:textSize="14sp"
+                                android:maxLength="5" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <View
@@ -249,6 +266,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:hint="Enter Percentage (%)"
                                 android:inputType="numberDecimal"
+                                android:maxLength="5"
                                 android:padding="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
@@ -297,6 +315,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:hint="Enter Percentage (%)"
                                 android:inputType="numberDecimal"
+                                android:maxLength="5"
                                 android:padding="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
@@ -344,6 +363,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:hint="Enter Percentage (%)"
                                 android:inputType="numberDecimal"
+                                android:maxLength="5"
                                 android:padding="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"

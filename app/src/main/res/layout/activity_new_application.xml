@@ -33,40 +33,34 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                   android:layout_marginTop="5dp"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
                     app:boxStrokeColor="@color/primarycolor"
+                    app:endIconDrawable="@drawable/arrow_down"
                     app:endIconTint="@color/hint_color"
-                    app:hintEnabled="false"
-                    app:hintTextColor="@color/primarycolor"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:hintEnabled="false">
 
-                    <!-- Inside text input layout add
-                      an auto complete text view
-                        and make its input type to none-->
+
                     <AutoCompleteTextView
                         android:id="@+id/programSelection"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/background_blue_shadew"
                         android:dropDownSelector="@color/background_blue_shadew"
-                        android:hint="My Preferred"
+                        android:fontFamily="@font/poppins"
                         android:inputType="none"
-                        android:padding="14dp"
-                        android:paddingStart="10dp"
-
+                        android:padding="10dp"
+                        android:text="I don't have this"
                         android:textColor="@color/text_color"
-                        android:textColorHint="@color/hint_color" />
+                        android:textSize="13sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,6 +73,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
@@ -89,29 +84,22 @@
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
                     app:boxStrokeColor="@color/primarycolor"
+                    app:endIconDrawable="@drawable/arrow_down"
                     app:endIconTint="@color/hint_color"
-                    app:hintEnabled="false"
-                    app:hintTextColor="@color/primarycolor"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:hintEnabled="false">
 
-                    <!-- Inside text input layout add
-                      an auto complete text view
-                        and make its input type to none-->
+
                     <AutoCompleteTextView
+                        android:id="@+id/institudeAutocomplete"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/background_blue_shadew"
                         android:dropDownSelector="@color/background_blue_shadew"
-                        android:hint="Select"
+                        android:fontFamily="@font/poppins"
                         android:inputType="none"
-                        android:padding="14dp"
-                        android:paddingStart="10dp"
+                        android:padding="10dp"
+                        android:hint="Select"
                         android:textColor="@color/text_color"
-
-                        android:textColorHint="@color/hint_color" />
+                        android:textSize="13sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,6 +112,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
@@ -134,31 +123,25 @@
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
                     app:boxStrokeColor="@color/primarycolor"
+                    app:endIconDrawable="@drawable/arrow_down"
                     app:endIconTint="@color/hint_color"
-                    app:hintEnabled="false"
-                    app:hintTextColor="@color/primarycolor"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:hintEnabled="false">
 
-                    <!-- Inside text input layout add
-                      an auto complete text view
-                        and make its input type to none-->
+
                     <AutoCompleteTextView
+                        android:id="@+id/campusautocamplete"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/background_blue_shadew"
                         android:dropDownSelector="@color/background_blue_shadew"
-                        android:hint="Select"
+                        android:fontFamily="@font/poppins"
                         android:inputType="none"
-                        android:padding="14dp"
-                        android:paddingStart="10dp"
+                        android:padding="10dp"
+                        android:hint="Select"
                         android:textColor="@color/text_color"
-
-                        android:textColorHint="@color/hint_color" />
+                        android:textSize="13sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
+
 
 
                 <LinearLayout
@@ -207,14 +190,14 @@
                               an auto complete text view
                                 and make its input type to none-->
                             <AutoCompleteTextView
-                                android:id="@+id/state"
+                                android:id="@+id/intakeautocomplete"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/background_blue_shadew"
                                 android:dropDownSelector="@color/background_blue_shadew"
                                 android:hint="Select"
                                 android:inputType="none"
-                                android:padding="14dp"
+                                android:padding="10dp"
                                 android:paddingStart="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color" />
@@ -262,13 +245,14 @@
                               an auto complete text view
                                 and make its input type to none-->
                             <AutoCompleteTextView
+                                android:id="@+id/years"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/background_blue_shadew"
                                 android:dropDownSelector="@color/background_blue_shadew"
                                 android:hint="Select"
                                 android:inputType="none"
-                                android:padding="14dp"
+                                android:padding="10dp"
                                 android:paddingStart="10dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color" />
@@ -318,20 +302,36 @@
                             android:textColor="@color/text_color"
                             android:textSize="12sp" />
 
-                        <AutoCompleteTextView
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:hint="Select"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:inputType="none"
-                            android:background="@drawable/newtextbg"
-                            android:drawableEnd="@drawable/arrow_down"
-                            android:drawableTint="@color/primarycolor"
-                            android:padding="14dp"
-                            android:paddingStart="10dp"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/text_color" />
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            android:backgroundTint="@color/white"
 
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:endIconDrawable="@drawable/arrow_down"
+                            app:endIconTint="@color/hint_color"
+                            app:hintEnabled="false">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/selectcourse"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:dropDownSelector="@color/background_blue_shadew"
+                                android:fontFamily="@font/poppins"
+                                android:inputType="none"
+                                android:padding="10dp"
+                                android:hint="Select"
+                                android:textColor="@color/text_color"
+                                android:textSize="13sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -441,6 +441,7 @@
 
                         <com.google.android.material.textfield.TextInputEditText
 
+                            android:id="@+id/remarks"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:padding="14dp"
@@ -458,7 +459,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/reviewApplicationButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
