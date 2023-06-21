@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
         favorate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(getApplicationContext(), Favorate_Activity.class));
 
             }
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
 
 
         if (R.id.dashboard==item.getItemId())

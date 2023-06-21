@@ -81,7 +81,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/download_icon" />
+                    app:srcCompat="@drawable/upload_document" />
             </LinearLayout>
 
 
@@ -157,7 +157,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/download_icon" />
+                    app:srcCompat="@drawable/upload_document" />
             </LinearLayout>
 
 
@@ -233,7 +233,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/download_icon" />
+                    app:srcCompat="@drawable/upload_document" />
             </LinearLayout>
 
 
@@ -309,7 +309,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/download_icon" />
+                    app:srcCompat="@drawable/upload_document" />
             </LinearLayout>
 
 
@@ -384,7 +384,7 @@
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/download_icon" />
+                    app:srcCompat="@drawable/upload_document" />
             </LinearLayout>
 
 

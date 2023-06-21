@@ -44,7 +44,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_margin="30dp"
                 android:orientation="vertical">
 
 
@@ -57,11 +57,12 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/card1"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
                         android:backgroundTint="@color/white"
+                        android:elevation="2dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="2dp">
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -92,11 +93,12 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
                         android:backgroundTint="@color/white"
+                        android:elevation="2dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="2dp">
 
                         <ImageView
                             android:layout_width="match_parent"
@@ -127,11 +129,12 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/card3"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
                         android:backgroundTint="@color/white"
+                        android:elevation="2dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="2dp">
 
                         <ImageView
 
@@ -162,11 +165,12 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
                         android:backgroundTint="@color/white"
+                        android:elevation="2dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="2dp">
 
                         <ImageView
 
@@ -197,16 +201,19 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_margin="5dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
                         android:backgroundTint="@color/white"
+                        android:elevation="2dp"
                         app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="2dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:clickable="false"
+                            android:allowClickWhenDisabled="true"
                             android:fontFamily="@font/poppins"
                             android:text="I don't have this "
                             android:textColor="@color/black"

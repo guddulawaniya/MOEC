@@ -64,6 +64,7 @@ public class upload_document_bottom_sheet extends BottomSheetDialogFragment {
     Bitmap bitmap=null;
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK)
         {
@@ -71,6 +72,9 @@ public class upload_document_bottom_sheet extends BottomSheetDialogFragment {
             {
                 Toast.makeText(getContext(), "Image upload Succesully ", Toast.LENGTH_SHORT).show();
             }
+        }
+        else if (requestCode == pic_id) {
+            Toast.makeText(getContext(), "Image upload Succesully ", Toast.LENGTH_SHORT).show();
         }
 
     }

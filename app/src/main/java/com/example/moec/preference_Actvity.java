@@ -3,6 +3,7 @@ package com.example.moec;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -255,7 +256,7 @@ public class preference_Actvity extends AppCompatActivity {
 
 
                     if (ieltsinputlayout.getVisibility()==View.VISIBLE || pteinputlayout.getVisibility()==View.VISIBLE ||
-                            duolinggoinputlayout.getVisibility()==View.VISIBLE|| toeflinputlayout.getVisibility()==View.VISIBLE)
+                            duolinggoinputlayout.getVisibility()==View.VISIBLE|| toeflinputlayout.getVisibility()==View.VISIBLE || !checkselect)
                     {
                        if (ieltsinputlayout.getVisibility()==View.VISIBLE)
                        {
@@ -276,6 +277,13 @@ public class preference_Actvity extends AppCompatActivity {
                            validationPage5(duolinggoinputlayout);
 
                        }
+                       else if (!checkselect)
+                       {
+
+                           progressbar(++stepcount);
+
+                       }
+
                     }
                     else {
 
@@ -684,6 +692,9 @@ public class preference_Actvity extends AppCompatActivity {
     }
 
 
+
+
+
     void page4setdata(int i)
     {
             switch (i) {
@@ -692,7 +703,9 @@ public class preference_Actvity extends AppCompatActivity {
                     graduateradio.setVisibility(View.VISIBLE);
                     break;
                 case 2:
+
                     interradio.setVisibility(View.GONE);
+
                     break;
                 case 3:
                     interradio.setVisibility(View.GONE);
@@ -703,13 +716,9 @@ public class preference_Actvity extends AppCompatActivity {
     }
 
 
-    void Page5nextlayoutCall()
-    {
-        stepcount++;
-        progressbar(stepcount);
 
-    }
 
+    boolean checkselect = true;
 
     // page 5 setdata
     TextInputEditText reading,writing,listening,speaking,overall,Doverall;
@@ -725,6 +734,7 @@ public class preference_Actvity extends AppCompatActivity {
         linearduoling = findViewById(R.id.linearduoling);
         donotLinear = findViewById(R.id.donotLinear);
 
+
         ieltsinputlayout = findViewById(R.id.ieltsinputlayout);
         pteinputlayout = findViewById(R.id.pteinputlayout);
         toeflinputlayout = findViewById(R.id.toeflinputlayout);
@@ -737,40 +747,133 @@ public class preference_Actvity extends AppCompatActivity {
         ieltslinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ieltsinputlayout.setVisibility(View.VISIBLE);
                 pteinputlayout.setVisibility(View.GONE);
                 toeflinputlayout.setVisibility(View.GONE);
                 duolinggoinputlayout.setVisibility(View.GONE);
+                ptelinear.setBackgroundColor(Color.WHITE);
+                toefllinear.setBackgroundColor(Color.WHITE);
+                donotLinear.setBackgroundColor(Color.WHITE);
+                linearduoling.setBackgroundColor(Color.WHITE);
+
+                if (ieltsinputlayout.getVisibility()==View.VISIBLE)
+                {
+                    ieltslinear.setBackgroundColor(Color.WHITE);
+                    ieltsinputlayout.setVisibility(View.GONE);
+
+                }
+                else if (ieltsinputlayout.getVisibility()==View.GONE)
+                {
+                    ieltsinputlayout.setVisibility(View.VISIBLE);
+                    ieltslinear.setBackgroundColor(getResources().getColor(R.color.background_blue_shadew));
+                }
 
             }
         });
         ptelinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pteinputlayout.setVisibility(View.VISIBLE);
                 ieltsinputlayout.setVisibility(View.GONE);
                 toeflinputlayout.setVisibility(View.GONE);
                 duolinggoinputlayout.setVisibility(View.GONE);
+
+
+                linearduoling.setBackgroundColor(Color.WHITE);
+                toefllinear.setBackgroundColor(Color.WHITE);
+                ieltslinear.setBackgroundColor(Color.WHITE);
+                donotLinear.setBackgroundColor(Color.WHITE);
+
+
+                if (pteinputlayout.getVisibility()==View.VISIBLE)
+                {
+
+                    ptelinear.setBackgroundColor(Color.WHITE);
+                    pteinputlayout.setVisibility(View.GONE);
+                }else if (pteinputlayout.getVisibility()==View.GONE)
+                {
+                    ptelinear.setBackgroundColor(getResources().getColor(R.color.background_blue_shadew));
+                    pteinputlayout.setVisibility(View.VISIBLE);
+                }
+
 
             }
         });
         toefllinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toeflinputlayout.setVisibility(View.VISIBLE);
                 ieltsinputlayout.setVisibility(View.GONE);
                 pteinputlayout.setVisibility(View.GONE);
                 duolinggoinputlayout.setVisibility(View.GONE);
+
+                linearduoling.setBackgroundColor(Color.WHITE);
+                ptelinear.setBackgroundColor(Color.WHITE);
+                ieltslinear.setBackgroundColor(Color.WHITE);
+                donotLinear.setBackgroundColor(Color.WHITE);
+
+
+                if (toeflinputlayout.getVisibility()==View.VISIBLE)
+                {
+                    toefllinear.setBackgroundColor(Color.WHITE);
+                    toeflinputlayout.setVisibility(View.GONE);
+                }
+                else if (toeflinputlayout.getVisibility()==View.GONE)
+                {
+                    toeflinputlayout.setVisibility(View.VISIBLE);
+                    toefllinear.setBackgroundColor(getResources().getColor(R.color.background_blue_shadew));
+
+                }
 
             }
         });
         donotLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                duolinggoinputlayout.setVisibility(View.VISIBLE);
+
+                ieltsinputlayout.setVisibility(View.GONE);
+                pteinputlayout.setVisibility(View.GONE);
+                duolinggoinputlayout.setVisibility(View.GONE);
+                toeflinputlayout.setVisibility(View.GONE);
+
+                ptelinear.setBackgroundColor(Color.WHITE);
+                toefllinear.setBackgroundColor(Color.WHITE);
+                ieltslinear.setBackgroundColor(Color.WHITE);
+                linearduoling.setBackgroundColor(Color.WHITE);
+
+                if (checkselect)
+                {
+
+                    donotLinear.setBackgroundColor(getResources().getColor(R.color.background_blue_shadew));
+                    checkselect= false;
+
+                }
+                else
+                {
+                    checkselect= true;
+                    donotLinear.setBackgroundColor(Color.WHITE);
+                }
+            }
+        });
+        linearduoling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 ieltsinputlayout.setVisibility(View.GONE);
                 pteinputlayout.setVisibility(View.GONE);
                 toeflinputlayout.setVisibility(View.GONE);
+
+
+                ptelinear.setBackgroundColor(Color.WHITE);
+                toefllinear.setBackgroundColor(Color.WHITE);
+                ieltslinear.setBackgroundColor(Color.WHITE);
+                donotLinear.setBackgroundColor(Color.WHITE);
+
+                if (duolinggoinputlayout.getVisibility()==View.VISIBLE)
+                {
+                    linearduoling.setBackgroundColor(Color.WHITE);
+                    duolinggoinputlayout.setVisibility(View.GONE);
+                }  else if (duolinggoinputlayout.getVisibility()==View.GONE)
+                {
+                    linearduoling.setBackgroundColor(getResources().getColor(R.color.background_blue_shadew));
+                    duolinggoinputlayout.setVisibility(View.VISIBLE);
+                }
 
             }
         });
