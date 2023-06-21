@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:visibility="gone">
 
-                        <include layout="@layout/doualing_exam_layout" />
+                        <include layout="@layout/marks_input_layout" />
                     </LinearLayout>
                 </LinearLayout>
 

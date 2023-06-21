@@ -127,7 +127,6 @@ public class preference_Actvity extends AppCompatActivity {
         testinputTextWatcher();
 
 
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1033,23 +1032,6 @@ public class preference_Actvity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 overalllayout.setErrorEnabled(false);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        Doverall.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Doveralllayout.setErrorEnabled(false);
 
             }
 
