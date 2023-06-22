@@ -1,6 +1,8 @@
 package com.example.moec;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -10,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,7 +25,7 @@ import com.example.moec.BottomNavigation_Fragment.insights_fragment;
 import com.example.moec.BottomNavigation_Fragment.program_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity  implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity   implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
     ImageView favorate;
     BottomNavigationView navigationView;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +49,11 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
 
         Refine.setVisibility(View.GONE);
-
+        navigationView = findViewById(R.id.bottomNavigationView);
 
         LinearLayout notification = findViewById(R.id.notification);
+        navigationView.setOnItemSelectedListener(this::onNavigationItemSelected);
+        navigationView.setSelectedItemId(R.id.dashboard);
 
 
         textCartItemCount = findViewById(R.id.notification_badge);
@@ -90,14 +96,13 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
             }
         });
+
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Notification_Activity.class));
             }
         });
-
-
 
 
         CardView profile = findViewById(R.id.profile);
@@ -129,10 +134,10 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
 
 
-         navigationView = findViewById(R.id.bottomNavigationView);
-        navigationView
-                .setOnNavigationItemSelectedListener(this);
-        navigationView.setSelectedItemId(R.id.dashboard);
+//         navigationView = findViewById(R.id.bottomNavigationView);
+//        navigationView
+//                .setOnNavigationItemSelectedListener(this);
+//        navigationView.setSelectedItemId(R.id.dashboard);
 //
 //        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
 //                R.id.dashboard, R.id.program, R.id.application,R.id.community,R.id.insight)
@@ -154,7 +159,6 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
 
 
-
     com.example.moec.BottomNavigation_Fragment.dashboard_fragment dashboard_fragment = new dashboard_fragment();
     com.example.moec.BottomNavigation_Fragment.program_fragment program_fragment = new program_fragment();
     com.example.moec.BottomNavigation_Fragment.application_fragment application_fragment = new application_fragment();
@@ -162,6 +166,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
     com.example.moec.BottomNavigation_Fragment.insights_fragment insights_fragment = new insights_fragment();
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -169,6 +174,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
         if (R.id.dashboard==item.getItemId())
         {
+            navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
             Refine.setVisibility(View.GONE);
             searchfield.setVisibility(View.VISIBLE);
             favorate.setVisibility(View.VISIBLE);
@@ -177,7 +183,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
         }
         else if (R.id.program==item.getItemId())
         {
-
+           navigationView.setItemActiveIndicatorColor(ColorStateList.valueOf(getColor(R.color.primarycolor)));
             Refine.setVisibility(View.VISIBLE);
             toolbartitle.setText("Program");
             favorate.setVisibility(View.VISIBLE);
@@ -185,6 +191,7 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
             replacefragment(program_fragment);
         }
         else if (R.id.application==item.getItemId()) {
+            navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
 
             Refine.setVisibility(View.GONE);
             toolbartitle.setText("Application");
@@ -209,43 +216,13 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
 
         }
 
-//        switch (item.getItemId()) {
-//            case R.id.dashboard:
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.framelayout, dashboard_fragment)
-//                        .commit();
-//                return true;
-//
-//            case R.id.program:
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.framelayout, program_fragment)
-//                        .commit();
-//                return true;
-//
-//            case R.id.application:
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.framelayout, application_fragment)
-//                        .commit();
-//                return true;
-//            case R.id.community:
-//                getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.framelayout, community_fragment)
-//                        .commit();
-//                return true;
-//
-//            case R.id.insight:
-//
-//                return true;
-//        }
-        return false;
+        return true;
     }
 
     void replacefragment(Fragment fragment)
     {
+
+
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.Frame_laout, fragment)

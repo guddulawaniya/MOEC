@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/application">
+    <fragment
+        android:id="@+id/application"
+        android:name="com.example.moec.BottomNavigation_Fragment.application_fragment"
+        android:label="fragment_application_fragment"
+        tools:layout="@layout/fragment_application_fragment" />
+    <fragment
+        android:id="@+id/community"
+        android:name="com.example.moec.BottomNavigation_Fragment.community_fragment"
+        android:label="fragment_community_fragment"
+        tools:layout="@layout/fragment_community_fragment" />
+    <fragment
+        android:id="@+id/insight"
+        android:name="com.example.moec.BottomNavigation_Fragment.insights_fragment"
+        android:label="fragment_insights_fragment"
+        tools:layout="@layout/fragment_insights_fragment" />
+    <fragment
+        android:id="@+id/program"
+        android:name="com.example.moec.BottomNavigation_Fragment.program_fragment"
+        android:label="fragment_program_fragment"
+        tools:layout="@layout/fragment_program_fragment" />
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.example.moec.BottomNavigation_Fragment.dashboard_fragment"
+        android:label="fragment_dashboard_fragment"
+        tools:layout="@layout/fragment_dashboard_fragment" />
+</navigation>

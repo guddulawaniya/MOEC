@@ -83,9 +83,7 @@
             android:exported="false" />
         <activity
             android:name=".New_Application"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".program_preference_Activity"
             android:exported="false" />
@@ -97,24 +95,15 @@
             android:exported="false" />
         <activity
             android:name=".preference_Actvity"
-            android:exported="true" >
+            android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".greeting_Activity"
             android:exported="false" />
         <activity
             android:name=".loginActivity.registration_Activity"
-            android:exported="true" >
-
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".loginActivity.verify_OTP_Activity"
             android:exported="false" />
@@ -132,18 +121,16 @@
             android:exported="true" />
         <activity
             android:name=".loginActivity.Splash_Screen"
-            android:exported="true">
-
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

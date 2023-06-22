@@ -1,6 +1,7 @@
 package com.example.moec.BottomNavigation_Fragment;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
@@ -30,6 +32,7 @@ import com.example.moec.R;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
 import com.smarteist.autoimageslider.SliderView;
+import com.theartofdev.edmodo.cropper.BuildConfig;
 
 import java.util.ArrayList;
 
@@ -83,6 +86,34 @@ public class dashboard_fragment extends Fragment {
         topcountry_pickup_list.add(new Top_country_module(R.drawable.germany_flag,"Germany"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.zealand_flag,"New Zealand"));
 
+        CardView sharefrieds = view.findViewById(R.id.refer_friends);
+        TextView sharelink = view.findViewById(R.id.sharelink);
+        sharelink.setPaintFlags(sharelink.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+
+        sharefrieds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    sendlinkwithfriends();
+
+                } catch(Exception e) {
+                    e.toString();
+                }
+
+            }
+        });
+        sharelink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    sendlinkwithfriends();
+
+                } catch(Exception e) {
+                    e.toString();
+                }
+
+            }
+        });
 
 
 
@@ -269,6 +300,18 @@ public class dashboard_fragment extends Fragment {
 //        fragmentTransaction.commit();
 //
 //    }
+
+
+    void sendlinkwithfriends()
+    {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share with Friends");
+        String shareMessage= "\nLet me recommend you this application\n\n";
+        shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+        startActivity(Intent.createChooser(shareIntent, "Choose on Application"));
+    }
 
 
     @Override
