@@ -81,8 +81,6 @@ public class Refine_Activity extends AppCompatActivity {
         }
     });
 
-
-        getSupportActionBar().hide();
         TextView title = findViewById(R.id.toolbar_title);
         TextView actionbutton = findViewById(R.id.cleartext);
         ImageView backbutton = findViewById(R.id.backbutton);

@@ -3,9 +3,9 @@ package com.example.moec;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,14 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import com.example.moec.loginActivity.login_Activity_with_mobile_no;
-import com.theartofdev.edmodo.cropper.CropImage;
 
 
 public class profile_dashboard extends AppCompatActivity {
@@ -47,12 +45,35 @@ public class profile_dashboard extends AppCompatActivity {
         TextView bank_details = findViewById(R.id.bank_details);
         TextView my_Documents = findViewById(R.id.my_Documents);
         TextView my_transations = findViewById(R.id.my_transations);
+
         TextView logout = findViewById(R.id.logout);
+        TextView studentname = findViewById(R.id.studentname);
+        TextView contactbnumber = findViewById(R.id.contactbnumber);
+        TextView emailaddress = findViewById(R.id.emailaddress);
+        TextView dob = findViewById(R.id.dob);
+
         TextView my_preference_profile = findViewById(R.id.my_preference_profile);
+
         TextView cleartext = findViewById(R.id.cleartext);
         toolbartitle.setText("My Profile");
         cleartext.setText("");
         cleartext.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_settings_24, 0);
+
+
+        SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
+        String firstname = preferences.getString("Fname",null);
+        String lastname =   preferences.getString("Lname",null);
+        String emailid =  preferences.getString("Email",null);
+        String contact =  preferences.getString("number",null);
+        String dobget=  preferences.getString("DOb",null);
+        //set data on load activity
+
+        studentname.setText(firstname+" "+lastname);
+        dob.setText(dobget);
+        emailaddress.setText(emailid);
+        contactbnumber.setText(contact);
+
+
 
         cleartext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +179,7 @@ public class profile_dashboard extends AppCompatActivity {
                     boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
                     if (camera_accepted && writeStorageaccepted) {
-                        pickFromGallery();
+//                        pickFromGallery();
                     } else {
                         Toast.makeText(this, "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
                     }
@@ -169,7 +190,7 @@ public class profile_dashboard extends AppCompatActivity {
                 if (grantResults.length > 0) {
                     boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if (writeStorageaccepted) {
-                        pickFromGallery();
+//                        pickFromGallery();
                     } else {
                         Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
                     }
@@ -180,9 +201,9 @@ public class profile_dashboard extends AppCompatActivity {
     }
 
 
-    private void pickFromGallery() {
-        CropImage.activity().start(profile_dashboard.this);
-    }
+//    private void pickFromGallery() {
+//        CropImage.activity().start(profile_dashboard.this);
+//    }
 
 
 
@@ -198,13 +219,13 @@ public class profile_dashboard extends AppCompatActivity {
                     if (!checkCameraPermission()) {
                         requestCameraPermission();
                     } else {
-                        pickFromGallery();
+//                        pickFromGallery();
                     }
                 } else if (which == 1) {
                     if (!checkStoragePermission()) {
                         requestStoragePermission();
                     } else {
-                        pickFromGallery();
+//                        pickFromGallery();
                     }
                 }
             }
@@ -213,19 +234,19 @@ public class profile_dashboard extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                userpic.setImageURI(resultUri);
-               // Picasso.with(this).load(resultUri).into(userpic);
-            }
-        }
-    }
-
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+//            if (resultCode == RESULT_OK) {
+//                Uri resultUri = result.getUri();
+//                userpic.setImageURI(resultUri);
+//               // Picasso.with(this).load(resultUri).into(userpic);
+//            }
+//        }
+//    }
+//
 
 
 

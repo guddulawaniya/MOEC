@@ -1173,6 +1173,11 @@ public class preference_Actvity extends AppCompatActivity  {
                 {
                     if (passcheck.isChecked())
                     {
+
+                        SharedPreferences.Editor editor = getSharedPreferences("preference",MODE_PRIVATE).edit();
+                        editor.putString("password",setpassword.getText().toString());
+                        editor.putBoolean("checkpass",true);
+                        editor.commit();
                         stepcount++;
                         progressbar(stepcount);
                     }

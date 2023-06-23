@@ -1,7 +1,9 @@
 package com.example.moec;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -59,8 +61,50 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
         textCartItemCount = findViewById(R.id.notification_badge);
         TextView view_all  = findViewById(R.id.view_all);
         TextView application  = findViewById(R.id.sideapplication);
+        TextView studentname  = findViewById(R.id.studentname);
         TextView sidebarPreferenece  = findViewById(R.id.sidebarPreferenece);
         TextView profiledetails  = findViewById(R.id.profiledetails);
+
+        // set daata sharePreference
+
+        SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
+        String firstname = preferences.getString("Fname",null);
+        String lastname =   preferences.getString("Lname",null);
+        studentname.setText(firstname+" "+lastname);
+
+
+
+
+
+        // share with friends app
+        LinearLayout sharefrieds = findViewById(R.id.refer_friends);
+
+        TextView sharelink = findViewById(R.id.sharelink);
+        sharelink.setPaintFlags(sharelink.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+        sharefrieds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    sendlinkwithfriends();
+
+                } catch(Exception e) {
+                    e.toString();
+                }
+
+            }
+        });
+        sharelink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    sendlinkwithfriends();
+
+                } catch(Exception e) {
+                    e.toString();
+                }
+
+            }
+        });
 
         Refine.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,5 +287,15 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
                 }
             }
         }
+    }
+
+    void sendlinkwithfriends()
+    {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share with Friends");
+        String shareMessage= "\nLet me recommend you this application\n\n";
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+        startActivity(Intent.createChooser(shareIntent, "Choose on Application"));
     }
 }

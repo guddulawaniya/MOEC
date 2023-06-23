@@ -66,7 +66,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/studentname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -80,17 +80,17 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/mobilenumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="+91 7037282643"
             android:textColor="@color/text_color"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView22"
+            app:layout_constraintEnd_toEndOf="@+id/studentname"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView22"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+            app:layout_constraintStart_toStartOf="@+id/studentname"
+            app:layout_constraintTop_toBottomOf="@+id/studentname" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -129,7 +129,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
-                android:id="@+id/textView33"
+                android:id="@+id/emailaddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -159,6 +159,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
+                android:id="@+id/gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -187,6 +188,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
+                android:id="@+id/dob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -215,6 +217,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
+                android:id="@+id/maritalstatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -243,6 +246,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
+                android:id="@+id/country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -271,6 +275,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
+                android:id="@+id/state"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -299,6 +304,7 @@
                 android:textColor="@color/hint_color" />
 
             <TextView
+                android:id="@+id/city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

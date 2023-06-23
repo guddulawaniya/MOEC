@@ -1,7 +1,6 @@
 package com.example.moec.loginActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -30,7 +29,6 @@ public class verify_OTP_Activity extends AppCompatActivity {
     TextView resendotp;
 
     String sendotp="1234";
-    static final String SHARE_PREFE = "share_prefs";
 
     String url = "https://api.datagenit.com/sms?auth=D!~7113Zz8MHFw1mQ&senderid=MOECOE&msisdn=";
     boolean rdcheck = false;
@@ -42,9 +40,11 @@ public class verify_OTP_Activity extends AppCompatActivity {
         pinView=findViewById(R.id.pinview);
         Button verifybutton = findViewById(R.id.verifybuttonotp);
         TextView showmessage = findViewById(R.id.textView11);
+        TextView maintitle = findViewById(R.id.maintitle);
         Intent intent = getIntent();
         String number = intent.getStringExtra("number");
-//        String email = intent.getStringExtra("email");
+        int id = intent.getIntExtra("id",0);
+        String email = intent.getStringExtra("email");
 //        String pass = intent.getStringExtra("pass");
 //        String name = intent.getStringExtra("name");
         //sendotp = intent.getStringExtra("otp");
@@ -80,8 +80,20 @@ public class verify_OTP_Activity extends AppCompatActivity {
             }
         });
 
+        if (id==1)
+        {
+            maintitle.setText("Please verify Mobile Number");
+            showmessage.setText("We will send you an One Time Password on this number +91- "+number);
+        }else
+        {
+            showmessage.setText("We will send you an One Time Password on this Email Address "+email);
+            maintitle.setText("Please Verify Email Address");
+        }
 
-        showmessage.setText("We will send you an One Time Password on this number +91- "+number);
+
+
+
+
 
         verifybutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,12 +104,20 @@ public class verify_OTP_Activity extends AppCompatActivity {
 
                 if (sendotp.equals(enterotpinboxs) && nt.isConnected())
                 {
-                    startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
-                    finish();
 
-                    SharedPreferences.Editor editor = getSharedPreferences(SHARE_PREFE,MODE_PRIVATE).edit();
-                    editor.putString("contactnumber",number);
-                    editor.commit();
+                    if (id==1)
+                    {
+                        startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
+                        finish();
+                    }
+                    else
+                    {
+                        startActivity(new Intent(verify_OTP_Activity.this, login_Activity_with_mobile_no.class));
+                        finish();
+
+                    }
+
+
 
                     Toast.makeText(verify_OTP_Activity.this, "Verified", Toast.LENGTH_SHORT).show();
 

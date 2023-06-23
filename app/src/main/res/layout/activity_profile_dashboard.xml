@@ -87,7 +87,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <TextView
-                                android:id="@+id/textView22"
+                                android:id="@+id/studentname"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
@@ -101,17 +101,17 @@
                                 app:layout_constraintTop_toTopOf="@+id/cardView2" />
 
                             <TextView
-                                android:id="@+id/textView23"
+                                android:id="@+id/mobilenumber"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:text="Male | Student"
                                 android:textColor="@color/text_color"
                                 android:textSize="12sp"
-                                app:layout_constraintEnd_toEndOf="@+id/textView22"
+                                app:layout_constraintEnd_toEndOf="@+id/studentname"
                                 app:layout_constraintHorizontal_bias="0.0"
-                                app:layout_constraintStart_toStartOf="@+id/textView22"
-                                app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                                app:layout_constraintStart_toStartOf="@+id/studentname"
+                                app:layout_constraintTop_toBottomOf="@+id/studentname" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <LinearLayout
@@ -130,7 +130,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/textView25"
+                                android:id="@+id/contactbnumber"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -148,7 +148,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/textView27"
+                                android:id="@+id/emailaddress"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -166,7 +166,7 @@
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/textView29"
+                                android:id="@+id/dob"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"

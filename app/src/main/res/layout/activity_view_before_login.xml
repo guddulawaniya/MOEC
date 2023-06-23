@@ -15,30 +15,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins"
         android:text="Skip"
         android:textColor="@color/text_color"
         android:textSize="16sp"
-        android:fontFamily="@font/poppins"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/slider"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sliderRecyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skiptext"
-        app:sliderAnimationDuration="600"
-        app:sliderAutoCycleDirection="right"
-        app:sliderAutoCycleEnabled="false"
-
-        app:sliderIndicatorAnimationDuration="600"
-        app:sliderIndicatorEnabled="false" />
+        app:layout_constraintTop_toBottomOf="@+id/skiptext" />
 
 
     <LinearLayout
@@ -56,10 +49,10 @@
             android:id="@+id/progressBar"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="280dp"
-            android:progressTint="#119E11"
-            android:progressBackgroundTint="@color/background_blue_shadew"
             android:layout_height="7dp"
-            android:progress="25" />
+            android:progress="25"
+            android:progressBackgroundTint="@color/background_blue_shadew"
+            android:progressTint="#119E11" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -107,19 +100,18 @@
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/welcomehint"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/poppins"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Thanks for downloading MOEC"-->
-<!--            android:textColor="@color/hint_color"-->
-<!--            android:textSize="14sp"-->
-<!--            android:visibility="invisible" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/welcomehint"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:fontFamily="@font/poppins"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="Thanks for downloading MOEC"-->
+        <!--            android:textColor="@color/hint_color"-->
+        <!--            android:textSize="14sp"-->
+        <!--            android:visibility="invisible" />-->
 
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

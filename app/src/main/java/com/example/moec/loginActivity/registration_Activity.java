@@ -1,6 +1,7 @@
 package com.example.moec.loginActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,8 +12,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,12 +28,12 @@ import java.util.Calendar;
 
 public class registration_Activity extends AppCompatActivity {
 
-    TextInputEditText firstname,lastname,emailaddress,referralcode;
+    TextInputEditText firstname,lastname,emailaddress,referralcode,dateofbirth;
     AutoCompleteTextView country,state,city;
     RadioGroup gender;
-    TextView codePicker,dateofbirth;
-    TextInputLayout fisrtnamelayout,lastnamelayout,emailaddresslayout,
+    TextInputLayout fisrtnamelayout,lastnamelayout,emailaddresslayout,countrylayout,statelayout,citylayout,dateofbirthlayout,
             referralcodelayout;
+    RadioButton male,female,other;
 
 
     String[] countryList = { "India", "America","Canada","new ZeaLand","Australia","United states","United kingdom" };
@@ -53,12 +55,22 @@ public class registration_Activity extends AppCompatActivity {
          state = findViewById(R.id.state);
          city = findViewById(R.id.city);
          gender = findViewById(R.id.gender);
+
+         male = findViewById(R.id.radioButton1);
+         female = findViewById(R.id.radioButton2);
+         other = findViewById(R.id.radioButton3);
+
          referralcode = findViewById(R.id.referralcode);
+
 
          fisrtnamelayout = findViewById(R.id.firstnamelayout);
          lastnamelayout = findViewById(R.id.lastnamelayout);
          emailaddresslayout = findViewById(R.id.emailaddresslayout);
          referralcodelayout = findViewById(R.id.referralcodelayout);
+        countrylayout = findViewById(R.id.countrylayout);
+        statelayout = findViewById(R.id.statelayout);
+        citylayout = findViewById(R.id.citylayout);
+        dateofbirthlayout = findViewById(R.id.dateofbirthlayout);
 
         ArrayAdapter<String> countryAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, countryList);
 
@@ -92,8 +104,6 @@ public class registration_Activity extends AppCompatActivity {
 
 
 
-
-
         ArrayAdapter<String> stateAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, states);
 
         state.setThreshold(1);
@@ -112,6 +122,11 @@ public class registration_Activity extends AppCompatActivity {
         textwatch(firstname,fisrtnamelayout);
         textwatch(lastname,lastnamelayout);
         textwatch(emailaddress,emailaddresslayout);
+        textwatch(dateofbirth,dateofbirthlayout);
+        textwatcherAutocomplete(country,countrylayout);
+        textwatcherAutocomplete(state,statelayout);
+        textwatcherAutocomplete(city,citylayout);
+
 
 
         Button submitbutton = findViewById(R.id.submitbutton);
@@ -123,8 +138,9 @@ public class registration_Activity extends AppCompatActivity {
             }
         });
 
-    }
 
+
+    }
 
 
 
@@ -132,9 +148,39 @@ public class registration_Activity extends AppCompatActivity {
     {
         if (!(firstname.getText().toString().isEmpty()) &&
                 !(lastname.getText().toString().isEmpty()) && (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) &&
-                !(dateofbirth.getText().toString().isEmpty()))
+                !(dateofbirth.getText().toString().isEmpty()) && !country.getText().toString().isEmpty() && (male.isChecked() || female.isChecked() || other.isChecked()) &&
+                !state.getText().toString().isEmpty()&&
+                !city.getText().toString().isEmpty())
         {
-            startActivity(new Intent(getApplicationContext(), verify_OTP_Activity.class));
+
+            SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+            editor.putString("Fname",firstname.getText().toString());
+            editor.putString("Lname",lastname.getText().toString());
+            editor.putString("Email",emailaddress.getText().toString());
+            editor.putString("DOb",dateofbirth.getText().toString());
+            editor.putString("Country",country.getText().toString());
+            editor.putString("State",state.getText().toString());
+            editor.putString("City",city.getText().toString());
+
+
+            if (male.isChecked())
+            {
+                editor.putString("g","male");
+            }
+            else if (female.isChecked())
+            {
+                editor.putString("g","female");
+            }
+            else
+            {
+                editor.putString("g","other");
+
+            }
+            editor.commit();
+
+            Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
+            intent.putExtra("email",emailaddress.getText().toString());
+            startActivity(intent);
             finish();
 
 
@@ -151,14 +197,25 @@ public class registration_Activity extends AppCompatActivity {
 
         }
         else if (dateofbirth.getText().toString().isEmpty()) {
-            dateofbirth.setError("Required*");
-            dateofbirth.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+            errorshow(dateofbirthlayout, dateofbirth);
+        }
+        else if (country.getText().toString().isEmpty()) {
+            radiobuttonshowError(countrylayout,country);
+        }
+        else if (state.getText().toString().isEmpty()) {
+            radiobuttonshowError(statelayout,state);
+        }
+        else if (city.getText().toString().isEmpty()) {
+            radiobuttonshowError(citylayout,city);
+        }
+        else if (!male.isChecked() && !female.isChecked() && !other.isChecked()) {
 
-
-
+            Toast.makeText(this, "Please Select Gender", Toast.LENGTH_SHORT).show();
+            male.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+            female.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+            other.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
 
         }
-
     }
 
     void errorshow(TextInputLayout layout,TextInputEditText text)
@@ -167,9 +224,40 @@ public class registration_Activity extends AppCompatActivity {
         layout.setError("Required*");
         text.requestFocus();
     }
+    void radiobuttonshowError(TextInputLayout layout,AutoCompleteTextView text)
+    {
+        layout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+        layout.setError("Required*");
+        text.requestFocus();
+    }
+
+
+    void textwatcherAutocomplete( AutoCompleteTextView text,TextInputLayout layout)
+    {
+        text.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                layout.setErrorEnabled(false);
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+    }
 
     void textwatch(TextInputEditText text, TextInputLayout layout)
     {
+
+
         text.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

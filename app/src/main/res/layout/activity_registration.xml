@@ -278,25 +278,42 @@
                 </LinearLayout>
 
 
-                <TextView
-                    android:id="@+id/dateofbirth"
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/dateofbirthlayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:background="@drawable/newtextbg"
-                    android:drawableEnd="@drawable/calendar_month"
-                    android:drawableTint="@color/hint_color"
-                    android:dropDownSelector="@color/background_blue_shadew"
-                    android:fontFamily="@font/poppins"
-                    android:hint="@string/date_of_birth"
-                    android:padding="10dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:endIconDrawable="@drawable/calendar_month"
+                    app:endIconTint="@color/hint_color"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:endIconMode="custom"
+                    app:boxStrokeColor="@color/primarycolor"
+                    app:boxStrokeErrorColor="@color/error_color"
+                    app:errorIconTint="@color/error_color"
+                    app:helperTextTextColor="@color/error_color"
+                    app:hintEnabled="false"
+                    tools:ignore="MissingConstraints">
 
-                    android:textColorHint="@color/iconcolor"
-                    android:textSize="14sp" />
+                    <!--this is the actual edit text which takes the input-->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/dateofbirth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:hint="@string/date_of_birth"
+                        android:inputType="none"
+                        android:padding="10dp"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/iconcolor"
+                        android:textSize="14sp" />
 
-
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <LinearLayout
@@ -322,43 +339,38 @@
                         android:src="@drawable/required_icon"/>
                 </LinearLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:id="@+id/countrylayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-
+                    android:layout_marginTop="5dp"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
                     app:boxCornerRadiusTopEnd="8dp"
-                    app:endIconMode="custom"
-
-                    app:endIconDrawable="@drawable/arrow_down"
                     app:boxCornerRadiusTopStart="8dp"
                     app:boxStrokeColor="@color/primarycolor"
-                    app:boxStrokeErrorColor="@color/error_color"
-                    app:errorIconTint="@color/error_color"
-                    app:helperTextTextColor="@color/error_color"
-                    app:hintEnabled="false"
-                    tools:ignore="MissingConstraints">
+                    app:endIconDrawable="@drawable/arrow_down"
+                    app:endIconTint="@color/hint_color"
+                    app:hintEnabled="false">
+
 
                     <AutoCompleteTextView
                         android:id="@+id/country"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="2dp"
                         android:dropDownSelector="@color/background_blue_shadew"
                         android:fontFamily="@font/poppins"
-                        android:padding="10dp"
                         android:inputType="none"
-
-                        android:hint="@string/country"
+                        android:padding="10dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/iconcolor"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:hint="Select"
+                       />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
 
 
                 <LinearLayout
@@ -419,42 +431,72 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp">
 
-
-                    <AutoCompleteTextView
-                        android:id="@+id/state"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        android:id="@+id/statelayout"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        android:layout_weight="1"
                         android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/newtextbg"
-                        android:drawableEnd="@drawable/arrow_down"
-                        android:drawableTint="@color/hint_color"
-                        android:dropDownSelector="@color/background_blue_shadew"
-                        android:fontFamily="@font/poppins"
-                        android:hint="@string/state"
-                        android:inputType="none"
-                        android:padding="10dp"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/iconcolor"
-                        android:textSize="14sp" />
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
 
-                    <AutoCompleteTextView
-                        android:id="@+id/city"
+
+                        <AutoCompleteTextView
+                            android:id="@+id/state"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/newtextbg"
-                        android:drawableEnd="@drawable/arrow_down"
-                        android:drawableTint="@color/hint_color"
-                        android:dropDownSelector="@color/background_blue_shadew"
-                        android:fontFamily="@font/poppins"
-                        android:hint="@string/city"
-                        android:inputType="none"
-                        android:padding="10dp"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/iconcolor"
-                        android:textSize="14sp" />
+                        android:layout_marginStart="10dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        android:id="@+id/citylayout"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/city"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
 
 

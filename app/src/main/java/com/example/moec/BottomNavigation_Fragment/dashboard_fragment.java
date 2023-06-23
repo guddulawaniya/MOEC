@@ -32,7 +32,6 @@ import com.example.moec.R;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
 import com.smarteist.autoimageslider.SliderView;
-import com.theartofdev.edmodo.cropper.BuildConfig;
 
 import java.util.ArrayList;
 
@@ -49,13 +48,11 @@ public class dashboard_fragment extends Fragment {
 
     onClickInterface onclickInterface;
 
-
     int[] images = {R.drawable.slider1,R.drawable.slider2,R.drawable.slider3};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view  = inflater.inflate(R.layout.fragment_dashboard_fragment, container, false);
-
 
 
         SliderView sliderView = view.findViewById(R.id.slider);
@@ -199,16 +196,6 @@ public class dashboard_fragment extends Fragment {
         list.add(new interest_module(R.drawable.translation,"Languages"));
         list.add(new interest_module(R.drawable.education,"Education"));
 
-        onclickInterface = new onClickInterface() {
-            @Override
-            public void setClick(int abc) {
-
-                Toast.makeText(getContext(), "Selected :"+abc, Toast.LENGTH_SHORT).show();
-
-
-            }
-        };
-
 
 
 
@@ -220,86 +207,8 @@ public class dashboard_fragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
-//        replaceFragment(id);
-//        student.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (id==0)
-//                {
-//                    id++;
-//                    replaceFragment(id);
-//                }
-//
-//
-//            }
-//        });
-//        scout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (id==1)
-//                {
-//                    id--;
-//                    replaceFragment(id);
-//                }
-//
-//
-//
-//            }
-//        });
-
         return view;
     }
-
-
-//    void changecolor(int id)
-//    {
-//        if (id==1)
-//        {
-//            student.setBackground(getResources().getDrawable(R.drawable.selectedtablayoutbg));
-//            student.setTextColor(getResources().getColor(R.color.white));
-//            scout.setBackground(getResources().getDrawable(R.color.background_blue_shadew));
-//            scout.setTextColor(getResources().getColor(R.color.text_color));
-//        }
-//        else {
-//            student.setBackground(getResources().getDrawable(R.color.background_blue_shadew));
-//            student.setTextColor(getResources().getColor(R.color.text_color));
-//
-//            scout.setBackground(getResources().getDrawable(R.drawable.selectedtablayoutbg));
-//            scout.setTextColor(getResources().getColor(R.color.white));
-//        }
-//
-//    }
-
-//    void replaceFragment(int id)
-//    {
-//        scout_Fragment scout_fragment = new scout_Fragment();
-//        student_Fragment student_fragment = new student_Fragment();
-//        FragmentManager manager = getFragmentManager();
-//        androidx.fragment.app.FragmentTransaction fragmentTransaction = manager.beginTransaction();
-//       if (id==1)
-//       {
-//           changecolor(1);
-//           fragmentTransaction.replace(R.id.mainframelayout,student_fragment);
-//
-//
-//       }
-//       else
-//       {
-//           changecolor(id);
-//           fragmentTransaction.replace(R.id.mainframelayout,scout_fragment);
-//
-//       }
-//        fragmentTransaction.commit();
-//
-//    }
 
 
     void sendlinkwithfriends()
@@ -308,7 +217,6 @@ public class dashboard_fragment extends Fragment {
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share with Friends");
         String shareMessage= "\nLet me recommend you this application\n\n";
-        shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         startActivity(Intent.createChooser(shareIntent, "Choose on Application"));
     }

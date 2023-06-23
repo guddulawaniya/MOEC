@@ -57,7 +57,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/studentname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Guddu lawaniya"
@@ -198,7 +198,7 @@
 
 
             <LinearLayout
-                android:id="@+id/linearLayout10"
+                android:id="@+id/refer_friends"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginBottom="8dp"
@@ -226,6 +226,7 @@
                         android:layout_height="wrap_content"
                         android:text="Refer a Friend"
                         android:textColor="@color/white"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -233,8 +234,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Copy &amp; Share Code"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/iconcolor"
-                        android:textSize="10dp" />
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/sharelink"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:autoLink="all"
+                        android:fontFamily="@font/poppins"
+                        android:text="Copy &amp; share your referral code"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
                 </LinearLayout>
             </LinearLayout>
             <View

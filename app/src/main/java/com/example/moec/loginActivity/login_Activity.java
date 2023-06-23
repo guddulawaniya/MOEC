@@ -36,10 +36,6 @@ public class login_Activity extends AppCompatActivity {
 
     String url = "https://demo.merideanoverseas.in/login.php";
     AlertDialog.Builder builder;
-    SharedPreferences sharedPreferences;
-    static final String SHARE_PREFS = "share_prefs";
-    static final String EMAIL_KEY = "email_key";
-    static  final String PASSWORD_KEY = "password_key";
 
     String email,password,name;
 
@@ -63,12 +59,9 @@ public class login_Activity extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
         builder.setTitle("Login details");
-        sharedPreferences = getSharedPreferences(SHARE_PREFS,Context.MODE_PRIVATE);
+       SharedPreferences  sharedPreferences = getSharedPreferences("registrationform",Context.MODE_PRIVATE);
 
-        email = sharedPreferences.getString(EMAIL_KEY,null);
-        password = sharedPreferences.getString(PASSWORD_KEY,null);
-        name = sharedPreferences.getString("your_name",null);
-
+        email = sharedPreferences.getString("email",null);
         textwatherError();
         InternetConnection nt = new InternetConnection(getApplicationContext());
 
@@ -82,10 +75,15 @@ public class login_Activity extends AppCompatActivity {
 
                 if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !(passtext.isEmpty()) && (passtext.length() <= 16) && nt.isConnected() ) {
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
-                    finish();
+                    if (emailtext.equals(email))
+                    {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
+                        finish();
+
+                    }
+
 //                        logincode(emailtext, passtext);
 
                 }
@@ -233,10 +231,10 @@ public class login_Activity extends AppCompatActivity {
 
                     if (status.equals("True"))
                     {
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString(EMAIL_KEY,emailtext);
-                        editor.putString(PASSWORD_KEY,passwordtext);
-                        editor.commit();
+//                        SharedPreferences.Editor editor = sharedPreferences.edit();
+//                        editor.putString(EMAIL_KEY,emailtext);
+//                        editor.putString(PASSWORD_KEY,passwordtext);
+//                        editor.commit();
 
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);

@@ -16,7 +16,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.moec.JavaClass.InternetConnection;
-import com.example.moec.JavaClass.sendotpnumbers;
 import com.example.moec.R;
 import com.hbb20.CountryCodePicker;
 
@@ -47,11 +46,15 @@ public class login_Activity_with_mobile_no extends AppCompatActivity {
                     final String message = "Hello ! The One Time Password to login for Staff panel is " + sendotp + " This OTP will expire in 10 minutes Regards, Meridean Overseas Edu Con Pvt Ltd";
                     String sendotpurl = "https://api.datagenit.com/sms?auth=D!~7113Zz8MHFw1mQ&senderid=MOECOE&msisdn=" + mobilenumbertext.getText().toString() + "&message=" + message;
 
-                    sendotpnumbers sm = new sendotpnumbers(getApplicationContext());
-                    sm.execute(sendotpurl);
+//                    sendotpnumbers sm = new sendotpnumbers(getApplicationContext());
+//                    sm.execute(sendotpurl);
+
+                    SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+                    editor.putString("number",mobilenumbertext.getText().toString());
 
                     Intent intent = new Intent(getApplicationContext(), verify_OTP_Activity.class);
                     intent.putExtra("otp",sendotp);
+                    intent.putExtra("id",1);
                     intent.putExtra("number",mobilenumbertext.getText().toString());
                     startActivity(intent);
                     finish();

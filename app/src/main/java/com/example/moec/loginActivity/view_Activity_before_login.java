@@ -13,11 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.SliderAdapter;
+import com.example.moec.Adapters.loginbeforeimage_Adapter;
+import com.example.moec.Adapters.slidermodule;
 import com.example.moec.R;
-import com.smarteist.autoimageslider.SliderView;
+
+import java.util.ArrayList;
 
 
 public class view_Activity_before_login extends AppCompatActivity  {
@@ -29,33 +33,67 @@ public class view_Activity_before_login extends AppCompatActivity  {
     ProgressBar progress;
     TextView skiptext;
     SwipeGesturesanimation SwipeGesturesanimation;
-ConstraintLayout slidercontainer;
+
+
+    RecyclerView sliderRecyclerview;
 
     int[] images = {R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4};
 
+    ArrayList<slidermodule> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_before_login);
 
+        list = new ArrayList<>();
+
+        list.add(new slidermodule(R.drawable.image1,"Study your favorite course in \nTop Universities"));
+        list.add(new slidermodule(R.drawable.image2,"Track your Application Progress"));
+        list.add(new slidermodule(R.drawable.image3,"Get guaranteed offer letter"));
+        list.add(new slidermodule(R.drawable.image4,"Be a part of community \n of 10 lakh+ students"));
+
         progress = findViewById(R.id.progressBar);
-        slidercontainer = findViewById(R.id.slidercontainer);
+        sliderRecyclerview = findViewById(R.id.sliderRecyclerview);
+        sliderRecyclerview.setNestedScrollingEnabled(false);
+
+
+
+
+
 
         nextcirclebutton = findViewById(R.id.nextbuttonprogressbar);
          skiptext = findViewById(R.id.skiptext);
 
         materialNestbbutton = findViewById(R.id.materialNestbbutton);
 
-        SliderView sliderView = findViewById(R.id.slider);
-        SliderAdapter adapterslider = new SliderAdapter(images);
-        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-        sliderView.setSliderAdapter(adapterslider);
-        sliderView.setAutoCycle(false);
 
-        id = sliderView.getCurrentPagePosition();
+        sliderRecyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+        loginbeforeimage_Adapter adapterslider = new loginbeforeimage_Adapter(list,this);
+        sliderRecyclerview.setAdapter(adapterslider);
+        sliderRecyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE){
+                    int position = getCurrentItem();
+                    onPageChanged(position);
+                }
+            }
+        });
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(sliderRecyclerview);
 
 
-        SwipeGesturesanimation = new SwipeGesturesanimation(sliderView);
+
+
+//        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+//        sliderView.setSliderAdapter(adapterslider);
+//        sliderView.setAutoCycle(false);
+
+
+//        SwipeGesturesanimation = new SwipeGesturesanimation(sliderView);
+
 
         materialNestbbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,29 +106,8 @@ ConstraintLayout slidercontainer;
             @Override
             public void onClick(View view) {
 
-                id++;
-                if (id < 4) {
+                next();
 
-                    sliderView.setCurrentPagePosition(id);
-                    switch (id) {
-                        case 1:
-                            progress.setProgress(50);
-
-                            break;
-                        case 2:
-                            progress.setProgress(75);
-                            break;
-                        case 3:
-                            progress.setProgress(100);
-
-                            nextcirclebutton.setVisibility(View.GONE);
-                            materialNestbbutton.setVisibility(View.VISIBLE);
-                            skiptext.setVisibility(View.GONE);
-
-                            break;
-                    }
-
-                }
 
             }
         });
@@ -99,16 +116,84 @@ ConstraintLayout slidercontainer;
             public void onClick(View view) {
 
                 if (id < 4) {
-                    sliderView.setCurrentPagePosition(3);
-                    nextcirclebutton.setVisibility(View.GONE);
-                    materialNestbbutton.setVisibility(View.VISIBLE);
-                    progress.setProgress(100);
+                    setCurrentItem(4,true);
                 }
 
 
             }
         });
 
+    }
+
+
+    void onPageChanged(int id)
+    {
+        if (id < 4) {
+
+
+            nextcirclebutton.setVisibility(View.VISIBLE);
+            materialNestbbutton.setVisibility(View.INVISIBLE);
+            skiptext.setVisibility(View.VISIBLE);
+            switch (id) {
+
+                case 0:
+                    progress.setProgress(25);
+                    break;
+                    case 1:
+                    progress.setProgress(50);
+                    break;
+                case 2:
+                    progress.setProgress(75);
+
+                    break;
+                case 3:
+                    progress.setProgress(100);
+                    nextcirclebutton.setVisibility(View.INVISIBLE);
+                    materialNestbbutton.setVisibility(View.VISIBLE);
+                    skiptext.setVisibility(View.INVISIBLE);
+                    break;
+            }
+
+        }
+
+    }
+    public boolean hasPreview() {
+        return getCurrentItem() > 0;
+    }
+
+    public boolean hasNext() {
+        return sliderRecyclerview.getAdapter() != null &&
+                getCurrentItem() < (sliderRecyclerview.getAdapter().getItemCount()- 1);
+    }
+
+    public void preview() {
+        int position = getCurrentItem();
+        if (position > 0)
+            setCurrentItem(position -1, true);
+    }
+
+    public void next() {
+        RecyclerView.Adapter adapter = sliderRecyclerview.getAdapter();
+        if (adapter == null)
+            return;
+
+        int position = getCurrentItem();
+        int count = adapter.getItemCount();
+        if (position < (count -1))
+            setCurrentItem(position + 1, true);
+    }
+
+
+    private int getCurrentItem(){
+        return ((LinearLayoutManager)sliderRecyclerview.getLayoutManager())
+                .findFirstVisibleItemPosition();
+    }
+
+    private void setCurrentItem(int position, boolean smooth){
+        if (smooth)
+            sliderRecyclerview.smoothScrollToPosition(position);
+        else
+            sliderRecyclerview.scrollToPosition(position);
     }
 
 
