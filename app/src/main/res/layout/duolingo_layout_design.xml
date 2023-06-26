@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background_blue_shadew"
-
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
-
-
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     app:boxBackgroundColor="@color/white"
-                    android:id="@+id/RLayout"
+                    android:id="@+id/duolreadinglayout"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -72,7 +67,7 @@
 
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/readinginput"
+                        android:id="@+id/duoreadinginput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
@@ -110,7 +105,7 @@
                     app:boxBackgroundColor="@color/white"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
-                    android:id="@+id/wlayout"
+                    android:id="@+id/duowritinglayout"
                     app:boxCornerRadiusBottomStart="8dp"
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
@@ -124,7 +119,7 @@
 
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/writinginput"
+                        android:id="@+id/duowritinginput"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
@@ -168,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     app:boxBackgroundColor="@color/white"
-                    android:id="@+id/listeninglayout"
+                    android:id="@+id/duolisteninglayout"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -185,7 +180,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:id="@+id/listeninginput"
+                        android:id="@+id/duolisteninginput"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
                         android:hint="0"
@@ -220,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     app:boxBackgroundColor="@color/white"
-                    android:id="@+id/slayout"
+                    android:id="@+id/duospeakinglayout"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -237,7 +232,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:id="@+id/speakinginput"
+                        android:id="@+id/duospeakinginput"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
                         android:hint="0"
@@ -279,7 +274,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:id="@+id/Overlayout"
+                    android:id="@+id/duooveralllayout"
                     app:boxBackgroundColor="@color/white"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
@@ -300,7 +295,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
                         android:hint="0"
-                        android:id="@+id/overallinput"
+                        android:id="@+id/duooverallinput"
                         android:inputType="numberDecimal"
                         android:padding="10dp"
                         android:textColor="@color/text_color"
@@ -311,5 +306,4 @@
         </LinearLayout>
     </LinearLayout>
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

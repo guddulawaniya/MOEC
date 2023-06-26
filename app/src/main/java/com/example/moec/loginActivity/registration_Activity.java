@@ -24,8 +24,6 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.Calendar;
-
 public class registration_Activity extends AppCompatActivity {
 
     TextInputEditText firstname,lastname,emailaddress,referralcode,dateofbirth;
@@ -39,8 +37,7 @@ public class registration_Activity extends AppCompatActivity {
     String[] countryList = { "India", "America","Canada","new ZeaLand","Australia","United states","United kingdom" };
     String[] states = { "Utter Pradesh", "Rajsthan ","Delhi","Bihar","Australia","United states","United kingdom" };
     String[] citylist = { "Jaipur", "Mathura","Agra","Pune","Gujrat","Hydrabad","Noida" };
-    private Calendar calendar;
-    private int year, month, day;
+    Button submitbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +58,7 @@ public class registration_Activity extends AppCompatActivity {
          other = findViewById(R.id.radioButton3);
 
          referralcode = findViewById(R.id.referralcode);
+        submitbutton = findViewById(R.id.submitbutton);
 
 
          fisrtnamelayout = findViewById(R.id.firstnamelayout);
@@ -76,8 +74,9 @@ public class registration_Activity extends AppCompatActivity {
 
 
         country.setAdapter(countryAdapter);
+        country.setThreshold(10);
         country.setDropDownBackgroundResource(R.color.background_blue_shadew);
-
+        country.setTextColor(Color.BLACK);
         MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker().setTheme(R.style.Theme_App);
         materialDateBuilder.setTitleText("Date of Birth");
         final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
@@ -106,7 +105,7 @@ public class registration_Activity extends AppCompatActivity {
 
         ArrayAdapter<String> stateAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, states);
 
-        state.setThreshold(1);
+        state.setThreshold(10);
         state.setAdapter(stateAdapter);
         state.setTextColor(Color.BLACK);
         state.setDropDownBackgroundResource(R.color.background_blue_shadew);
@@ -114,7 +113,7 @@ public class registration_Activity extends AppCompatActivity {
 
         ArrayAdapter<String> cityadapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, citylist);
 
-        city.setThreshold(1);
+        city.setThreshold(10);
         city.setAdapter(cityadapter);
         city.setDropDownBackgroundResource(R.color.background_blue_shadew);
 
@@ -123,13 +122,15 @@ public class registration_Activity extends AppCompatActivity {
         textwatch(lastname,lastnamelayout);
         textwatch(emailaddress,emailaddresslayout);
         textwatch(dateofbirth,dateofbirthlayout);
+
+
         textwatcherAutocomplete(country,countrylayout);
         textwatcherAutocomplete(state,statelayout);
         textwatcherAutocomplete(city,citylayout);
 
 
 
-        Button submitbutton = findViewById(R.id.submitbutton);
+
         submitbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

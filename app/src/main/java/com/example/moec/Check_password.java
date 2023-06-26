@@ -16,6 +16,7 @@ import com.chaos.view.PinView;
 
 public class Check_password extends AppCompatActivity {
 
+    int id = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +29,7 @@ public class Check_password extends AppCompatActivity {
         SharedPreferences editor = getSharedPreferences("preference",MODE_PRIVATE);
       String pass = editor.getString("password",null);
 
+
       verifybutton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
@@ -38,8 +40,14 @@ public class Check_password extends AppCompatActivity {
                   finish();
 
               }
+              else if (id==2) {
+                  Toast toast=   Toast.makeText(Check_password.this, "Your PIN "+pass, Toast.LENGTH_SHORT);
+                  toast.show();
+
+              }
               else
               {
+                  id++;
 
                   password.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
                   password.setLineColor(Color.RED);
