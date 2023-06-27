@@ -165,8 +165,6 @@ public class verify_OTP_Activity extends AppCompatActivity {
                 long sec = (l/1000) % 60;
                 resendotp.setText("00 : "+format.format(sec));
 
-
-
             }
 
             @Override

@@ -31,17 +31,28 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <TextView
-
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    android:drawableStart="@drawable/reading_icon"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/oswald"
-                    android:text="@string/reading"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/reading"
+                        android:gravity="center"
+                        android:drawableStart="@drawable/reading_icon"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -85,15 +96,28 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/writing_icon"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/oswald"
-                    android:text="@string/writing"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/writing"
+                        android:gravity="center"
+                        android:drawableStart="@drawable/writing_icon"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -144,16 +168,28 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    android:drawableStart="@drawable/listening_icon"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/oswald"
-                    android:text="@string/listening"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/listening"
+                        android:gravity="center"
+                        android:drawableStart="@drawable/listening_icon"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -197,15 +233,28 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/speaking_icon"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/oswald"
-                    android:text="@string/speaking"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/speaking"
+                        android:gravity="center"
+                        android:drawableStart="@drawable/speaking_icon"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -256,16 +305,28 @@
                 android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    android:drawableStart="@drawable/overall_icon"
-                    android:drawablePadding="10dp"
-                    android:fontFamily="@font/oswald"
-                    android:text="@string/overall"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="@string/overall"
+                        android:gravity="center"
+                        android:drawableStart="@drawable/overall_icon"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

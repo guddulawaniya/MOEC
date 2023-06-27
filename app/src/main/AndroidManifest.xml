@@ -28,6 +28,9 @@
         android:theme="@style/Base.Theme.MOEC"
         tools:targetApi="31">
         <activity
+            android:name=".Preference_update_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Check_password"
             android:exported="false" />
         <activity
@@ -62,7 +65,11 @@
             android:exported="false" />
         <activity
             android:name=".profile_dashboard"
-            android:exported="true" />
+            android:exported="true" >
+
+
+
+        </activity>
         <activity
             android:name=".My_documents_upload"
             android:exported="false" />
@@ -93,24 +100,20 @@
         <activity
             android:name=".Notification_Activity"
             android:exported="false" />
+
+        <activity
+
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+        android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".preference_Actvity"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".greeting_Activity"
             android:exported="false" />
         <activity
             android:name=".loginActivity.registration_Activity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".loginActivity.verify_OTP_Activity"
             android:exported="false" />
@@ -119,7 +122,7 @@
             android:exported="true" />
         <activity
             android:name=".loginActivity.view_Activity_before_login"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".loginActivity.login_Activity"
             android:exported="true" />
@@ -129,12 +132,18 @@
         <activity
             android:name=".loginActivity.Splash_Screen"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
+
     </application>
 
 </manifest>

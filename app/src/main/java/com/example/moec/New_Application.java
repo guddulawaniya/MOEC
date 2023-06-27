@@ -45,7 +45,7 @@ public class New_Application extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, selection);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,  R.layout.countrylist_layout, selection);
 
 
                 programSelection.setThreshold(1);
@@ -113,8 +113,4 @@ public class New_Application extends AppCompatActivity {
 
     }
 
-    void selectyearonly()
-    {
-
-    }
 }

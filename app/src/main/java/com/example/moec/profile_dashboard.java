@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,12 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import com.example.moec.loginActivity.login_Activity_with_mobile_no;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 
 public class profile_dashboard extends AppCompatActivity {
@@ -57,8 +60,6 @@ public class profile_dashboard extends AppCompatActivity {
         TextView cleartext = findViewById(R.id.cleartext);
         toolbartitle.setText("My Profile");
         cleartext.setText("");
-        cleartext.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_settings_24, 0);
-
 
         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
         String firstname = preferences.getString("Fname",null);
@@ -101,7 +102,9 @@ public class profile_dashboard extends AppCompatActivity {
         editimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showImagePicDialog();
+                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                // Start the activity with camera_intent, and request pic id
+                startActivityForResult(camera_intent, SELECT_PICTURE);
             }
         });
 
@@ -145,16 +148,29 @@ public class profile_dashboard extends AppCompatActivity {
         });
 
     }
+
+
+
+
+
+
+    private void requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(storagePermission, STORAGE_REQUEST);
+        }
+    }
+
+    // Requesting camera permission
+    private void requestCameraPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(cameraPermission, CAMERA_REQUEST);
+        }
+    }
     private Boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
         return result;
     }
 
-    // Requesting  gallery permission
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void requestStoragePermission() {
-        requestPermissions(storagePermission, STORAGE_REQUEST);
-    }
 
     // checking camera permissions
     private Boolean checkCameraPermission() {
@@ -163,11 +179,8 @@ public class profile_dashboard extends AppCompatActivity {
         return result && result1;
     }
 
-    // Requesting camera permission
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void requestCameraPermission() {
-        requestPermissions(cameraPermission, CAMERA_REQUEST);
-    }
+    // Requesting  gallery permission
+
 
 
     @Override
@@ -178,20 +191,25 @@ public class profile_dashboard extends AppCompatActivity {
                 if (grantResults.length > 0) {
                     boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
                     if (camera_accepted && writeStorageaccepted) {
-//                        pickFromGallery();
-                    } else {
+                        pickFromGallery();
+                    }
+                    else {
                         Toast.makeText(this, "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
                     }
                 }
             }
             break;
+
             case STORAGE_REQUEST: {
                 if (grantResults.length > 0) {
+
                     boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if (writeStorageaccepted) {
-//                        pickFromGallery();
-                    } else {
+                        pickFromGallery();
+                    }
+                    else {
                         Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -201,15 +219,33 @@ public class profile_dashboard extends AppCompatActivity {
     }
 
 
-//    private void pickFromGallery() {
-//        CropImage.activity().start(profile_dashboard.this);
-//    }
+    private void pickFromGallery() {
+        CropImage.activity().start(profile_dashboard.this);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+
+                Uri resultUri = result.getUri();
+                userpic.setImageURI(resultUri);
+//                Picasso.with(this).load(resultUri).into(userpic);
+            }
+        }
+    }
 
 
 
     private void showImagePicDialog() {
+
         String options[] = {"Camera", "Gallery"};
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         builder.setTitle("Pick Image From");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -218,36 +254,21 @@ public class profile_dashboard extends AppCompatActivity {
                 if (which == 0) {
                     if (!checkCameraPermission()) {
                         requestCameraPermission();
-                    } else {
-//                        pickFromGallery();
+                    }
+                    else {
+                        pickFromGallery();
                     }
                 } else if (which == 1) {
                     if (!checkStoragePermission()) {
                         requestStoragePermission();
                     } else {
-//                        pickFromGallery();
+                        pickFromGallery();
                     }
                 }
             }
         });
         builder.create().show();
     }
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-//            if (resultCode == RESULT_OK) {
-//                Uri resultUri = result.getUri();
-//                userpic.setImageURI(resultUri);
-//               // Picasso.with(this).load(resultUri).into(userpic);
-//            }
-//        }
-//    }
-//
-
 
 
 
@@ -265,9 +286,9 @@ public class profile_dashboard extends AppCompatActivity {
         pickImageIntent.putExtra("aspectY", 1);
         pickImageIntent.putExtra("scale", true);
         pickImageIntent.putExtra(MediaStore.EXTRA_OUTPUT, "/downloads");
-        pickImageIntent.putExtra("outputFormat",
+        pickImageIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
 
-                Bitmap.CompressFormat.JPEG.toString());
+
         startActivityForResult(pickImageIntent, SELECT_PICTURE);
 
         // create an instance of the
@@ -280,4 +301,5 @@ public class profile_dashboard extends AppCompatActivity {
         // with the returned requestCode
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
+
 }

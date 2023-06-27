@@ -51,17 +51,20 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 holder.selectedcard.setVisibility(View.VISIBLE);
                 holder.ringlinear.setVisibility(View.VISIBLE);
 
                     int position=holder.getAdapterPosition();
-                    onclickInterface.setClick(position);
+
+                     String text = module.getText();
+                    onclickInterface.setClick(position, text);
                     checkedPosition = position;
 
                 if (checkedPosition != holder.getAdapterPosition()) {
                     notifyItemChanged(checkedPosition);
                 }
-                    notifyDataSetChanged();
+                notifyDataSetChanged();
 
             }
         });

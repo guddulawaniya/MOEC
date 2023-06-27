@@ -70,7 +70,7 @@ public class registration_Activity extends AppCompatActivity {
         citylayout = findViewById(R.id.citylayout);
         dateofbirthlayout = findViewById(R.id.dateofbirthlayout);
 
-        ArrayAdapter<String> countryAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, countryList);
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter(this, R.layout.countrylist_layout, countryList);
 
 
         country.setAdapter(countryAdapter);
@@ -103,7 +103,7 @@ public class registration_Activity extends AppCompatActivity {
 
 
 
-        ArrayAdapter<String> stateAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, states);
+        ArrayAdapter<String> stateAdapter = new ArrayAdapter(this,  R.layout.countrylist_layout, states);
 
         state.setThreshold(10);
         state.setAdapter(stateAdapter);
@@ -111,7 +111,7 @@ public class registration_Activity extends AppCompatActivity {
         state.setDropDownBackgroundResource(R.color.background_blue_shadew);
 
 
-        ArrayAdapter<String> cityadapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, citylist);
+        ArrayAdapter<String> cityadapter = new ArrayAdapter(this,  R.layout.countrylist_layout, citylist);
 
         city.setThreshold(10);
         city.setAdapter(cityadapter);

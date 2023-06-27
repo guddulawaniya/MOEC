@@ -4,6 +4,7 @@ public class interest_module {
     int image;
     String text;
 
+
     public int getImage() {
         return image;
     }

@@ -51,6 +51,7 @@ public class login_Activity_with_mobile_no extends AppCompatActivity {
 
                     SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
                     editor.putString("number",mobilenumbertext.getText().toString());
+                    editor.commit();
 
                     Intent intent = new Intent(getApplicationContext(), verify_OTP_Activity.class);
                     intent.putExtra("otp",sendotp);

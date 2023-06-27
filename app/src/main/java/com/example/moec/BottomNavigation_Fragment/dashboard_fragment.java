@@ -195,6 +195,12 @@ public class dashboard_fragment extends Fragment {
         list.add(new interest_module(R.drawable.sports___fitness,"Sport \n& Nutrition"));
         list.add(new interest_module(R.drawable.translation,"Languages"));
         list.add(new interest_module(R.drawable.education,"Education"));
+        onclickInterface = new onClickInterface() {
+            @Override
+            public void setClick(int abc, String text) {
+
+            }
+        };
 
 
 

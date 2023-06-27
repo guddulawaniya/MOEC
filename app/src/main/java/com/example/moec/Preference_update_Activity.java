@@ -10,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -23,124 +22,96 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chaos.view.PinView;
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.ModulesClass.most_prefered_destination_module;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.shuhart.stepview.StepView;
 
 import java.util.ArrayList;
 
-public class preference_Actvity extends AppCompatActivity  {
+public class Preference_update_Activity extends AppCompatActivity {
 
-    TextView index;
-    StepView stepViewProgressBar;
-    int stepcount = 1;
+    page1 page1object;
+    page2 page2object;
+    page3 page3object;
 
-    LinearLayout page1, page2, page3, page4, page5, page6;
-    Button nextbutton;
-
-    page6 page6class;
-    page5 page5class;
-    page3 page3class;
-    page4 page4class;
-    page2 page2class;
-    page1 page1class;
-
-
-    SharedPreferences preferences;
+    page5 page5object;
+    LinearLayout linearpage1, linearpage2,linearpage3,linearpage4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preference_actvity);
+        setContentView(R.layout.activity_preference_update);
+
+        Button savebutton = findViewById(R.id.savebutton);
+
+        linearpage1 = findViewById(R.id.linearpage1);
+        linearpage2 = findViewById(R.id.linearpage2);
+        linearpage3 = findViewById(R.id.linearpage3);
+        linearpage4 = findViewById(R.id.linearpage4);
+
+        linearpage1.setVisibility(View.GONE);
+        linearpage2.setVisibility(View.GONE);
+        linearpage3.setVisibility(View.GONE);
+        linearpage4.setVisibility(View.GONE);
+
+        page1object = new page1();
+        page2object = new page2();
+        page3object = new page3();
+        page5object = new page5();
+
+        page1object.setdataonRecyclerview();
+        page2object.setdataonRecyclerview();
+        page3object.onclickbuttobn();
+        page5object.cardsClickAndShow_layout();
+
+        textwatcher(page5object.readinglayout,page5object.reading);
+        textwatcher(page5object.writinglayout,page5object.writing);
+        textwatcher(page5object.listeninglayout,page5object.listening);
+        textwatcher(page5object.speakinglayout,page5object.speaking);
+        textwatcher(page5object.overalllayout,page5object.overall);
+
+        textwatcher(page5object.ptereadinglayout,page5object.ptereading);
+        textwatcher(page5object.ptewritinglayout,page5object.ptewriting);
+        textwatcher(page5object.ptelisteninglayout,page5object.ptelistening);
+        textwatcher(page5object.ptespeakinglayout,page5object.ptespeaking);
+        textwatcher(page5object.pteoveralllayout,page5object.pteoverall);
+
+        textwatcher(page5object.toefreadinglayout,page5object.toefreading);
+        textwatcher(page5object.toefwritinglayout,page5object.toefwriting);
+        textwatcher(page5object.toeflisteninglayout,page5object.toeflistening);
+        textwatcher(page5object.toefspeakinglayout,page5object.toefspeaking);
+        textwatcher(page5object.toefoveralllayout,page5object.toefoverall);
+
+        textwatcher(page5object.duoreadinglayout,page5object.duoreading);
+        textwatcher(page5object.duowritinglayout,page5object.duowriting);
+        textwatcher(page5object.duolisteninglayout,page5object.duolistening);
+        textwatcher(page5object.duospeakinglayout,page5object.duospeaking);
+        textwatcher(page5object.duooveralllayout,page5object.duooverall);
+
+        textwatcher(page5object.otherExam_layout,page5object.othersexaminput);
+
+        Intent intent = getIntent();
+        int id = intent.getIntExtra("layoutid",0);
+        String title = intent.getStringExtra("title");
+
+        // finding the ids Textview toolbar
+        TextView toolbartitle = findViewById(R.id.toolbar_title);
 
 
+        TextView clearbutton = findViewById(R.id.cleartext);
 
-        // Fragment Layout ids show and hide
+        // set the text on toolbar textview
 
-        page1 = findViewById(R.id.page1);
-        page2 = findViewById(R.id.page2);
-        page3 = findViewById(R.id.page3);
-        page4 = findViewById(R.id.page4);
-        page5 = findViewById(R.id.page5);
-        page6 = findViewById(R.id.page6);
+        clearbutton.setVisibility(View.GONE);
 
-
-        // classes Objects
-
-        page1class = new page1();
-        page2class = new page2();
-        page3class = new page3();
-        page4class = new page4();
-        page5class = new page5();
-        page6class = new page6();
-
-        // page 4 i want to study in aboard radio button
-
-        page1class.setdataonRecyclerview();
-        page2class.setdataonRecyclerview();
-        page3class.onclickbuttobn();
-        page5class.cardsClickAndShow_layout();
-
-
-
-
-        textwatcher();
-
-        textwatchercourse(page5class.readinglayout,page5class.reading);
-        textwatchercourse(page5class.writinglayout,page5class.writing);
-        textwatchercourse(page5class.listeninglayout,page5class.listening);
-        textwatchercourse(page5class.speakinglayout,page5class.speaking);
-        textwatchercourse(page5class.overalllayout,page5class.overall);
-
-        textwatchercourse(page5class.ptereadinglayout,page5class.ptereading);
-        textwatchercourse(page5class.ptewritinglayout,page5class.ptewriting);
-        textwatchercourse(page5class.ptelisteninglayout,page5class.ptelistening);
-        textwatchercourse(page5class.ptespeakinglayout,page5class.ptespeaking);
-        textwatchercourse(page5class.pteoveralllayout,page5class.pteoverall);
-
-        textwatchercourse(page5class.toefreadinglayout,page5class.toefreading);
-        textwatchercourse(page5class.toefwritinglayout,page5class.toefwriting);
-        textwatchercourse(page5class.toeflisteninglayout,page5class.toeflistening);
-        textwatchercourse(page5class.toefspeakinglayout,page5class.toefspeaking);
-        textwatchercourse(page5class.toefoveralllayout,page5class.toefoverall);
-
-        textwatchercourse(page5class.duoreadinglayout,page5class.duoreading);
-        textwatchercourse(page5class.duowritinglayout,page5class.duowriting);
-        textwatchercourse(page5class.duolisteninglayout,page5class.duolistening);
-        textwatchercourse(page5class.duospeakinglayout,page5class.duospeaking);
-        textwatchercourse(page5class.duooveralllayout,page5class.duooverall);
-
-        textwatchercourse(page5class.otherExam_layout,page5class.othersexaminput);
-
-
-        // mainActivity Code
-
-        index = findViewById(R.id.indexingtext);
-        nextbutton = findViewById(R.id.nextbutton);
-        stepViewProgressBar = findViewById(R.id.step_view);
-        progressbar(stepcount);
-
+        // backbutton
         ImageView backbutton = findViewById(R.id.backbutton);
-
-
-        nextbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                nextbottonvalidation();
-
-            }
-        });
-
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,78 +119,47 @@ public class preference_Actvity extends AppCompatActivity  {
             }
         });
 
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (linearpage1.getVisibility() == View.VISIBLE)
+                {
+                 onBackPressed();
+                } else if (linearpage2.getVisibility() == View.VISIBLE) {
+                    onBackPressed();
+                } else if (linearpage3.getVisibility() == View.VISIBLE) {
+                 page3object.page3dataset();
+                }else if (linearpage4.getVisibility() == View.VISIBLE) {
+
+                    page5object.validation();
+
+                }
+
+            }
+        });
+
+        switch (id)
+        {
+            case 1:
+                linearpage1.setVisibility(View.VISIBLE);
+                toolbartitle.setText(title);
+            break;
+            case 2:
+                toolbartitle.setText(title);
+                linearpage2.setVisibility(View.VISIBLE);
+            break;
+            case 3:
+                toolbartitle.setText(title);
+                linearpage3.setVisibility(View.VISIBLE);
+            break;
+            case 4:
+                linearpage4.setVisibility(View.VISIBLE);
+                toolbartitle.setText(title);
+            break;
+        }
     }
 
-
-
-
-
-
-
-    void nextbottonvalidation()
-    {
-        if (page1.getVisibility() == View.VISIBLE) {
-
-            if (page2class.checkselectcountry)
-            {
-                page2class.checkselectcountry = false;
-                stepcount++;
-                progressbar(stepcount);
-            }
-            else {
-                Toast.makeText(preference_Actvity.this, "Please Select Country", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-        else if (page2.getVisibility() == View.VISIBLE) {
-
-            if (page2class.checkselectcountry)
-            {
-                page2class.checkselectcountry = false;
-                stepcount++;
-                progressbar(stepcount);
-            }
-            else {
-
-                Toast.makeText(preference_Actvity.this, "Please Select Interest", Toast.LENGTH_SHORT).show();
-            }
-
-
-        }
-        else if (page3.getVisibility() == View.VISIBLE) {
-            progressbar(stepcount);
-            page3class.page3dataset();
-
-        } else if (page4.getVisibility() == View.VISIBLE) {
-            page4class.page4selectstudy();
-
-        } else if (page5.getVisibility() == View.VISIBLE) {
-
-
-
-            if (page5class.checkBox.isChecked())
-            {
-                page5class. pteinputlayout.setVisibility(View.GONE);
-                page5class. toeflinputlayout.setVisibility(View.GONE);
-                page5class. duolinggoinputlayout.setVisibility(View.GONE);
-                page5class. otherinputlayout.setVisibility(View.GONE);
-                progressbar(++stepcount);
-            }
-            else page5class.validation();
-
-
-
-        } else if (page6.getVisibility() == View.VISIBLE) {
-
-
-            page6class.validation();
-        }
-
-
-    }
-
-
-    void textwatchercourse(TextInputLayout layout,TextInputEditText text)
+    void textwatcher(TextInputLayout layout,TextInputEditText text)
     {
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -241,140 +181,12 @@ public class preference_Actvity extends AppCompatActivity  {
 
     }
 
-
-
-    void textwatcher() {
-
-        page6class.setpassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                page6class.notmatchedtext.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        page6class.comfirmpassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                page6class.notmatchedtext.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-    }
-
-
-
-    void progressbar(int stepcount) {
-        index.setText(stepcount + " of 7 ");
-        stepViewProgressBar.getState()
-                .animationType(StepView.ANIMATION_LINE)
-                .nextStepLineColor(ContextCompat.getColor(getApplicationContext(), R.color.background_blue_shadew))
-                .doneStepMarkColor(ContextCompat.getColor(getApplicationContext(), R.color.white))
-                .stepsNumber(7)
-                .nextStepCircleEnabled(false)
-                .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
-                .stepLineWidth(6)
-                .commit();
-        stepViewProgressBar.go(stepcount, true);
-        changelayout(stepcount);
-
-
-    }
-
-
-    void changelayout(int id) {
-        switch (id) {
-            case 1:
-                page1.setVisibility(View.VISIBLE);
-                page2.setVisibility(View.GONE);
-
-                break;
-            case 2:
-                page1.setVisibility(View.GONE);
-                page2.setVisibility(View.VISIBLE);
-                page3.setVisibility(View.GONE);
-                break;
-            case 3:
-
-                page2.setVisibility(View.GONE);
-                page3.setVisibility(View.VISIBLE);
-                page4.setVisibility(View.GONE);
-                break;
-            case 4:
-
-                page3.setVisibility(View.GONE);
-                page4.setVisibility(View.VISIBLE);
-                page5.setVisibility(View.GONE);
-
-                break;
-            case 5:
-                page4.setVisibility(View.GONE);
-                page5.setVisibility(View.VISIBLE);
-                page6.setVisibility(View.GONE);
-                break;
-            case 6:
-                page5.setVisibility(View.GONE);
-                page6.setVisibility(View.VISIBLE);
-
-                break;
-            case 7:
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-                break;
-        }
-
-    }
-
-
-
-
-    @Override
-    public void onBackPressed() {
-        stepcount--;
-
-        if (stepcount == 0) {
-            super.onBackPressed();
-        } else if (stepcount < 8 && stepcount > 0) {
-
-            progressbar(stepcount);
-
-        }
-
-
-    }
-
-
-
-
-
-
-    // page number 1 class
     class page1{
 
         ArrayList<most_prefered_destination_module> mostpreferedlist=  new ArrayList<>();
 
 
-       RecyclerView mostpreferedRecyclerview = findViewById(R.id.mostpreferedRecyclerview);
+        RecyclerView mostpreferedRecyclerview = findViewById(R.id.mostpreferedRecyclerview);
         void setdataonRecyclerview() {
 
 
@@ -388,8 +200,6 @@ public class preference_Actvity extends AppCompatActivity  {
                         SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
                         editor.putString("countryname",text);
                         editor.commit();
-                        page2class.checkselectcountry=true;
-
                     }
 
                 }
@@ -423,27 +233,20 @@ public class preference_Actvity extends AppCompatActivity  {
 
         }
     }
-
-
-
-
-    // page number 2 class
-
     class page2 {
         RecyclerView recyclerView = findViewById(R.id.interest_recyclerview);
-        boolean checkselectcountry= false;
+
         ArrayList<interest_module> list = new ArrayList<>();
         void setdataonRecyclerview() {
 
-          onClickInterface  onclickInterface = new onClickInterface() {
+            onClickInterface  onclickInterface = new onClickInterface() {
                 @Override
                 public void setClick(int position, String text) {
-                    if (!checkselectcountry)
+                    if (position>-1)
                     {
                         SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
                         editor.putString("interest", text);
                         editor.commit();
-                        checkselectcountry = true;
                     }
 
                 }
@@ -476,11 +279,6 @@ public class preference_Actvity extends AppCompatActivity  {
         }
 
     }
-
-
-
-    // page number 3 class
-
     class page3 {
 
 
@@ -493,7 +291,7 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
         // finding ids textview
-        TextInputEditText  highper = findViewById(R.id.highpercent);
+        TextInputEditText highper = findViewById(R.id.highpercent);
         TextInputEditText  interper = findViewById(R.id.interpercent);
         TextInputEditText  underper = findViewById(R.id.undergraduatepercent);
         TextInputEditText graduateper = findViewById(R.id.graduatepercent);
@@ -596,20 +394,16 @@ public class preference_Actvity extends AppCompatActivity  {
                 if (button1.isChecked()) {
 
 
-                   saveradiobuttondatapage3(button1, highper, highperlayout);
-                   page4class.page4setdata(1);
+                    saveradiobuttondatapage3(button1, highper, highperlayout);
                 }
                 if (button2.isChecked()) {
                     saveradiobuttondatapage3(button2, interper, interperlayout);
-                    page4class.page4setdata(2);
                 }
                 if (button3.isChecked()) {
 
-                    page4class.page4setdata(3);
                     saveradiobuttondatapage3(button3, underper, underperlayout);
                 }
                 if (button4.isChecked()) {
-                    page4class.page4setdata(3);
                     saveradiobuttondatapage3(button4, graduateper, graduateperlayout);
                 }
                 if (button5.isChecked()) {
@@ -638,88 +432,16 @@ public class preference_Actvity extends AppCompatActivity  {
                 editor.putString("percentage", percentageText);
                 editor.putString("educationtext", radiotext);
                 editor.commit();
-                stepcount++;
-                progressbar(stepcount);
+                onBackPressed();
             }
             else {
-                page5class.errorShowFunction(layout,percentage);
+                page5object.errorShowFunction(layout,percentage);
 
             }
         }
 
 
     }
-
-
-
-    // page number 4 class
-
-    class page4{
-
-        RadioButton interradio = findViewById(R.id.radioButtoninterpage4);
-        RadioButton graduateradio = findViewById(R.id.radioButtongraduatepage4);
-        RadioButton postradio = findViewById(R.id.radioButtonpostpage4);
-        RadioButton masterradio = findViewById(R.id.radioButtonmasterpage4);
-
-
-        void page4selectstudy() {
-            if (interradio.isChecked()) {
-
-                savedata_on_preference(interradio);
-
-            } else if (graduateradio.isChecked()) {
-                savedata_on_preference(graduateradio);
-
-            } else if (postradio.isChecked()) {
-                savedata_on_preference(postradio);
-
-            }else if (masterradio.isChecked()) {
-                savedata_on_preference(masterradio);
-
-            } else {
-
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Please Select Study ", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 100, 50);
-                toast.show();
-            }
-        }
-        void savedata_on_preference(RadioButton radiotext)
-        {
-            String text = radiotext.getText().toString();
-            SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
-            editor.putString("goEducation", text);
-            editor.commit();
-            stepcount++;
-            progressbar(stepcount);
-        }
-        void page4setdata(int i)
-        {
-            switch (i) {
-                case 1:
-                    interradio.setVisibility(View.VISIBLE);
-                    graduateradio.setVisibility(View.VISIBLE);
-                    break;
-                case 2:
-
-                    interradio.setVisibility(View.GONE);
-
-                    break;
-                case 3:
-                    interradio.setVisibility(View.GONE);
-                    graduateradio.setVisibility(View.GONE);
-                    break;
-                default:
-            }
-        }
-
-    }
-
-
-
-
-    // Page number 5 class
-
     class page5 {
 
         // images cards
@@ -940,7 +662,7 @@ public class preference_Actvity extends AppCompatActivity  {
                     duolinggoinputlayout.getVisibility()==View.VISIBLE||
                     toeflinputlayout.getVisibility()==View.VISIBLE ||otherinputlayout.getVisibility()==View.VISIBLE){
 
-                if (page5class.ieltsinputlayout.getVisibility() == View.VISIBLE) {
+                if (ieltsinputlayout.getVisibility() == View.VISIBLE) {
 
                     validationInputFields(reading,writing,listening,speaking,overall,readinglayout
                             ,writinglayout,listeninglayout,speakinglayout,overalllayout,"IELTS");
@@ -966,7 +688,12 @@ public class preference_Actvity extends AppCompatActivity  {
                 else if (othercard.getVisibility() == View.VISIBLE) {
                     if (!othersexaminput.getText().toString().isEmpty())
                     {
-                        progressbar(++stepcount);
+                        SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                        editor.putString("examname", "Other");
+                        editor.putString("other", othersexaminput.getText().toString());
+                        editor.commit();
+                        onBackPressed();
+
                     }
                     else
                     {
@@ -980,7 +707,7 @@ public class preference_Actvity extends AppCompatActivity  {
                 }
             }
             else {
-                Toast.makeText(preference_Actvity.this, "Please Select Course", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Preference_update_Activity.this, "Please Select Course", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -991,48 +718,48 @@ public class preference_Actvity extends AppCompatActivity  {
         {
 
             SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
-                String readText = reading.getText().toString();
-                String writeText = writing.getText().toString();
-                String listenText = listening.getText().toString();
-                String speakText = speaking.getText().toString();
-                String overText = overall.getText().toString();
+            String readText = reading.getText().toString();
+            String writeText = writing.getText().toString();
+            String listenText = listening.getText().toString();
+            String speakText = speaking.getText().toString();
+            String overText = overall.getText().toString();
 
-                // linear layout 1st
-                if (!readText.isEmpty() && !writeText.isEmpty() &&
-                        !listenText.isEmpty()&& !speakText.isEmpty() && !overText.isEmpty())
-                {
+            // linear layout 1st
+            if (!readText.isEmpty() && !writeText.isEmpty() &&
+                    !listenText.isEmpty()&& !speakText.isEmpty() && !overText.isEmpty())
+            {
 
-                  editor.putString("examname", examname);
-                    editor.putString("read", readText);
-                    editor.putString("write", writeText);
-                    editor.putString("listen", listenText);
-                    editor.putString("speak", speakText);
-                    editor.putString("overall", overText);
-                    editor.commit();
-                    stepcount++;
-                    progressbar(stepcount);
+                editor.putString("examname", examname);
+                editor.putString("read", readText);
+                editor.putString("write", writeText);
+                editor.putString("listen", listenText);
+                editor.putString("speak", speakText);
+                editor.putString("overall", overText);
+                editor.commit();
+                onBackPressed();
 
-                }
-                else if (readText.isEmpty())
-                {
-                    errorShowFunction(readinglayout, reading);
-                }
-                else if (writeText.isEmpty())
-                {
-                    errorShowFunction(writinglayout, writing);
-                }
-                else if (listenText.isEmpty())
-                {
-                    errorShowFunction(listeninglayout, listening);
-                }
-                else if (speakText.isEmpty())
-                {
-                    errorShowFunction(speakinglayout, speaking);
-                }
-                else if (overText.isEmpty())
-                {
-                    errorShowFunction(overalllayout, overall);
-                }
+
+            }
+            else if (readText.isEmpty())
+            {
+                errorShowFunction(readinglayout, reading);
+            }
+            else if (writeText.isEmpty())
+            {
+                errorShowFunction(writinglayout, writing);
+            }
+            else if (listenText.isEmpty())
+            {
+                errorShowFunction(listeninglayout, listening);
+            }
+            else if (speakText.isEmpty())
+            {
+                errorShowFunction(speakinglayout, speaking);
+            }
+            else if (overText.isEmpty())
+            {
+                errorShowFunction(overalllayout, overall);
+            }
         }
 
 
@@ -1047,59 +774,4 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
     }
-
-
-
-    // page number 6 class
-
-    class page6{
-
-
-        PinView setpassword=findViewById(R.id.setpassword);
-        PinView comfirmpassword=findViewById(R.id.comfirmpassword);
-        CheckBox passcheck = findViewById(R.id.passcheck);
-        TextView notmatchedtext = findViewById(R.id.notmatchedtext);
-
-
-        void validation()
-        {
-            if (!setpassword.getText().toString().isEmpty() && !comfirmpassword.getText().toString().isEmpty())
-            {
-                if (setpassword.getText().toString().equals(comfirmpassword.getText().toString()))
-                {
-                    if (passcheck.isChecked())
-                    {
-
-                        SharedPreferences.Editor editor = getSharedPreferences("preference",MODE_PRIVATE).edit();
-                        editor.putString("password",setpassword.getText().toString());
-                        editor.putBoolean("checkpass",true);
-                        editor.commit();
-                        stepcount++;
-                        progressbar(stepcount);
-                    }
-                    else
-                    {
-                        passcheck.setError("Please Checked Box");
-                        Toast.makeText(preference_Actvity.this, "Please Checked Box", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-                else {
-                    notmatchedtext.setVisibility(View.VISIBLE);
-                    notmatchedtext.setText("Password not matched");
-                }
-
-            }
-            else
-            {
-                notmatchedtext.setVisibility(View.VISIBLE);
-                notmatchedtext.setText("Please set password Future Login");
-            }
-        }
-
-
-
-    }
-
-
 }

@@ -362,6 +362,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/poppins"
                         android:inputType="none"
+
                         android:padding="10dp"
                         android:autoSizeMinTextSize="12dp"
                         android:autoSizeMaxTextSize="16dp"

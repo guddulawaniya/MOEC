@@ -48,7 +48,9 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
                 holder.ringlinear.setVisibility(View.VISIBLE);
 
                 int position=holder.getAdapterPosition();
-                onclickInterface.setClick(position);
+                String text = module.getText();
+
+                onclickInterface.setClick(position,text);
                 checkedPosition = position;
 
                 if (checkedPosition != holder.getAdapterPosition()) {
