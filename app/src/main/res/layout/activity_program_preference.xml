@@ -39,16 +39,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/oswald"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
                 android:text="Want to study in"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/selectcountry"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/newtextbg"
                 android:drawableEnd="@drawable/arrow_right"
@@ -68,16 +68,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/oswald"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
                 android:text="Area of interest"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/selectEducation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/newtextbg"
                 android:drawableEnd="@drawable/arrow_right"
@@ -98,16 +98,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/oswald"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
                 android:text="Education Qualification"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/selectCourse"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/newtextbg"
                 android:drawableEnd="@drawable/arrow_right"
@@ -128,17 +128,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/oswald"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
                 android:text="English Test Score"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
 
             <TextView
                 android:id="@+id/selectTest"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/newtextbg"
                 android:drawableEnd="@drawable/arrow_right"

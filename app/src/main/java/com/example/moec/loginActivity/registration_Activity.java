@@ -2,6 +2,7 @@ package com.example.moec.loginActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -35,7 +36,7 @@ public class registration_Activity extends AppCompatActivity {
 
 
     String[] countryList = { "India", "America","Canada","new ZeaLand","Australia","United states","United kingdom" };
-    String[] states = { "Utter Pradesh", "Rajsthan ","Delhi","Bihar","Australia","United states","United kingdom" };
+    String[] states = { "Andhra Pradesh", "Arunachal Pradesh ","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka"};
     String[] citylist = { "Jaipur", "Mathura","Agra","Pune","Gujrat","Hydrabad","Noida" };
     Button submitbutton;
 
@@ -219,9 +220,11 @@ public class registration_Activity extends AppCompatActivity {
         }
     }
 
-    void errorshow(TextInputLayout layout,TextInputEditText text)
+    public void errorshow(TextInputLayout layout, TextInputEditText text)
     {
         layout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+        layout.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
+        layout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
         layout.setError("Required*");
         text.requestFocus();
     }
@@ -233,7 +236,7 @@ public class registration_Activity extends AppCompatActivity {
     }
 
 
-    void textwatcherAutocomplete( AutoCompleteTextView text,TextInputLayout layout)
+   public void textwatcherAutocomplete( AutoCompleteTextView text,TextInputLayout layout)
     {
         text.addTextChangedListener(new TextWatcher() {
             @Override

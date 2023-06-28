@@ -102,9 +102,7 @@ public class profile_dashboard extends AppCompatActivity {
         editimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent camera_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                // Start the activity with camera_intent, and request pic id
-                startActivityForResult(camera_intent, SELECT_PICTURE);
+                imageChooser();
             }
         });
 
