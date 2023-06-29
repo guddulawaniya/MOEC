@@ -1,22 +1,20 @@
 package com.example.moec;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -30,12 +28,11 @@ public class profile_dashboard extends AppCompatActivity {
 
     int SELECT_PICTURE =200;
     ImageView userpic;
-
     private static final int CAMERA_REQUEST = 100;
-    private static final int STORAGE_REQUEST = 200;
-
+    private static final int STORAGE_REQUEST = 201;
     String cameraPermission[];
     String storagePermission[];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +66,11 @@ public class profile_dashboard extends AppCompatActivity {
         String dobget=  preferences.getString("DOb",null);
         //set data on load activity
 
+
+
+
+
+
         studentname.setText(firstname+" "+lastname);
         dob.setText(dobget);
         emailaddress.setText(emailid);
@@ -91,8 +93,8 @@ public class profile_dashboard extends AppCompatActivity {
             }
         });
 
-        cameraPermission = new String[]{android.Manifest.permission.CAMERA,android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        storagePermission = new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        cameraPermission = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 
 
@@ -102,7 +104,7 @@ public class profile_dashboard extends AppCompatActivity {
         editimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                imageChooser();
+                showImagePicDialog();
             }
         });
 
@@ -150,110 +152,20 @@ public class profile_dashboard extends AppCompatActivity {
 
 
 
-
-
-    private void requestStoragePermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(storagePermission, STORAGE_REQUEST);
-        }
-    }
-
-    // Requesting camera permission
-    private void requestCameraPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(cameraPermission, CAMERA_REQUEST);
-        }
-    }
-    private Boolean checkStoragePermission() {
-        boolean result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-        return result;
-    }
-
-
-    // checking camera permissions
-    private Boolean checkCameraPermission() {
-        boolean result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
-        boolean result1 = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
-        return result && result1;
-    }
-
-    // Requesting  gallery permission
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case CAMERA_REQUEST: {
-                if (grantResults.length > 0) {
-                    boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-
-                    if (camera_accepted && writeStorageaccepted) {
-                        pickFromGallery();
-                    }
-                    else {
-                        Toast.makeText(this, "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-            break;
-
-            case STORAGE_REQUEST: {
-                if (grantResults.length > 0) {
-
-                    boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if (writeStorageaccepted) {
-                        pickFromGallery();
-                    }
-                    else {
-                        Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-            break;
-        }
-    }
-
-
-    private void pickFromGallery() {
-        CropImage.activity().start(profile_dashboard.this);
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-
-                Uri resultUri = result.getUri();
-                userpic.setImageURI(resultUri);
-//                Picasso.with(this).load(resultUri).into(userpic);
-            }
-        }
-    }
-
-
-
     private void showImagePicDialog() {
-
         String options[] = {"Camera", "Gallery"};
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         builder.setTitle("Pick Image From");
+
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == 0) {
                     if (!checkCameraPermission()) {
-                        requestCameraPermission();
-                    }
-                    else {
+                       requestCameraPermission();
+
+                    } else {
                         pickFromGallery();
                     }
                 } else if (which == 1) {
@@ -268,35 +180,126 @@ public class profile_dashboard extends AppCompatActivity {
         builder.create().show();
     }
 
+    // checking storage permissions
+    private Boolean checkStoragePermission() {
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        return result;
+    }
+
+    // Requesting  gallery permission
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestStoragePermission() {
+        requestPermissions(storagePermission, STORAGE_REQUEST);
+    }
+
+    // checking camera permissions
+    private Boolean checkCameraPermission() {
+        boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == (PackageManager.PERMISSION_GRANTED);
+        boolean result1 = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED);
+        return result && result1;
+    }
+
+    // Requesting camera permission
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestCameraPermission() {
+        requestPermissions(cameraPermission, CAMERA_REQUEST);
+    }
+
+    // Requesting camera and gallery
+    // permission if not given
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case CAMERA_REQUEST: {
+
+
+                if (grantResults.length > 0) {
+                    boolean camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+                    if (camera_accepted && writeStorageaccepted ) {
+                        pickFromGallery();
+
+                    } else {
+                        Toast.makeText(this, "Please Enable Camera and Storage Permissions", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+            break;
+            case STORAGE_REQUEST: {
+                if (grantResults.length > 0) {
+
+                    boolean writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    if (writeStorageaccepted) {
+                        pickFromGallery();
+
+                    } else {
+                        Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG).show();
+                    }
+                }
+           }
+            break;
+        }
+    }
+
+
+
+    // Here we will pick image from gallery or camera
+    private void pickFromGallery() {
+        CropImage.activity().start(profile_dashboard.this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+
+                Uri resultUri = result.getUri();
+                SharedPreferences.Editor editor = getSharedPreferences("images",MODE_PRIVATE).edit();
+                editor.putString("image",resultUri.getEncodedPath());
+                editor.commit();
+                userpic.setImageURI(resultUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+                Toast.makeText(this, "error"+error, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (resultCode == RESULT_OK) {
+//
+//            // compare the resultCode with the
+//            // SELECT_PICTURE constant
+//            if (requestCode == SELECT_PICTURE) {
+//                // Get the url of the image from data
+//                Uri selectedImageUri = data.getData();
+//                if (null != selectedImageUri) {
+//                    // update the preview image in the layout
+//                    userpic.setImageURI(selectedImageUri);
+//                }
+//            }
+//        }
+//    }
+
+
+
 
 
     void imageChooser() {
 
 
-
-        Intent pickImageIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        pickImageIntent.setType("image/*");
-        pickImageIntent.putExtra("crop", "true");
-        pickImageIntent.putExtra("outputX", 200);
-        pickImageIntent.putExtra("outputY", 200);
-        pickImageIntent.putExtra("aspectX", 1);
-        pickImageIntent.putExtra("aspectY", 1);
-        pickImageIntent.putExtra("scale", true);
-        pickImageIntent.putExtra(MediaStore.EXTRA_OUTPUT, "/downloads");
-        pickImageIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-
-
-        startActivityForResult(pickImageIntent, SELECT_PICTURE);
-
-        // create an instance of the
-        // intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
 
-        // pass the constant to compare it
-        // with the returned requestCode
+
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
 

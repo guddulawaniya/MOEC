@@ -43,9 +43,11 @@ public class Splash_Screen extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Check_password.class));
                         finish();
 
-                    }else
-                    startActivity(new Intent(getApplicationContext(), view_Activity_before_login.class));
-                    finish();
+                    }
+                    else {
+                        startActivity(new Intent(getApplicationContext(), view_Activity_before_login.class));
+                        finish();
+                    }
 
                 }
                 else
