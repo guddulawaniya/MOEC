@@ -10,12 +10,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -28,8 +29,8 @@
                 android:id="@+id/bennerimage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/slider3"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:src="@drawable/slider3" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -49,25 +50,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            app:sv_selectedCircleColor="@color/primarycolor"
-            app:sv_selectedTextColor="@color/primarycolor"
-            app:sv_stepLineWidth="3dp"
-            app:sv_stepPadding="0dp"
-            app:sv_nextTextColor="@color/primarycolor"
-            app:sv_nextStepLineColor="@color/iconcolor"
+            app:sv_animationType="All"
             app:sv_doneCircleColor="@color/primarycolor"
-            app:sv_doneStepLineColor="@color/primarycolor"
             app:sv_doneCircleRadius="12dp"
-            app:sv_stepsNumber="6"
+            app:sv_doneStepLineColor="@color/primarycolor"
+            app:sv_doneStepMarkColor="@color/white"
             app:sv_nextStepCircleColor="@color/iconcolor"
+            app:sv_nextStepCircleEnabled="true"
+            app:sv_nextStepLineColor="@color/iconcolor"
+            app:sv_nextTextColor="@color/primarycolor"
+            app:sv_selectedCircleColor="@color/primarycolor"
             app:sv_selectedCircleRadius="12dp"
             app:sv_selectedStepNumberColor="@color/white"
-            app:sv_stepViewStyle="@style/StepView"
-            app:sv_doneStepMarkColor="@color/white"
+            app:sv_selectedTextColor="@color/primarycolor"
+            app:sv_stepLineWidth="3dp"
             app:sv_stepNumberTextSize="12sp"
-            app:sv_animationType="All"
-            app:sv_nextStepCircleEnabled="true"
-            app:sv_typeface="@font/poppins"/>
+            app:sv_stepPadding="0dp"
+            app:sv_stepViewStyle="@style/StepView"
+            app:sv_stepsNumber="6"
+            app:sv_typeface="@font/poppins" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/studenttimelinecard"
@@ -165,11 +166,11 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
+                        android:fontFamily="@font/poppins"
                         android:gravity="center_vertical"
                         android:text="Initial Call"
                         android:textColor="@color/text_color"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins" />
+                        android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/imageView14"
@@ -188,7 +189,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp">
 
@@ -213,11 +214,24 @@
                 android:textColor="@color/hint_color"
                 android:textSize="11dp" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
-            <include layout="@layout/no_found_layout"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/no_found_layout" />
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
     </LinearLayout>
