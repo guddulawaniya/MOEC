@@ -29,12 +29,12 @@ public class Student_timeline_activity extends AppCompatActivity {
         actionbutton.setVisibility(View.GONE);
         title.setText("Student Timeline");
         ArrayList<studentline_module> list = new ArrayList<>();
-        list.add(new studentline_module("1","Sign Up","02-05-2023",R.drawable.user_icon));
-        list.add(new studentline_module("2","Initial Call","02-05-2023",R.drawable.user_icon));
-        list.add(new studentline_module("3","Documenttation","02-05-2023",R.drawable.user_icon));
-        list.add(new studentline_module("4","Course Finalization","02-05-2023",R.drawable.user_icon));
-        list.add(new studentline_module("5","Application Process","02-05-2023",R.drawable.user_icon));
-        list.add(new studentline_module("6","Visa Process","02-05-2023",R.drawable.user_icon));
+        list.add(new studentline_module("Step-1","Sign Up","02-05-2023",R.drawable.user_icon));
+        list.add(new studentline_module("Step-2","Initial Call","10-05-2023",R.drawable.user_icon));
+        list.add(new studentline_module("Step-3","Documentation","15-05-2023",R.drawable.user_icon));
+        list.add(new studentline_module("Step-4","Course Finalization","20-05-2023",R.drawable.user_icon));
+        list.add(new studentline_module("Step-5","Application Process","20-05-2023",R.drawable.user_icon));
+        list.add(new studentline_module("Step-6","Visa Process","22-05-2023",R.drawable.user_icon));
 
         studenttimeline_adatper adatper = new studenttimeline_adatper(list);
         studentprocessRecyclerview.setLayoutManager(new LinearLayoutManager(this));

@@ -13,6 +13,7 @@ import com.google.android.material.slider.RangeSlider;
 
 public class Refine_Activity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,32 +27,27 @@ public class Refine_Activity extends AppCompatActivity {
 
         TextView appliation_rang_slider_text = findViewById(R.id.appliation_rang_slider_text);
 
+
+
+
     tuitionfee_slider.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {
         @SuppressLint("RestrictedApi")
         @Override
         public void onStartTrackingTouch(@NonNull RangeSlider slider) {
 
-
-
-
             tuitionfee_rang_text.setText(slider.getValues().toString());
+
+
         }
 
         @SuppressLint("RestrictedApi")
         @Override
         public void onStopTrackingTouch(@NonNull RangeSlider slider) {
 
-            tuitionfee_rang_text.setText(slider.getValues().toString());
-        }
-    });
-
-    tuitionfee_slider.addOnChangeListener(new RangeSlider.OnChangeListener() {
-        @SuppressLint("RestrictedApi")
-        @Override
-        public void onValueChange(@NonNull RangeSlider slider, float value, boolean fromUser) {
 
         }
     });
+
 
 
         appliation_rang_slider.addOnSliderTouchListener(new RangeSlider.OnSliderTouchListener() {

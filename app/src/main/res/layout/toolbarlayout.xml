@@ -20,8 +20,8 @@
 
         <ImageView
             android:id="@+id/backbutton"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:srcCompat="@drawable/arrow_back_ios"
             app:tint="@color/secondarycolor"
             tools:layout_editor_absoluteX="16dp"

@@ -21,18 +21,31 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <TextView
-
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Programme selection"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="Programme selection"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -69,15 +82,28 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
 
+                <LinearLayout
                     android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="institution"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="institution"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -115,15 +141,27 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <TextView
-
+                <LinearLayout
                     android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Campus"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="Campus"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/campusautocampletelayout"
@@ -163,25 +201,38 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="20dp">
 
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
+
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
 
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Intake"
+                            android:orientation="horizontal">
 
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:fontFamily="@font/poppins"
+                                android:text="Intake"
+                                android:textColor="@color/text_color"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="1dp"
+                                android:src="@drawable/required_icon" />
+                        </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/intakelayout"
@@ -228,14 +279,26 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
-
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Year"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:fontFamily="@font/poppins"
+                                android:text="Year"
+                                android:textColor="@color/text_color"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="1dp"
+                                android:src="@drawable/required_icon" />
+                        </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/yearlayout"
@@ -284,7 +347,8 @@
                 android:id="@+id/divider5"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/hint_color" />
+                android:layout_marginTop="20dp"
+                android:background="@color/iconcolor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -303,18 +367,29 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="10dp"
+                        android:layout_margin="15dp"
                         android:orientation="vertical">
 
-                        <TextView
-
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/poppins"
-                            android:text="Selected Course"
-                            android:textColor="@color/text_color"
-                            android:textSize="16sp" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:fontFamily="@font/poppins"
+                                android:text="Selected Course"
+                                android:textColor="@color/text_color"
+                                android:textSize="16sp"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="1dp"
+                                android:src="@drawable/required_icon" />
+                        </LinearLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
