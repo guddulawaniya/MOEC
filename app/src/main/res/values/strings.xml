@@ -7,10 +7,10 @@
     <string name="mobile_number">Mobile Number</string>
     <string name="study_aboard">Study Aboard</string>
     <string name="policy_text"><![CDATA[By clicking , I accept the Term & \nCondition and Privacy Policy]]></string>
-    <string name="email_address">Email Address</string>
+    <string name="email_address">Email</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="date_of_birth">Date of Birth</string>
+    <string name="date_of_birth">DOB</string>
     <string name="country">Country</string>
     <string name="state">State</string>
     <string name="city">City</string>

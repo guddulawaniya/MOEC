@@ -10,14 +10,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,13 +42,11 @@ public class preference_Actvity extends AppCompatActivity  {
     StepView stepViewProgressBar;
     int stepcount = 1;
 
-    LinearLayout page1, page2, page3, page4, page5, page6;
+    LinearLayout page1, page2, page5, page6;
     Button nextbutton;
 
     page6 page6class;
     page5 page5class;
-    page3 page3class;
-    page4 page4class;
     page2 page2class;
     page1 page1class;
 
@@ -68,8 +64,6 @@ public class preference_Actvity extends AppCompatActivity  {
 
         page1 = findViewById(R.id.page1);
         page2 = findViewById(R.id.page2);
-        page3 = findViewById(R.id.page3);
-        page4 = findViewById(R.id.page4);
         page5 = findViewById(R.id.page5);
         page6 = findViewById(R.id.page6);
 
@@ -78,8 +72,6 @@ public class preference_Actvity extends AppCompatActivity  {
 
         page1class = new page1();
         page2class = new page2();
-        page3class = new page3();
-        page4class = new page4();
         page5class = new page5();
         page6class = new page6();
 
@@ -87,7 +79,6 @@ public class preference_Actvity extends AppCompatActivity  {
 
         page1class.setdataonRecyclerview();
         page2class.setdataonRecyclerview();
-        page3class.onclickbuttobn();
         page5class.cardsClickAndShow_layout();
 
 
@@ -160,6 +151,7 @@ public class preference_Actvity extends AppCompatActivity  {
     {
         if (page1.getVisibility() == View.VISIBLE) {
 
+
             if (page2class.checkselectcountry)
             {
                 page2class.checkselectcountry = false;
@@ -185,17 +177,7 @@ public class preference_Actvity extends AppCompatActivity  {
             }
 
 
-        }
-        else if (page3.getVisibility() == View.VISIBLE) {
-            progressbar(stepcount);
-            page3class.page3dataset();
-
-        } else if (page4.getVisibility() == View.VISIBLE) {
-            page4class.page4selectstudy();
-
         } else if (page5.getVisibility() == View.VISIBLE) {
-
-
 
             if (page5class.checkBox.isChecked())
             {
@@ -285,15 +267,15 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
     void progressbar(int stepcount) {
-        index.setText(stepcount + " of 7 ");
+        index.setText(stepcount + " of 4 ");
         stepViewProgressBar.getState()
                 .animationType(StepView.ANIMATION_LINE)
                 .nextStepLineColor(ContextCompat.getColor(getApplicationContext(), R.color.background_blue_shadew))
                 .doneStepMarkColor(ContextCompat.getColor(getApplicationContext(), R.color.white))
-                .stepsNumber(7)
+                .stepsNumber(5)
                 .nextStepCircleEnabled(false)
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
-                .stepLineWidth(6)
+                .stepLineWidth(5)
                 .commit();
         stepViewProgressBar.go(stepcount, true);
         changelayout(stepcount);
@@ -308,36 +290,24 @@ public class preference_Actvity extends AppCompatActivity  {
                 page1.setVisibility(View.VISIBLE);
                 page2.setVisibility(View.GONE);
 
+
                 break;
             case 2:
                 page1.setVisibility(View.GONE);
                 page2.setVisibility(View.VISIBLE);
-                page3.setVisibility(View.GONE);
-                break;
-            case 3:
-
-                page2.setVisibility(View.GONE);
-                page3.setVisibility(View.VISIBLE);
-                page4.setVisibility(View.GONE);
-                break;
-            case 4:
-
-                page3.setVisibility(View.GONE);
-                page4.setVisibility(View.VISIBLE);
                 page5.setVisibility(View.GONE);
-
                 break;
-            case 5:
-                page4.setVisibility(View.GONE);
+
+            case 3:
+                page2.setVisibility(View.GONE);
                 page5.setVisibility(View.VISIBLE);
                 page6.setVisibility(View.GONE);
                 break;
-            case 6:
+            case 4:
                 page5.setVisibility(View.GONE);
                 page6.setVisibility(View.VISIBLE);
-
                 break;
-            case 7:
+            case 5:
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
                 break;
@@ -354,12 +324,13 @@ public class preference_Actvity extends AppCompatActivity  {
 
         if (stepcount == 0) {
             super.onBackPressed();
-        } else if (stepcount < 8 && stepcount > 0) {
+        }
+        else if (stepcount < 5 && stepcount > 0) {
+
 
             progressbar(stepcount);
 
         }
-
 
     }
 
@@ -379,6 +350,8 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
             mostpreferedRecyclerview.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+
+
 
             onClickInterface  onclickInterface = new onClickInterface() {
                 @Override
@@ -479,247 +452,7 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
 
-    // page number 3 class
-
-    class page3 {
-
-
-        RadioButton button1 = findViewById(R.id.radioButtonhigh);
-        RadioButton button2 = findViewById(R.id.radioButtoninter);
-        RadioButton button3 = findViewById(R.id.radioButtonunder);
-        RadioButton button4 = findViewById(R.id.radioButtongraduate);
-        RadioButton button5 = findViewById(R.id.radioButtonpost);
-        RadioButton  button6 = findViewById(R.id.radioButtonmaster);
-
-
-        // finding ids textview
-        TextInputEditText  highper = findViewById(R.id.highpercent);
-        TextInputEditText  interper = findViewById(R.id.interpercent);
-        TextInputEditText  underper = findViewById(R.id.undergraduatepercent);
-        TextInputEditText graduateper = findViewById(R.id.graduatepercent);
-        TextInputEditText postper = findViewById(R.id.postpercent);
-        TextInputEditText  masterper = findViewById(R.id.masterpercent);
-
-
-
-        // layout textfields
-        TextInputLayout highperlayout = findViewById(R.id.highpercentlayout);
-        TextInputLayout  interperlayout = findViewById(R.id.interpercentlayout);
-        TextInputLayout  underperlayout = findViewById(R.id.undergraduatepercentlayout);
-        TextInputLayout  graduateperlayout = findViewById(R.id.graduatepercentlayout);
-        TextInputLayout postperlayout = findViewById(R.id.postpercentlayout);
-        TextInputLayout  masterperlayout = findViewById(R.id.masterpercentlayout);
-
-
-        void show_and_hide_layout(int id) {
-            highperlayout.setVisibility(View.GONE);
-            interperlayout.setVisibility(View.GONE);
-            underperlayout.setVisibility(View.GONE);
-            graduateperlayout.setVisibility(View.GONE);
-            postperlayout.setVisibility(View.GONE);
-            masterperlayout.setVisibility(View.GONE);
-
-            switch (id) {
-                case 1:
-                    highperlayout.setVisibility(View.VISIBLE);
-                    break;
-                case 2:
-                    interperlayout.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    underperlayout.setVisibility(View.VISIBLE);
-                    break;
-                case 4:
-                    graduateperlayout.setVisibility(View.VISIBLE);
-                    break;
-                case 5:
-                    postperlayout.setVisibility(View.VISIBLE);
-                    break;
-                case 6:
-                    masterperlayout.setVisibility(View.VISIBLE);
-                    break;
-            }
-
-        }
-
-        void onclickbuttobn()
-        {
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    show_and_hide_layout(1);
-                }
-            });
-            button2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    show_and_hide_layout(2);
-                }
-            });
-            button3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    show_and_hide_layout(3);
-
-                }
-            });
-            button4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    show_and_hide_layout(4);
-
-                }
-            });
-            button5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    show_and_hide_layout(5);
-
-                }
-            });
-            button6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    show_and_hide_layout(6);
-
-                }
-            });
-
-        }
-
-
-
-        void page3dataset() {
-            if (button1.isChecked() || button2.isChecked() ||
-                    button3.isChecked() || button4.isChecked() || button5.isChecked() || button6.isChecked())
-            {
-                if (button1.isChecked()) {
-
-
-                   saveradiobuttondatapage3(button1, highper, highperlayout);
-                   page4class.page4setdata(1);
-                }
-                if (button2.isChecked()) {
-                    saveradiobuttondatapage3(button2, interper, interperlayout);
-                    page4class.page4setdata(2);
-                }
-                if (button3.isChecked()) {
-
-                    page4class.page4setdata(3);
-                    saveradiobuttondatapage3(button3, underper, underperlayout);
-                }
-                if (button4.isChecked()) {
-                    page4class.page4setdata(3);
-                    saveradiobuttondatapage3(button4, graduateper, graduateperlayout);
-                }
-                if (button5.isChecked()) {
-                    saveradiobuttondatapage3(button5, postper, postperlayout);
-
-                }
-                if (button6.isChecked()) {
-                    saveradiobuttondatapage3(button6, masterper, masterperlayout);
-                }
-            }
-            else {
-                Toast.makeText(getApplicationContext(), "Please select Qualification", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-
-        void saveradiobuttondatapage3(RadioButton text, TextInputEditText percentage,TextInputLayout layout)
-        {
-            String radiotext = text.getText().toString();
-            String percentageText  = percentage.getText().toString();
-
-            if (!percentageText.isEmpty()) {
-
-                SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
-                editor.putString("percentage", percentageText);
-                editor.putString("educationtext", radiotext);
-                editor.commit();
-                stepcount++;
-                progressbar(stepcount);
-            }
-            else {
-                page5class.errorShowFunction(layout,percentage);
-
-            }
-        }
-
-
-    }
-
-
-
-    // page number 4 class
-
-    class page4{
-
-        RadioButton interradio = findViewById(R.id.radioButtoninterpage4);
-        RadioButton graduateradio = findViewById(R.id.radioButtongraduatepage4);
-        RadioButton postradio = findViewById(R.id.radioButtonpostpage4);
-        RadioButton masterradio = findViewById(R.id.radioButtonmasterpage4);
-
-
-        void page4selectstudy() {
-            if (interradio.isChecked()) {
-
-                savedata_on_preference(interradio);
-
-            } else if (graduateradio.isChecked()) {
-                savedata_on_preference(graduateradio);
-
-            } else if (postradio.isChecked()) {
-                savedata_on_preference(postradio);
-
-            }else if (masterradio.isChecked()) {
-                savedata_on_preference(masterradio);
-
-            } else {
-
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Please Select Study ", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 100, 50);
-                toast.show();
-            }
-        }
-        void savedata_on_preference(RadioButton radiotext)
-        {
-            String text = radiotext.getText().toString();
-            SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
-            editor.putString("goEducation", text);
-            editor.commit();
-            stepcount++;
-            progressbar(stepcount);
-        }
-        void page4setdata(int i)
-        {
-            switch (i) {
-                case 1:
-                    interradio.setVisibility(View.VISIBLE);
-                    graduateradio.setVisibility(View.VISIBLE);
-                    break;
-                case 2:
-
-                    interradio.setVisibility(View.GONE);
-
-                    break;
-                case 3:
-                    interradio.setVisibility(View.GONE);
-                    graduateradio.setVisibility(View.GONE);
-                    break;
-                default:
-            }
-        }
-
-    }
-
-
-
-
-    // Page number 5 class
-
+    // page number 5 class
     class page5 {
 
         // images cards

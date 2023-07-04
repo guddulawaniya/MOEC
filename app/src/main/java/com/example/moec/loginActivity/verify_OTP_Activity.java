@@ -80,15 +80,8 @@ public class verify_OTP_Activity extends AppCompatActivity {
             }
         });
 
-        if (id==1)
-        {
             maintitle.setText("Please verify Mobile Number");
             showmessage.setText("We will send you an One Time Password on this number +91- "+number);
-        }else
-        {
-            showmessage.setText("We will send you an One Time Password on this Email Address "+email);
-            maintitle.setText("Please Verify Email Address");
-        }
 
 
 
@@ -104,19 +97,8 @@ public class verify_OTP_Activity extends AppCompatActivity {
 
                 if (sendotp.equals(enterotpinboxs) && nt.isConnected())
                 {
-
-                    if (id==1)
-                    {
-                        startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
-                        finish();
-                    }
-                    else
-                    {
-                        startActivity(new Intent(verify_OTP_Activity.this, login_Activity_with_mobile_no.class));
-                        finish();
-
-                    }
-
+                    startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
+                    finish();
 
 
                     Toast.makeText(verify_OTP_Activity.this, "Verified", Toast.LENGTH_SHORT).show();

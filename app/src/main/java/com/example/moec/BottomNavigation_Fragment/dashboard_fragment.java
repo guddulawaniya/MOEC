@@ -70,7 +70,7 @@ public class dashboard_fragment extends Fragment {
         CardView setpreference_student = view.findViewById(R.id.setpreference_student);
 
 
-        university_list.add(new Univerity_Course_Module(R.drawable.acadia_universiti_logo,"Acadia University","Course37+"));
+        university_list.add(new Univerity_Course_Module(R.drawable.worcester_university,"Worcester University","Course37+"));
         university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
         university_list.add(new Univerity_Course_Module(R.drawable.acadia_universiti_logo,"Acadia University","Course37+"));
         university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));

@@ -1,8 +1,6 @@
 package com.example.moec;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -102,9 +100,15 @@ public class profile_dashboard extends AppCompatActivity {
         userpic  = findViewById(R.id.setimage);
 
         editimage.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
-                showImagePicDialog();
+                if (!checkCameraPermission()) {
+                    requestCameraPermission();
+
+                } else {
+                    pickFromGallery();
+                }
             }
         });
 
@@ -152,33 +156,33 @@ public class profile_dashboard extends AppCompatActivity {
 
 
 
-    private void showImagePicDialog() {
-        String options[] = {"Camera", "Gallery"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick Image From");
-
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) {
-                    if (!checkCameraPermission()) {
-                       requestCameraPermission();
-
-                    } else {
-                        pickFromGallery();
-                    }
-                } else if (which == 1) {
-                    if (!checkStoragePermission()) {
-                        requestStoragePermission();
-                    } else {
-                        pickFromGallery();
-                    }
-                }
-            }
-        });
-        builder.create().show();
-    }
+//    private void showImagePicDialog() {
+//        String options[] = {"Camera", "Gallery"};
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Pick Image From");
+//
+//        builder.setItems(options, new DialogInterface.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.M)
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if (which == 0) {
+//                    if (!checkCameraPermission()) {
+//                       requestCameraPermission();
+//
+//                    } else {
+//                        pickFromGallery();
+//                    }
+//                } else if (which == 1) {
+//                    if (!checkStoragePermission()) {
+//                        requestStoragePermission();
+//                    } else {
+//                        pickFromGallery();
+//                    }
+//                }
+//            }
+//        });
+//        builder.create().show();
+//    }
 
     // checking storage permissions
     private Boolean checkStoragePermission() {

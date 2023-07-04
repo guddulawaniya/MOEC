@@ -91,7 +91,6 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:textColorHint="@color/hint_color"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
@@ -154,7 +153,6 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:fontFamily="@font/poppins"
                             android:textColorHint="@color/hint_color"
                             app:boxCornerRadiusBottomEnd="8dp"
@@ -205,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:gravity="top"
-                        android:text="@string/email_address"
+                        android:text="Mobile No"
                         android:textColor="@color/text_color"
                         android:textSize="14sp" />
 
@@ -217,10 +215,10 @@
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/emailaddresslayout"
+                    android:id="@+id/mobilenumberlayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
@@ -235,18 +233,155 @@
 
                     <!--this is the actual edit text which takes the input-->
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/emailaddress"
+                        android:id="@+id/mobilenumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
-                        android:hint="Example@gmail.com"
-                        android:inputType="textEmailAddress"
+                        android:hint="+91-xxxxxxxx"
+                        android:inputType="numberDecimal"
                         android:padding="10dp"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/iconcolor"
                         android:textSize="14sp" />
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+
                 </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="@string/date_of_birth"
+                                android:textColor="@color/text_color"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_marginStart="1dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/required_icon"/>
+                        </LinearLayout>
+
+
+
+
+                            <!--this is the actual edit text which takes the input-->
+                            <com.google.android.material.textview.MaterialTextView
+
+                                android:id="@+id/dateofbirth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:hint="DD-MM-YYYY"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/newtextbg"
+                                android:inputType="date"
+                                android:padding="12dp"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/iconcolor"
+                                android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:text="Gender"
+                                android:textColor="@color/text_color"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_marginStart="1dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/required_icon"/>
+                        </LinearLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/genderlayout"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:boxCornerRadiusBottomEnd="8dp"
+                            app:boxCornerRadiusBottomStart="8dp"
+                            app:boxCornerRadiusTopEnd="8dp"
+                            app:boxCornerRadiusTopStart="8dp"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxStrokeColor="@color/primarycolor"
+                            app:endIconDrawable="@drawable/arrow_down"
+                            app:endIconTint="@color/hint_color"
+                            app:hintEnabled="false">
+
+
+                            <AutoCompleteTextView
+                                android:id="@+id/gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:inputType="textAutoComplete"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/iconcolor"
+                                android:textSize="14sp"
+                                android:hint="Select"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+
+
+
+
+
+                </LinearLayout>
+
+
 
 
 
@@ -255,40 +390,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal"
                     android:layout_weight="1">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
                         android:fontFamily="@font/poppins"
-                        android:text="@string/date_of_birth"
+                        android:text="Pin Code"
                         android:textColor="@color/text_color"
                         android:textSize="14sp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_marginStart="1dp"
+
                         android:layout_height="wrap_content"
                         android:src="@drawable/required_icon"/>
                 </LinearLayout>
-
-
-
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/dateofbirthlayout"
+                    android:id="@+id/pincodelayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textColorHint="@color/hint_color"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
-                    app:endIconDrawable="@drawable/calendar_month"
-                    app:endIconTint="@color/hint_color"
                     app:boxCornerRadiusTopEnd="8dp"
                     app:boxCornerRadiusTopStart="8dp"
-                    app:endIconMode="custom"
                     app:boxStrokeColor="@color/primarycolor"
                     app:boxStrokeErrorColor="@color/error_color"
                     app:errorIconTint="@color/error_color"
@@ -298,34 +428,42 @@
 
                     <!--this is the actual edit text which takes the input-->
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dateofbirth"
+                        android:id="@+id/pincode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
-                        android:hint="@string/date_of_birth"
-                        android:inputType="none"
-                        android:singleLine="true"
+                        android:hint="Enter Pin Code"
+                        android:inputType="numberDecimal"
+                        android:maxLength="6"
                         android:padding="10dp"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/iconcolor"
                         android:textSize="14sp" />
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+
                 </com.google.android.material.textfield.TextInputLayout>
+
 
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal"
                     android:layout_weight="1">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
                         android:fontFamily="@font/poppins"
-                        android:text="@string/country"
+                        android:text="Course Level"
                         android:textColor="@color/text_color"
                         android:textSize="14sp" />
 
@@ -335,303 +473,39 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/required_icon"/>
                 </LinearLayout>
-
-
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/countrylayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
+                    android:id="@+id/courselevellayout"
                     android:layout_height="wrap_content"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
+                    android:layout_marginBottom="30dp"
                     app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
                     app:boxBackgroundColor="@color/white"
+                    app:boxCornerRadiusTopStart="8dp"
                     app:boxStrokeColor="@color/primarycolor"
                     app:endIconDrawable="@drawable/arrow_down"
                     app:endIconTint="@color/hint_color"
                     app:hintEnabled="false">
 
-
                     <AutoCompleteTextView
-                        android:id="@+id/country"
+                        android:id="@+id/courselevel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:dropDownSelector="@color/background_blue_shadew"
                         android:fontFamily="@font/poppins"
-                        android:inputType="none"
-
+                        android:inputType="textAutoComplete"
                         android:padding="10dp"
-                        android:autoSizeMinTextSize="12dp"
-                        android:autoSizeMaxTextSize="16dp"
-
+                        android:singleLine="true"
                         android:textColor="@color/black"
                         android:textColorHint="@color/iconcolor"
                         android:textSize="14sp"
-                        android:hint="Select"
-                       />
+                        android:hint="Choose.."
+                        />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_weight="1">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-
-                                android:fontFamily="@font/poppins"
-                                android:text="@string/state"
-                                android:textColor="@color/text_color"
-                                android:textSize="14sp" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_marginStart="1dp"
-
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/required_icon"/>
-                        </LinearLayout>
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:boxCornerRadiusBottomEnd="8dp"
-                            android:id="@+id/statelayout"
-                            app:boxCornerRadiusBottomStart="8dp"
-                            app:boxCornerRadiusTopEnd="8dp"
-                            app:boxBackgroundColor="@color/white"
-                            app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor"
-                            app:endIconDrawable="@drawable/arrow_down"
-                            app:endIconTint="@color/hint_color"
-                            app:hintEnabled="false">
-
-
-                            <AutoCompleteTextView
-                                android:id="@+id/state"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:dropDownSelector="@color/background_blue_shadew"
-                                android:fontFamily="@font/poppins"
-                                android:inputType="none"
-                                android:singleLine="true"
-                                android:padding="10dp"
-                                android:textColor="@color/black"
-                                android:textColorHint="@color/iconcolor"
-                                android:textSize="14sp"
-                                android:hint="Select"
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_weight="1">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:fontFamily="@font/poppins"
-                                android:text="@string/city"
-                                android:textColor="@color/text_color"
-                                android:textSize="14sp" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_marginStart="1dp"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/required_icon"/>
-                        </LinearLayout>
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:boxCornerRadiusBottomEnd="8dp"
-                            android:layout_weight="1"
-                            app:boxCornerRadiusBottomStart="8dp"
-                            app:boxCornerRadiusTopEnd="8dp"
-                            app:boxBackgroundColor="@color/white"
-                            android:id="@+id/citylayout"
-                            app:boxCornerRadiusTopStart="8dp"
-                            app:boxStrokeColor="@color/primarycolor"
-                            app:endIconDrawable="@drawable/arrow_down"
-                            app:endIconTint="@color/hint_color"
-                            app:hintEnabled="false">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/city"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:dropDownSelector="@color/background_blue_shadew"
-                                android:fontFamily="@font/poppins"
-                                android:inputType="none"
-                                android:padding="10dp"
-                                android:singleLine="true"
-                                android:textColor="@color/black"
-                                android:textColorHint="@color/iconcolor"
-                                android:textSize="14sp"
-                                android:hint="Select"
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-
-
-
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="2dp"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="Gender"
-                        android:textColor="@color/text_color"
-                        android:textSize="14sp" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_marginStart="1dp"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/required_icon"/>
-                </LinearLayout>
-
-                <RadioGroup
-                    android:id="@+id/gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:orientation="horizontal">
-
-
-                    <RadioButton
-                        android:id="@+id/radioButton1"
-                        style="@style/Widget.App.Radio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:text="Male"
-
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton2"
-                        style="@style/Widget.App.Radio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:text="Female"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-
-                    <RadioButton
-                        android:id="@+id/radioButton3"
-                        style="@style/Widget.App.Radio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/poppins"
-                        android:text="Other"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </RadioGroup>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Referral Code"
-                    android:textColor="@color/text_color"
-                    android:textSize="14sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/referralcodelayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="30dp"
-
-                    app:hintEnabled="false"
-                    android:textColorHint="@color/hint_color"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:boxStrokeErrorColor="@color/error_color"
-                    app:errorIconTint="@color/error_color"
-                    app:helperTextTextColor="@color/error_color"
-                    app:boxStrokeColor="@color/primarycolor"
-                    app:hintTextColor="@color/primarycolor"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7"
-                    app:prefixTextColor="@color/primarycolor">
-
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/referralcode"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="30dp"
-                        android:fontFamily="@font/poppins"
-                        android:hint="@string/referral_code"
-                        android:padding="10dp"
-                        android:textColor="@color/text_color"
-                        android:textColorHint="@color/iconcolor"
-                        android:textSize="14sp" />
-                </com.google.android.material.textfield.TextInputLayout>
 
 
             </LinearLayout>

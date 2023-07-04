@@ -27,7 +27,6 @@ public class basic_details_activity extends AppCompatActivity {
         TextView emailaddress = findViewById(R.id.emailaddress);
         TextView dob = findViewById(R.id.dob);
         TextView gender = findViewById(R.id.gender);
-        TextView maritalstatus = findViewById(R.id.maritalstatus);
         TextView country = findViewById(R.id.country);
         TextView state = findViewById(R.id.state);
         TextView city = findViewById(R.id.city);

@@ -86,7 +86,7 @@
                 android:layout_height="25dp"
                 android:layout_gravity="right"
                 android:layout_marginEnd="5dp"
-                android:backgroundTint="@color/background_blue_shadew"
+                android:backgroundTint="@color/primarycolor"
                 android:visibility="visible"
                 app:cardCornerRadius="50dp"
                 app:layout_constraintEnd_toEndOf="@+id/ringlinear"
