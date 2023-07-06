@@ -252,6 +252,67 @@
                     </LinearLayout>
 
                 </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="top"
+                        android:text="Email"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailaddresslayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColorHint="@color/hint_color"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxStrokeColor="@color/primarycolor"
+                    app:boxStrokeErrorColor="@color/error_color"
+                    app:errorIconTint="@color/error_color"
+                    app:helperTextTextColor="@color/error_color"
+                    app:hintEnabled="false"
+                    tools:ignore="MissingConstraints">
+
+                    <!--this is the actual edit text which takes the input-->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:hint="Example@gmail.com"
+                        android:inputType="numberDecimal"
+                        android:padding="10dp"
+                        android:textColor="@color/text_color"
+                        android:textColorHint="@color/iconcolor"
+                        android:textSize="14sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
 
