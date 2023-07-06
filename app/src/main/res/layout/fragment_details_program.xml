@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Fragments.details_fragment_program">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald"
+                android:text="Campus"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins"
+                android:text="Normal"
+                android:textColor="@color/text_color"
+                app:chipBackgroundColor="#DDE8FA"
+                app:chipCornerRadius="50dp"
+                app:chipEndPadding="15dp"
+                app:chipStartPadding="15dp"
+                app:chipStrokeColor="#DDE8FA" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/oswald"
+                android:text="Tuition Fee"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="USD $39855"
+                android:textColor="@color/hint_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/oswald"
+                android:text="Application Fee"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="USD $0"
+                android:textColor="@color/hint_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/oswald"
+                android:text="Intakes"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:singleLine="true">
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Jan"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Feb"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Mar"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Apr"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="May"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Jun"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Jul"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Aug"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Sep"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Oct"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Nov"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/poppins"
+                            android:text="Dec"
+                            android:textColor="@color/text_color"
+                            app:chipBackgroundColor="#DDE8FA"
+                            app:chipCornerRadius="50dp"
+                            app:chipEndPadding="15dp"
+                            app:chipStartPadding="15dp"
+                            app:chipStrokeColor="#DDE8FA" />
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </com.google.android.material.chip.ChipGroup>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/oswald"
+                android:text=" Open Intakes  "
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="48 Months"
+                android:textColor="@color/hint_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/oswald"
+                android:text=" ETS  "
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="IELTS-5, TOEFL-50,PTE-41,Duolingo-75"
+                android:textColor="@color/hint_color"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/websitelinerlayout"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/oswald"
+                        android:text=" Official Website  "
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="https://www.meridean.org/"
+                        android:textColor="@color/primarycolor"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <com.google.android.material.chip.Chip
+
+                    android:id="@+id/visitwebsitebutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:minHeight="40dp"
+                    android:text="visit"
+                    android:textColor="@color/text_color"
+                    android:textSize="16dp"
+                    app:chipBackgroundColor="@color/white"
+                    app:chipCornerRadius="50dp"
+                    app:chipEndPadding="15dp"
+                    app:chipStartPadding="15dp"
+                    app:chipStrokeColor="#DDE8FA" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/divider_color" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/selecttextbg"
+                    android:padding="15dp"
+                    android:src="@drawable/favorite_icon"
+                    app:tint="@color/black" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/primarycolor"
+                    android:fontFamily="@font/oswald"
+                    android:text="Apply for this program" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

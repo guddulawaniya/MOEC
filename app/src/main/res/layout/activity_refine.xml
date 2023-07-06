@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Refine_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbarlayout" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/primarycolor"
+                android:fontFamily="@font/poppins"
+                android:paddingStart="20dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:text="Fliter data in Recommended Programs,"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:elevation="8dp"
+                android:gravity="center_vertical"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="Fliter By"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="Country"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="State"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:fontFamily="@font/poppins"
+                        android:text="Institution Type"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:singleLine="true">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:gravity="center"
+                                android:text="All"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EAEAEA"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp"
+                                app:chipStrokeColor="@color/iconcolor"
+                                app:chipSurfaceColor="@color/white" />
+
+                            <com.google.android.material.chip.Chip
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/poppins"
+                                android:gravity="center"
+                                android:text="School"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EAEAEA"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/poppins"
+                                android:gravity="center"
+                                android:text="University"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EAEAEA"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/poppins"
+                                android:gravity="center"
+                                android:text="College"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EAEAEA"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </com.google.android.material.chip.ChipGroup>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="Institute"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Is Post graduate work permit available?"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:singleLine="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:fontFamily="@font/poppins"
+                        android:gravity="center"
+                        android:text="All"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="#EAEAEA"
+                        app:chipCornerRadius="50dp"
+                        app:chipEndPadding="16dp"
+                        app:chipMinHeight="40dp"
+                        app:chipStartPadding="16dp" />
+
+                    <com.google.android.material.chip.Chip
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="center"
+                        android:text="Yes"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="#EAEAEA"
+                        app:chipCornerRadius="50dp"
+                        app:chipEndPadding="16dp"
+                        app:chipMinHeight="40dp"
+                        app:chipStartPadding="16dp" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins"
+                        android:gravity="center"
+
+                        android:text="No"
+                        android:textColor="@color/text_color"
+                        app:chipBackgroundColor="#EAEAEA"
+                        app:chipCornerRadius="50dp"
+                        app:chipEndPadding="16dp"
+                        app:chipMinHeight="40dp"
+                        app:chipStartPadding="16dp" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="Study Level"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="Program Type"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="Intake"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:fontFamily="@font/poppins"
+                        android:text="Duration"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
+
+
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleLine="true"
+                    android:scrollbars="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:scrollbars="none"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:gravity="center"
+                                android:text="All"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EFEFEF"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:gravity="center"
+                                android:text="Less than 2 Years"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EFEFEF"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:gravity="center"
+                                android:text="More than 4 Years"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EFEFEF"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:gravity="center"
+                                android:text="4 Years"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EFEFEF"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:gravity="center"
+                                android:text="3 Years"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EFEFEF"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:gravity="center"
+                                android:text="2 Years"
+                                android:textColor="@color/text_color"
+                                app:chipBackgroundColor="#EFEFEF"
+                                app:chipCornerRadius="50dp"
+                                app:chipEndPadding="16dp"
+                                app:chipMinHeight="40dp"
+                                app:chipStartPadding="16dp" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </com.google.android.material.chip.ChipGroup>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+
+                            android:fontFamily="@font/poppins"
+                            android:text="English Test Type"
+                            android:textColor="@color/text_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="1dp"
+
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/required_icon"/>
+                    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxCornerRadiusBottomEnd="8dp"
+
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:boxStrokeColor="@color/primarycolor"
+                        app:endIconDrawable="@drawable/arrow_down"
+                        app:endIconTint="@color/hint_color"
+                        app:hintEnabled="false">
+
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:dropDownSelector="@color/background_blue_shadew"
+                            android:fontFamily="@font/poppins"
+                            android:inputType="none"
+                            android:singleLine="true"
+                            android:padding="10dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp"
+                            android:hint="Select"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:fontFamily="@font/poppins"
+                        android:text="Tuition Fee"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tuitionfee_rang_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="right"
+                    android:text="400 - 199341"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+                <com.google.android.material.slider.RangeSlider
+
+                    android:id="@+id/tuition_rangslider"
+
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    app:values="@array/initial_slider_values"
+                    android:valueFrom="0.0"
+
+                    android:valueTo="100.0" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:fontFamily="@font/poppins"
+                        android:text="Application Fee"
+                        android:textColor="@color/text_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="1dp"
+
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/required_icon"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/appliation_rang_slider_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="right"
+                    android:text="0 - 1000"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+                <com.google.android.material.slider.RangeSlider
+
+                    android:id="@+id/appliation_rang_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:values="@array/initial_slider_values"
+                    android:valueFrom="0.0"
+                    android:valueTo="100.0" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="15dp"
+                    android:backgroundTint="#98B9F1"
+                    android:elevation="9dp"
+                    android:fontFamily="@font/oswald"
+                    android:text="0 Record Found"
+                    android:textColor="@color/white" />
+
+                <Button
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/primarycolor"
+                    android:elevation="9dp"
+                    android:fontFamily="@font/oswald"
+                    android:text="Show Progrrams"
+                    android:textColor="@color/white" />
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

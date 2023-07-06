@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="secondarycolor">#ab2626</color>
+    <color name="primarycolor">#1a519e</color>
+    <color name="background_blue_shadew">#e7eef6</color>
+    <color name="heading_color">#333</color>
+    <color name="text_color">#4c4c4c</color>
+    <color name="hint_color">#818181</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="iconcolor">#C1BEBE</color>
+    <color name="divider_color">#E6E6E6</color>
+    <color name="background_color">#FFFFFFFF</color>
+    <color name="error_color">#EA0606</color>
+    <color name="select_step_progress_color">#ffc107</color>
+    <color name="done_step_item">#2f8d46</color>
+    <color name="nest_Step_item">#b3b3b3</color>
+</resources>

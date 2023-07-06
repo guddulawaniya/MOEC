@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--styling the progress bar-->
+    <shape
+        android:shape="line"
+        android:thickness="20dp">
+    </shape>
+
+</shape>

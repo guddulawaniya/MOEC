@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="?attr/actionButtonStyle"
+    android:clipToPadding="false"
+    android:id="@+id/notification"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/notifications_icon"
+        app:tint="@color/primarycolor" />
+
+    <TextView
+        android:id="@+id/notification_badge"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right|end|top"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/badge_background"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="99+"
+        android:textColor="@android:color/white"
+        android:textSize="9sp" />
+</LinearLayout>

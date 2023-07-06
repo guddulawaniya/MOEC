@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">MOEC</string>
+    <string name="registration">Registration</string>
+    <string name="change_number">Change Number</string>
+    <string name="login_hint_text"><![CDATA[Enter your Mobile number & we\'ll send you a verification code]]></string>
+    <string name="login_heading">Login or Create account</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="study_aboard">Study Aboard</string>
+    <string name="policy_text"><![CDATA[By clicking , I accept the Term & \nCondition and Privacy Policy]]></string>
+    <string name="email_address">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="date_of_birth">DOB</string>
+    <string name="country">Country</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="referral_code">Referral Code</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="writing">Writing</string>
+    <string name="reading">Reading</string>
+    <string name="listening">Listening</string>
+    <string name="speaking">Speaking</string>
+    <string name="overall">Overall</string>
+    <string name="percentage">Percentage (%)</string>
+    <string name="i_will_share_the_details_later">I will share the details later</string>
+    <string name="loginview_descripation"><![CDATA[Meridean Overseas Education is a leading study abroad agency, dedicated to providing students with comprehensive support and guidance on studying abroad programs in UK, USA, Canada, Australia & Europe.]]></string>
+
+    <array name="initial_slider_values">
+        <item>20.0</item>
+        <item>70.0</item>
+    </array>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
