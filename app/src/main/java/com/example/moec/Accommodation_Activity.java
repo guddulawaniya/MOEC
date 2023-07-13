@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 public class Accommodation_Activity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public class Accommodation_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        config();
         setContentView(R.layout.activity_accommodation);
 
 
@@ -166,6 +169,20 @@ public class Accommodation_Activity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+    }
+    private void config() {
+        findViewById(android.R.id.content).setTransitionName("fab");
+
+        setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
+        MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.addTarget(android.R.id.content);
+        transform.setDuration(500);
+
+        getWindow().setSharedElementEnterTransition(transform);
+        getWindow().setSharedElementReturnTransition(transform);
+
+
 
     }
 

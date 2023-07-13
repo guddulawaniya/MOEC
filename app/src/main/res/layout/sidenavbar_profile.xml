@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@color/primarycolor">
+    android:background="@color/primarycolor"
+    app:layoutDescription="@xml/sidenavbar_profile_scene">
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,6 +29,7 @@
                 android:id="@+id/profilelinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
@@ -98,6 +101,7 @@
                     android:id="@+id/profiledetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:drawableStart="@drawable/person_outline_24"
                     android:drawableEnd="@drawable/arrow_right"
                     android:drawablePadding="15dp"
@@ -113,6 +117,7 @@
                     android:id="@+id/sideapplication"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:layout_marginTop="15dp"
                     android:drawableStart="@drawable/application_icon_svg"
                     android:drawableEnd="@drawable/arrow_right"
@@ -129,6 +134,7 @@
                     android:id="@+id/sidebarPreferenece"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:layout_marginTop="15dp"
                     android:drawableStart="@drawable/star_icon"
                     android:drawableEnd="@drawable/arrow_right"
@@ -145,6 +151,7 @@
                     android:id="@+id/sidedocument_upload"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     android:layout_marginTop="15dp"
                     android:drawableStart="@drawable/documents"
                     android:drawableEnd="@drawable/arrow_right"
@@ -198,7 +205,6 @@
                 android:background="@color/white" />
 
 
-
             <LinearLayout
                 android:id="@+id/refer_friends"
                 android:layout_width="match_parent"
@@ -235,8 +241,8 @@
 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Copy &amp; Share Code"
                         android:layout_marginTop="5dp"
+                        android:text="Copy &amp; Share Code"
                         android:textColor="@color/iconcolor"
                         android:textSize="12dp" />
 

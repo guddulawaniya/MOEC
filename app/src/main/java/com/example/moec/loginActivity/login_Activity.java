@@ -3,6 +3,7 @@ package com.example.moec.loginActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.moec.Config;
 import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.MainActivity;
 import com.example.moec.R;
@@ -28,20 +30,22 @@ import com.example.moec.offline_Activity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class login_Activity extends AppCompatActivity {
 
 
-
-    String url = "https://demo.merideanoverseas.in/login.php";
     AlertDialog.Builder builder;
-
-    String email,password,name;
-
 
     TextInputEditText  emailidlg,passwordlg;
     TextInputLayout emaillayoutlg,passlayoutlg;
+    int userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class login_Activity extends AppCompatActivity {
 
         emailidlg = findViewById(R.id.emailidlg);
         passwordlg = findViewById(R.id.passwordlg);
-        Button loginbutton = findViewById(R.id.forgetbutton);
+        Button loginbutton = findViewById(R.id.loginbutton);
         TextView forgetlink = findViewById(R.id.forgetpasswordlg);
         TextView registrainlink = findViewById(R.id.registraionlink);
         emaillayoutlg = findViewById(R.id.emaillayoutlg);
@@ -59,9 +63,10 @@ public class login_Activity extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
         builder.setTitle("Login details");
-       SharedPreferences  sharedPreferences = getSharedPreferences("registrationform",Context.MODE_PRIVATE);
 
-        email = sharedPreferences.getString("email",null);
+
+
+
         textwatherError();
         InternetConnection nt = new InternetConnection(getApplicationContext());
 
@@ -70,19 +75,14 @@ public class login_Activity extends AppCompatActivity {
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String emailtext = emailidlg.getText().toString().trim();
                 String passtext = passwordlg.getText().toString().trim();
 
-                if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !(passtext.isEmpty()) && (passtext.length() <= 16) && nt.isConnected() ) {
+                if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !passtext.isEmpty() && nt.isConnected()) {
 
-                    if (emailtext.equals(email))
-                    {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
-                        finish();
-
-                    }
+                    RegistrationAPI(emailtext,passtext);
 
 //                        logincode(emailtext, passtext);
 
@@ -98,12 +98,6 @@ public class login_Activity extends AppCompatActivity {
                 {
                     emaillayoutlg.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
                     emaillayoutlg.setError("Required*");
-                    emailidlg.requestFocus();
-                }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(emailtext).matches())
-                {
-                    emaillayoutlg.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
-                    emaillayoutlg.setError("Invalid Email Address");
                     emailidlg.requestFocus();
                 }
                 else if (passtext.isEmpty()) {
@@ -140,6 +134,7 @@ public class login_Activity extends AppCompatActivity {
         });
 
     }
+
 
     void textwatherError()
 
@@ -192,26 +187,74 @@ public class login_Activity extends AppCompatActivity {
         });
 
     }
-    @Override
-    public void onBackPressed() {
 
-        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
-        finish();
-        super.onBackPressed();
+
+
+    void RegistrationAPI(String email, String pass) {
+
+        String registrationURL = Config.Base_url+"login.php" + "?email=" + email + "&password=" + pass;
+
+
+        class registration extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                try {
+                    JSONObject obj = new JSONObject(s);
+                    int status = obj.getInt("status");
+
+                    String message = obj.getString("Message");
+                    int userid = obj.getInt("user_id");
+
+                    if (status == 1) {
+
+                        Toast.makeText(login_Activity.this, ""+message, Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
+                        editor.putInt("userid",userid);
+                        editor.commit();
+
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
+                        finish();
+
+
+
+
+
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                super.onPostExecute(s);
+            }
+
+            @Override
+            protected String doInBackground(String... param) {
+
+
+                try {
+                    URL url = new URL(param[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return br.readLine();
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+        }
+        registration obj = new registration();
+        obj.execute(registrationURL);
     }
-
-//    @Override
-//    protected void onStart() {
-//
-//        if (email!=null && password!=null)
-//        {
-//            startActivity(new Intent(login_Activity.this, MainActivity.class));
-//            Toast.makeText(this, "Welcome Back "+name, Toast.LENGTH_LONG).show();
-//            finish();
-//        }
-//        super.onStart();
-//    }
-
 
 
 
@@ -219,7 +262,8 @@ public class login_Activity extends AppCompatActivity {
     void logincode(String emailtext, String passwordtext)
 
     {
-        String addurl = url+"?email="+emailtext+"&password="+passwordtext;
+        String addurl = Config.Base_url+"?email="+emailtext+"&password="+passwordtext;
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, addurl, new com.android.volley.Response.Listener<String>() {
             @Override
@@ -231,10 +275,10 @@ public class login_Activity extends AppCompatActivity {
 
                     if (status.equals("True"))
                     {
-//                        SharedPreferences.Editor editor = sharedPreferences.edit();
-//                        editor.putString(EMAIL_KEY,emailtext);
-//                        editor.putString(PASSWORD_KEY,passwordtext);
-//                        editor.commit();
+                        SharedPreferences.Editor editor = getSharedPreferences("login",MODE_PRIVATE).edit();
+                        editor.putString("LOGIN_EMAIL",emailtext);
+                        editor.putString("LOGIN_PASSWORD",passwordtext);
+                        editor.commit();
 
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
@@ -255,8 +299,6 @@ public class login_Activity extends AppCompatActivity {
                 Toast.makeText(login_Activity.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
-
-
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

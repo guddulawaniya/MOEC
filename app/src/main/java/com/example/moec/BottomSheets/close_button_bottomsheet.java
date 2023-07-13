@@ -6,8 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.core.app.SharedElementCallback;
+
 import com.example.moec.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 
 public class close_button_bottomsheet extends BottomSheetDialogFragment {
@@ -39,4 +43,5 @@ public class close_button_bottomsheet extends BottomSheetDialogFragment {
         // Inflate the layout for this fragment
         return view;
     }
-}
+
+    }

@@ -1,5 +1,6 @@
 package com.example.moec.loginActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moec.Check_password;
 import com.example.moec.JavaClass.InternetConnection;
+import com.example.moec.MainActivity;
 import com.example.moec.R;
 import com.example.moec.offline_Activity;
 
@@ -26,42 +28,43 @@ public class Splash_Screen extends AppCompatActivity {
 
         Animation ani = AnimationUtils.loadAnimation(this,R.anim.imageanimation);
         image.startAnimation(ani);
-        SharedPreferences preferences = getSharedPreferences("preference",MODE_PRIVATE);
 
-        boolean check = preferences.getBoolean("checkpass",false);
+        SharedPreferences  sharedPreferences = getSharedPreferences("logindetail", Context.MODE_PRIVATE);
+
+        int userid = sharedPreferences.getInt("userid",0);
+
 
         InternetConnection nt = new InternetConnection(getApplicationContext());
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 if (nt.isConnected())
                 {
-                    if (check)
+                    if (userid!=0)
                     {
-                        startActivity(new Intent(getApplicationContext(), Check_password.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
                         finish();
-
                     }
-                    else {
+                    else
+                    {
                         startActivity(new Intent(getApplicationContext(), view_Activity_before_login.class));
+                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
                         finish();
                     }
-
                 }
                 else
                 {
                     startActivity(new Intent(getApplicationContext(), offline_Activity.class));
+                    overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
+                    finish();
 
                 }
-                overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
-                finish();
+
 
 
             }
         },2000);
-
-
     }
 }

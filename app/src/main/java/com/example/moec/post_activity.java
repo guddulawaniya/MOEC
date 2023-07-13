@@ -7,11 +7,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
+
 public class post_activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        config();
         setContentView(R.layout.activity_post);
 
 
@@ -33,4 +37,19 @@ public class post_activity extends AppCompatActivity {
 
         title.setText("Add Post");
     }
+    private void config() {
+        findViewById(android.R.id.content).setTransitionName("fab");
+
+        setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
+        MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.addTarget(android.R.id.content);
+        transform.setDuration(500);
+
+        getWindow().setSharedElementEnterTransition(transform);
+        getWindow().setSharedElementReturnTransition(transform);
+
+
+
+    }
+
 }

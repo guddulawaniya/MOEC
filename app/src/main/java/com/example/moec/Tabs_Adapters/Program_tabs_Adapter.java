@@ -1,5 +1,10 @@
 package com.example.moec.Tabs_Adapters;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,6 +14,8 @@ import com.example.moec.Fragments.All_Programs_fragment;
 import com.example.moec.Fragments.Recommended_fragment;
 
 public class Program_tabs_Adapter extends FragmentPagerAdapter {
+
+
 
 
     public Program_tabs_Adapter(@NonNull FragmentManager fm) {

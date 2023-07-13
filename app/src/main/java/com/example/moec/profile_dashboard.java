@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
+import com.example.moec.loginActivity.login_Activity;
 import com.example.moec.loginActivity.login_Activity_with_mobile_no;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -54,12 +55,13 @@ public class profile_dashboard extends AppCompatActivity {
 
         TextView cleartext = findViewById(R.id.cleartext);
         toolbartitle.setText("My Profile");
+        cleartext.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.baseline_settings_24,0);
         cleartext.setText("");
 
         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
         String firstname = preferences.getString("Fname",null);
         String lastname =   preferences.getString("Lname",null);
-        String emailid =  preferences.getString("Email",null);
+        String emailid =  preferences.getString("email",null);
         String contact =  preferences.getString("number",null);
         String dobget=  preferences.getString("DOb",null);
         //set data on load activity
@@ -116,7 +118,10 @@ public class profile_dashboard extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), login_Activity_with_mobile_no.class));
+                SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
+                editor.putInt("userid",0);
+                editor.commit();
+                startActivity(new Intent(getApplicationContext(), login_Activity.class));
                 finish();
             }
         });
@@ -153,7 +158,12 @@ public class profile_dashboard extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        startActivity(new Intent(profile_dashboard.this, MainActivity.class));
+        finish();
+    }
 
     // checking storage permissions
     private Boolean checkStoragePermission() {

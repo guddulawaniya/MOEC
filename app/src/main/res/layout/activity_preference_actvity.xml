@@ -7,51 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".preference_Actvity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="16dp">
-
-            <ImageView
-                android:id="@+id/backbutton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
-                app:srcCompat="@drawable/arrow_back_ios"
-                app:tint="@color/secondarycolor" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/oswald"
-                android:text="Preferences"
-                android:textColor="@color/heading_color"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/backbutton"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.appcompat.widget.Toolbar>
+<include layout="@layout/toolbarlayout"/>
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
@@ -70,7 +26,7 @@
             app:sv_stepPadding="-8dp"
             app:sv_nextStepLineColor="@color/iconcolor"
             app:sv_doneStepLineColor="@color/primarycolor"
-            app:sv_stepsNumber="8"
+            app:sv_stepsNumber="4"
             app:sv_selectedStepNumberColor="@color/white"
             app:sv_stepViewStyle="@style/StepView"
             app:sv_animationType="Line"
@@ -84,7 +40,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/poppins"
-            android:text="3 of 7"
+            android:text="1 of 3"
             android:textColor="@color/text_color"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

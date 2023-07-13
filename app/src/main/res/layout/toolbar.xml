@@ -66,6 +66,7 @@
 
                 android:id="@+id/searchbar"
                 android:layout_width="wrap_content"
+                android:transitionName="search"
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:src="@drawable/search_icon"
@@ -77,6 +78,7 @@
                 android:id="@+id/favourate_icon_toolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:transitionName="favorate"
                 android:padding="10dp"
                 android:src="@drawable/favorite_icon"
                 app:tint="@color/primarycolor" />

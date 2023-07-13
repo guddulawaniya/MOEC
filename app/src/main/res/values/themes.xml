@@ -4,6 +4,9 @@
         <item name="colorPrimaryVariant">@color/primarycolor</item>
         <item name="colorPrimary">@color/secondarycolor</item>
         <item name="colorOnPrimary">@color/background_blue_shadew</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <item name="android:windowActivityTransitions">true</item>
 
     </style>
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">

@@ -35,7 +35,7 @@ public class basic_details_activity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
         String firstname = preferences.getString("Fname",null);
         String lastname =   preferences.getString("Lname",null);
-        String emailid =  preferences.getString("Email",null);
+        String emailid =  preferences.getString("email",null);
         String contact =  preferences.getString("number",null);
         String dobget=  preferences.getString("DOb",null);
         String countryget=  preferences.getString("Country",null);

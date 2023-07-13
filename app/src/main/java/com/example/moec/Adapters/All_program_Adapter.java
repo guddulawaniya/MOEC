@@ -1,8 +1,10 @@
 package com.example.moec.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.ModulesClass.module_all_program;
+import com.example.moec.New_Application;
 import com.example.moec.Program_details;
 import com.example.moec.R;
 
@@ -50,7 +54,11 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, Program_details.class));
+
+                Intent intent = new Intent(context, Program_details.class);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"item").toBundle();
+                context.startActivity(intent,bundle);
+                
             }
         });
 

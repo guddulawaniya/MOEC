@@ -1,7 +1,9 @@
 package com.example.moec.Adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Accommodation_Activity;
@@ -51,21 +54,42 @@ public class Quick_Action_Adapter extends RecyclerView.Adapter<Quick_Action_Adap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 switch (id)
                 {
-                    case 0: context.startActivity(new Intent(context, New_Application.class));
+                    case 0:
+                         Intent intent = new Intent(context, New_Application.class);
+                        Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"fab").toBundle();
+                        context.startActivity(intent,bundle);
+
                     break;
-                    case 1: context.startActivity(new Intent(context, test_Activity.class));
+                    case 1:
+                        Intent intent1 = new Intent(context, test_Activity.class);
+                        Bundle bundle1 = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"fab").toBundle();
+                        context.startActivity(intent1,bundle1);
                     break;
-                    case 2: context.startActivity(new Intent(context, GIC_registration.class));
+                    case 2:
+                       Intent intent2 = new Intent(context, GIC_registration.class);
+                        Bundle bundle2 = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"fab").toBundle();
+                        context.startActivity(intent2,bundle2);
                     break;
-                    case 3: context.startActivity(new Intent(context, SOP_Guidance_Activity.class));
+                    case 3:
+                        Intent intent3 = new Intent(context, SOP_Guidance_Activity.class);
+                        Bundle bundle3 = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"fab").toBundle();
+                        context.startActivity(intent3,bundle3);
                     break;
-                    case 4: context.startActivity(new Intent(context, Accommodation_Activity.class));
+                    case 4:
+                        Intent intent4 = new Intent(context, Accommodation_Activity.class);
+                        Bundle bundle4 = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"fab").toBundle();
+                        context.startActivity(intent4,bundle4);
                     break;
-                    case 5: context.startActivity(new Intent(context, Loan_details_Activity.class));
+                    case 5:
+                        Intent intent5 = new Intent(context, Loan_details_Activity.class);
+                        Bundle bundle5 = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"fab").toBundle();
+                        context.startActivity(intent5,bundle5);
                     break;
                 }
+
             }
         });
 

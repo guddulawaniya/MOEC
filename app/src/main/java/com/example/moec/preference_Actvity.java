@@ -30,6 +30,7 @@ import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.ModulesClass.most_prefered_destination_module;
+import com.example.moec.loginActivity.registration_Activity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.shuhart.stepview.StepView;
@@ -49,6 +50,7 @@ public class preference_Actvity extends AppCompatActivity  {
     page5 page5class;
     page2 page2class;
     page1 page1class;
+    TextView toolbar_title,cleartext;
 
 
     SharedPreferences preferences;
@@ -66,6 +68,19 @@ public class preference_Actvity extends AppCompatActivity  {
         page2 = findViewById(R.id.page2);
         page5 = findViewById(R.id.page5);
         page6 = findViewById(R.id.page6);
+        toolbar_title = findViewById(R.id.toolbar_title);
+        cleartext = findViewById(R.id.cleartext);
+        toolbar_title.setText("Preferences");
+        cleartext.setTextColor(Color.parseColor("#000000"));
+        cleartext.setText("Skip >>");
+        cleartext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressbar(++stepcount);
+
+            }
+        });
+
 
 
         // classes Objects
@@ -83,8 +98,6 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
 
-
-        textwatcher();
 
         textwatchercourse(page5class.readinglayout,page5class.reading);
         textwatchercourse(page5class.writinglayout,page5class.writing);
@@ -225,54 +238,16 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
 
-    void textwatcher() {
-
-        page6class.setpassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                page6class.notmatchedtext.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        page6class.comfirmpassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                page6class.notmatchedtext.setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-    }
 
 
 
     void progressbar(int stepcount) {
-        index.setText(stepcount + " of 4 ");
+        index.setText(stepcount + " of 3 ");
         stepViewProgressBar.getState()
                 .animationType(StepView.ANIMATION_LINE)
                 .nextStepLineColor(ContextCompat.getColor(getApplicationContext(), R.color.background_blue_shadew))
                 .doneStepMarkColor(ContextCompat.getColor(getApplicationContext(), R.color.white))
-                .stepsNumber(5)
+                .stepsNumber(4)
                 .nextStepCircleEnabled(false)
                 .animationDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
                 .stepLineWidth(5)
@@ -301,13 +276,9 @@ public class preference_Actvity extends AppCompatActivity  {
             case 3:
                 page2.setVisibility(View.GONE);
                 page5.setVisibility(View.VISIBLE);
-                page6.setVisibility(View.GONE);
+
                 break;
             case 4:
-                page5.setVisibility(View.GONE);
-                page6.setVisibility(View.VISIBLE);
-                break;
-            case 5:
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
                 break;
@@ -323,7 +294,8 @@ public class preference_Actvity extends AppCompatActivity  {
         stepcount--;
 
         if (stepcount == 0) {
-            super.onBackPressed();
+           startActivity(new Intent(preference_Actvity.this, registration_Activity.class));
+           finish();
         }
         else if (stepcount < 5 && stepcount > 0) {
 

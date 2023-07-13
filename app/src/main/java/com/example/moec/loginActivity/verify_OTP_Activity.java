@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.chaos.view.PinView;
 import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.R;
+import com.example.moec._set_password;
 import com.example.moec.greeting_Activity;
 import com.example.moec.offline_Activity;
 
@@ -80,11 +81,6 @@ public class verify_OTP_Activity extends AppCompatActivity {
             }
         });
 
-            maintitle.setText("Please verify Mobile Number");
-            showmessage.setText("We will send you an One Time Password on this number +91- "+number);
-
-
-
 
 
 
@@ -97,7 +93,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
 
                 if (sendotp.equals(enterotpinboxs) && nt.isConnected())
                 {
-                    startActivity(new Intent(verify_OTP_Activity.this, greeting_Activity.class));
+                    startActivity(new Intent(verify_OTP_Activity.this, _set_password.class));
                     finish();
 
 

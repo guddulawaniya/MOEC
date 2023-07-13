@@ -30,11 +30,14 @@
         android:theme="@style/Base.Theme.MOEC"
         tools:targetApi="31">
         <activity
+            android:name="._set_password"
+            android:exported="true">
+
+
+        </activity>
+        <activity
             android:name=".Search_Activity"
             android:exported="false" />
-        <activity
-            android:name=".codeTesting_Activity"
-            android:exported="true"></activity>
         <activity
             android:name=".Preference_update_Activity"
             android:exported="false" />
@@ -73,7 +76,7 @@
             android:exported="false" />
         <activity
             android:name=".profile_dashboard"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".My_documents_upload"
             android:exported="false" />
@@ -109,7 +112,7 @@
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".preference_Actvity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".greeting_Activity"
             android:exported="false" />
@@ -127,25 +130,24 @@
             android:exported="true" />
         <activity
             android:name=".loginActivity.login_Activity"
-            android:exported="true" />
+            android:exported="true"></activity>
         <activity
             android:name=".loginActivity.Forget_password"
             android:exported="true" />
         <activity
             android:name=".loginActivity.Splash_Screen"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"></activity>
     </application>
 
 </manifest>

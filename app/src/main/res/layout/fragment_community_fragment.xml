@@ -48,13 +48,15 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout17" />
 
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:id="@+id/floatingActionButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:transitionName="fab"
         android:layout_marginEnd="24dp"
+        android:gravity="center"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@color/primarycolor"
+        android:background="@drawable/fab_bg"
         android:src="@drawable/add_icon"
         app:cardCornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,6 +68,6 @@
             android:layout_gravity="center"
             android:src="@drawable/add_icon"
             app:tint="@color/white" />
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

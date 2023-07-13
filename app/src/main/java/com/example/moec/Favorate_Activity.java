@@ -11,13 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.All_program_Adapter;
-import com.example.moec.Fragments.All_Programs_fragment;
 import com.example.moec.ModulesClass.module_all_program;
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 import java.util.ArrayList;
 
@@ -28,6 +28,7 @@ public class Favorate_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        config();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorate);
 
@@ -57,16 +58,14 @@ public class Favorate_Activity extends AppCompatActivity {
         String fees = preferences.getString("fees",null);
         String collegename = preferences.getString("collegename",null);
         boolean likeid = preferences.getBoolean("likeid",false);
-        addlistdata(coursename,duration,fees,countryname,collegename);
+        list.add(new module_all_program(coursename,duration,fees,countryname,collegename));
 
 
 
+        if (list.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            emptylayout.setVisibility(View.VISIBLE);
 
-
-
-
-        if (!list.isEmpty()) {
-            emptylayout.setVisibility(View.GONE);
         }
 
         TextView descri_no_found = findViewById(R.id.descri_no_found);
@@ -91,9 +90,19 @@ public class Favorate_Activity extends AppCompatActivity {
         });
     }
 
-    void addlistdata(String coursename,String duration,String fees,String countryname,String collegename)
-    {
-        list.add(new module_all_program(coursename,duration,fees,countryname,collegename));
+
+    private void config() {
+        findViewById(android.R.id.content).setTransitionName("search");
+
+        setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
+        MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.addTarget(android.R.id.content);
+        transform.setDuration(500);
+
+        getWindow().setSharedElementEnterTransition(transform);
+        getWindow().setSharedElementReturnTransition(transform);
+
+
 
     }
 }

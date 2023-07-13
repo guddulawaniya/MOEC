@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,9 +14,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moec.Config;
+import com.example.moec.MainActivity;
 import com.example.moec.R;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -23,18 +29,30 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class registration_Activity extends AppCompatActivity {
 
-    TextInputEditText firstname,lastname,mobilenumber,pincode;
+    TextInputEditText firstname,lastname,mobilenumber,emailaddress,pincode;
     MaterialTextView dateofbirth;
     AutoCompleteTextView gender,courselevel;
-    TextInputLayout fisrtnamelayout,lastnamelayout,mobilenumberlayout,genderlayout,pincodelayout, courselevellayout;
+    TextInputLayout fisrtnamelayout,lastnamelayout,mobilenumberlayout,genderlayout,pincodelayout, courselevellayout,emailaddresslayout;
 
 
     String[] genderlist = { "Male", "Female","Others" };
 
     String[] courselevellist = { "Intermediate", "Graduate", "Master Degree", };
     Button submitbutton;
+    TextView toolbar_title,cleartext;
+    ImageView backbutton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +66,41 @@ public class registration_Activity extends AppCompatActivity {
         gender = findViewById(R.id.gender);
         pincode = findViewById(R.id.pincode);
         courselevel = findViewById(R.id.courselevel);
+        emailaddress = findViewById(R.id.emailaddress);
+        backbutton = findViewById(R.id.backbutton);
 
         submitbutton = findViewById(R.id.submitbutton);
+        toolbar_title = findViewById(R.id.toolbar_title);
+        cleartext = findViewById(R.id.cleartext);
+        toolbar_title.setText("Registartion");
+        cleartext.setVisibility(View.GONE);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
          fisrtnamelayout = findViewById(R.id.firstnamelayout);
+        emailaddresslayout = findViewById(R.id.emailaddresslayout);
          lastnamelayout = findViewById(R.id.lastnamelayout);
          mobilenumberlayout = findViewById(R.id.mobilenumberlayout);
         courselevellayout = findViewById(R.id.courselevellayout);
         genderlayout = findViewById(R.id.genderlayout);
         pincodelayout = findViewById(R.id.pincodelayout);
+
+
+        SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
+        firstname.setText(preferences.getString("Fname",null));
+        lastname.setText(preferences.getString("Lname",null));
+        mobilenumber.setText(preferences.getString("number",null));
+        dateofbirth.setText(preferences.getString("DOb",null));
+        gender.setText(preferences.getString("g",null));
+        pincode.setText(preferences.getString("pincode",null));
+        emailaddress.setText(preferences.getString("email",null));
+        courselevel.setText(preferences.getString("qualification",null));
+
 
         ArrayAdapter<String> genderlistautocomeplete = new ArrayAdapter(this, R.layout.countrylist_layout, genderlist);
 
@@ -108,6 +151,7 @@ public class registration_Activity extends AppCompatActivity {
         textwatch(lastname,lastnamelayout);
         textwatch(mobilenumber,mobilenumberlayout);
         textwatch(pincode,pincodelayout);
+        textwatch(emailaddress,emailaddresslayout);
 
 
         textwatcherAutocomplete(courselevel,courselevellayout);
@@ -127,11 +171,16 @@ public class registration_Activity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(registration_Activity.this, login_Activity.class));
+        finish();
+    }
 
     void submitbuttondata()
     {
-        if (!(firstname.getText().toString().isEmpty()) && !(lastname.getText().toString().isEmpty()) && !(mobilenumber.getText().toString().isEmpty()) &&
+        if (!(firstname.getText().toString().isEmpty()) && !(lastname.getText().toString().isEmpty()) && !(mobilenumber.getText().toString().isEmpty())&&
+                !emailaddress.getText().toString().isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches() &&
                 !(dateofbirth.getText().toString().isEmpty()) && !gender.getText().toString().isEmpty() &&
                 !pincode.getText().toString().isEmpty() &&
                 !courselevel.getText().toString().isEmpty())
@@ -142,18 +191,15 @@ public class registration_Activity extends AppCompatActivity {
             editor.putString("Lname",lastname.getText().toString());
             editor.putString("number",mobilenumber.getText().toString());
             editor.putString("DOb",dateofbirth.getText().toString());
-
+            editor.putString("email",emailaddress.getText().toString());
             editor.putString("g",gender.getText().toString());
             editor.putString("pincode",pincode.getText().toString());
             editor.putString("qualification",courselevel.getText().toString());
-            editor.putInt("timeline",1);
-
-
             editor.commit();
 
 
             Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
-            intent.putExtra("email",mobilenumber.getText().toString());
+            intent.putExtra("number",mobilenumber.getText().toString());
             startActivity(intent);
             finish();
 
@@ -169,6 +215,12 @@ public class registration_Activity extends AppCompatActivity {
         else if (mobilenumber.getText().toString().isEmpty()) {
             errorshow(mobilenumberlayout, mobilenumber);
 
+        }
+        else if (emailaddress.getText().toString().isEmpty()) {
+            errorshow(emailaddresslayout, emailaddress);
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) {
+            errorshow(emailaddresslayout, emailaddress);
         }
         else if (dateofbirth.getText().toString().isEmpty()) {
             dateofbirth.setError("Select Dob");
@@ -252,4 +304,8 @@ public class registration_Activity extends AppCompatActivity {
 
     }
 
+
+
+
 }
+

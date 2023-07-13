@@ -12,11 +12,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +28,7 @@ import com.example.moec.BottomNavigation_Fragment.dashboard_fragment;
 import com.example.moec.BottomNavigation_Fragment.insights_fragment;
 import com.example.moec.BottomNavigation_Fragment.program_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 public class MainActivity extends AppCompatActivity   implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        config();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -60,7 +64,6 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
 
 
         textCartItemCount = findViewById(R.id.notification_badge);
-        TextView view_all  = findViewById(R.id.view_all);
         TextView application  = findViewById(R.id.sideapplication);
         TextView studentname  = findViewById(R.id.studentname);
         TextView sidebarPreferenece  = findViewById(R.id.sidebarPreferenece);
@@ -70,6 +73,11 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
         if (id==1)
         {
             replacefragment(program_fragment);
+        }
+        else if (id==2)
+        {
+            replacefragment(program_fragment);
+
         }
 
         // set daata sharePreference
@@ -82,7 +90,10 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
         searchbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Search_Activity.class));
+
+                Intent intent1 = new Intent(MainActivity.this, Search_Activity.class);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,searchbar,"search").toBundle();
+                startActivity(intent1,bundle);
             }
         });
 
@@ -141,6 +152,7 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), profile_dashboard.class));
+                finish();
             }
         });
 
@@ -149,7 +161,9 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(getApplicationContext(), Favorate_Activity.class));
+                Intent intent1 = new Intent(MainActivity.this, Favorate_Activity.class);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,searchbar,"favorate").toBundle();
+                startActivity(intent1,bundle);
 
             }
         });
@@ -228,7 +242,6 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
 
-
         if (R.id.dashboard==item.getItemId())
         {
             navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
@@ -275,6 +288,11 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
         }
 
         return true;
+    }
+
+   private void config() {
+        setExitSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
+        getWindow().setSharedElementsUseOverlay(false);
     }
 
     void replacefragment(Fragment fragment)

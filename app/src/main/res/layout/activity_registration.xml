@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/include6">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -35,8 +35,8 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Welcome"
                     android:fontFamily="@font/oswald"
+                    android:text="Welcome"
                     android:textColor="@color/heading_color"
                     android:textSize="20dp"
                     android:textStyle="bold" />
@@ -45,8 +45,8 @@
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
                     android:layout_marginTop="2dp"
+                    android:fontFamily="@font/poppins"
                     android:text="Help us to know you better"
                     android:textColor="@color/hint_color"
                     android:textSize="13dp" />
@@ -123,9 +123,10 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginStart="10dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -196,8 +197,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="2dp"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -209,9 +211,9 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_marginStart="1dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/required_icon"/>
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -252,13 +254,15 @@
                     </LinearLayout>
 
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="2dp"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -270,9 +274,9 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_marginStart="1dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/required_icon"/>
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -299,7 +303,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:hint="Example@gmail.com"
-                        android:inputType="numberDecimal"
+                        android:inputType="textEmailAddress"
                         android:padding="10dp"
                         android:textColor="@color/text_color"
                         android:textColorHint="@color/iconcolor"
@@ -315,7 +319,6 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -325,9 +328,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_marginEnd="10dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -344,30 +347,28 @@
 
                             <ImageView
                                 android:layout_width="wrap_content"
-                                android:layout_marginStart="1dp"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/required_icon"/>
+                                android:layout_marginStart="1dp"
+                                android:src="@drawable/required_icon" />
                         </LinearLayout>
 
 
+                        <!--this is the actual edit text which takes the input-->
+                        <com.google.android.material.textview.MaterialTextView
 
-
-                            <!--this is the actual edit text which takes the input-->
-                            <com.google.android.material.textview.MaterialTextView
-
-                                android:id="@+id/dateofbirth"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins"
-                                android:hint="DD-MM-YYYY"
-                                android:gravity="center_vertical"
-                                android:background="@drawable/newtextbg"
-                                android:inputType="date"
-                                android:padding="12dp"
-                                android:layout_marginTop="2dp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/iconcolor"
-                                android:textSize="14sp" />
+                            android:id="@+id/dateofbirth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/newtextbg"
+                            android:fontFamily="@font/poppins"
+                            android:gravity="center_vertical"
+                            android:hint="DD-MM-YYYY"
+                            android:inputType="date"
+                            android:padding="12dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/iconcolor"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -376,15 +377,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="2dp"
-                            android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -396,9 +397,9 @@
 
                             <ImageView
                                 android:layout_width="wrap_content"
-                                android:layout_marginStart="1dp"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/required_icon"/>
+                                android:layout_marginStart="1dp"
+                                android:src="@drawable/required_icon" />
                         </LinearLayout>
 
 
@@ -407,11 +408,11 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            app:boxBackgroundColor="@color/white"
                             app:boxCornerRadiusBottomEnd="8dp"
                             app:boxCornerRadiusBottomStart="8dp"
                             app:boxCornerRadiusTopEnd="8dp"
                             app:boxCornerRadiusTopStart="8dp"
-                            app:boxBackgroundColor="@color/white"
                             app:boxStrokeColor="@color/primarycolor"
                             app:endIconDrawable="@drawable/arrow_down"
                             app:endIconTint="@color/hint_color"
@@ -423,36 +424,28 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
+                                android:hint="Select"
                                 android:inputType="textAutoComplete"
                                 android:padding="10dp"
                                 android:textColor="@color/black"
                                 android:textColorHint="@color/iconcolor"
-                                android:textSize="14sp"
-                                android:hint="Select"
-                                />
+                                android:textSize="14sp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
 
 
-
-
-
-
                 </LinearLayout>
-
-
-
-
 
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -465,11 +458,12 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_marginStart="1dp"
-
                         android:layout_height="wrap_content"
-                        android:src="@drawable/required_icon"/>
+
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
                 </LinearLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/pincodelayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -511,13 +505,12 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -530,20 +523,21 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_marginStart="1dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/required_icon"/>
+                        android:layout_marginStart="1dp"
+                        android:src="@drawable/required_icon" />
                 </LinearLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/courselevellayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
-                    android:id="@+id/courselevellayout"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    app:boxBackgroundColor="@color/white"
                     app:boxCornerRadiusBottomEnd="8dp"
                     app:boxCornerRadiusBottomStart="8dp"
-                    android:layout_marginBottom="30dp"
                     app:boxCornerRadiusTopEnd="8dp"
-                    app:boxBackgroundColor="@color/white"
                     app:boxCornerRadiusTopStart="8dp"
                     app:boxStrokeColor="@color/primarycolor"
                     app:endIconDrawable="@drawable/arrow_down"
@@ -556,53 +550,24 @@
                         android:layout_height="match_parent"
                         android:dropDownSelector="@color/background_blue_shadew"
                         android:fontFamily="@font/poppins"
+                        android:hint="Choose.."
                         android:inputType="textAutoComplete"
                         android:padding="10dp"
                         android:singleLine="true"
                         android:textColor="@color/black"
                         android:textColorHint="@color/iconcolor"
-                        android:textSize="14sp"
-                        android:hint="Choose.."
-                        />
+                        android:textSize="14sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
 
 
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/white"
-        android:elevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/oswald"
-                android:text="@string/registration"
-                android:layout_gravity="center"
-                android:textColor="@color/heading_color"
-                android:textSize="20sp"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </LinearLayout>
-
-
-
-
-    </androidx.appcompat.widget.Toolbar>
+    <include
+        android:id="@+id/include6"
+        layout="@layout/toolbarlayout" />
 
     <Button
         android:id="@+id/submitbutton"

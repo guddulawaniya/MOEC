@@ -10,13 +10,17 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.moec.Tabs_Adapters.program_details_tab_Adapter;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 public class Program_details extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        config();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_details);
+
 
         TextView title = findViewById(R.id.toolbar_title);
 
@@ -41,5 +45,20 @@ public class Program_details extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void config() {
+        findViewById(android.R.id.content).setTransitionName("item");
+
+        setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
+        MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.addTarget(android.R.id.content);
+        transform.setDuration(500);
+
+        getWindow().setSharedElementEnterTransition(transform);
+        getWindow().setSharedElementReturnTransition(transform);
+
+
+
     }
 }

@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    app:layoutDescription="@xml/activity_program_details_scene"
     tools:context=".Program_details">
 
     <LinearLayout
+        android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -35,6 +37,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:padding="9dp"
+                    android:tint="@color/primarycolor"
                     app:srcCompat="@drawable/bank_icon" />
 
                 <TextView
@@ -76,13 +79,14 @@
                 android:textSize="14sp"
                 app:drawableTint="@color/hint_color" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="20dp"
             android:background="@color/divider_color" />
 
-        <include layout="@layout/tablayout"/>
+        <include layout="@layout/tablayout" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/programviewpager"

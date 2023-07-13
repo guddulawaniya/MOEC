@@ -12,10 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.app.SharedElementCallback;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +30,7 @@ import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.Univerity_Course_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
+import com.example.moec.MainActivity;
 import com.example.moec.ModulesClass.Quick_Action_Module;
 import com.example.moec.ModulesClass.Top_country_module;
 import com.example.moec.ModulesClass.Univerity_Course_Module;
@@ -34,6 +39,8 @@ import com.example.moec.New_Application;
 import com.example.moec.R;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
@@ -55,6 +62,7 @@ public class dashboard_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        config();
         View view  = inflater.inflate(R.layout.fragment_dashboard_fragment, container, false);
 
 
@@ -88,7 +96,20 @@ public class dashboard_fragment extends Fragment {
 
         CardView sharefrieds = view.findViewById(R.id.refer_friends);
         TextView sharelink = view.findViewById(R.id.sharelink);
+        TextView view_all = view.findViewById(R.id.view_all);
         sharelink.setPaintFlags(sharelink.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+
+        view_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("fmids",MODE_PRIVATE).edit();
+                intent.putExtra("fmid",2);
+                editor.putInt("id",1);
+                editor.commit();
+                startActivity(intent);
+            }
+        });
 
         sharefrieds.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,9 +155,9 @@ public class dashboard_fragment extends Fragment {
         RecyclerView quickRecyclerview = view.findViewById(R.id.quickRecyclerview);
         quickRecyclerview.setNestedScrollingEnabled(false);
 
-        quickList.add(new Quick_Action_Module(R.drawable.application,"Add Application"));
+        quickList.add(new Quick_Action_Module(R.drawable.application,"Add \nApplication"));
         quickList.add(new Quick_Action_Module(R.drawable.ielts,"IELTS Test Booking"));
-        quickList.add(new Quick_Action_Module(R.drawable.gic_icon,"GIC Account"));
+        quickList.add(new Quick_Action_Module(R.drawable.gic_icon,"GIC \nAccount"));
         quickList.add(new Quick_Action_Module(R.drawable.sop_icon,"SOP Guidance"));
         quickList.add(new Quick_Action_Module(R.drawable.accomodation,"Find Accommodation"));
         quickList.add(new Quick_Action_Module(R.drawable.loan,"Education Loan"));
@@ -179,11 +200,13 @@ public class dashboard_fragment extends Fragment {
         });
 
 
-        CardView floatingActionButton = view.findViewById(R.id.floatingActionButton2);
+        LinearLayout floatingActionButton = view.findViewById(R.id.floatingActionButton2);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), New_Application.class));
+                Intent intent = new Intent(getContext(), New_Application.class);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),floatingActionButton,"fab").toBundle();
+                startActivity(intent,bundle);
             }
         });
         list = new ArrayList<>();
@@ -227,6 +250,14 @@ public class dashboard_fragment extends Fragment {
     }
 
 
+
+    private void config() {
+        setExitSharedElementCallback(new SharedElementCallback(){});
+        getActivity().getWindow().setSharedElementsUseOverlay(false);
+    }
+
+
+
     void sendlinkwithfriends()
     {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -244,7 +275,7 @@ public class dashboard_fragment extends Fragment {
         int getid = item.getItemId();
         if (getid==R.id.notification)
         {
-            Toast.makeText(getContext(), "clicked notification", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Clicked Notification", Toast.LENGTH_SHORT).show();
         }
 
 

@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moec.BottomSheets.close_button_bottomsheet;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.transition.platform.MaterialContainerTransform;
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 public class New_Application extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class New_Application extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        config();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_application);
 
@@ -110,15 +113,30 @@ public class New_Application extends AppCompatActivity {
         title.setText("New Application");
     }
 
-    @Override
-    public void onBackPressed() {
+    private void config() {
+        findViewById(android.R.id.content).setTransitionName("fab");
 
+        setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
+        MaterialContainerTransform transform = new MaterialContainerTransform();
+        transform.addTarget(android.R.id.content);
+        transform.setDuration(500);
 
-        close_button_bottomsheet close_button_bottomsheet = new close_button_bottomsheet();
-        close_button_bottomsheet.show(getSupportFragmentManager(),"alertfragment");
+        getWindow().setSharedElementEnterTransition(transform);
+        getWindow().setSharedElementReturnTransition(transform);
 
 
 
     }
+
+//    @Override
+//    public void onBackPressed() {
+//
+//
+//        close_button_bottomsheet close_button_bottomsheet = new close_button_bottomsheet();
+//        close_button_bottomsheet.show(getSupportFragmentManager(),"alertfragment");
+//
+//
+//
+//    }
 
 }

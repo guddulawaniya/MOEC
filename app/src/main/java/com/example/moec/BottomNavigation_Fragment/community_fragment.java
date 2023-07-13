@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.app.SharedElementCallback;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.moec.Adapters.SliderAdapter;
+import com.example.moec.New_Application;
 import com.example.moec.R;
 import com.example.moec.Tabs_Adapters.community_tabs_adapter;
 import com.example.moec.post_activity;
@@ -24,6 +28,7 @@ public class community_fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        config();
         View view = inflater.inflate(R.layout.fragment_community_fragment, container, false);
 
         SliderView sliderView = view.findViewById(R.id.slider);
@@ -36,11 +41,13 @@ public class community_fragment extends Fragment {
 
 
 
-        CardView floatingActionButton = view.findViewById(R.id.floatingActionButton);
+        LinearLayout floatingActionButton = view.findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), post_activity.class));
+                Intent intent = new Intent(getContext(), post_activity.class);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),floatingActionButton,"fab").toBundle();
+                startActivity(intent,bundle);
             }
         });
 
@@ -55,5 +62,9 @@ public class community_fragment extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
         return  view;
+    }
+    private void config() {
+        setExitSharedElementCallback(new SharedElementCallback(){});
+        getActivity().getWindow().setSharedElementsUseOverlay(false);
     }
 }
