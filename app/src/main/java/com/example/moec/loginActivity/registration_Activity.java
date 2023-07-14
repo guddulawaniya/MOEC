@@ -16,19 +16,18 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moec.Config;
-import com.example.moec.MainActivity;
 import com.example.moec.R;
+import com.example.moec.findAddress_by_pincode;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,7 +50,7 @@ public class registration_Activity extends AppCompatActivity {
     Button submitbutton;
     TextView toolbar_title,cleartext;
     ImageView backbutton;
-
+    boolean check=false;
 
 
     @Override
@@ -59,10 +58,10 @@ public class registration_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-         firstname = findViewById(R.id.firstname);
-         lastname = findViewById(R.id.lastname);
-         mobilenumber = findViewById(R.id.mobilenumber);
-         dateofbirth = findViewById(R.id.dateofbirth);
+        firstname = findViewById(R.id.firstname);
+        lastname = findViewById(R.id.lastname);
+        mobilenumber = findViewById(R.id.mobilenumber);
+        dateofbirth = findViewById(R.id.dateofbirth);
         gender = findViewById(R.id.gender);
         pincode = findViewById(R.id.pincode);
         courselevel = findViewById(R.id.courselevel);
@@ -82,13 +81,16 @@ public class registration_Activity extends AppCompatActivity {
         });
 
 
-         fisrtnamelayout = findViewById(R.id.firstnamelayout);
+
+        fisrtnamelayout = findViewById(R.id.firstnamelayout);
         emailaddresslayout = findViewById(R.id.emailaddresslayout);
-         lastnamelayout = findViewById(R.id.lastnamelayout);
-         mobilenumberlayout = findViewById(R.id.mobilenumberlayout);
+        lastnamelayout = findViewById(R.id.lastnamelayout);
+        mobilenumberlayout = findViewById(R.id.mobilenumberlayout);
         courselevellayout = findViewById(R.id.courselevellayout);
         genderlayout = findViewById(R.id.genderlayout);
         pincodelayout = findViewById(R.id.pincodelayout);
+
+
 
 
         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
@@ -100,6 +102,24 @@ public class registration_Activity extends AppCompatActivity {
         pincode.setText(preferences.getString("pincode",null));
         emailaddress.setText(preferences.getString("email",null));
         courselevel.setText(preferences.getString("qualification",null));
+
+        if (pincode!=null)
+        {
+            fetchAddressdata(pincode.getText().toString());
+
+        }
+        if (emailaddress!=null)
+        {
+            if (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches())
+            {
+                emailaddresslayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
+                emailaddresslayout.setEndIconDrawable(R.drawable.baseline_done_icon_24);
+
+            }
+
+        }
+
+
 
 
         ArrayAdapter<String> genderlistautocomeplete = new ArrayAdapter(this, R.layout.countrylist_layout, genderlist);
@@ -130,13 +150,74 @@ public class registration_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 materialDatePicker.show(getSupportFragmentManager(), "MATERIAL_DATE_PICKER");
 
             }
         });
 
 
+        pincode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length()>0)
+                {
+                    pincodelayout.setErrorEnabled(false);
+
+                } else if (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) {
+                    pincodelayout.setErrorEnabled(false);
+                }
+
+                if (pincode.length()==6)
+                {
+                    pincodelayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
+                    fetchAddressdata(pincode.getText().toString());
+
+                }
+                else if(pincode.length()<6)
+                {
+                    pincodelayout.setEndIconMode(TextInputLayout.END_ICON_NONE);
+                }
+                pincodelayout.setHelperText("");
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        emailaddress.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches())
+                {
+                    emailaddresslayout.setErrorEnabled(false);
+                    emailaddresslayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
+
+                    emailaddresslayout.setEndIconDrawable(R.drawable.baseline_done_icon_24);
+
+                } else if (charSequence.length()>0) {
+
+                    emailaddresslayout.setErrorEnabled(false);
+                    emailaddresslayout.setEndIconMode(TextInputLayout.END_ICON_NONE);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
 
         ArrayAdapter<String> courselevellistadapter = new ArrayAdapter(this,  R.layout.countrylist_layout, courselevellist);
@@ -150,7 +231,6 @@ public class registration_Activity extends AppCompatActivity {
         textwatch(firstname,fisrtnamelayout);
         textwatch(lastname,lastnamelayout);
         textwatch(mobilenumber,mobilenumberlayout);
-        textwatch(pincode,pincodelayout);
         textwatch(emailaddress,emailaddresslayout);
 
 
@@ -171,37 +251,43 @@ public class registration_Activity extends AppCompatActivity {
 
     }
 
+
+
     @Override
     public void onBackPressed() {
         startActivity(new Intent(registration_Activity.this, login_Activity.class));
         finish();
     }
 
+
+
     void submitbuttondata()
     {
         if (!(firstname.getText().toString().isEmpty()) && !(lastname.getText().toString().isEmpty()) && !(mobilenumber.getText().toString().isEmpty())&&
-                !emailaddress.getText().toString().isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches() &&
-                !(dateofbirth.getText().toString().isEmpty()) && !gender.getText().toString().isEmpty() &&
-                !pincode.getText().toString().isEmpty() &&
-                !courselevel.getText().toString().isEmpty())
+                !(emailaddress.getText().toString().isEmpty()) && (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) &&
+                !(dateofbirth.getText().toString().isEmpty()) && !(gender.getText().toString().isEmpty()) &&
+                !(pincode.getText().toString().isEmpty()) && !(courselevel.getText().toString().isEmpty()))
         {
 
-            SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
-            editor.putString("Fname",firstname.getText().toString());
-            editor.putString("Lname",lastname.getText().toString());
-            editor.putString("number",mobilenumber.getText().toString());
-            editor.putString("DOb",dateofbirth.getText().toString());
-            editor.putString("email",emailaddress.getText().toString());
-            editor.putString("g",gender.getText().toString());
-            editor.putString("pincode",pincode.getText().toString());
-            editor.putString("qualification",courselevel.getText().toString());
-            editor.commit();
+            if (check)
+            {
+                SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+                editor.putString("Fname",firstname.getText().toString());
+                editor.putString("Lname",lastname.getText().toString());
+                editor.putString("number",mobilenumber.getText().toString());
+                editor.putString("DOb",dateofbirth.getText().toString());
+                editor.putString("email",emailaddress.getText().toString());
+                editor.putString("g",gender.getText().toString());
+                editor.putString("pincode",pincode.getText().toString());
+                editor.putString("qualification",courselevel.getText().toString());
+                editor.commit();
 
+                Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
+                intent.putExtra("number",mobilenumber.getText().toString());
+                startActivity(intent);
+            }
+            else  validatepincode();
 
-            Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
-            intent.putExtra("number",mobilenumber.getText().toString());
-            startActivity(intent);
-            finish();
 
 
         } else if (firstname.getText().toString().isEmpty()) {
@@ -228,6 +314,9 @@ public class registration_Activity extends AppCompatActivity {
         else if (gender.getText().toString().isEmpty()) {
             radiobuttonshowError(genderlayout,gender);
         }
+        else if (pincode.getText().toString().isEmpty()) {
+            errorshow(pincodelayout, pincode);
+        }
         else if (courselevel.getText().toString().isEmpty()) {
             radiobuttonshowError(courselevellayout,courselevel);
         }
@@ -241,6 +330,7 @@ public class registration_Activity extends AppCompatActivity {
         layout.setError("Required*");
         text.requestFocus();
     }
+
     void radiobuttonshowError(TextInputLayout layout,AutoCompleteTextView text)
     {
         layout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
@@ -252,7 +342,7 @@ public class registration_Activity extends AppCompatActivity {
     }
 
 
-   public void textwatcherAutocomplete( AutoCompleteTextView text,TextInputLayout layout)
+    public void textwatcherAutocomplete( AutoCompleteTextView text,TextInputLayout layout)
     {
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -263,6 +353,7 @@ public class registration_Activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 layout.setErrorEnabled(false);
+
 
             }
 
@@ -290,9 +381,10 @@ public class registration_Activity extends AppCompatActivity {
                 {
                     layout.setErrorEnabled(false);
 
-                } else if (Patterns.EMAIL_ADDRESS.matcher(mobilenumber.getText().toString()).matches()) {
+                } else if (Patterns.EMAIL_ADDRESS.matcher(emailaddress.getText().toString()).matches()) {
                     layout.setErrorEnabled(false);
                 }
+
 
             }
 
@@ -304,7 +396,94 @@ public class registration_Activity extends AppCompatActivity {
 
     }
 
+    public void fetchAddressdata(String pincode) {
 
+        String url = "https://api.postalpincode.in/pincode/"+pincode;
+
+
+        class registration extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                try {
+                    JSONArray array = new JSONArray(s);
+                    JSONObject obj = array.getJSONObject(0);
+                    String status = obj.getString("Status");
+                    SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+
+                    if (status.equals("Success")) {
+
+                        JSONArray postdata = obj.getJSONArray("PostOffice");
+                        JSONObject dataobject = postdata.getJSONObject(1);
+
+                        String district = dataobject.getString("District");
+                        String States = dataobject.getString("State");
+                        String Countries = dataobject.getString("Country");
+
+                        editor.putString("Country",Countries);
+                        editor.putString("State",States);
+                        editor.putString("City",district);
+                        editor.commit();
+
+                        check=true;
+                        rightpin(district,States,Countries);
+
+                    }
+                    else
+                    {
+
+                        check=false;
+                        validatepincode();
+                        editor.commit();
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                super.onPostExecute(s);
+            }
+
+            @Override
+            protected String doInBackground(String... param) {
+
+
+                try {
+                    URL url = new URL(param[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return br.readLine();
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+        }
+        registration obj = new registration();
+        obj.execute(url);
+
+    }
+    public void validatepincode()
+    {
+        pincodelayout.startAnimation(AnimationUtils.loadAnimation(registration_Activity.this,R.anim.shake_text));
+        pincodelayout.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
+        pincodelayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+        pincodelayout.setError("Invalid Pincode");
+        pincode.requestFocus();
+    }
+
+    void rightpin(String district, String state,String country)
+    {
+
+        pincodelayout.setEndIconDrawable(R.drawable.baseline_done_icon_24);
+        pincodelayout.setHelperTextColor(ColorStateList.valueOf(Color.GRAY));
+        pincodelayout.setHelperText("District : "+district+", State : "+state + ", Country : "+country);
+    }
 
 
 }

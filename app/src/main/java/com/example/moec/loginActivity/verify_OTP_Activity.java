@@ -69,7 +69,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
                     sendotp="1234";
                     String s = url + number + "&message=" + sms;
                     timecounter();
-                    Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
 //                    sendotpnumbers sm = new sendotpnumbers(getApplication());
 //                    sm.execute(s);
 
