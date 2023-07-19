@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -192,22 +193,15 @@ public class preference_Actvity extends AppCompatActivity  {
 
         } else if (page5.getVisibility() == View.VISIBLE) {
 
-            if (page5class.checkBox.isChecked())
-            {
-                page5class. pteinputlayout.setVisibility(View.GONE);
-                page5class. toeflinputlayout.setVisibility(View.GONE);
-                page5class. duolinggoinputlayout.setVisibility(View.GONE);
-                page5class. otherinputlayout.setVisibility(View.GONE);
+            if (page5class.checkBox.isChecked()) {
+                page5class.pteinputlayout.setVisibility(View.GONE);
+                page5class.toeflinputlayout.setVisibility(View.GONE);
+                page5class.duolinggoinputlayout.setVisibility(View.GONE);
+                page5class.otherinputlayout.setVisibility(View.GONE);
                 progressbar(++stepcount);
-            }
-            else page5class.validation();
+            } else page5class.validation();
 
 
-
-        } else if (page6.getVisibility() == View.VISIBLE) {
-
-
-            page6class.validation();
         }
 
 
@@ -279,8 +273,8 @@ public class preference_Actvity extends AppCompatActivity  {
 
                 break;
             case 4:
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
+                registrationSaveData registrationSaveData = new registrationSaveData(preference_Actvity.this);
+                registrationSaveData.RegistrationAPI();
                 break;
         }
 
@@ -330,7 +324,7 @@ public class preference_Actvity extends AppCompatActivity  {
                 public void setClick(int position, String text) {
                     if (position>-1)
                     {
-                        SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                         editor.putString("countryname",text);
                         editor.commit();
                         page2class.checkselectcountry=true;
@@ -385,7 +379,7 @@ public class preference_Actvity extends AppCompatActivity  {
                 public void setClick(int position, String text) {
                     if (!checkselectcountry)
                     {
-                        SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                         editor.putString("interest", text);
                         editor.commit();
                         checkselectcountry = true;
@@ -690,12 +684,13 @@ public class preference_Actvity extends AppCompatActivity  {
         }
 
 
+
         void validationInputFields(TextInputEditText reading,TextInputEditText writing,
                                    TextInputEditText listening,TextInputEditText speaking,TextInputEditText overall,TextInputLayout readinglayout,
                                    TextInputLayout writinglayout, TextInputLayout listeninglayout,TextInputLayout speakinglayout,TextInputLayout overalllayout,String examname)
         {
 
-            SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                 String readText = reading.getText().toString();
                 String writeText = writing.getText().toString();
                 String listenText = listening.getText().toString();
@@ -714,8 +709,9 @@ public class preference_Actvity extends AppCompatActivity  {
                     editor.putString("speak", speakText);
                     editor.putString("overall", overText);
                     editor.commit();
-                    stepcount++;
-                    progressbar(stepcount);
+
+                    registrationSaveData registrationSaveData = new registrationSaveData(preference_Actvity.this);
+                    registrationSaveData.RegistrationAPI();
 
                 }
                 else if (readText.isEmpty())
@@ -808,3 +804,4 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
 }
+

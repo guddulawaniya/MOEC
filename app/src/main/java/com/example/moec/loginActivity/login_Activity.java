@@ -1,8 +1,11 @@
 package com.example.moec.loginActivity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,6 +14,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +49,7 @@ public class login_Activity extends AppCompatActivity {
 
     TextInputEditText  emailidlg,passwordlg;
     TextInputLayout emaillayoutlg,passlayoutlg;
+    ProgressDialog progressBar;
     int userid;
 
     @Override
@@ -60,11 +65,15 @@ public class login_Activity extends AppCompatActivity {
         emaillayoutlg = findViewById(R.id.emaillayoutlg);
         passlayoutlg = findViewById(R.id.passwordlayoutlg);
 
+        progressBar = new ProgressDialog(login_Activity.this);
+        progressBar.setCancelable(true);
+        progressBar.setIcon(R.drawable.logo_symbol_colour);
+        progressBar.setTitle("Login");
+        progressBar.setMessage("Please Wait..");
+
 
         builder = new AlertDialog.Builder(this);
         builder.setTitle("Login details");
-
-
 
 
         textwatherError();
@@ -76,7 +85,6 @@ public class login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 String emailtext = emailidlg.getText().toString().trim();
                 String passtext = passwordlg.getText().toString().trim();
 
@@ -84,9 +92,8 @@ public class login_Activity extends AppCompatActivity {
 
                     RegistrationAPI(emailtext,passtext);
 
-//                        logincode(emailtext, passtext);
-
                 }
+
                 else if(!nt.isConnected())
                 {
                     Intent intent = new Intent(login_Activity.this, offline_Activity.class);
@@ -114,6 +121,8 @@ public class login_Activity extends AppCompatActivity {
             }
         });
 
+
+
         forgetlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,6 +144,14 @@ public class login_Activity extends AppCompatActivity {
 
     }
 
+    private void errorshow(TextInputLayout layout, TextInputEditText text)
+    {
+        layout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+        layout.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
+        layout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+        layout.setError("Invalid Id and Password ");
+        text.requestFocus();
+    }
 
     void textwatherError()
 
@@ -192,6 +209,8 @@ public class login_Activity extends AppCompatActivity {
 
     void RegistrationAPI(String email, String pass) {
 
+        progressBar.show();
+
         String registrationURL = Config.Base_url+"login.php" + "?email=" + email + "&password=" + pass;
 
 
@@ -209,9 +228,11 @@ public class login_Activity extends AppCompatActivity {
                     int status = obj.getInt("status");
 
                     String message = obj.getString("Message");
-                    int userid = obj.getInt("user_id");
+
 
                     if (status == 1) {
+                        progressBar.dismiss();
+                        int userid = obj.getInt("user_id");
 
                         Toast.makeText(login_Activity.this, ""+message, Toast.LENGTH_SHORT).show();
                         SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
@@ -224,10 +245,11 @@ public class login_Activity extends AppCompatActivity {
                         overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
                         finish();
 
-
-
-
-
+                    }
+                    else
+                    {
+                        progressBar.dismiss();
+                        errorshow(passlayoutlg,passwordlg);
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

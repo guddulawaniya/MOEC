@@ -9,13 +9,14 @@
     android:background="@color/white">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -51,23 +52,25 @@
                     android:id="@+id/ielts_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
                     android:layout_margin="8dp"
+                    android:backgroundTint="@color/white"
                     android:elevation="2dp"
                     app:cardCornerRadius="10dp"
-                    app:cardPreventCornerOverlap="false"
+                    app:cardElevation="2dp"
                     app:cardMaxElevation="2dp"
-                    app:cardElevation="2dp">
+                    app:cardPreventCornerOverlap="false">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="vertical"
+                        android:layout_height="match_parent"
 
-                        android:layout_height="match_parent">
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="80dp">
+
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
@@ -84,6 +87,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/background_blue_shadew"
                             android:visibility="gone">
+
                             <include layout="@layout/marks_input_layout" />
                         </LinearLayout>
 
@@ -101,13 +105,14 @@
                     android:backgroundTint="@color/white"
                     android:elevation="2dp"
                     app:cardCornerRadius="10dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    app:cardPreventCornerOverlap="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
@@ -119,8 +124,8 @@
                         <LinearLayout
                             android:id="@+id/pte_Form_linear"
                             android:layout_width="match_parent"
-                            android:background="@color/background_blue_shadew"
                             android:layout_height="wrap_content"
+                            android:background="@color/background_blue_shadew"
                             android:visibility="gone">
 
                             <include layout="@layout/pte_layout_design" />
@@ -128,9 +133,7 @@
                     </LinearLayout>
 
 
-
                 </androidx.cardview.widget.CardView>
-
 
 
                 <androidx.cardview.widget.CardView
@@ -141,8 +144,8 @@
                     android:backgroundTint="@color/white"
                     android:elevation="2dp"
                     app:cardCornerRadius="10dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    app:cardPreventCornerOverlap="false">
 
 
                     <LinearLayout
@@ -163,8 +166,8 @@
                         <LinearLayout
                             android:id="@+id/toef_Form_linear"
                             android:layout_width="match_parent"
-                            android:background="@color/background_blue_shadew"
                             android:layout_height="wrap_content"
+                            android:background="@color/background_blue_shadew"
                             android:visibility="gone">
 
                             <include layout="@layout/toefl_layout_design" />
@@ -174,9 +177,7 @@
                     </LinearLayout>
 
 
-
                 </androidx.cardview.widget.CardView>
-
 
 
                 <androidx.cardview.widget.CardView
@@ -188,8 +189,8 @@
                     android:backgroundTint="@color/white"
                     android:elevation="2dp"
                     app:cardCornerRadius="10dp"
-                    app:cardPreventCornerOverlap="false"
-                    app:cardElevation="2dp">
+                    app:cardElevation="2dp"
+                    app:cardPreventCornerOverlap="false">
 
 
                     <LinearLayout
@@ -205,11 +206,12 @@
                             android:padding="5dp"
                             android:scaleType="centerInside"
                             android:src="@drawable/duolingo_image" />
+
                         <LinearLayout
                             android:id="@+id/duoling_Form_linear"
                             android:layout_width="match_parent"
-                            android:background="@color/background_blue_shadew"
                             android:layout_height="wrap_content"
+                            android:background="@color/background_blue_shadew"
                             android:visibility="gone">
 
                             <include layout="@layout/duolingo_layout_design" />
@@ -218,8 +220,6 @@
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
-
-
 
 
                 <androidx.cardview.widget.CardView
@@ -243,9 +243,9 @@
                             android:layout_gravity="center"
                             android:allowClickWhenDisabled="true"
                             android:clickable="false"
-                            android:gravity="center"
                             android:enabled="false"
                             android:fontFamily="@font/poppins"
+                            android:gravity="center"
                             android:text="Others "
                             android:textColor="@color/black"
                             android:textSize="20sp"
@@ -263,12 +263,12 @@
                         </LinearLayout>
 
 
-
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
 
             </LinearLayout>
+
             <CheckBox
                 android:id="@+id/passcheckexam"
                 style="@style/Widget.App.CheckBox"
@@ -281,6 +281,7 @@
                 android:textColor="@color/text_color" />
         </LinearLayout>
     </ScrollView>
+
 
 
 </LinearLayout>

@@ -214,4 +214,18 @@
             app:fontFamily="@font/oswald" />
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="160dp"
+        android:indeterminateTint="@color/primarycolor"
+        android:background="#61E1E4E8"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout5"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout5" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moec.BottomSheets.close_button_bottomsheet;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
+
+import java.util.Calendar;
 
 public class New_Application extends AppCompatActivity {
 
@@ -75,7 +75,6 @@ public class New_Application extends AppCompatActivity {
 
 
 
-
         institudecomplete.setThreshold(1);
         institudecomplete.setAdapter(adapter);
         institudecomplete.setTextColor(Color.BLACK);
@@ -112,6 +111,35 @@ public class New_Application extends AppCompatActivity {
 
         title.setText("New Application");
     }
+
+//    void setintakedate()
+//    {
+//        MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(New_Application.this,
+//                new MonthPickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(int selectedMonth, int selectedYear) {  }
+//                    }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+//
+//        builder.setActivatedMonth(Calendar.JULY)
+//                .setMinYear(2010)
+//                .setActivatedYear(2023)
+//                .setMaxYear(2030)
+//                .setMinMonth(Calendar.FEBRUARY)
+//                .setTitle("Select Intake Year")
+//                .setMonthRange(Calendar.FEBRUARY, Calendar.NOVEMBER)
+//                // .setMaxMonth(Calendar.OCTOBER)
+//                // .setYearRange(1890, 1890)
+//                // .setMonthAndYearRange(Calendar.FEBRUARY, Calendar.OCTOBER, 1890, 1890)
+//                //.showMonthOnly()
+//                // .showYearOnly()
+//                .setOnMonthChangedListener(new MonthPickerDialog.OnMonthChangedListener() {
+//                    @Override
+//                    public void onMonthChanged(int selectedMonth) {  } })
+//                .setOnYearChangedListener(new MonthPickerDialog.OnYearChangedListener() {
+//                            @Override
+//                            public void onYearChanged(int selectedYear) {  } })
+//                .build().show();
+//    }
 
     private void config() {
         findViewById(android.R.id.content).setTransitionName("fab");

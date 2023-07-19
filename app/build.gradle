@@ -55,4 +55,5 @@ dependencies {
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.karumi:dexter:6.2.2'
     implementation 'com.github.baoyachi:StepView:1.9'
+
 }

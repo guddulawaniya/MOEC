@@ -16,9 +16,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moec.Config;
+import com.example.moec.MainActivity;
 import com.example.moec.R;
 import com.example.moec.findAddress_by_pincode;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -271,6 +274,8 @@ public class registration_Activity extends AppCompatActivity {
 
             if (check)
             {
+
+
                 SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
                 editor.putString("Fname",firstname.getText().toString());
                 editor.putString("Lname",lastname.getText().toString());
@@ -467,6 +472,57 @@ public class registration_Activity extends AppCompatActivity {
         registration obj = new registration();
         obj.execute(url);
 
+    }
+
+    void RegistrationAPI(String email, String pass) {
+
+        String registrationURL = Config.Base_url+"login.php" + "?email=" + email + "&password=" + pass;
+
+
+        class registration extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                try {
+                    JSONObject obj = new JSONObject(s);
+                    int status = obj.getInt("status");
+
+                    if (status == 1) {
+
+                        Toast.makeText(registration_Activity.this, "User Already Exist", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                super.onPostExecute(s);
+            }
+
+            @Override
+            protected String doInBackground(String... param) {
+
+
+                try {
+                    URL url = new URL(param[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return br.readLine();
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+        }
+        registration obj = new registration();
+        obj.execute(registrationURL);
     }
     public void validatepincode()
     {

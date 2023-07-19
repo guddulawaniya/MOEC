@@ -2,6 +2,7 @@ package com.example.moec;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -74,6 +75,12 @@ public class _set_password extends AppCompatActivity {
         if (!setpassword.getText().toString().isEmpty() && !comfirmpassword.getText().toString().isEmpty()) {
             if (setpassword.getText().toString().equals(comfirmpassword.getText().toString())) {
                 if (passcheck.isChecked()) {
+
+                    SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
+                    editor.putString("password", setpassword.getText().toString());
+                    editor.commit();
+
+
                     startActivity(new Intent(_set_password.this, greeting_Activity.class));
                     overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
                     finish();
