@@ -106,7 +106,7 @@ public class registration_Activity extends AppCompatActivity {
         emailaddress.setText(preferences.getString("email",null));
         courselevel.setText(preferences.getString("qualification",null));
 
-        if (pincode!=null)
+        if (!pincode.getText().toString().isEmpty())
         {
             fetchAddressdata(pincode.getText().toString());
 
@@ -177,8 +177,11 @@ public class registration_Activity extends AppCompatActivity {
 
                 if (pincode.length()==6)
                 {
-                    pincodelayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
-                    fetchAddressdata(pincode.getText().toString());
+
+                        pincodelayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
+                        fetchAddressdata(pincode.getText().toString());
+
+
 
                 }
                 else if(pincode.length()<6)
@@ -290,6 +293,7 @@ public class registration_Activity extends AppCompatActivity {
                 Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
                 intent.putExtra("number",mobilenumber.getText().toString());
                 startActivity(intent);
+                finish();
             }
             else  validatepincode();
 

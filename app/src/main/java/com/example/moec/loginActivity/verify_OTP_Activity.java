@@ -27,7 +27,7 @@ import java.text.NumberFormat;
 public class verify_OTP_Activity extends AppCompatActivity {
 
     PinView pinView;
-    TextView resendotp;
+    TextView resendotp,emailresend;
 
     String sendotp="1234";
 
@@ -50,6 +50,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
 //        String name = intent.getStringExtra("name");
         //sendotp = intent.getStringExtra("otp");
         resendotp = findViewById(R.id.resendotp);
+        emailresend = findViewById(R.id.emailresend);
         Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
 
         InternetConnection nt = new InternetConnection(getApplicationContext());
@@ -142,12 +143,14 @@ public class verify_OTP_Activity extends AppCompatActivity {
                 NumberFormat format = new DecimalFormat("00");
                 long sec = (l/1000) % 60;
                 resendotp.setText("00 : "+format.format(sec));
+                emailresend.setText("00 : "+format.format(sec));
 
             }
 
             @Override
             public void onFinish() {
                 resendotp.setText("Resend");
+                emailresend.setText("Resend");
                 rdcheck = true;
 
 

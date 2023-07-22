@@ -36,11 +36,13 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
                 android:fontFamily="@font/poppins"
                 android:text="Normal"
                 android:textColor="@color/text_color"
@@ -464,22 +466,24 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:id="@+id/favorateicon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
+                    android:padding="8dp"
+                    android:layout_margin="10dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/selecttextbg"
-                    android:padding="15dp"
-                    android:src="@drawable/favorite_icon"
-                    app:tint="@color/black" />
+                    android:src="@drawable/favorite_icon" />
 
                 <Button
                     android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/primarycolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:fontFamily="@font/oswald"
+                    android:textSize="16dp"
+                    android:backgroundTint="@color/primarycolor"
                     android:text="Apply for this program" />
             </LinearLayout>
 

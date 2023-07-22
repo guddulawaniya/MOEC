@@ -77,6 +77,7 @@ public class preference_Actvity extends AppCompatActivity  {
         cleartext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 progressbar(++stepcount);
 
             }

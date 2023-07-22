@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="fab"
+    android:transitionGroup="true"
     android:background="@color/white"
     tools:context=".BottomNavigation_Fragment.dashboard_fragment">
 
@@ -133,7 +135,9 @@
                                 android:id="@+id/view_all"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
                                 android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
                                 android:fontFamily="@font/poppins"
                                 android:text="View All"
                                 android:textColor="@color/text_color"
@@ -155,13 +159,14 @@
                             android:layout_height="200dp"
                             android:orientation="vertical">
 
-                            <androidx.cardview.widget.CardView
+                            <com.google.android.material.card.MaterialCardView
                                 android:id="@+id/setpreference_student"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:backgroundTint="@color/background_blue_shadew"
                                 app:cardCornerRadius="50dp"
+                                app:strokeColor="@color/iconcolor"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.5"
@@ -184,7 +189,7 @@
                                     android:textColor="@color/text_color"
                                     android:textSize="16dp"
                                     app:drawableTint="@color/text_color" />
-                            </androidx.cardview.widget.CardView>
+                            </com.google.android.material.card.MaterialCardView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -371,14 +376,13 @@
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
-                        <androidx.cardview.widget.CardView
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="300dp"
                             android:layout_margin="15dp"
                             android:backgroundTint="@color/white"
-                            android:elevation="2dp"
+                            app:strokeColor="#EDE8E8"
                             app:cardCornerRadius="10dp"
-                            app:cardElevation="1dp"
                             app:cardPreventCornerOverlap="false">
 
                             <LinearLayout
@@ -437,7 +441,7 @@
                                     android:textSize="12sp" />
                             </LinearLayout>
 
-                        </androidx.cardview.widget.CardView>
+                        </com.google.android.material.card.MaterialCardView>
 
 
                     </LinearLayout>

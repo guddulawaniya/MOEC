@@ -70,16 +70,14 @@
                 app:sv_animationType="All"
                 android:layout_gravity="center"
                 app:sv_doneCircleColor="@color/done_step_item"
-                app:sv_doneCircleRadius="12dp"
                 app:sv_doneStepLineColor="@color/done_step_item"
                 app:sv_doneStepMarkColor="@color/white"
+
                 app:sv_nextStepCircleColor="@color/nest_Step_item"
                 app:sv_nextStepCircleEnabled="true"
                 app:sv_nextStepLineColor="@color/nest_Step_item"
                 app:sv_selectedCircleColor="@color/select_step_progress_color"
-                app:sv_selectedCircleRadius="12dp"
                 app:sv_selectedStepNumberColor="@color/white"
-                app:sv_selectedTextColor="@color/primarycolor"
                 app:sv_stepLineWidth="3dp"
                 app:sv_stepNumberTextSize="12sp"
                 app:sv_stepPadding="0dp"
@@ -100,13 +98,11 @@
 
 
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/studenttimelinecard"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            app:cardElevation="1dp"
-            android:elevation="1dp"
-            app:cardMaxElevation="0dp"
+            app:strokeColor="#EDE8E8"
             android:layout_margin="16dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="10dp">
@@ -220,7 +216,7 @@
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <RelativeLayout
             android:layout_width="match_parent"

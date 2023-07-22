@@ -155,8 +155,8 @@ public class insights_fragment extends Fragment {
                 profile_icon.setImageResource(R.drawable.user_icon);
                 break;
         }
-        SharedPreferences.Editor editor = getActivity().getSharedPreferences("sharestatus", MODE_PRIVATE).edit();
-        editor.putInt("statusid",stepcount);
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("registrationform", MODE_PRIVATE).edit();
+        editor.putInt("timeline",stepcount);
         editor.commit();
         stepView.go(stepcount,true);
 

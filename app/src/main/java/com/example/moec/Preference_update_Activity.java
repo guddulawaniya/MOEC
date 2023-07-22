@@ -1,10 +1,12 @@
 package com.example.moec;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -32,6 +34,13 @@ import com.example.moec.ModulesClass.most_prefered_destination_module;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Preference_update_Activity extends AppCompatActivity {
@@ -124,11 +133,15 @@ public class Preference_update_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 if (linearpage1.getVisibility() == View.VISIBLE)
                 {
+                    RegistrationAPI();
                  onBackPressed();
+
                 } else if (linearpage2.getVisibility() == View.VISIBLE) {
+                    RegistrationAPI();
                     onBackPressed();
                 } else if (linearpage3.getVisibility() == View.VISIBLE) {
                  page3object.page3dataset();
+
 
                 }
                 else if (linearpage4.getVisibility() == View.VISIBLE) {
@@ -137,6 +150,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                     page5object.validation();
 
                 }
+
 
             }
         });
@@ -161,8 +175,121 @@ public class Preference_update_Activity extends AppCompatActivity {
             break;
         }
     }
+    void RegistrationAPI() {
+        ProgressDialog progressBar = new ProgressDialog(this);
+        progressBar.setCancelable(true);
+        progressBar.setTitle("Update  Profile");
+        progressBar.setMessage("Please Wait..");
+        progressBar.show();
 
-    void textwatcher(TextInputLayout layout,TextInputEditText text)
+
+
+
+
+        SharedPreferences preferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
+
+        String firstname = preferences.getString("Fname",null);
+        String lastname = preferences.getString("Lname",null);
+        String mobilenumber = preferences.getString("number",null);
+        String email = preferences.getString("email",null);
+        String dob = preferences.getString("DOb",null);
+        String pincode = preferences.getString("pincode",null);
+        String gender = preferences.getString("g",null);
+        String courselevel = preferences.getString("qualification",null);
+        String password = preferences.getString("password",null);
+        String country = preferences.getString("countryname",null);
+        String subject = preferences.getString("interest",null);
+        String exam = preferences.getString("examname",null);
+        String writescore = preferences.getString("write",null);
+        String readscore = preferences.getString("read",null);
+        String listening = preferences.getString("listen",null);
+        String speaking = preferences.getString("speak",null);
+        String ovarall = preferences.getString("overall",null);
+
+
+        String registrationURL ="https://android.merideanoverseas.in/registration.php?"+
+                "firstname=" +firstname+
+                "&lastname=" +lastname+
+                "&mobilenumber=" +mobilenumber+
+                "&emailid=" +email+
+                "&dob=" +dob+
+                "&pincode_area=" +pincode+
+                "&gender=" +gender+
+                "&courselevel=" +courselevel+
+                "&pass=" +password+
+                "&country=" +country+
+                "&subject=" +subject+
+                "&exam=" +exam+
+                "&writescore=" +writescore+
+                "&readscore=" +readscore+
+                "&listening=" +listening+
+                "&speaking=" +speaking+
+                "&ovarall="+ovarall;
+
+
+        class registration extends AsyncTask<String, String, String> {
+
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                progressBar.show();
+
+                try {
+                    JSONObject obj = new JSONObject(s);
+                    int status = obj.getInt("status");
+
+                    String message = obj.getString("Message");
+
+
+                    if (status == 1) {
+
+                        String userid = obj.getString("user_id");
+                        Toast.makeText(getApplicationContext(), "User Successfully Updated ", Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
+                        editor.putString("userid",userid);
+                        editor.commit();
+
+                        progressBar.dismiss();
+
+                    }
+                    else
+                    {
+                        progressBar.dismiss();
+                        Toast.makeText(getApplicationContext(), "Error : "+message, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                super.onPostExecute(s);
+            }
+
+            @Override
+            protected String doInBackground(String... param) {
+
+
+                try {
+                    URL url = new URL(param[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return br.readLine();
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+        }
+        registration obj = new registration();
+        obj.execute(registrationURL);
+    }
+
+    private void textwatcher(TextInputLayout layout,TextInputEditText text)
     {
         text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -184,7 +311,7 @@ public class Preference_update_Activity extends AppCompatActivity {
 
     }
 
-    class page1{
+   private class page1{
 
         ArrayList<most_prefered_destination_module> mostpreferedlist=  new ArrayList<>();
 
@@ -236,7 +363,7 @@ public class Preference_update_Activity extends AppCompatActivity {
 
         }
     }
-    class page2 {
+   private class page2 {
         RecyclerView recyclerView = findViewById(R.id.interest_recyclerview);
 
         ArrayList<interest_module> list = new ArrayList<>();
@@ -282,7 +409,7 @@ public class Preference_update_Activity extends AppCompatActivity {
         }
 
     }
-    class page3 {
+   private class page3 {
 
 
         RadioButton button1 = findViewById(R.id.radioButtonhigh);
@@ -435,6 +562,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 editor.putString("percentage", percentageText);
                 editor.putString("educationtext", radiotext);
                 editor.commit();
+                RegistrationAPI();
                 onBackPressed();
             }
             else {
@@ -445,7 +573,7 @@ public class Preference_update_Activity extends AppCompatActivity {
 
 
     }
-    class page5 {
+   private class page5 {
 
         // images cards
 
@@ -748,6 +876,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 editor.putString("speak", speakText);
                 editor.putString("overall", overText);
                 editor.commit();
+                RegistrationAPI();
                 onBackPressed();
 
 

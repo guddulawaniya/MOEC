@@ -28,6 +28,7 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     ArrayList<module_all_program> list ;
     Context context;
     int id;
+    boolean like = true;
 
     public All_program_Adapter(ArrayList<module_all_program> list, Context context,int id) {
         this.list = list;
@@ -64,6 +65,7 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
         if (id==1)
         {
+
             holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -75,7 +77,19 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
                    String[] list1 = {countryname,duration,countryname,collegename,fees};
                     SharedPreferences.Editor editor = context.getSharedPreferences("favoriteProgram", Context.MODE_PRIVATE).edit();
-                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+
+                    if (like)
+                    {
+                        like=false;
+                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+
+                    }
+                    else
+                    {
+                        like=true;
+                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+                    }
+
 
 
                     editor.putString("coursename",coursename);

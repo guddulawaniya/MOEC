@@ -39,14 +39,14 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/itemcard"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_margin="3dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="50dp"
-                app:cardElevation="2dp"
+                app:strokeColor="#EDE8E8"
                 app:layout_constraintBottom_toBottomOf="@+id/ringlinear"
                 app:layout_constraintEnd_toEndOf="@+id/ringlinear"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -63,7 +63,7 @@
                     android:scaleType="centerInside"
                     android:src="@drawable/marketing" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
 

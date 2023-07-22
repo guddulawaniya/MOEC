@@ -121,11 +121,7 @@
         <activity
             android:name=".loginActivity.registration_Activity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".loginActivity.verify_OTP_Activity"
@@ -146,7 +142,11 @@
             android:name=".loginActivity.Splash_Screen"
             android:exported="true">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>

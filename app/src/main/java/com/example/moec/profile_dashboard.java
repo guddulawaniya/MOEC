@@ -118,8 +118,8 @@ public class profile_dashboard extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
-                editor.putInt("userid",0);
+                SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+                editor.putString("userid","");
                 editor.commit();
                 startActivity(new Intent(getApplicationContext(), login_Activity.class));
                 finish();

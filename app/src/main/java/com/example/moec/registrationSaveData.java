@@ -2,6 +2,7 @@ package com.example.moec;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -40,6 +41,7 @@ public class registrationSaveData {
 
 
         SharedPreferences preferences = context.getSharedPreferences("registrationform", Context.MODE_PRIVATE);
+
 
         String firstname = preferences.getString("Fname",null);
         String lastname = preferences.getString("Lname",null);
@@ -103,12 +105,15 @@ public class registrationSaveData {
 
                         String userid = obj.getString("user_id");
 
-                        Toast.makeText(context, "Message : "+message, Toast.LENGTH_SHORT).show();
-                        SharedPreferences.Editor editor = context.getSharedPreferences("logindetail",MODE_PRIVATE).edit();
+                        Toast.makeText(context, "User Successfully Created ", Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = context.getSharedPreferences("registrationform",MODE_PRIVATE).edit();
                         editor.putString("userid",userid);
+                        editor.putInt("timeline",1);
                         editor.commit();
 
                         context.startActivity(new Intent(context, MainActivity.class));
+                        ((Activity)context).finish();
+
                         progressBar.dismiss();
 
                     }

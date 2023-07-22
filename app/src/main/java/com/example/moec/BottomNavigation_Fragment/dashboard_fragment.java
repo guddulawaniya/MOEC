@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +25,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
+import androidx.transition.Explode;
 
 import com.example.moec.Adapters.Quick_Action_Adapter;
 import com.example.moec.Adapters.SliderAdapter;
@@ -177,10 +180,7 @@ public class dashboard_fragment extends Fragment {
             public void onClick(View view) {
 
                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("registrationform", MODE_PRIVATE).edit();
-
                 editor.putInt("timeline",2);
-
-
                 editor.commit();
 
 

@@ -1,11 +1,14 @@
 package com.example.moec.Fragments;
 
+import static com.example.moec.R.drawable.baseline_done_icon_24;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
@@ -17,7 +20,7 @@ import com.google.android.material.chip.Chip;
 public class details_fragment_program extends Fragment {
 
 
-
+    int like= 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,10 +30,28 @@ public class details_fragment_program extends Fragment {
 
         LinearLayout websitelinerlayout = view.findViewById(R.id.websitelinerlayout);
         Chip visit = view.findViewById(R.id.visitwebsitebutton);
+        ImageView favorateicon = view.findViewById(R.id.favorateicon);
+
         visit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 websiteview();
+            }
+        });
+
+        favorateicon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (like==0)
+                {
+
+                    like = 1;
+                    favorateicon.setImageResource(R.drawable.favorite_heart);
+                }
+                else{
+                    favorateicon.setImageResource(R.drawable.favorite_icon);
+                    like = 0;
+                }
             }
         });
         websitelinerlayout.setOnClickListener(new View.OnClickListener() {
