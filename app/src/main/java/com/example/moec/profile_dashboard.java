@@ -119,7 +119,7 @@ public class profile_dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
-                editor.putString("userid","");
+                editor.putString("userid",null);
                 editor.commit();
                 startActivity(new Intent(getApplicationContext(), login_Activity.class));
                 finish();

@@ -40,7 +40,6 @@ public class _set_password extends AppCompatActivity {
     TextView notmatchedtext;
     Button submitbutton;
 
-    String URL = "http://192.168.1.69/API/registration.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +81,8 @@ public class _set_password extends AppCompatActivity {
 
 
                     startActivity(new Intent(_set_password.this, greeting_Activity.class));
-                    overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
                     finish();
 
-//                    RegistrationAPI();
 
                 } else {
                     passcheck.setError("Please Checked Box");
@@ -137,79 +134,6 @@ public class _set_password extends AppCompatActivity {
         });
 
 
-    }
-
-    void RegistrationAPI() {
-
-        SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
-        String first = preferences.getString("Fname",null);
-        String lastname = preferences.getString("Lname",null);
-        String mobilenumber = preferences.getString("number",null);
-        String dateofbirth = preferences.getString("DOb",null);
-        String gender = preferences.getString("g",null);
-        String pincode = preferences.getString("pincode",null);
-        String email = preferences.getString("email",null);
-        String courselevel = preferences.getString("qualification",null);
-
-        String registrationURL = URL + "?first=" + first + "&last="+lastname+"&mobile="+mobilenumber+"&email="+email+"&dob="+dateofbirth+"&gender="+gender+"&pincode="+pincode+"&course_level="+courselevel+"&password="+comfirmpassword;
-
-        String Url = "http://192.168.1.69/API/registration.php?first=first&last=lastname&mobile=mobilenumber&email=email&dob=dateofbirth&gender=gender&pincode=pincode&course_level=courselevel&password=comfirmpassword";
-
-        class registration extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-
-                try {
-                    JSONObject obj = new JSONObject(s);
-                    int status = obj.getInt("status");
-
-                    String message = obj.getString("Message");
-                    int userid = obj.getInt("user_id");
-
-                    if (status == 1) {
-
-                        Toast.makeText(_set_password.this, ""+message, Toast.LENGTH_SHORT).show();
-                        SharedPreferences.Editor editor = getSharedPreferences("registrationDetail",MODE_PRIVATE).edit();
-                        editor.putInt("userid",userid);
-                        editor.commit();
-
-
-                        startActivity(new Intent(_set_password.this, greeting_Activity.class));
-                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
-                        finish();
-
-
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-                super.onPostExecute(s);
-            }
-
-            @Override
-            protected String doInBackground(String... param) {
-
-
-                try {
-                    java.net.URL url = new URL(param[0]);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    return br.readLine();
-                } catch (Exception ex) {
-                    return ex.getMessage();
-                }
-
-            }
-        }
-        registration obj = new registration();
-        obj.execute(Url);
     }
 
 }

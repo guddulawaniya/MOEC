@@ -9,21 +9,19 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moec.Config;
-import com.example.moec.MainActivity;
 import com.example.moec.R;
-import com.example.moec.findAddress_by_pincode;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -53,6 +51,7 @@ public class registration_Activity extends AppCompatActivity {
     Button submitbutton;
     TextView toolbar_title,cleartext;
     ImageView backbutton;
+    ProgressBar pincodeprogressbar;
     boolean check=false;
 
 
@@ -70,6 +69,7 @@ public class registration_Activity extends AppCompatActivity {
         courselevel = findViewById(R.id.courselevel);
         emailaddress = findViewById(R.id.emailaddress);
         backbutton = findViewById(R.id.backbutton);
+        pincodeprogressbar = findViewById(R.id.pincodeprogressbar);
 
         submitbutton = findViewById(R.id.submitbutton);
         toolbar_title = findViewById(R.id.toolbar_title);
@@ -82,6 +82,8 @@ public class registration_Activity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
 
 
 
@@ -108,7 +110,7 @@ public class registration_Activity extends AppCompatActivity {
 
         if (!pincode.getText().toString().isEmpty())
         {
-            fetchAddressdata(pincode.getText().toString());
+          fetchAddressdata(pincode.getText().toString());
 
         }
         if (emailaddress!=null)
@@ -178,8 +180,8 @@ public class registration_Activity extends AppCompatActivity {
                 if (pincode.length()==6)
                 {
 
-                        pincodelayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
-                        fetchAddressdata(pincode.getText().toString());
+                    pincodelayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
+                   fetchAddressdata(pincode.getText().toString());
 
 
 
@@ -258,13 +260,21 @@ public class registration_Activity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onBackPressed() {
         startActivity(new Intent(registration_Activity.this, login_Activity.class));
+        overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
         finish();
+
     }
 
+    void rightpin(String district, String state,String country)
+    {
+
+        pincodelayout.setEndIconDrawable(R.drawable.baseline_done_icon_24);
+        pincodelayout.setHelperTextColor(ColorStateList.valueOf(Color.GRAY));
+        pincodelayout.setHelperText("District : "+district+", State : "+state + ", Country : "+country);
+    }
 
 
     void submitbuttondata()
@@ -274,7 +284,6 @@ public class registration_Activity extends AppCompatActivity {
                 !(dateofbirth.getText().toString().isEmpty()) && !(gender.getText().toString().isEmpty()) &&
                 !(pincode.getText().toString().isEmpty()) && !(courselevel.getText().toString().isEmpty()))
         {
-
             if (check)
             {
 
@@ -292,6 +301,7 @@ public class registration_Activity extends AppCompatActivity {
 
                 Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
                 intent.putExtra("number",mobilenumber.getText().toString());
+                overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
                 startActivity(intent);
                 finish();
             }
@@ -405,7 +415,19 @@ public class registration_Activity extends AppCompatActivity {
 
     }
 
+
+
+    public void validatepincode()
+    {
+        pincodelayout.startAnimation(AnimationUtils.loadAnimation(registration_Activity.this,R.anim.shake_text));
+        pincodelayout.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
+        pincodelayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
+        pincodelayout.setError("Invalid Pincode");
+        pincode.requestFocus();
+    }
+
     public void fetchAddressdata(String pincode) {
+        pincodeprogressbar.setVisibility(View.VISIBLE);
 
         String url = "https://api.postalpincode.in/pincode/"+pincode;
 
@@ -426,6 +448,7 @@ public class registration_Activity extends AppCompatActivity {
                     SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
 
                     if (status.equals("Success")) {
+                        pincodeprogressbar.setVisibility(View.GONE);
 
                         JSONArray postdata = obj.getJSONArray("PostOffice");
                         JSONObject dataobject = postdata.getJSONObject(1);
@@ -445,12 +468,14 @@ public class registration_Activity extends AppCompatActivity {
                     }
                     else
                     {
+                        pincodeprogressbar.setVisibility(View.GONE);
 
                         check=false;
                         validatepincode();
                         editor.commit();
                     }
                 } catch (JSONException e) {
+                    pincodeprogressbar.setVisibility(View.GONE);
                     throw new RuntimeException(e);
                 }
 
@@ -476,73 +501,6 @@ public class registration_Activity extends AppCompatActivity {
         registration obj = new registration();
         obj.execute(url);
 
-    }
-
-    void RegistrationAPI(String email, String pass) {
-
-        String registrationURL = Config.Base_url+"login.php" + "?email=" + email + "&password=" + pass;
-
-
-        class registration extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-
-                try {
-                    JSONObject obj = new JSONObject(s);
-                    int status = obj.getInt("status");
-
-                    if (status == 1) {
-
-                        Toast.makeText(registration_Activity.this, "User Already Exist", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-                super.onPostExecute(s);
-            }
-
-            @Override
-            protected String doInBackground(String... param) {
-
-
-                try {
-                    URL url = new URL(param[0]);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    return br.readLine();
-                } catch (Exception ex) {
-                    return ex.getMessage();
-                }
-
-            }
-        }
-        registration obj = new registration();
-        obj.execute(registrationURL);
-    }
-    public void validatepincode()
-    {
-        pincodelayout.startAnimation(AnimationUtils.loadAnimation(registration_Activity.this,R.anim.shake_text));
-        pincodelayout.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
-        pincodelayout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-        pincodelayout.setError("Invalid Pincode");
-        pincode.requestFocus();
-    }
-
-    void rightpin(String district, String state,String country)
-    {
-
-        pincodelayout.setEndIconDrawable(R.drawable.baseline_done_icon_24);
-        pincodelayout.setHelperTextColor(ColorStateList.valueOf(Color.GRAY));
-        pincodelayout.setHelperText("District : "+district+", State : "+state + ", Country : "+country);
     }
 
 

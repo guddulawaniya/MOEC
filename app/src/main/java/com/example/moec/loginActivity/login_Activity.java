@@ -1,12 +1,10 @@
 package com.example.moec.loginActivity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,7 +12,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,17 +27,11 @@ import com.example.moec.Config;
 import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.MainActivity;
 import com.example.moec.R;
-import com.example.moec.offline_Activity;
+import com.example.moec.registrationSaveData;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class login_Activity extends AppCompatActivity {
 
@@ -90,16 +81,15 @@ public class login_Activity extends AppCompatActivity {
 
                 if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !passtext.isEmpty() && nt.isConnected()) {
 
-                    RegistrationAPI(emailtext,passtext);
+                    String registrationURL = Config.Base_url+"login.php" + "?email=" + emailtext + "&password=" + passtext;
+                    registrationSaveData registrationSaveData = new registrationSaveData(login_Activity.this);
+                    registrationSaveData.RegistrationAPI(registrationURL,"Login User..",0);
 
                 }
 
                 else if(!nt.isConnected())
                 {
-                    Intent intent = new Intent(login_Activity.this, offline_Activity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
-                    finish();
+                    Toast.makeText(login_Activity.this, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
                 }
                 else if (emailtext.isEmpty())
                 {
@@ -127,7 +117,7 @@ public class login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(login_Activity.this, Forget_password.class));
-                overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
+                overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
             }
         });
 
@@ -136,6 +126,7 @@ public class login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(login_Activity.this, registration_Activity.class));
+
                 overridePendingTransition(R.anim.left_in,R.anim.right_out);
                 finish();
 
@@ -207,7 +198,7 @@ public class login_Activity extends AppCompatActivity {
 
 
 
-    void RegistrationAPI(String email, String pass) {
+ /*   void RegistrationAPI(String email, String pass) {
 
         progressBar.show();
 
@@ -227,23 +218,11 @@ public class login_Activity extends AppCompatActivity {
                     JSONObject obj = new JSONObject(s);
                     int status = obj.getInt("status");
 
-                    String message = obj.getString("Message");
-
-
                     if (status == 1) {
-                        progressBar.dismiss();
                         int userid = obj.getInt("user_id");
 
-                        Toast.makeText(login_Activity.this, ""+message, Toast.LENGTH_SHORT).show();
-                        SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
-                        editor.putInt("userid",userid);
-                        editor.commit();
+                        getdataAPI(String.valueOf(userid));
 
-
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
-                        finish();
 
                     }
                     else
@@ -277,6 +256,90 @@ public class login_Activity extends AppCompatActivity {
         registration obj = new registration();
         obj.execute(registrationURL);
     }
+    void getdataAPI(String User_id) {
+
+
+        String registrationURL = Config.Base_url+"logingetdata.php?" + "user_id="+User_id;
+
+
+        class registration extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                try {
+                    JSONObject obj = new JSONObject(s);
+                    int status = obj.getInt("status");
+
+
+                    if (status == 1) {
+                        progressBar.dismiss();
+                        JSONObject userdata = obj.getJSONObject("userdata");
+
+                        Toast.makeText(login_Activity.this, "Successfully", Toast.LENGTH_SHORT).show();
+
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+                        editor.putString("Fname",userdata.getString("firstname"));
+                        editor.putString("Lname",userdata.getString("lastname"));
+                        editor.putString("number",userdata.getString("number"));
+                        editor.putString("email",userdata.getString("email"));
+                        editor.putString("DOb",userdata.getString("dob"));
+                        editor.putString("g",userdata.getString("gender"));
+                        editor.putString("pincode",userdata.getString("pincode"));
+                        editor.putString("qualification",userdata.getString("country"));
+                        editor.putString("qualification",userdata.getString("insterest_area"));
+                        editor.putString("examname",userdata.getString("english_exam"));
+                        editor.putString("write",userdata.getString("write_marks"));
+                        editor.putString("read",userdata.getString("read_marks"));
+                        editor.putString("listen",userdata.getString("listening_marks"));
+                        editor.putString("speak",userdata.getString("speaking_marks"));
+                        editor.putString("overall",userdata.getString("ovarall_marks"));
+                        editor.putString("userid",obj.getString("userid"));
+                        editor.commit();
+
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
+                        finish();
+
+                    }
+                    else
+                    {
+                        progressBar.dismiss();
+                        errorshow(passlayoutlg,passwordlg);
+                    }
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                super.onPostExecute(s);
+                return s;
+            }
+
+            @Override
+            protected String doInBackground(String... param) {
+
+
+                try {
+                    URL url = new URL(param[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return br.readLine();
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+        }
+        registration obj = new registration();
+        obj.execute(registrationURL);
+    }*/
 
 
 
@@ -304,7 +367,6 @@ public class login_Activity extends AppCompatActivity {
 
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
-                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
                         finish();
                     }
 

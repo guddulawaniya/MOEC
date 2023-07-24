@@ -17,8 +17,6 @@ import com.chaos.view.PinView;
 import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.R;
 import com.example.moec._set_password;
-import com.example.moec.greeting_Activity;
-import com.example.moec.offline_Activity;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -101,8 +99,7 @@ public class verify_OTP_Activity extends AppCompatActivity {
                     Toast.makeText(verify_OTP_Activity.this, "Verified", Toast.LENGTH_SHORT).show();
 
                 } else if (!nt.isConnected()) {
-                    startActivity(new Intent(verify_OTP_Activity.this, offline_Activity.class));
-                    finish();
+                    Toast.makeText(verify_OTP_Activity.this, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
 
                 }
                 else {

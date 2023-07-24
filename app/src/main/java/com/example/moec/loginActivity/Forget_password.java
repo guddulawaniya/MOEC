@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.R;
-import com.example.moec.offline_Activity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -71,17 +70,11 @@ public class Forget_password extends AppCompatActivity {
         mobilenumberlayout = findViewById(R.id.mobilenumberlayout);
 
 
-
         //local find by ids
-
-        TextView loginlink = findViewById(R.id.loginlink);
-
 
 
         // internet instances
         InternetConnection nt = new InternetConnection(getApplicationContext());
-
-
 
 
         ontextwatchError();
@@ -100,7 +93,7 @@ public class Forget_password extends AppCompatActivity {
                 String mobileno = mobilenumber.getText().toString().trim();
 
 
-                if (!name.isEmpty() && !(email.isEmpty()) && Patterns.EMAIL_ADDRESS.matcher(email).matches()  &&
+                if (!name.isEmpty() && !(email.isEmpty()) && Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
                         !mobileno.isEmpty() && nt.isConnected()) {
 
                     // registration function call and pass some paramters
@@ -108,37 +101,31 @@ public class Forget_password extends AppCompatActivity {
                     RegistrationAPI(name, email, mobileno);
 
 
-                }
-                else if(nt.isConnected()==false) {
+                } else if (nt.isConnected() == false) {
 
                     //check internet connection of false
 
-                    Intent intent = new Intent(Forget_password.this, offline_Activity.class);
-                    overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
-                    startActivity(intent);
-                    finish();
-                }
-                else if (name.isEmpty()) {
+                    Toast.makeText(Forget_password.this, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+                } else if (name.isEmpty()) {
 
-                    namelayout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+                    namelayout.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
                     namelayout.setError("Required");
 
                     username.requestFocus();
 
 
                 } else if (email.isEmpty()) {
-                    emaillayout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+                    emaillayout.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
                     emaillayout.setError("Required");
                     emailid.requestFocus();
 
-                }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    emaillayout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    emaillayout.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
                     emaillayout.setError("Invalid Email Address");
                     emailid.requestFocus();
 
                 } else if (mobileno.isEmpty()) {
-                    mobilenumberlayout.startAnimation(AnimationUtils.loadAnimation(getApplication(),R.anim.shake_text));
+                    mobilenumberlayout.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
                     mobilenumberlayout.setError("Required");
                     mobilenumber.requestFocus();
 
@@ -148,20 +135,13 @@ public class Forget_password extends AppCompatActivity {
         });
 
 
-        // redirect login page
-
-        loginlink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Forget_password.this, login_Activity.class));
-                overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
-                finish();
-
-            }
-        });
-
     }
 
+    @Override
+    public void onBackPressed() {
+        overridePendingTransition(R.anim.left_in,R.anim.right_out);
+        super.onBackPressed();
+    }
 
     void RegistrationAPI(String name, String email, String mobile) {
 

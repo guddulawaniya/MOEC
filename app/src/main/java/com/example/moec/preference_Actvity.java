@@ -78,7 +78,11 @@ public class preference_Actvity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
 
-                progressbar(++stepcount);
+                if (stepcount<5)
+                {
+                    progressbar(++stepcount);
+                }
+
 
             }
         });
@@ -170,8 +174,8 @@ public class preference_Actvity extends AppCompatActivity  {
             if (page2class.checkselectcountry)
             {
                 page2class.checkselectcountry = false;
-                stepcount++;
-                progressbar(stepcount);
+
+                progressbar(++stepcount);
             }
             else {
                 Toast.makeText(preference_Actvity.this, "Please Select Country", Toast.LENGTH_SHORT).show();
@@ -183,8 +187,8 @@ public class preference_Actvity extends AppCompatActivity  {
             if (page2class.checkselectcountry)
             {
                 page2class.checkselectcountry = false;
-                stepcount++;
-                progressbar(stepcount);
+
+                progressbar(++stepcount);
             }
             else {
 
@@ -199,9 +203,12 @@ public class preference_Actvity extends AppCompatActivity  {
                 page5class.toeflinputlayout.setVisibility(View.GONE);
                 page5class.duolinggoinputlayout.setVisibility(View.GONE);
                 page5class.otherinputlayout.setVisibility(View.GONE);
-                progressbar(++stepcount);
-            } else page5class.validation();
+                if (stepcount<5)
+                {
+                    progressbar(++stepcount);
+                }
 
+            } else page5class.validation();
 
         }
 
@@ -237,7 +244,7 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
     void progressbar(int stepcount) {
-        index.setText(stepcount + " of 3 ");
+        index.setText(stepcount + " of 4 ");
         stepViewProgressBar.getState()
                 .animationType(StepView.ANIMATION_LINE)
                 .nextStepLineColor(ContextCompat.getColor(getApplicationContext(), R.color.background_blue_shadew))
@@ -274,8 +281,8 @@ public class preference_Actvity extends AppCompatActivity  {
 
                 break;
             case 4:
-                registrationSaveData registrationSaveData = new registrationSaveData(preference_Actvity.this);
-                registrationSaveData.RegistrationAPI();
+
+                callAPimethod();
                 break;
         }
 
@@ -283,6 +290,52 @@ public class preference_Actvity extends AppCompatActivity  {
 
 
 
+    void callAPimethod()
+    {
+        SharedPreferences preferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
+
+        String firstname = preferences.getString("Fname",null);
+        String lastname = preferences.getString("Lname",null);
+        String mobilenumber = preferences.getString("number",null);
+        String email = preferences.getString("email",null);
+        String dob = preferences.getString("DOb",null);
+        String pincode = preferences.getString("pincode",null);
+        String gender = preferences.getString("g",null);
+        String courselevel = preferences.getString("qualification",null);
+        String password = preferences.getString("password",null);
+        String country = preferences.getString("countryname",null);
+        String subject = preferences.getString("interest",null);
+        String exam = preferences.getString("examname",null);
+        String writescore = preferences.getString("write",null);
+        String readscore = preferences.getString("read",null);
+        String listening = preferences.getString("listen",null);
+        String speaking = preferences.getString("speak",null);
+        String ovarall = preferences.getString("overall",null);
+
+        String registrationURL ="https://android.merideanoverseas.in/registration.php?"+
+                "firstname=" +firstname+
+                "&lastname=" +lastname+
+                "&mobilenumber=" +mobilenumber+
+                "&emailid=" +email+
+                "&dob=" +dob+
+                "&pincode_area=" +pincode+
+                "&gender=" +gender+
+                "&courselevel=" +courselevel+
+                "&pass=" +password+
+                "&country=" +country+
+                "&subject=" +subject+
+                "&exam=" +exam+
+                "&writescore=" +writescore+
+                "&readscore=" +readscore+
+                "&listening=" +listening+
+                "&speaking=" +speaking+
+                "&ovarall="+ovarall;
+        stepcount--;
+
+        registrationSaveData registrationSaveData = new registrationSaveData(preference_Actvity.this);
+        registrationSaveData.RegistrationAPI(registrationURL,"Create User..",1);
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -703,16 +756,8 @@ public class preference_Actvity extends AppCompatActivity  {
                         !listenText.isEmpty()&& !speakText.isEmpty() && !overText.isEmpty())
                 {
 
-                  editor.putString("examname", examname);
-                    editor.putString("read", readText);
-                    editor.putString("write", writeText);
-                    editor.putString("listen", listenText);
-                    editor.putString("speak", speakText);
-                    editor.putString("overall", overText);
-                    editor.commit();
 
-                    registrationSaveData registrationSaveData = new registrationSaveData(preference_Actvity.this);
-                    registrationSaveData.RegistrationAPI();
+                 callAPimethod();
 
                 }
                 else if (readText.isEmpty())

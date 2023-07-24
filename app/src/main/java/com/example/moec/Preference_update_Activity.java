@@ -175,15 +175,20 @@ public class Preference_update_Activity extends AppCompatActivity {
             break;
         }
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+    }
+
     void RegistrationAPI() {
         ProgressDialog progressBar = new ProgressDialog(this);
         progressBar.setCancelable(true);
         progressBar.setTitle("Update  Profile");
         progressBar.setMessage("Please Wait..");
         progressBar.show();
-
-
-
 
 
         SharedPreferences preferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
@@ -268,6 +273,7 @@ public class Preference_update_Activity extends AppCompatActivity {
 
 
                 super.onPostExecute(s);
+
             }
 
             @Override
@@ -327,7 +333,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 public void setClick(int position, String text) {
                     if (position>-1)
                     {
-                        SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                         editor.putString("countryname",text);
                         editor.commit();
                     }
@@ -374,7 +380,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 public void setClick(int position, String text) {
                     if (position>-1)
                     {
-                        SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                         editor.putString("interest", text);
                         editor.commit();
                     }
@@ -558,9 +564,9 @@ public class Preference_update_Activity extends AppCompatActivity {
 
             if (!percentageText.isEmpty()) {
 
-                SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                 editor.putString("percentage", percentageText);
-                editor.putString("educationtext", radiotext);
+                editor.putString("qualification", radiotext);
                 editor.commit();
                 RegistrationAPI();
                 onBackPressed();
@@ -807,9 +813,10 @@ public class Preference_update_Activity extends AppCompatActivity {
                 }
                 else if (checkBox.isChecked()) {
 
-                    SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                    SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
 
                     editor.putString("examname", "I don't hava this");
+                    editor.commit();
                     onBackPressed();
 
 
@@ -828,7 +835,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 else if (othercard.getVisibility() == View.VISIBLE) {
                     if (!othersexaminput.getText().toString().isEmpty())
                     {
-                        SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                         editor.putString("examname", "Other");
                         editor.putString("other", othersexaminput.getText().toString());
                         editor.commit();
@@ -857,7 +864,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                                    TextInputLayout writinglayout, TextInputLayout listeninglayout,TextInputLayout speakinglayout,TextInputLayout overalllayout,String examname)
         {
 
-            SharedPreferences.Editor editor = getSharedPreferences("preference", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
             String readText = reading.getText().toString();
             String writeText = writing.getText().toString();
             String listenText = listening.getText().toString();

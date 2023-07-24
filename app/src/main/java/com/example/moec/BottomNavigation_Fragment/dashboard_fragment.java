@@ -11,23 +11,20 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.app.SharedElementCallback;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
-import androidx.transition.Explode;
 
+import com.example.moec.Adapters.All_program_Adapter;
 import com.example.moec.Adapters.Quick_Action_Adapter;
 import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
@@ -38,12 +35,11 @@ import com.example.moec.ModulesClass.Quick_Action_Module;
 import com.example.moec.ModulesClass.Top_country_module;
 import com.example.moec.ModulesClass.Univerity_Course_Module;
 import com.example.moec.ModulesClass.interest_module;
+import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.New_Application;
 import com.example.moec.R;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
-import com.google.android.material.transition.platform.MaterialContainerTransform;
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
@@ -60,6 +56,10 @@ public class dashboard_fragment extends Fragment {
     ArrayList<Top_country_module> topcountry_pickup_list;
 
     onClickInterface onclickInterface;
+    ArrayList<module_all_program> programArrayList;
+
+    int duration=48;
+    int fees=48000;
 
     int[] images = {R.drawable.slider1,R.drawable.slider2,R.drawable.slider3};
     @Override
@@ -75,13 +75,48 @@ public class dashboard_fragment extends Fragment {
         sliderView.setSliderAdapter(adapterslider);
         sliderView.setScrollTimeInSec(3);
         sliderView.setAutoCycle(true);
+        programArrayList = new ArrayList<>();
+        RecyclerView recommandRecyclerview = view.findViewById(R.id.recommandedRecyclerview);
 
+        recommandRecyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        All_program_Adapter program_adapter = new All_program_Adapter(programArrayList,getContext(),1);
+        recommandRecyclerview.setAdapter(program_adapter);
+
+        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
+        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","University of Worcester, UK"));
+        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Birmingham City University, UK"));
+
+
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("registrationform",MODE_PRIVATE);
+
+        String preferenceCountry = preferences.getString("countryname",null);
+        String interest = preferences.getString("interest",null);
+        String education = preferences.getString("qualification",null);
+        String examname = preferences.getString("examname",null);
+
+        CardView setpreference_student = view.findViewById(R.id.setpreference_hombutton);
+
+
+
+
+        if (preferenceCountry!=null && interest!=null && education!=null && examname!=null)
+        {
+
+            setpreference_student.setVisibility(View.GONE);
+            recommandRecyclerview.setVisibility(View.VISIBLE);
+
+        }
+        else
+        {
+            setpreference_student.setVisibility(View.VISIBLE);
+            recommandRecyclerview.setVisibility(View.GONE);
+        }
 
         topcountry_pickup_list = new ArrayList<>();
         quickList = new ArrayList<>();
         university_list = new ArrayList<>();
         ImageView phoneicon = view.findViewById(R.id.phoneimage);
-        CardView setpreference_student = view.findViewById(R.id.setpreference_student);
 
 
         university_list.add(new Univerity_Course_Module(R.drawable.worcester_university,"Worcester University","Course37+"));

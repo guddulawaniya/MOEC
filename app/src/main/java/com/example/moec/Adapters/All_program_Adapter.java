@@ -104,7 +104,8 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
         }
         else
-        { holder.favoriteiconbutton.setVisibility(View.GONE);
+        {
+            holder.favoriteiconbutton.setVisibility(View.GONE);
 
         }
     }

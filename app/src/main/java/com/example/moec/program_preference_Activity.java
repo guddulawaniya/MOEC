@@ -40,7 +40,7 @@ public class program_preference_Activity extends AppCompatActivity {
         selectCourse = findViewById(R.id.selectCourse);
         selectTest = findViewById(R.id.selectTest);
 
-        SharedPreferences preferences = getSharedPreferences("preference",MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
 
 
         mytimer = new Timer();
@@ -54,14 +54,14 @@ public class program_preference_Activity extends AppCompatActivity {
 
                       String countryname = preferences.getString("countryname",null);
                       String interest = preferences.getString("interest",null);
-                      String Education = preferences.getString("educationtext",null);
-                      String percentage = preferences.getString("percentage",null);
+                      String Education = preferences.getString("qualification","course_level");
+                      String percentage = preferences.getString("percentage","");
                       String englishtest = preferences.getString("examname",null);
 
 
                       selectcountry.setText(countryname);
                       selectEducation.setText(interest);
-                      selectCourse.setText(Education+" - "+percentage);
+                      selectCourse.setText(Education+" "+percentage);
                       selectTest.setText(englishtest);
 
                   }

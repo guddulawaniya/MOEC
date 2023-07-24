@@ -1,6 +1,8 @@
 package com.example.moec.loginActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.loginbeforeimage_Adapter;
 import com.example.moec.Adapters.slidermodule;
+import com.example.moec.MainActivity;
 import com.example.moec.R;
 
 import java.util.ArrayList;
@@ -32,18 +35,21 @@ public class view_Activity_before_login extends AppCompatActivity  {
     Button materialNestbbutton;
     ProgressBar progress;
     TextView skiptext;
-    SwipeGesturesanimation SwipeGesturesanimation;
 
 
     RecyclerView sliderRecyclerview;
+    String userid;
 
-    int[] images = {R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4};
 
     ArrayList<slidermodule> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_before_login);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
+
+        userid = sharedPreferences.getString("userid",null);
 
         list = new ArrayList<>();
 
@@ -86,19 +92,11 @@ public class view_Activity_before_login extends AppCompatActivity  {
 
 
 
-
-//        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
-//        sliderView.setSliderAdapter(adapterslider);
-//        sliderView.setAutoCycle(false);
-
-
-//        SwipeGesturesanimation = new SwipeGesturesanimation(sliderView);
-
-
         materialNestbbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(view_Activity_before_login.this, login_Activity.class));
+                overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
                 finish();
             }
         });
@@ -125,6 +123,15 @@ public class view_Activity_before_login extends AppCompatActivity  {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (userid!=null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
+            finish();
+        }
+    }
 
     void onPageChanged(int id)
     {
