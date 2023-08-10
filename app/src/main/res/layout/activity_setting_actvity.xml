@@ -27,13 +27,17 @@
 
             android:orientation="vertical">
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/notification_switch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:layout_margin="16dp"
-                android:text="Notification"
+                app:trackTint="@color/buttonbgcolor"
+                app:thumbTint="@color/background_blue_shadew"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:text="Notification "
                 android:textColor="@color/text_color" />
 
             <View

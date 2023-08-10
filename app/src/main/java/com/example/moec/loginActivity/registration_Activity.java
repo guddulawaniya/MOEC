@@ -18,10 +18,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moec.R;
+import com.example.moec.registrationSaveData;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -287,7 +289,6 @@ public class registration_Activity extends AppCompatActivity {
             if (check)
             {
 
-
                 SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
                 editor.putString("Fname",firstname.getText().toString());
                 editor.putString("Lname",lastname.getText().toString());
@@ -299,11 +300,16 @@ public class registration_Activity extends AppCompatActivity {
                 editor.putString("qualification",courselevel.getText().toString());
                 editor.commit();
 
+
+
                 Intent intent = new Intent(registration_Activity.this, verify_OTP_Activity.class);
                 intent.putExtra("number",mobilenumber.getText().toString());
                 overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
                 startActivity(intent);
                 finish();
+
+
+
             }
             else  validatepincode();
 
@@ -450,6 +456,8 @@ public class registration_Activity extends AppCompatActivity {
                     if (status.equals("Success")) {
                         pincodeprogressbar.setVisibility(View.GONE);
 
+
+
                         JSONArray postdata = obj.getJSONArray("PostOffice");
                         JSONObject dataobject = postdata.getJSONObject(1);
 
@@ -457,9 +465,9 @@ public class registration_Activity extends AppCompatActivity {
                         String States = dataobject.getString("State");
                         String Countries = dataobject.getString("Country");
 
-                        editor.putString("Country",Countries);
-                        editor.putString("State",States);
-                        editor.putString("City",district);
+                        editor.putString("country",Countries);
+                        editor.putString("state",States);
+                        editor.putString("city",district);
                         editor.commit();
 
                         check=true;

@@ -90,7 +90,7 @@ public class dashboard_fragment extends Fragment {
 
         SharedPreferences preferences = getActivity().getSharedPreferences("registrationform",MODE_PRIVATE);
 
-        String preferenceCountry = preferences.getString("countryname",null);
+        String preferenceCountry = preferences.getString("pre_country",null);
         String interest = preferences.getString("interest",null);
         String education = preferences.getString("qualification",null);
         String examname = preferences.getString("examname",null);
@@ -125,6 +125,8 @@ public class dashboard_fragment extends Fragment {
         university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
         university_list.add(new Univerity_Course_Module(R.drawable.acadia_universiti_logo,"Acadia University","Course37+"));
         university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
+
+
         topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada,"Canada"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.australia_flag,"Australia"));
         topcountry_pickup_list.add(new Top_country_module(R.drawable.uk_flag,"UK"));

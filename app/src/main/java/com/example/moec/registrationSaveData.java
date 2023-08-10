@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.example.moec.JavaClass.config;
 import com.example.moec.loginActivity.login_Activity;
 
 import org.json.JSONArray;
@@ -63,8 +64,14 @@ public class registrationSaveData {
                         editor.putString("userid",obj.getString("user_id"));
                         editor.putInt("timeline",1);
                         editor.commit();
-
+                        progressBar.dismiss();
                         moveactivity();
+
+
+                    }
+                    else if (status==0 && id==1) {
+                        String message = obj.getString("Message");
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                         progressBar.dismiss();
 
                     }
@@ -114,10 +121,12 @@ public class registrationSaveData {
         ((Activity)context).finish();
 
     }
+
+
     void getdataAPI(String User_id) {
 
 
-        String registrationURL = Config.Base_url+"logingetdata.php?" + "user_id="+User_id;
+        String registrationURL = config.Base_url+"logingetdata.php?" + "user_id="+User_id;
 
 
         class registration extends AsyncTask<String, String, String> {
@@ -133,12 +142,9 @@ public class registrationSaveData {
                     JSONObject obj = new JSONObject(s);
                     int status = obj.getInt("status");
 
-
                     if (status == 1) {
-                        progressBar.dismiss();
                         JSONObject userdata = obj.getJSONObject("userdata");
 
-                        Toast.makeText(context, "Successfully", Toast.LENGTH_SHORT).show();
 
                         SharedPreferences.Editor editor = context.getSharedPreferences("registrationform",MODE_PRIVATE).edit();
                         editor.putString("Fname",userdata.getString("firstname"));
@@ -149,7 +155,10 @@ public class registrationSaveData {
                         editor.putString("g",userdata.getString("gender"));
                         editor.putString("pincode",userdata.getString("pincode"));
                         editor.putString("qualification",userdata.getString("course_level"));
-                        editor.putString("countryname",userdata.getString("country"));
+                        editor.putString("pre_country",userdata.getString("pre_country"));
+                        editor.putString("country",userdata.getString("country"));
+                        editor.putString("state",userdata.getString("state"));
+                        editor.putString("city",userdata.getString("city"));
                         editor.putString("interest",userdata.getString("insterest_area"));
                         editor.putString("examname",userdata.getString("english_exam"));
                         editor.putString("write",userdata.getString("write_marks"));
@@ -160,9 +169,8 @@ public class registrationSaveData {
                         editor.putString("userid",User_id);
                         editor.commit();
 
-                        fetchAddressdata(userdata.getString("pincode"));
 
-                        Toast.makeText(context, "Successfully Login User.. ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Welcome Back "+userdata.getString("firstname"), Toast.LENGTH_SHORT).show();
                         progressBar.dismiss();
                         moveactivity();
 
@@ -196,70 +204,6 @@ public class registrationSaveData {
         obj.execute(registrationURL);
     }
 
-    void fetchAddressdata(String pincode) {
-
-        String url = "https://api.postalpincode.in/pincode/"+pincode;
-
-
-        class registration extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-
-                try {
-                    JSONArray array = new JSONArray(s);
-                    JSONObject obj = array.getJSONObject(0);
-                    String status = obj.getString("Status");
-
-
-                    if (status.equals("Success")) {
-
-                        JSONArray postdata = obj.getJSONArray("PostOffice");
-                        JSONObject dataobject = postdata.getJSONObject(1);
-
-                        SharedPreferences.Editor editor = context.getSharedPreferences("registrationform",MODE_PRIVATE).edit();
-
-
-                        editor.putString("Country",dataobject.getString("Country"));
-                        editor.putString("State",dataobject.getString("State"));
-                        editor.putString("City",dataobject.getString("District"));
-                        editor.commit();
-
-
-
-
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-                super.onPostExecute(s);
-            }
-
-            @Override
-            protected String doInBackground(String... param) {
-
-
-                try {
-                    URL url = new URL(param[0]);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    return br.readLine();
-                } catch (Exception ex) {
-                    return ex.getMessage();
-                }
-
-            }
-        }
-        registration obj = new registration();
-        obj.execute(url);
-
-    }
 
 
 

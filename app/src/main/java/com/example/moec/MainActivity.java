@@ -85,10 +85,9 @@ public class MainActivity extends AppCompatActivity   implements BottomNavigatio
         // set daata sharePreference
 
         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
-        String firstname = preferences.getString("Fname",null);
-        String lastname =   preferences.getString("Lname",null);
+        String firstname = preferences.getString("Fname","");
+        String lastname =   preferences.getString("Lname","");
         studentname.setText(firstname+" "+lastname);
-
         searchbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

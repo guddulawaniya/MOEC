@@ -303,8 +303,11 @@ public class preference_Actvity extends AppCompatActivity  {
         String gender = preferences.getString("g",null);
         String courselevel = preferences.getString("qualification",null);
         String password = preferences.getString("password",null);
-        String country = preferences.getString("countryname",null);
-        String subject = preferences.getString("interest",null);
+        String pre_country = preferences.getString("pre_country",null);
+        String country = preferences.getString("country",null);
+        String state = preferences.getString("state",null);
+        String city = preferences.getString("city",null);
+        String interest = preferences.getString("interest",null);
         String exam = preferences.getString("examname",null);
         String writescore = preferences.getString("write",null);
         String readscore = preferences.getString("read",null);
@@ -318,13 +321,16 @@ public class preference_Actvity extends AppCompatActivity  {
                 "&mobilenumber=" +mobilenumber+
                 "&emailid=" +email+
                 "&dob=" +dob+
-                "&pincode_area=" +pincode+
                 "&gender=" +gender+
+                "&pincode_area=" +pincode+
                 "&courselevel=" +courselevel+
                 "&pass=" +password+
+                "&pre_country=" +pre_country+
                 "&country=" +country+
-                "&subject=" +subject+
-                "&exam=" +exam+
+                "&state=" +state+
+                "&city=" +city+
+                "&interest=" +interest+
+                "&english_exam=" +exam+
                 "&writescore=" +writescore+
                 "&readscore=" +readscore+
                 "&listening=" +listening+
@@ -333,7 +339,7 @@ public class preference_Actvity extends AppCompatActivity  {
         stepcount--;
 
         registrationSaveData registrationSaveData = new registrationSaveData(preference_Actvity.this);
-        registrationSaveData.RegistrationAPI(registrationURL,"Create User..",1);
+        registrationSaveData.RegistrationAPI(registrationURL,"Update User details..",1);
 
     }
 
@@ -379,7 +385,7 @@ public class preference_Actvity extends AppCompatActivity  {
                     if (position>-1)
                     {
                         SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
-                        editor.putString("countryname",text);
+                        editor.putString("pre_country",text);
                         editor.commit();
                         page2class.checkselectcountry=true;
 
