@@ -121,8 +121,10 @@
                 android:layout_marginStart="20dp"
                 android:textColor="@color/black"
                 android:textSize="16dp"/>
-   <com.chaos.view.PinView
 
+            <com.chaos.view.PinView
+
+                android:id="@+id/emailpinbox"
                 style="@style/PinWidget.PinView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

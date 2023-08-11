@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,10 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moec.JavaClass.DataModal;
 import com.example.moec.JavaClass.InternetConnection;
-import com.example.moec.JavaClass.PostDataAPI;
-import com.example.moec.JavaClass.RetrofitAPI;
 import com.example.moec.JavaClass.config;
 import com.example.moec.MainActivity;
 import com.example.moec.R;
@@ -37,18 +33,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
 
 import kotlin.text.Charsets;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class login_Activity extends AppCompatActivity {
 
@@ -58,7 +46,6 @@ public class login_Activity extends AppCompatActivity {
     TextInputEditText emailidlg, passwordlg;
     TextInputLayout emaillayoutlg, passlayoutlg;
     ProgressDialog progressBar;
-    int userid;
     TextView registrainlink;
 
     @Override
@@ -96,8 +83,7 @@ public class login_Activity extends AppCompatActivity {
                 String passtext = passwordlg.getText().toString().trim();
 
                 if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !passtext.isEmpty() && nt.isConnected()) {
-                    logindata(emailtext,passtext);
-
+                    logindata(emailtext, passtext);
 
 
                 } else if (!nt.isConnected()) {
@@ -133,9 +119,7 @@ public class login_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(login_Activity.this, registration_Activity.class));
-
                 overridePendingTransition(R.anim.left_in, R.anim.right_out);
-                finish();
 
             }
         });
@@ -198,7 +182,6 @@ public class login_Activity extends AppCompatActivity {
     }
 
 
-
     void logindata(String emailtext, String passtext) {
         String pass = null;
         try {
@@ -207,8 +190,7 @@ public class login_Activity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         progressBar.show();
-        String registrationURL = config.Base_url+"loginApi_data?"+"username="+emailtext+"&password="+pass;
-
+        String registrationURL = config.Base_url + "loginApi_data?" + "username=" + emailtext + "&password=" + pass;
 
 
         class registration extends AsyncTask<String, String, String> {
@@ -229,34 +211,38 @@ public class login_Activity extends AppCompatActivity {
 
                         JSONObject userdata = obj.getJSONObject("data");
 
-                        SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editor = getSharedPreferences("registrationform", MODE_PRIVATE).edit();
 
-                        editor.putString("Fname",userdata.getString("first_name"));
-                        editor.putString("Lname",userdata.getString("last_name"));
-                        editor.putString("email",userdata.getString("email"));
-                        editor.putString("number",userdata.getString("number"));
-                        editor.putString("DOb",userdata.getString("dob"));
-                        editor.putString("nationality",userdata.getString("nationality"));
-                        editor.putString("g",userdata.getString("gender"));
-                        editor.putString("userid",userdata.getString("id"));
+                        String first = userdata.getString("first_name");
+                        String last = userdata.getString("last_name");
+
+                        editor.putString("Fname", first);
+                        editor.putString("Lname", last);
+                        editor.putString("email", userdata.getString("email"));
+                        editor.putString("number", userdata.getString("number"));
+                        editor.putString("DOb", userdata.getString("dob"));
+                        editor.putString("nationality", userdata.getString("nationality"));
+                        editor.putString("g", userdata.getString("gender"));
+                        editor.putString("userid", userdata.getString("id"));
                         editor.commit();
 
-                        Toast.makeText(login_Activity.this, "user id "+userdata.getString("id"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(login_Activity.this, "Welcome back " + first + last, Toast.LENGTH_SHORT).show();
                         editor.commit();
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
-                        overridePendingTransition(R.anim.right_in_activity,R.anim.left_out_activity);
+                        overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
                         finish();
                     } else {
-                        Toast.makeText(login_Activity.this, "failed"+obj, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(login_Activity.this, "failed" + obj, Toast.LENGTH_SHORT).show();
                         progressBar.dismiss();
                         errorshow(passlayoutlg, passwordlg);
                     }
                 } catch (JSONException e) {
-                     throw new RuntimeException(e);
+                    throw new RuntimeException(e);
                 }
                 super.onPostExecute(s);
             }
+
             @Override
             protected String doInBackground(String... param) {
 
@@ -279,54 +265,6 @@ public class login_Activity extends AppCompatActivity {
 
 
     }
-
-
-
-
-  /*  void logincode(String emailtext, String passwordtext)
-    {
-        String addurl = "https://prepareielts.com/TestApi/loginData"+"?email="+emailtext+"&password="+passwordtext;
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, addurl, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONObject obj = new JSONObject(response);
-                    String status = obj.getString("status");
-
-                    if (status.equals("True"))
-                    {
-                        Toast.makeText(login_Activity.this, "data send seccsefully", Toast.LENGTH_SHORT).show();
-                        SharedPreferences.Editor editor = getSharedPreferences("login",MODE_PRIVATE).edit();
-                        editor.putString("LOGIN_EMAIL",emailtext);
-                        editor.putString("LOGIN_PASSWORD",passwordtext);
-                        editor.commit();
-
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    Toast.makeText(login_Activity.this, "Error"+e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(login_Activity.this, "Error"+error.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        requestQueue.add(stringRequest);
-    }*/
 
 
 }

@@ -39,6 +39,7 @@ public class view_Activity_before_login extends AppCompatActivity  {
 
     RecyclerView sliderRecyclerview;
     String userid;
+    boolean beforelogin;
 
 
     ArrayList<slidermodule> list;
@@ -48,8 +49,8 @@ public class view_Activity_before_login extends AppCompatActivity  {
         setContentView(R.layout.activity_view_before_login);
 
         SharedPreferences sharedPreferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
-
         userid = sharedPreferences.getString("userid",null);
+         beforelogin = sharedPreferences.getBoolean("beforelogin",false);
 
         list = new ArrayList<>();
 
@@ -95,6 +96,10 @@ public class view_Activity_before_login extends AppCompatActivity  {
         materialNestbbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor Editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
+
+                Editor.putBoolean("beforelogin",true);
+                Editor.commit();
                 startActivity(new Intent(view_Activity_before_login.this, login_Activity.class));
                 overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
                 finish();
@@ -126,10 +131,15 @@ public class view_Activity_before_login extends AppCompatActivity  {
     @Override
     protected void onStart() {
         super.onStart();
-        if (userid!=null) {
+        if (userid!=null ) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
             finish();
+        } else if (beforelogin == true) {
+            startActivity(new Intent(getApplicationContext(), login_Activity.class));
+            overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
+            finish();
+
         }
     }
 

@@ -591,6 +591,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
+
         android:backgroundTint="@color/primarycolor"
         android:fontFamily="@font/oswald"
         android:text="Submit"

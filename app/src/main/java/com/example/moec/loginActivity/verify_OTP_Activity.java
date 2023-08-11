@@ -15,19 +15,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.chaos.view.PinView;
 import com.example.moec.JavaClass.InternetConnection;
+import com.example.moec.JavaClass.sendemailotp;
+import com.example.moec.JavaClass.sendotpnumbers;
 import com.example.moec.R;
 import com.example.moec._set_password;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Random;
 
 
 public class verify_OTP_Activity extends AppCompatActivity {
 
-    PinView pinView;
+    PinView pinView,emailpinbox;
     TextView resendotp,emailresend;
 
-    String sendotp="1234";
+    String numberotp="1234",emailotp="1234";
 
     String url = "https://api.datagenit.com/sms?auth=D!~7113Zz8MHFw1mQ&senderid=MOECOE&msisdn=";
     boolean rdcheck = false;
@@ -37,19 +40,19 @@ public class verify_OTP_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_verify_otp);
 
         pinView=findViewById(R.id.pinview);
+        emailpinbox=findViewById(R.id.emailpinbox);
         Button verifybutton = findViewById(R.id.verifybuttonotp);
-        TextView showmessage = findViewById(R.id.textView11);
-        TextView maintitle = findViewById(R.id.maintitle);
+
         Intent intent = getIntent();
         String number = intent.getStringExtra("number");
-        int id = intent.getIntExtra("id",0);
         String email = intent.getStringExtra("email");
-//        String pass = intent.getStringExtra("pass");
-//        String name = intent.getStringExtra("name");
-        //sendotp = intent.getStringExtra("otp");
+
+
+      /*  numberotp = intent.getStringExtra("numberotp");
+        emailotp = intent.getStringExtra("emailotp");*/
         resendotp = findViewById(R.id.resendotp);
         emailresend = findViewById(R.id.emailresend);
-        Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
+
 
         InternetConnection nt = new InternetConnection(getApplicationContext());
         timecounter();
@@ -60,23 +63,41 @@ public class verify_OTP_Activity extends AppCompatActivity {
 
                 if (rdcheck)
                 {
-                    final String sms = "Hello ! The One Time Password " +
-                            "to login for Staff panel is "+sendotp+" This OTP will expire in 10 minutes Regards, Meridean Overseas Edu Con Pvt Ltd";
-
                     rdcheck=false;
-//                  sendotp= new DecimalFormat("0000").format(new Random().nextInt(9999));
-                    sendotp="1234";
-                    String s = url + number + "&message=" + sms;
+                    numberotp= new DecimalFormat("0000").format(new Random().nextInt(9999));
+                    final String sms = "Hello ! The One Time Password " +
+                            "to login for Staff panel is "+numberotp+" This OTP will expire in 10 minutes Regards, Meridean Overseas Edu Con Pvt Ltd";
+
                     timecounter();
-                   // Toast.makeText(verify_OTP_Activity.this, "Default OTP 1234 \n SMS service currently Stop", Toast.LENGTH_SHORT).show();
+                    String s = url + number + "&message=" + sms;
+                    Toast.makeText(verify_OTP_Activity.this, "number OTP : "+numberotp, Toast.LENGTH_SHORT).show();
+
 //                    sendotpnumbers sm = new sendotpnumbers(getApplication());
 //                    sm.execute(s);
 
                 }
+            }
+        });
+        emailresend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (rdcheck)
+                {
+                    rdcheck=false;
+                    emailotp= new DecimalFormat("0000").format(new Random().nextInt(9999));
+                    final String sms = "Hello ! The One Time Password " +
+                            "to login for Staff panel is "+emailotp+" This OTP will expire in 10 minutes Regards, Meridean Overseas Edu Con Pvt Ltd";
+
+                    timecounter();
+                    String s = url + number + "&message=" + sms;
+                    Toast.makeText(verify_OTP_Activity.this, "number OTP : "+emailotp, Toast.LENGTH_SHORT).show();
 
 
+//                    sendemailotp sm = new sendemailotp(verify_OTP_Activity.this,email,emailotp);
+//                    sm.execute(s);
 
-
+                }
             }
         });
 
@@ -88,9 +109,10 @@ public class verify_OTP_Activity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                String enterotpinboxs=pinView.getText().toString();
+                String numberinputotp=pinView.getText().toString();
+                String emailinputotp=emailpinbox.getText().toString();
 
-                if (sendotp.equals(enterotpinboxs) && nt.isConnected())
+                if (numberotp.equals(numberinputotp) && emailotp.equals(emailinputotp) && nt.isConnected())
                 {
                     startActivity(new Intent(verify_OTP_Activity.this, _set_password.class));
                     finish();

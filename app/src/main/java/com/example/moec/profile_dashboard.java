@@ -81,8 +81,7 @@ public class profile_dashboard extends AppCompatActivity {
             gender.setText("Student");
 
         }
-        else
-        gender.setText(genderget+" | Student");
+        else gender.setText(genderget+" | Student");
 
         //set data on load activity
 
