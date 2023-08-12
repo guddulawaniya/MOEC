@@ -71,6 +71,7 @@ public class profile_dashboard extends AppCompatActivity {
         String genderget=  preferences.getString("g","");
 
 
+
         if (dobget.equals("null"))
         {
             dob.setText("DD/MM/YYYY");

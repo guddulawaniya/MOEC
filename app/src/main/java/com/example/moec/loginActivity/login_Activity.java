@@ -42,10 +42,10 @@ public class login_Activity extends AppCompatActivity {
 
 
     AlertDialog.Builder builder;
-
+    ProgressDialog progressBar;
     TextInputEditText emailidlg, passwordlg;
     TextInputLayout emaillayoutlg, passlayoutlg;
-    ProgressDialog progressBar;
+
     TextView registrainlink;
 
     @Override

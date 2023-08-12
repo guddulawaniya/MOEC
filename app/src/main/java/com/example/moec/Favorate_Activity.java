@@ -58,7 +58,7 @@ public class Favorate_Activity extends AppCompatActivity {
         String fees = preferences.getString("fees",null);
         String collegename = preferences.getString("collegename",null);
         boolean likeid = preferences.getBoolean("likeid",false);
-        list.add(new module_all_program(coursename,duration,fees,countryname,collegename));
+//        list.add(new module_all_program(coursename,duration,fees,countryname,collegename));
 
 
 

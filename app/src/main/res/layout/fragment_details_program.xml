@@ -61,6 +61,7 @@
 
             <TextView
 
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -71,6 +72,7 @@
 
             <TextView
 
+                android:id="@+id/tution_fee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -97,7 +99,7 @@
                 android:textStyle="bold" />
 
             <TextView
-
+android:id="@+id/applicationfees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -326,31 +328,6 @@
             </com.google.android.material.chip.ChipGroup>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/divider_color" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text=" Open Intakes  "
-                android:textColor="@color/heading_color"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins"
-                android:text="48 Months"
-                android:textColor="@color/text_color"
-                android:textSize="14sp" />
 
             <View
                 android:layout_width="match_parent"
@@ -390,13 +367,13 @@
                 android:id="@+id/websitelinerlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="20dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
 
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -412,10 +389,12 @@
 
                     <TextView
 
-                        android:layout_width="wrap_content"
+                        android:id="@+id/linkset"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="8dp"
+                        android:singleLine="true"
                         android:text="https://www.meridean.org/"
                         android:textColor="@color/primarycolor"
                         android:textSize="14sp" />
@@ -423,22 +402,28 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.chip.Chip
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="right|center_vertical"
+                    android:orientation="vertical">
 
-                    android:id="@+id/visitwebsitebutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/poppins"
-                    android:minHeight="40dp"
-                    android:text="visit"
-                    android:textColor="@color/text_color"
-                    android:textSize="16dp"
-                    app:chipBackgroundColor="@color/white"
-                    app:chipCornerRadius="50dp"
-                    app:chipEndPadding="15dp"
-                    app:chipStartPadding="15dp"
-                    app:chipStrokeColor="#DDE8FA" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/visitwebsitebutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:text="visit"
+                        android:textColor="@color/text_color"
+                        android:textSize="16dp"
+                        app:chipBackgroundColor="@color/white"
+                        app:chipCornerRadius="50dp"
+                        app:chipEndPadding="15dp"
+                        app:chipStartPadding="15dp"
+                        app:chipStrokeColor="#DDE8FA" />
+                </LinearLayout>
 
 
             </LinearLayout>

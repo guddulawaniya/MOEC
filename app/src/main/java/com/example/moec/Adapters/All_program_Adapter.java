@@ -20,6 +20,7 @@ import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.New_Application;
 import com.example.moec.Program_details;
 import com.example.moec.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -50,16 +51,36 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.duration.setText(module.getDuration());
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
+        Picasso.get()
+                .load(module.getUniversityimage())
+                .resize(300,100)
+                .into(holder.universityimage);
 
-        holder.fees.setText(module.getFees());
+        if (module.getFees().equals("null"))
+        {
+            holder.fees.setText("");
+        }else holder.fees.setText(module.getFees()+" Months");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                SharedPreferences.Editor editor = context.getSharedPreferences("programdetails",Context.MODE_PRIVATE).edit();
+                editor.putString("coursename",module.getCoursename());
+                editor.putString("duration",module.getDuration());
+                editor.putString("countryname",module.getCountryname());
+                editor.putString("collegename",module.getCollegename());
+                editor.putString("imageURL",module.getUniversityimage());
+                editor.putString("fees",module.getFees());
+                editor.putString("intake",module.getIntake());
+                editor.putString("weblink",module.getLink());
+                editor.putString("criteria",module.getCriteria());
+                editor.commit();
+
+
                 Intent intent = new Intent(context, Program_details.class);
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"item").toBundle();
                 context.startActivity(intent,bundle);
-                
+
             }
         });
 
@@ -74,6 +95,10 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
                     String countryname = module.getCountryname();
                     String collegename = module.getCollegename();
                     String fees = module.getFees();
+                    Picasso.get()
+                            .load(module.getUniversityimage())
+                            .resize(300,100)
+                            .into(holder.universityimage);
 
                    String[] list1 = {countryname,duration,countryname,collegename,fees};
                     SharedPreferences.Editor editor = context.getSharedPreferences("favoriteProgram", Context.MODE_PRIVATE).edit();

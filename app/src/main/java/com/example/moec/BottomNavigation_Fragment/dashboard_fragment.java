@@ -4,8 +4,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -30,6 +33,7 @@ import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.Univerity_Course_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
+import com.example.moec.JavaClass.config;
 import com.example.moec.MainActivity;
 import com.example.moec.ModulesClass.Quick_Action_Module;
 import com.example.moec.ModulesClass.Top_country_module;
@@ -38,11 +42,30 @@ import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.New_Application;
 import com.example.moec.R;
+import com.example.moec.loginActivity.login_Activity;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
 import com.smarteist.autoimageslider.SliderView;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+
+import kotlin.text.Charsets;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class dashboard_fragment extends Fragment {
 
@@ -82,9 +105,9 @@ public class dashboard_fragment extends Fragment {
         All_program_Adapter program_adapter = new All_program_Adapter(programArrayList,getContext(),1);
         recommandRecyclerview.setAdapter(program_adapter);
 
-        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
-        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","University of Worcester, UK"));
-        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Birmingham City University, UK"));
+//        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
+//        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","University of Worcester, UK"));
+//        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Birmingham City University, UK"));
 
 
 
@@ -118,13 +141,8 @@ public class dashboard_fragment extends Fragment {
         university_list = new ArrayList<>();
         ImageView phoneicon = view.findViewById(R.id.phoneimage);
 
+        Getuniversitydata();
 
-        university_list.add(new Univerity_Course_Module(R.drawable.worcester_university,"Worcester University","Course37+"));
-        university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
-        university_list.add(new Univerity_Course_Module(R.drawable.acadia_universiti_logo,"Acadia University","Course37+"));
-        university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
-        university_list.add(new Univerity_Course_Module(R.drawable.acadia_universiti_logo,"Acadia University","Course37+"));
-        university_list.add(new Univerity_Course_Module(R.drawable.acsenda_school,"Acadia University","Course37+"));
 
 
         topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada,"Canada"));
@@ -183,11 +201,9 @@ public class dashboard_fragment extends Fragment {
 
 
         RecyclerView recyclerview_top_counryname = view.findViewById(R.id.top_country_pickups);
-        RecyclerView universtyRecyclerview = view.findViewById(R.id.universtyRecyclerview);
 
-        universtyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        Univerity_Course_Adapter univerity_course_adapter = new Univerity_Course_Adapter(getContext(),university_list);
-        universtyRecyclerview.setAdapter(univerity_course_adapter);
+
+
 
         recyclerview_top_counryname.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclerview_top_counryname.setAdapter(countryAdapter);
@@ -288,6 +304,7 @@ public class dashboard_fragment extends Fragment {
 
 
 
+
     private void config() {
         setExitSharedElementCallback(new SharedElementCallback(){});
         getActivity().getWindow().setSharedElementsUseOverlay(false);
@@ -318,6 +335,119 @@ public class dashboard_fragment extends Fragment {
 
         return false;
     }
+
+ /*   private class FetchImageTask extends AsyncTask<String, Void, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            String imageUrl = urls[0];
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url(imageUrl)
+                    .build();
+
+            try (Response response = client.newCall(request).execute()) {
+                if (response.isSuccessful()) {
+                    InputStream inputStream = response.body().byteStream();
+                    return BitmapFactory.decodeStream(inputStream);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            if (bitmap != null) {
+
+            } else {
+                // Handle error case
+            }
+        }
+    }*/
+    void Getuniversitydata() {
+
+        String registrationURL = config.Base_url +"universitiesApiData";
+
+
+        class registration extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                try {
+                    JSONObject obj = new JSONObject(s);
+                    String status = obj.getString("success");
+
+
+                    if (status.equals("true")) {
+
+                        String baseurlimage = obj.getString("logobaseurl");
+                        for (int i=0;i<= 10;++i)
+                        {
+                            JSONArray array = obj.getJSONArray("data");
+                            JSONObject jsonObject = array.getJSONObject(i);
+                            String name = jsonObject.getString("name");
+                            String url = jsonObject.getString("logo");
+                            String total_course = jsonObject.getString("course");
+                            String[] words = total_course.split(",");
+                            int total = words.length;
+
+                            university_list.add(new Univerity_Course_Module(baseurlimage+url,name,"Course "+total));
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "failed" + obj, Toast.LENGTH_SHORT).show();
+
+                    }
+                    RecyclerView universtyRecyclerview = getView().findViewById(R.id.universtyRecyclerview);
+                    universtyRecyclerview.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+                    Univerity_Course_Adapter univerity_course_adapter = new Univerity_Course_Adapter(getContext(),university_list);
+                    universtyRecyclerview.setAdapter(univerity_course_adapter);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                super.onPostExecute(s);
+            }
+
+            @Override
+            protected String doInBackground(String... param) {
+
+                try {
+                    URL url = new URL(param[0]);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    return br.readLine();
+                } catch (Exception ex) {
+                    return ex.getMessage();
+                }
+
+            }
+
+
+        }
+
+        registration obj = new registration();
+        obj.execute(registrationURL);
+
+
+    }
+
+
+   /* void loadimagefunction(String image)
+    {
+        Picasso.get()
+                .load(image)
+                .centerCrop()
+                .resize(400,400)
+                .into();
+
+    }*/
 
 
 

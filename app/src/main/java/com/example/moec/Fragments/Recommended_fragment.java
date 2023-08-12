@@ -50,9 +50,9 @@ public class Recommended_fragment extends Fragment {
         All_program_Adapter program_adapter = new All_program_Adapter(programArrayList,getContext(),1);
         recommandRecyclerview.setAdapter(program_adapter);
 
-        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
-        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","University of Worcester, UK"));
-        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Birmingham City University, UK"));
+//        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Northumbria Univerisity"));
+//        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","University of Worcester, UK"));
+//        programArrayList.add(new module_all_program("Geography BA (Hons) with Pacement",duration+" Months","GBP £"+fees,"United kingdom","Birmingham City University, UK"));
 
 
 

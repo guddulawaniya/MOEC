@@ -29,8 +29,8 @@
 
     <style name="DropDownItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:textColor">@color/black</item>
-
     </style>
+
 
 
     <style name="Theme.App" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
@@ -88,20 +88,5 @@
 
     </style>
 
-
-<!--    <style name="MonthPickerDialogStyle" >-->
-<!--        <item name="monthBgColor">@color/white</item>-->
-<!--        <item name="monthBgSelectedColor">@color/background_blue_shadew</item>-->
-<!--        <item name="monthFontColorSelected">@color/primarycolor</item>-->
-<!--        <item name="monthFontColorNormal">@color/white</item>-->
-<!--        <item name="monthFontColorDisabled">@color/primarycolor</item>-->
-
-<!--        <item name="headerBgColor">@color/secondarycolor</item>-->
-<!--        <item name="headerFontColorSelected">#fff</item>-->
-<!--        <item name="headerFontColorNormal">#85FFFFFF</item>-->
-<!--        <item name="headerTitleColor">#fff</item>-->
-
-<!--        <item name="dialogActionButtonColor">@color/white</item>-->
-<!--    </style>-->
 
 </resources>

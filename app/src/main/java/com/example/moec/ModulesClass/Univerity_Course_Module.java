@@ -1,21 +1,22 @@
 package com.example.moec.ModulesClass;
 
+import android.net.Uri;
+
 public class Univerity_Course_Module {
-    int iconimage;
+    String iconimage;
     String universityname, totalcourse;
 
-
-    public Univerity_Course_Module(int iconimage, String universityname, String totalcourse) {
+    public Univerity_Course_Module(String iconimage, String universityname, String totalcourse) {
         this.iconimage = iconimage;
         this.universityname = universityname;
         this.totalcourse = totalcourse;
     }
 
-    public int getIconimage() {
+    public String getIconimage() {
         return iconimage;
     }
 
-    public void setIconimage(int iconimage) {
+    public void setIconimage(String iconimage) {
         this.iconimage = iconimage;
     }
 

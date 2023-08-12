@@ -148,19 +148,19 @@ public class registration_Activity extends AppCompatActivity {
         gender.setTextColor(Color.BLACK);
 
 
-        MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker().setTheme(R.style.Theme_App);
-        materialDateBuilder.setTitleText("Date of Birth");
-        final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
+            MaterialDatePicker.Builder materialDateBuilder = MaterialDatePicker.Builder.datePicker().setTheme(R.style.Theme_App);
+            materialDateBuilder.setTitleText("Date of Birth");
+            final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
 
 
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
-            @Override
-            public void onPositiveButtonClick(Object selection) {
+            materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                @Override
+                public void onPositiveButtonClick(Object selection) {
 
-                dateofbirth.setText(materialDatePicker.getHeaderText());
+                    dateofbirth.setText(materialDatePicker.getHeaderText());
 
-            }
-        });
+                }
+            });
 
         dateofbirth.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -411,6 +411,7 @@ public class registration_Activity extends AppCompatActivity {
         });
 
     }
+
 
 
     public void validatepincode() {

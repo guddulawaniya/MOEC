@@ -1,6 +1,7 @@
 package com.example.moec;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import com.example.moec.Tabs_Adapters.program_details_tab_Adapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
+import com.squareup.picasso.Picasso;
 
 public class Program_details extends AppCompatActivity {
 
@@ -28,14 +30,33 @@ public class Program_details extends AppCompatActivity {
 
         TextView title = findViewById(R.id.toolbar_title);
         Button applyprogrambutton = findViewById(R.id.applyprogrambutton);
-
         ImageView backbutton = findViewById(R.id.backbutton);
         TextView cleartext = findViewById(R.id.cleartext);
         cleartext.setVisibility(View.GONE);
         TabLayout tabLayout = findViewById(R.id.programtabs);
         ViewPager viewPager = findViewById(R.id.programviewpager);
 
+        TextView coursename = findViewById(R.id.coursename);
+        TextView universityname = findViewById(R.id.univeristyname);
+        TextView countryname  = findViewById(R.id.countryname);
+        ImageView universityimage  = findViewById(R.id.universityimage);
+
+        SharedPreferences preferences = getSharedPreferences("programdetails",MODE_PRIVATE);
+
+        coursename.setText(preferences.getString("coursename",null));
+        universityname.setText(preferences.getString("collegename",null));
+        countryname.setText(preferences.getString("countryname",null));
+
+
+
         ImageView favorateicon = findViewById(R.id.favorateicon);
+
+
+
+        Picasso.get()
+                .load(preferences.getString("imageURL",null))
+                .resize(300,100)
+                .into(universityimage);
 
         applyprogrambutton.setOnClickListener(new View.OnClickListener() {
             @Override
