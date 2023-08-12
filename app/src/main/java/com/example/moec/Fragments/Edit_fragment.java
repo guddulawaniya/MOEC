@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.JavaClass.config;
 import com.example.moec.MainActivity;
 import com.example.moec.R;
@@ -157,10 +158,20 @@ public class Edit_fragment extends DialogFragment {
                 materialDatePicker.show(getChildFragmentManager(), "MATERIAL_DATE_PICKER");
             }
         });
-        if (!pincode.getText().toString().isEmpty()) {
-            fetchAddressdata(pincode.getText().toString());
+        InternetConnection nt = new InternetConnection(getContext());
+        if (!pincode.getText().toString().isEmpty() ) {
+
+            if (nt.isConnected())
+            {
+                fetchAddressdata(pincode.getText().toString());
+            }
+            else {
+                Toast.makeText(getContext(), "Please Your  Internet Connectiion ", Toast.LENGTH_SHORT).show();
+            }
+
 
         }
+
 
 
 
