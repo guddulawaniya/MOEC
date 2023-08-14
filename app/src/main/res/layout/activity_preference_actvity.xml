@@ -60,7 +60,6 @@
         <include layout="@layout/fragment_page1"/>
         <include layout="@layout/fragment_page2"/>
         <include layout="@layout/fragment_page5"/>
-        <include layout="@layout/fragment_page6"/>
     </LinearLayout>
 
 

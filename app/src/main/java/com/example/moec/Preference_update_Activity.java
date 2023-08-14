@@ -29,6 +29,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
+import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.update_preference;
 import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.ModulesClass.most_prefered_destination_module;
 import com.google.android.material.textfield.TextInputEditText;
@@ -133,11 +135,13 @@ public class Preference_update_Activity extends AppCompatActivity {
             public void onClick(View view) {
                 if (linearpage1.getVisibility() == View.VISIBLE)
                 {
-                    RegistrationAPI();
+
+                    savedata();
                  onBackPressed();
 
                 } else if (linearpage2.getVisibility() == View.VISIBLE) {
-                    RegistrationAPI();
+                    savedata();
+
                     onBackPressed();
                 } else if (linearpage3.getVisibility() == View.VISIBLE) {
                  page3object.page3dataset();
@@ -183,117 +187,6 @@ public class Preference_update_Activity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    void RegistrationAPI() {
-        ProgressDialog progressBar = new ProgressDialog(this);
-        progressBar.setCancelable(true);
-        progressBar.setTitle("Update  Profile");
-        progressBar.setMessage("Please Wait..");
-        progressBar.show();
-
-
-        SharedPreferences preferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
-
-        String firstname = preferences.getString("Fname",null);
-        String lastname = preferences.getString("Lname",null);
-        String mobilenumber = preferences.getString("number",null);
-        String email = preferences.getString("email",null);
-        String dob = preferences.getString("DOb",null);
-        String pincode = preferences.getString("pincode",null);
-        String gender = preferences.getString("g",null);
-        String courselevel = preferences.getString("qualification",null);
-        String password = preferences.getString("password",null);
-        String country = preferences.getString("countryname",null);
-        String subject = preferences.getString("interest",null);
-        String exam = preferences.getString("examname",null);
-        String writescore = preferences.getString("write",null);
-        String readscore = preferences.getString("read",null);
-        String listening = preferences.getString("listen",null);
-        String speaking = preferences.getString("speak",null);
-        String ovarall = preferences.getString("overall",null);
-
-
-        String registrationURL ="https://android.merideanoverseas.in/registration.php?"+
-                "firstname=" +firstname+
-                "&lastname=" +lastname+
-                "&mobilenumber=" +mobilenumber+
-                "&emailid=" +email+
-                "&dob=" +dob+
-                "&pincode_area=" +pincode+
-                "&gender=" +gender+
-                "&courselevel=" +courselevel+
-                "&pass=" +password+
-                "&country=" +country+
-                "&subject=" +subject+
-                "&exam=" +exam+
-                "&writescore=" +writescore+
-                "&readscore=" +readscore+
-                "&listening=" +listening+
-                "&speaking=" +speaking+
-                "&ovarall="+ovarall;
-
-
-        class registration extends AsyncTask<String, String, String> {
-
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                progressBar.show();
-
-                try {
-                    JSONObject obj = new JSONObject(s);
-                    int status = obj.getInt("status");
-
-                    String message = obj.getString("Message");
-
-
-                    if (status == 1) {
-
-                        String userid = obj.getString("user_id");
-                        Toast.makeText(getApplicationContext(), "User Successfully Updated ", Toast.LENGTH_SHORT).show();
-                        SharedPreferences.Editor editor = getSharedPreferences("logindetail",MODE_PRIVATE).edit();
-                        editor.putString("userid",userid);
-                        editor.commit();
-
-                        progressBar.dismiss();
-
-                    }
-                    else
-                    {
-                        progressBar.dismiss();
-                        Toast.makeText(getApplicationContext(), "Error : "+message, Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-
-
-                super.onPostExecute(s);
-
-            }
-
-            @Override
-            protected String doInBackground(String... param) {
-
-
-                try {
-                    URL url = new URL(param[0]);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    return br.readLine();
-                } catch (Exception ex) {
-                    return ex.getMessage();
-                }
-
-            }
-        }
-        registration obj = new registration();
-        obj.execute(registrationURL);
-    }
 
     private void textwatcher(TextInputLayout layout,TextInputEditText text)
     {
@@ -334,7 +227,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                     if (position>-1)
                     {
                         SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
-                        editor.putString("countryname",text);
+                        editor.putString("pre_country",text);
                         editor.commit();
                     }
 
@@ -383,6 +276,8 @@ public class Preference_update_Activity extends AppCompatActivity {
                         SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
                         editor.putString("interest", text);
                         editor.commit();
+
+
                     }
 
                 }
@@ -568,7 +463,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 editor.putString("percentage", percentageText);
                 editor.putString("qualification", radiotext);
                 editor.commit();
-                RegistrationAPI();
+                savedata();
                 onBackPressed();
             }
             else {
@@ -578,6 +473,37 @@ public class Preference_update_Activity extends AppCompatActivity {
         }
 
 
+    }
+    void savedata()
+    {
+        SharedPreferences preferences = getSharedPreferences("registrationform", Context.MODE_PRIVATE);
+        String userid = preferences.getString("userid",null);
+        String pre_country = preferences.getString("pre_country",null);
+        String interest = preferences.getString("interest",null);
+        String qualification = preferences.getString("qualification",null);
+        String edu_marsks = preferences.getString("percentage",null);
+        String examname = preferences.getString("examname",null);
+        String writeText = preferences.getString("write",null);
+        String readText = preferences.getString("read",null);
+        String listenText = preferences.getString("listen",null);
+        String speakText = preferences.getString("speak",null);
+        String overText = preferences.getString("overall",null);
+
+        String registrationURL = config.Base_url + "setPreferenceApiData?" +
+                "user_id=" +userid+
+                "&des_country=" + pre_country +
+                "&intrest=" + interest +
+                "&qualification=" + qualification +
+                "&edu_marsks=" + edu_marsks +
+                "&englishtest=" + examname +
+                "&writingscore=" + writeText +
+                "&listeningscore=" + readText +
+                "&readingscore=" + listenText +
+                "&speakingscore=" + speakText +
+                "&over_allscore=" + overText;
+
+        update_preference preference = new update_preference(Preference_update_Activity.this);
+        preference.UpdatesAPI(registrationURL);
     }
    private class page5 {
 
@@ -865,11 +791,13 @@ public class Preference_update_Activity extends AppCompatActivity {
         {
 
             SharedPreferences.Editor editor = getSharedPreferences("registrationform", Context.MODE_PRIVATE).edit();
+
             String readText = reading.getText().toString();
             String writeText = writing.getText().toString();
             String listenText = listening.getText().toString();
             String speakText = speaking.getText().toString();
             String overText = overall.getText().toString();
+
 
             // linear layout 1st
             if (!readText.isEmpty() && !writeText.isEmpty() &&
@@ -883,7 +811,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 editor.putString("speak", speakText);
                 editor.putString("overall", overText);
                 editor.commit();
-                RegistrationAPI();
+                savedata();
                 onBackPressed();
 
 

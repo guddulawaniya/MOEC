@@ -52,11 +52,11 @@ public class program_preference_Activity extends AppCompatActivity {
                   @Override
                   public void run() {
 
-                      String countryname = preferences.getString("countryname",null);
-                      String interest = preferences.getString("interest",null);
+                      String countryname = preferences.getString("pre_country","");
+                      String interest = preferences.getString("interest","");
                       String Education = preferences.getString("qualification","course_level");
                       String percentage = preferences.getString("percentage","");
-                      String englishtest = preferences.getString("examname",null);
+                      String englishtest = preferences.getString("examname","");
 
 
                       selectcountry.setText(countryname);

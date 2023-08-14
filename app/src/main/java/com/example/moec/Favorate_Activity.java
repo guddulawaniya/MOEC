@@ -33,7 +33,7 @@ public class Favorate_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_favorate);
 
 
-        LinearLayout emptylayout = findViewById(R.id.emptylayout);
+        LinearLayout emptylayout = findViewById(R.id.linearLayout21);
         ImageView backbutton = findViewById(R.id.backbutton);
         Button explorebutton = findViewById(R.id.nofoundbutton);
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,11 @@ public class Favorate_Activity extends AppCompatActivity {
         if (list.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
             emptylayout.setVisibility(View.VISIBLE);
+
+        }
+        else
+        { recyclerView.setVisibility(View.VISIBLE);
+            emptylayout.setVisibility(View.GONE);
 
         }
 
