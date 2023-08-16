@@ -29,6 +29,8 @@ import com.example.moec.BottomNavigation_Fragment.dashboard_fragment;
 import com.example.moec.BottomNavigation_Fragment.insights_fragment;
 import com.example.moec.BottomNavigation_Fragment.program_fragment;
 import com.example.moec.JavaClass.InternetConnection;
+import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.update_preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;

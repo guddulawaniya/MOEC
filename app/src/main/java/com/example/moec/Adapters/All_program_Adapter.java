@@ -1,5 +1,7 @@
 package com.example.moec.Adapters;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,8 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moec.JavaClass.updateAPIcall;
 import com.example.moec.ModulesClass.module_all_program;
-import com.example.moec.New_Application;
 import com.example.moec.Program_details;
 import com.example.moec.R;
 import com.squareup.picasso.Picasso;
@@ -29,11 +31,15 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     ArrayList<module_all_program> list ;
     Context context;
     int id;
-    boolean like = true;
 
     public All_program_Adapter(ArrayList<module_all_program> list, Context context,int id) {
         this.list = list;
         this.id = id;
+        this.context = context;
+    }
+
+    public All_program_Adapter(ArrayList<module_all_program> list, Context context) {
+        this.list = list;
         this.context = context;
     }
 
@@ -51,6 +57,14 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.duration.setText(module.getDuration());
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
+        if (module.getFavoratevalue().equals("yes"))
+        {
+            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+        }
+        else
+        {
+            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+        }
         Picasso.get()
                 .load(module.getUniversityimage())
                 .resize(300,100)
@@ -74,8 +88,8 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
                 editor.putString("intake",module.getIntake());
                 editor.putString("weblink",module.getLink());
                 editor.putString("criteria",module.getCriteria());
+                editor.putString("courseid",module.getCourseid());
                 editor.commit();
-
 
                 Intent intent = new Intent(context, Program_details.class);
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"item").toBundle();
@@ -86,43 +100,28 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
         if (id==1)
         {
-
             holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String coursename = module.getCoursename();
-                    String duration = module.getDuration();
-                    String countryname = module.getCountryname();
-                    String collegename = module.getCollegename();
-                    String fees = module.getFees();
-                    Picasso.get()
-                            .load(module.getUniversityimage())
-                            .resize(300,100)
-                            .into(holder.universityimage);
+                    SharedPreferences.Editor editor = context.getSharedPreferences("programdetails",Context.MODE_PRIVATE).edit();
 
-                   String[] list1 = {countryname,duration,countryname,collegename,fees};
-                    SharedPreferences.Editor editor = context.getSharedPreferences("favoriteProgram", Context.MODE_PRIVATE).edit();
-
-                    if (like)
+                    if (module.getFavoratevalue().equals("no"))
                     {
-                        like=false;
+
+                        editor.putString("coursename",module.getCoursename());
                         holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+                        Toast.makeText(context, "Successfully add Favorate ", Toast.LENGTH_SHORT).show();
+                        new updateAPIcall(context,module.getCourseid(),"yes");
+
 
                     }
                     else
                     {
-                        like=true;
+
                         holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+                       Toast.makeText(context, "Remove Favorate", Toast.LENGTH_SHORT).show();
+                        new updateAPIcall(context,module.getCourseid(),"no");
                     }
-
-
-
-                    editor.putString("coursename",coursename);
-                    editor.putString("duration",duration);
-                    editor.putString("countryname",countryname);
-                    editor.putString("fees",fees);
-                    editor.putString("collegename",collegename);
-                    editor.commit();
 
                 }
             });

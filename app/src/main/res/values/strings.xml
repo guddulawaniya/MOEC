@@ -27,8 +27,8 @@
     <string name="loginview_descripation"><![CDATA[Meridean Overseas Education is a leading study abroad agency, dedicated to providing students with comprehensive support and guidance on studying abroad programs in UK, USA, Canada, Australia & Europe.]]></string>
 
     <array name="initial_slider_values">
-        <item>20.0</item>
-        <item>70.0</item>
+        <item>0</item>
+        <item>100</item>
     </array>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>

@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.search.SearchView;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
@@ -25,12 +26,11 @@ import java.util.ArrayList;
 
 public class Search_Activity extends AppCompatActivity {
 
-    ListView listView,listView1;
+    ListView listView, listView1;
 
-    SearchView searchfieldtext;
     ArrayList<String> list;
-    ArrayAdapter<String > adapter;
-    CardView search_button ;
+    ArrayAdapter<String> adapter;
+    CardView search_button;
 
 
     @Override
@@ -40,7 +40,6 @@ public class Search_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         TextView toolbartitle = findViewById(R.id.toolbar_title);
-        searchfieldtext = (SearchView) findViewById(R.id.searchView);
         TextView cleartext = findViewById(R.id.cleartext);
 
         ImageView backbutton = findViewById(R.id.backbutton);
@@ -55,8 +54,14 @@ public class Search_Activity extends AppCompatActivity {
         });
 
 
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.getEditText().setOnEditorActionListener((v, actionId, event) -> {
 
+            Toast.makeText(this, "search : " + searchView.getText(), Toast.LENGTH_SHORT).show();
 
+            searchView.hide();
+            return false;
+        });
 
 
 //        searchfieldtext.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -86,8 +91,6 @@ public class Search_Activity extends AppCompatActivity {
 //        });
 
 
-
-
         list = new ArrayList<>();
         list.add("Middlesex University London, UK");
         list.add("University of East London, UK");
@@ -100,20 +103,15 @@ public class Search_Activity extends AppCompatActivity {
         list.add("Canterbury Christ Church University, UK");
         list.add("Keele University, UK");
 
-        adapter = new ArrayAdapter<>(this, R.layout.search_card,list);
+        adapter = new ArrayAdapter<>(this, R.layout.search_card, list);
         listView.setAdapter(adapter);
         listView1.setAdapter(adapter);
-
-
-
-
-
 
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              onBackPressed();
+                onBackPressed();
             }
         });
 
@@ -133,7 +131,6 @@ public class Search_Activity extends AppCompatActivity {
 
         getWindow().setSharedElementEnterTransition(transform);
         getWindow().setSharedElementReturnTransition(transform);
-
 
 
     }

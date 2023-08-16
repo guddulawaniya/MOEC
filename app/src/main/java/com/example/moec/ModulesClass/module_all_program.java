@@ -1,9 +1,9 @@
 package com.example.moec.ModulesClass;
 
 public class module_all_program {
-    String coursename, duration, fees, countryname, collegename,universityimage,intake,link,criteria;
+    String coursename, duration, fees, countryname, collegename,universityimage,intake,link,criteria,courseid,favoratevalue;
 
-    public module_all_program(String coursename, String duration, String fees, String countryname, String collegename, String universityimage, String intake, String link, String criteria) {
+    public module_all_program(String coursename, String duration, String fees, String countryname, String collegename, String universityimage, String intake, String link, String criteria, String courseid,String favoratevalue) {
         this.coursename = coursename;
         this.duration = duration;
         this.fees = fees;
@@ -13,6 +13,16 @@ public class module_all_program {
         this.intake = intake;
         this.link = link;
         this.criteria = criteria;
+        this.courseid = courseid;
+        this.favoratevalue = favoratevalue;
+    }
+
+    public String getFavoratevalue() {
+        return favoratevalue;
+    }
+
+    public void setFavoratevalue(String favoratevalue) {
+        this.favoratevalue = favoratevalue;
     }
 
     public String getCoursename() {
@@ -85,5 +95,13 @@ public class module_all_program {
 
     public void setCriteria(String criteria) {
         this.criteria = criteria;
+    }
+
+    public String getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(String courseid) {
+        this.courseid = courseid;
     }
 }

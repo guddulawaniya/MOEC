@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.moec.JavaClass.updateAPIcall;
 import com.example.moec.Tabs_Adapters.program_details_tab_Adapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
@@ -23,8 +24,8 @@ public class Program_details extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        config();
         super.onCreate(savedInstanceState);
+        config();
         setContentView(R.layout.activity_program_details);
 
 
@@ -46,6 +47,7 @@ public class Program_details extends AppCompatActivity {
         coursename.setText(preferences.getString("coursename",null));
         universityname.setText(preferences.getString("collegename",null));
         countryname.setText(preferences.getString("countryname",null));
+        String courseid = preferences.getString("courseid",null);
 
 
 
@@ -73,13 +75,14 @@ public class Program_details extends AppCompatActivity {
             public void onClick(View view) {
                 if (like==0)
                 {
-
                     like = 1;
                     favorateicon.setImageResource(R.drawable.favorite_heart);
+                    new updateAPIcall(Program_details.this,courseid,"yes");
                 }
                 else{
                     favorateicon.setImageResource(R.drawable.favorite_icon);
                     like = 0;
+                    new updateAPIcall(Program_details.this,courseid,"no");
                 }
             }
         });
@@ -103,16 +106,12 @@ public class Program_details extends AppCompatActivity {
 
     private void config() {
         findViewById(android.R.id.content).setTransitionName("item");
-
         setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
         MaterialContainerTransform transform = new MaterialContainerTransform();
         transform.addTarget(android.R.id.content);
         transform.setDuration(500);
-
         getWindow().setSharedElementEnterTransition(transform);
         getWindow().setSharedElementReturnTransition(transform);
-
-
 
     }
 }

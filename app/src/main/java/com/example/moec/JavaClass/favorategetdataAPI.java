@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.All_program_Adapter;
@@ -22,47 +21,38 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class getuniversitydataAPI {
+public class favorategetdataAPI {
 
+    Context context;
     ProgressBar progressBar;
     ArrayList<module_all_program> list;
-    Context context;
     RecyclerView recyclerView;
-    String registrationURL;
-    Boolean check=false;
 
-
-    public getuniversitydataAPI(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, Boolean check) {
+    public favorategetdataAPI(Context context, ProgressBar progressBar, ArrayList<module_all_program> list,RecyclerView recyclerView) {
+        this.context = context;
         this.progressBar = progressBar;
         this.list = list;
-        this.context = context;
         this.recyclerView = recyclerView;
-        this.registrationURL = registrationURL;
-        this.check = check;
-        Getuniversitydata();
+        getfavoratedata();
     }
 
-
-    void Getuniversitydata() {
-
+    void getfavoratedata() {
         progressBar.setVisibility(View.VISIBLE);
+
+        String registrationURL = config.Base_url + "favoritesCourseDataApi";
+
+
         class registration extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
 
             @Override
             protected void onPostExecute(String s) {
-
                 try {
                     JSONObject obj = new JSONObject(s);
                     String status = obj.getString("success");
-
-                    String baseurl = obj.getString("logobaseurl");
-
                     if (status.equals("true")) {
+
                         progressBar.setVisibility(View.GONE);
+                        String baseurl = obj.getString("logobaseurl");
 
                         JSONArray array = obj.getJSONArray("data");
 
@@ -70,7 +60,6 @@ public class getuniversitydataAPI {
                         {
 
                             JSONObject jsonObject = array.getJSONObject(i);
-
                             String coursename = jsonObject.getString("course");
                             String universityname = jsonObject.getString("name");
                             String logo = jsonObject.getString("logo");
@@ -81,29 +70,18 @@ public class getuniversitydataAPI {
                             String intake = jsonObject.getString("intakes");
                             String criteria = jsonObject.getString("criteria");
                             String courseid = jsonObject.getString("id");
-                            String favoratevalue = jsonObject.getString("favorites");
 
 
                             list.add(new module_all_program(coursename,duration,fees,countryname,universityname,
-                                    baseurl+logo,intake,OfficalLink,criteria,courseid,favoratevalue));
+                                    baseurl+logo,intake,OfficalLink,criteria,courseid,"yes"));
                         }
+
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
 
                     }
-
-                    if (check){
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-                    }else {
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    }
-
-
-                    All_program_Adapter adapter = new All_program_Adapter(list,context,1);
+                    All_program_Adapter adapter = new All_program_Adapter(list,context);
                     recyclerView.setAdapter(adapter);
-
-
-
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
@@ -132,4 +110,5 @@ public class getuniversitydataAPI {
 
 
     }
+
 }

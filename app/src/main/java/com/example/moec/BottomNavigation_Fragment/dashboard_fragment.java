@@ -132,11 +132,6 @@ public class dashboard_fragment extends Fragment {
 
 
 
-
-
-
-
-
         // get des_country..
 
         SharedPreferences preferences = getActivity().getSharedPreferences("registrationform", MODE_PRIVATE);
@@ -144,14 +139,20 @@ public class dashboard_fragment extends Fragment {
         String interest = preferences.getString("interest", null);
         String education = preferences.getString("qualification", null);
         String examname = preferences.getString("examname", null);
+        String userid = preferences.getString("userid", null);
 
-
-
-
-
-
-
-        String registrationURL = config.Base_url +"courseApiDatawithcountry?"+"countryname="+preferenceCountry;
+        String registrationURL = config.Base_url + "setPreferenceApiData?" +
+                "user_id=" +userid+
+                "&des_country="  +
+                "&intrest="  +
+                "&qualification="  +
+                "&edu_marsks="  +
+                "&englishtest="  +
+                "&writingscore="  +
+                "&listeningscore="  +
+                "&readingscore="  +
+                "&speakingscore="  +
+                "&over_allscore=" ;
 
 
         // load university data like image and name and total courses
@@ -161,7 +162,7 @@ public class dashboard_fragment extends Fragment {
 
         // recommended program recyclerview and load data function..
 
-        new getuniversitydataAPI(progressBar, programArrayList, getContext(), recommandRecyclerview, registrationURL,  true);
+        new getuniversitydataAPI(progressBar, programArrayList, getContext(), recommandRecyclerview, config.Base_url +"courseApiDatawithcountry?"+"countryname="+preferenceCountry,  true);
 
 
 
@@ -171,7 +172,7 @@ public class dashboard_fragment extends Fragment {
 
 
         if (preferenceCountry != null && interest != null && education != null && examname != null) {
-
+            
             setpreference_student.setVisibility(View.GONE);
             recommandRecyclerview.setVisibility(View.VISIBLE);
 

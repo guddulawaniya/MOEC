@@ -5,23 +5,14 @@
         <item name="colorPrimary">@color/secondarycolor</item>
         <item name="colorOnPrimary">@color/background_blue_shadew</item>
         <item name="android:windowContentTransitions">true</item>
-
         <item name="android:windowActivityTransitions">true</item>
 
-
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.App.BottomSheetDialog</item>
-
     </style>
-
-
 
     <style name="ModalBottomSheetDialog" parent="Widget.Material3.BottomSheet.Modal">
         <item name="backgroundTint">@color/background_blue_shadew</item>
     </style>
-    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
-        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/background_blue_shadew</item>
-        <item name="android:backgroundTint">@color/background_blue_shadew</item>
-    </style>
+
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:textColor">@color/primarycolor</item>  // you can change the color of the yearPiker dialog
         <item name="android:textColorPrimary">@color/background_blue_shadew</item> // you can change the color of the yearPiker dialog
@@ -30,7 +21,6 @@
     <style name="DropDownItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:textColor">@color/black</item>
     </style>
-
 
 
     <style name="Theme.App" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
@@ -54,7 +44,6 @@
         <item name="android:strokeColor">@color/primarycolor</item>
         <item name="android:topLeftRadius">20dp</item>
         <item name="android:topRightRadius">20dp</item>
-
     </style>
 
 
@@ -62,18 +51,6 @@
         <item name="android:textSize">12sp</item>
         <item name="fontFamily">@font/poppins</item>
     </style>
-
-    <style name="Base.Widget.MaterialComponents.Slider." parent="Theme.MaterialComponents">
-        <item name="colorPrimary">@color/primarycolor</item>
-        <item name="colorOnPrimary">@color/background_blue_shadew</item>
-
-    </style>
-
-    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/primarycolor</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
 
     <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="buttonTint">@color/buttonbgcolor</item>
@@ -85,6 +62,22 @@
 
     <style name="SCBSwitch" parent="Widget.Material3.CompoundButton.Switch">
         <item name="buttonTint">@color/buttonbgcolor</item>
+    </style>
+
+    <style name="Widget.MaterialComponents" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:checkable">true</item>
+        <item name="chipBackgroundColor">@drawable/selected_chip</item>
+        <item name="rippleColor">@color/hint_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+        <item name="chipStrokeColor">@color/chips_stroke_color</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="chipCornerRadius">50dp</item>
+        <item name="chipEndPadding">16dp</item>
+        <item name="chipMinHeight">40dp</item>
+        <item name="chipStartPadding">16dp</item>
+        <item name="android:gravity">center</item>
+
 
     </style>
 
