@@ -1,10 +1,14 @@
 package com.example.moec.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,16 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getuniversitydataAPI;
+import com.example.moec.JavaClass.updateAPIcall;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
+import com.example.moec.onClickInterface;
 
 import java.util.ArrayList;
 
 
 public class All_Programs_fragment extends Fragment {
-
-
-    boolean isLastPage= true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +38,10 @@ public class All_Programs_fragment extends Fragment {
         // array list instances
         ArrayList<module_all_program> list = new ArrayList<>();
 
+
         // get the data from api
         new getuniversitydataAPI(progressBar, list, getContext(), recyclerView, config.Base_url + "courseprogrameApiData", false);
+
 
         return view;
     }

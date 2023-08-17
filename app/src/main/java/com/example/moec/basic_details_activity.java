@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -29,8 +30,15 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -45,8 +53,6 @@ import okhttp3.Response;
 public class basic_details_activity extends AppCompatActivity {
 
     private static final int SELECT_PICTURE = 200;
-    private static final int GALLERY_REQUEST = 200;
-    private static final int CAMERA_REQUEST = 200;
     private TextView studentname, emailaddress, dob, gender, country, state, city, number, pincode, maritalstatus;
     private CardView editimage;
     private ImageView userpic;
@@ -54,6 +60,7 @@ public class basic_details_activity extends AppCompatActivity {
     String UPLOAD_IMAGE_URL= "";
 
     Timer mytimer;
+    ProgressBar progressBar;
 
 
     @Override
@@ -75,6 +82,7 @@ public class basic_details_activity extends AppCompatActivity {
         editimage = findViewById(R.id.editimage);
         userpic = findViewById(R.id.setimage);
         imageprogressbar = findViewById(R.id.imageprogressbaar);
+        progressBar = findViewById(R.id.progressBar);
 
         // Toolbar Expressions
 
@@ -90,24 +98,6 @@ public class basic_details_activity extends AppCompatActivity {
                 dialogFragment.show(getSupportFragmentManager(),"fullScreenDialog");
             }
         });
-
-
-        mytimer = new Timer();
-        mytimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-
-               runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        loadfunction();
-
-                    }
-                });
-
-            }
-        },0,1000);
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,8 +225,9 @@ public class basic_details_activity extends AppCompatActivity {
     }
     void loadfunction()
     {
+
         SharedPreferences preferences = getSharedPreferences("registrationform", MODE_PRIVATE);
-        studentname.setText(preferences.getString("Fname", "") + preferences.getString("Lname", ""));
+        studentname.setText(preferences.getString("Fname", "") +" "+ preferences.getString("Lname", ""));
         emailaddress.setText(preferences.getString("email", ""));
         number.setText(preferences.getString("number", ""));
         dob.setText(preferences.getString("DOb", ""));

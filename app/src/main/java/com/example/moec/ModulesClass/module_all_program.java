@@ -17,6 +17,10 @@ public class module_all_program {
         this.favoratevalue = favoratevalue;
     }
 
+    public module_all_program(String favoratevalue) {
+        this.favoratevalue = favoratevalue;
+    }
+
     public String getFavoratevalue() {
         return favoratevalue;
     }

@@ -1,7 +1,5 @@
 package com.example.moec.Adapters;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
@@ -28,11 +25,11 @@ import java.util.ArrayList;
 
 public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapter.viewholder> {
 
-    ArrayList<module_all_program> list ;
+    ArrayList<module_all_program> list;
     Context context;
     int id;
 
-    public All_program_Adapter(ArrayList<module_all_program> list, Context context,int id) {
+    public All_program_Adapter(ArrayList<module_all_program> list, Context context, int id) {
         this.list = list;
         this.id = id;
         this.context = context;
@@ -46,7 +43,7 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     @NonNull
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_programs_card_layout,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_programs_card_layout, parent, false);
         return new viewholder(view);
     }
 
@@ -57,90 +54,78 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.duration.setText(module.getDuration());
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
-        if (module.getFavoratevalue().equals("yes"))
-        {
+        if (module.getFavoratevalue().equals("yes")) {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-        }
-        else
-        {
+        } else {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
         }
         Picasso.get()
                 .load(module.getUniversityimage())
-                .resize(300,100)
+                .resize(300, 100)
                 .into(holder.universityimage);
 
-        if (module.getFees().equals("null"))
-        {
+        if (module.getFees().equals("null")) {
             holder.fees.setText("");
-        }else holder.fees.setText(module.getFees()+" Months");
+        } else holder.fees.setText(module.getFees() + " Months");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                SharedPreferences.Editor editor = context.getSharedPreferences("programdetails",Context.MODE_PRIVATE).edit();
-                editor.putString("coursename",module.getCoursename());
-                editor.putString("duration",module.getDuration());
-                editor.putString("countryname",module.getCountryname());
-                editor.putString("collegename",module.getCollegename());
-                editor.putString("imageURL",module.getUniversityimage());
-                editor.putString("fees",module.getFees());
-                editor.putString("intake",module.getIntake());
-                editor.putString("weblink",module.getLink());
-                editor.putString("criteria",module.getCriteria());
-                editor.putString("courseid",module.getCourseid());
+                SharedPreferences.Editor editor = context.getSharedPreferences("programdetails", Context.MODE_PRIVATE).edit();
+                editor.putString("coursename", module.getCoursename());
+                editor.putString("duration", module.getDuration());
+                editor.putString("countryname", module.getCountryname());
+                editor.putString("collegename", module.getCollegename());
+                editor.putString("imageURL", module.getUniversityimage());
+                editor.putString("fees", module.getFees());
+                editor.putString("intake", module.getIntake());
+                editor.putString("weblink", module.getLink());
+                editor.putString("criteria", module.getCriteria());
+                editor.putString("courseid", module.getCourseid());
                 editor.commit();
 
                 Intent intent = new Intent(context, Program_details.class);
-                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context,holder.itemView,"item").toBundle();
-                context.startActivity(intent,bundle);
+                Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, holder.itemView, "item").toBundle();
+                context.startActivity(intent, bundle);
 
             }
         });
 
-        if (id==1)
-        {
+        if (id == 1) {
             holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    SharedPreferences.Editor editor = context.getSharedPreferences("programdetails",Context.MODE_PRIVATE).edit();
 
-                    if (module.getFavoratevalue().equals("no"))
-                    {
+                    String sms=null;
+                    if (module.getFavoratevalue().equals("no")) {
 
-                        editor.putString("coursename",module.getCoursename());
                         holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                        Toast.makeText(context, "Successfully add Favorate ", Toast.LENGTH_SHORT).show();
-                        new updateAPIcall(context,module.getCourseid(),"yes");
-
-
-                    }
-                    else
-                    {
+                        sms= "yes";
+                    } else {
 
                         holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-                       Toast.makeText(context, "Remove Favorate", Toast.LENGTH_SHORT).show();
-                        new updateAPIcall(context,module.getCourseid(),"no");
+                        sms = "no";
                     }
+                    new updateAPIcall(context, module.getCourseid(), sms);
 
                 }
             });
 
-        }
-        else
-        {
+        } else {
             holder.favoriteiconbutton.setVisibility(View.GONE);
 
         }
     }
+
     @Override
     public int getItemCount() {
         return list.size();
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
-        TextView coursename,duration,countryname ,collegename,fees;
-        ImageView favoriteiconbutton,universityimage;
+        TextView coursename, duration, countryname, collegename, fees;
+        ImageView favoriteiconbutton, universityimage;
+
         public viewholder(@NonNull View itemView) {
             super(itemView);
             coursename = itemView.findViewById(R.id.coursename);

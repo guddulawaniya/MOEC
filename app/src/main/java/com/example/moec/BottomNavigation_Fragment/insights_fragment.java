@@ -47,7 +47,7 @@ public class insights_fragment extends Fragment {
 
 
         SharedPreferences preferences = getContext().getSharedPreferences("registrationform", MODE_PRIVATE);
-        stepcount = preferences.getInt("timeline",0);
+        stepcount = Integer.parseInt(preferences.getString("timeline","0"));
 
         CardView studenttimeline = view.findViewById(R.id.studenttimelinecard);
         studenttimeline.setOnClickListener(new View.OnClickListener() {

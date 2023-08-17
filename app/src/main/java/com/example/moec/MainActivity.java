@@ -109,13 +109,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             String firstname = preferences.getString("Fname", "");
             String lastname = preferences.getString("Lname", "");
             studentname.setText(firstname + " " + lastname);
+
+
             searchbar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     Intent intent1 = new Intent(MainActivity.this, Search_Activity.class);
-                    Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, searchbar, "search").toBundle();
-                    startActivity(intent1, bundle);
+                    startActivity(intent1);
                 }
             });
 

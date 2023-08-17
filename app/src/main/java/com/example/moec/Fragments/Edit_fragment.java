@@ -69,14 +69,14 @@ public class Edit_fragment extends DialogFragment {
     TextInputLayout pincodelayout;
     String userid;
     String number;
-    Timer mytimer;
+    Button updatebutton;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_profile_, container, false);
 
         ImageView closebutton = view.findViewById(R.id.closefragmentbutton);
-        Button updatebutton = view.findViewById(R.id.updatebutton);
+         updatebutton = view.findViewById(R.id.updatebutton);
         progressBar = view.findViewById(R.id.pincodeprogressbar);
         pincodelayout = view.findViewById(R.id.pincodelayout);
         closebutton.setOnClickListener(new View.OnClickListener() {
@@ -111,10 +111,12 @@ public class Edit_fragment extends DialogFragment {
         maritalstatus = view.findViewById(R.id.maritalstatus);
 
 
+
+
         updatebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getinputtext();
+                updatefunction();
 
             }
         });
@@ -132,8 +134,6 @@ public class Edit_fragment extends DialogFragment {
         maritalstatus.setAdapter(maritallist);
         maritalstatus.setTextColor(Color.BLACK);
         maritalstatus.setDropDownBackgroundResource(R.color.background_blue_shadew);
-
-
 
 
 
@@ -189,6 +189,8 @@ public class Edit_fragment extends DialogFragment {
         String qualification = preferences.getString("qualification","");
         userid = preferences.getString("userid","");
 
+//        fetchAddressdata(getpincode);
+
         firstname.setText(getfirstname);
         lastname.setText(getlastname);
         dob.setText(getdob);
@@ -199,6 +201,7 @@ public class Edit_fragment extends DialogFragment {
         city.setText(getcity);
         maritalstatus.setText(getmaritalstatus);
 
+        updatebutton.setEnabled(false);
 
         pincode.addTextChangedListener(new TextWatcher() {
             @Override
@@ -208,11 +211,11 @@ public class Edit_fragment extends DialogFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() > 0) {
+                    fetchAddressdata(pincode.getText().toString());
                     pincodelayout.setErrorEnabled(false);
 
                 }
                 if (pincode.length() == 6) {
-
                     pincodelayout.setEndIconMode(TextInputLayout.END_ICON_CUSTOM);
                     fetchAddressdata(pincode.getText().toString());
 
@@ -235,50 +238,6 @@ public class Edit_fragment extends DialogFragment {
     }
 
 
-    void getinputtext()
-    {
-        String getfirstname = firstname.getText().toString();
-        String getlastname = lastname.getText().toString();
-        String getdob = dob.getText().toString();
-        String getgender = gender.getText().toString();
-        String getpincode = pincode.getText().toString();
-        String getcountry = country.getText().toString();
-        String getstate = state.getText().toString();
-        String getcity = city.getText().toString();
-        String getmaritalstatus = maritalstatus.getText().toString();
-
-        SharedPreferences.Editor editor = getContext().getSharedPreferences("registrationform", MODE_PRIVATE).edit();
-        editor.putString("Fname",getfirstname);
-        editor.putString("Lname",getlastname);
-        editor.putString("number",number);
-        editor.putString("DOb",getdob);
-        editor.putString("g",getgender);
-        editor.putString("pincode",getpincode);
-        editor.putString("country",getcountry);
-        editor.putString("state",getstate);
-        editor.putString("city",getcity);
-        editor.putString("marital",getmaritalstatus);
-        editor.commit();
-
-        String registrationURL = config.Base_url + "updateStudentProfileApi?" +
-                "user_id=" + userid +
-                "firstname=" + getfirstname +
-                "&lastname=" + getlastname+
-                "&date_of_birth=" + getdob+
-                "&country_code=" +
-                "&marital_status=" + getmaritalstatus+
-                "&gender=" + getgender+
-                "&phone_no=" + number+
-                "&mailing_country=" + getcountry+
-                "&mailing_state=" + getstate+
-                "&mailing_city=" + getcity+
-                "&mailing_pincode=" + getpincode+
-                "&mailing_address=" + getcity+","+ getstate+","+ getcountry+","+getpincode;
-        updatefunction(registrationURL);
-
-
-    }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -290,8 +249,33 @@ public class Edit_fragment extends DialogFragment {
         }
     }
 
-    void updatefunction(String URL) {
+    void updatefunction() {
         progressDialog.show();
+
+        String getfirstname = firstname.getText().toString();
+        String getlastname = lastname.getText().toString();
+        String getdob = dob.getText().toString();
+        String getgender = gender.getText().toString();
+        String getpincode = pincode.getText().toString();
+        String getcountry = country.getText().toString();
+        String getstate = state.getText().toString();
+        String getcity = city.getText().toString();
+        String getmaritalstatus = maritalstatus.getText().toString();
+
+        String registrationURL = config.Base_url + "updateStudentProfileApi?" +
+                "user_id=" + userid +
+                "&firstname=" + getfirstname +
+                "&lastname=" + getlastname+
+                "&date_of_birth=" + getdob+
+                "&country_code=" +
+                "&marital_status=" + getmaritalstatus+
+                "&gender=" + getgender+
+                "&phone_no=" + number+
+                "&mailing_country=" + getcountry+
+                "&mailing_state=" + getstate+
+                "&mailing_city=" + getcity+
+                "&mailing_pincode=" + getpincode+
+                "&mailing_address=" + getcity+","+ getstate+","+ getcountry+","+getpincode;
 
         class registration extends AsyncTask<String, String, String> {
             @Override
@@ -308,11 +292,23 @@ public class Edit_fragment extends DialogFragment {
 
                     if (status.equals("true")) {
                         progressDialog.dismiss();
+                        SharedPreferences.Editor editor = getContext().getSharedPreferences("registrationform", MODE_PRIVATE).edit();
+                        editor.putString("Fname",firstname.getText().toString());
+                        editor.putString("Lname",lastname.getText().toString());
+                        editor.putString("number",number);
+                        editor.putString("DOb",dob.getText().toString());
+                        editor.putString("g",gender.getText().toString());
+                        editor.putString("pincode",pincode.getText().toString());
+                        editor.putString("country",country.getText().toString());
+                        editor.putString("state",state.getText().toString());
+                        editor.putString("city",city.getText().toString());
+                        editor.putString("marital",maritalstatus.getText().toString());
+                        editor.commit();
 
                         Toast.makeText(getContext(), "Successfully updated details", Toast.LENGTH_SHORT).show();
+
                         dismiss();
-
-
+                        getActivity().recreate();
 
 
                     } else {
@@ -344,7 +340,7 @@ public class Edit_fragment extends DialogFragment {
         }
 
         registration obj = new registration();
-        obj.execute(URL);
+        obj.execute(registrationURL);
 
 
     }
@@ -390,9 +386,14 @@ public class Edit_fragment extends DialogFragment {
                         state.setText(States);
                         city.setText(district);
 
+                        updatebutton.setEnabled(true);
+
+
                     } else {
                         progressBar.setVisibility(View.GONE);
-
+                        country.setText("");
+                        state.setText("");
+                        city.setText("");
 
                         editor.commit();
                     }

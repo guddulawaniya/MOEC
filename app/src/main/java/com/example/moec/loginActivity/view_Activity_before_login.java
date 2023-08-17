@@ -3,16 +3,14 @@ package com.example.moec.loginActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,10 +19,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.loginbeforeimage_Adapter;
 import com.example.moec.Adapters.slidermodule;
+import com.example.moec.JavaClass.config;
 import com.example.moec.MainActivity;
 import com.example.moec.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+
+import kotlin.text.Charsets;
 
 
 public class view_Activity_before_login extends AppCompatActivity  {
@@ -35,8 +45,6 @@ public class view_Activity_before_login extends AppCompatActivity  {
     Button materialNestbbutton;
     ProgressBar progress;
     TextView skiptext;
-
-
     RecyclerView sliderRecyclerview;
     String userid;
     boolean beforelogin;
@@ -128,20 +136,6 @@ public class view_Activity_before_login extends AppCompatActivity  {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (userid!=null ) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
-            finish();
-        } else if (beforelogin == true) {
-            startActivity(new Intent(getApplicationContext(), login_Activity.class));
-            overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
-            finish();
-
-        }
-    }
 
     void onPageChanged(int id)
     {
@@ -212,6 +206,7 @@ public class view_Activity_before_login extends AppCompatActivity  {
         else
             sliderRecyclerview.scrollToPosition(position);
     }
+
 
 }
 

@@ -24,8 +24,6 @@ import java.util.ArrayList;
 public class Favorate_Activity extends AppCompatActivity {
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +63,6 @@ public class Favorate_Activity extends AppCompatActivity {
         TextView descri_no_found = findViewById(R.id.descri_no_found);
         TextView cleartext = findViewById(R.id.cleartext);
         cleartext.setVisibility(View.GONE);
-
 
 
         TextView toolbartitle = findViewById(R.id.toolbar_title);

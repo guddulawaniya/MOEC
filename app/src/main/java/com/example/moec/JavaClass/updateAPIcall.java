@@ -36,26 +36,7 @@ public class updateAPIcall {
 
         class registration extends AsyncTask<String, String, String> {
 
-            @Override
-            protected void onPostExecute(String s) {
-                try {
-                    JSONObject obj = new JSONObject(s);
-                    String status = obj.getString("success");
-                    if (status.equals("true")) {
 
-
-
-                    } else {
-                        Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
-
-                    }
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
-                super.onPostExecute(s);
-            }
-
-            @Override
             protected String doInBackground(String... param) {
 
                 try {
@@ -68,6 +49,7 @@ public class updateAPIcall {
                 }
 
             }
+
 
 
         }

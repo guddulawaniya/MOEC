@@ -4,11 +4,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Paint;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,59 +25,35 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.All_program_Adapter;
 import com.example.moec.Adapters.Quick_Action_Adapter;
 import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
-import com.example.moec.Adapters.Univerity_Course_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
-import com.example.moec.JavaClass.InternetConnection;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getuniversitydata;
 import com.example.moec.JavaClass.getuniversitydataAPI;
 import com.example.moec.MainActivity;
 import com.example.moec.ModulesClass.Quick_Action_Module;
 import com.example.moec.ModulesClass.Top_country_module;
-import com.example.moec.ModulesClass.Univerity_Course_Module;
 import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.New_Application;
 import com.example.moec.R;
-import com.example.moec.loginActivity.login_Activity;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
 import com.smarteist.autoimageslider.SliderView;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import kotlin.text.Charsets;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 public class dashboard_fragment extends Fragment {
-
-
 
 
     ProgressBar progressBar;
     onClickInterface onclickInterface;
 
 
-    int[] images = {R.drawable.slider1,R.drawable.slider2,R.drawable.slider3};
+    int[] images = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -105,8 +78,8 @@ public class dashboard_fragment extends Fragment {
         // instances arraylist and declared arraylists
 
         ArrayList<interest_module> list = new ArrayList<>();
-        ArrayList<Quick_Action_Module> quickList=new ArrayList<>();
-        ArrayList<Top_country_module> topcountry_pickup_list= new ArrayList<>();
+        ArrayList<Quick_Action_Module> quickList = new ArrayList<>();
+        ArrayList<Top_country_module> topcountry_pickup_list = new ArrayList<>();
 
         ArrayList<module_all_program> programArrayList = new ArrayList<>();
 
@@ -131,7 +104,6 @@ public class dashboard_fragment extends Fragment {
         sharelink.setPaintFlags(sharelink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
-
         // get des_country..
 
         SharedPreferences preferences = getActivity().getSharedPreferences("registrationform", MODE_PRIVATE);
@@ -141,38 +113,27 @@ public class dashboard_fragment extends Fragment {
         String examname = preferences.getString("examname", null);
         String userid = preferences.getString("userid", null);
 
-        String registrationURL = config.Base_url + "setPreferenceApiData?" +
-                "user_id=" +userid+
-                "&des_country="  +
-                "&intrest="  +
-                "&qualification="  +
-                "&edu_marsks="  +
-                "&englishtest="  +
-                "&writingscore="  +
-                "&listeningscore="  +
-                "&readingscore="  +
-                "&speakingscore="  +
-                "&over_allscore=" ;
+//        Toast.makeText(getContext(), "user_id : "+userid, Toast.LENGTH_SHORT).show();
+
+
+
 
 
         // load university data like image and name and total courses
 
-        new getuniversitydata(getContext(),recyclerViewuniversity);
+        new getuniversitydata(getContext(), recyclerViewuniversity);
 
 
         // recommended program recyclerview and load data function..
 
-        new getuniversitydataAPI(progressBar, programArrayList, getContext(), recommandRecyclerview, config.Base_url +"courseApiDatawithcountry?"+"countryname="+preferenceCountry,  true);
-
-
-
+        new getuniversitydataAPI(progressBar, programArrayList, getContext(), recommandRecyclerview, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry, true);
 
 
         // hide and show set preference button and show recommended recyclerview
 
 
         if (preferenceCountry != null && interest != null && education != null && examname != null) {
-            
+
             setpreference_student.setVisibility(View.GONE);
             recommandRecyclerview.setVisibility(View.VISIBLE);
 
@@ -180,8 +141,6 @@ public class dashboard_fragment extends Fragment {
             setpreference_student.setVisibility(View.VISIBLE);
             recommandRecyclerview.setVisibility(View.GONE);
         }
-
-
 
 
         // check out more recommended programs as your preference
@@ -194,7 +153,6 @@ public class dashboard_fragment extends Fragment {
                 startActivity(intent);
             }
         });
-
 
 
         // share card on click call invite friends
@@ -230,17 +188,11 @@ public class dashboard_fragment extends Fragment {
         });
 
 
-
-
-
         // Top countries Adapter and layout set
 
         Top_country_pickup_Adapter countryAdapter = new Top_country_pickup_Adapter(getContext(), topcountry_pickup_list);
         recyclerview_top_counryname.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerview_top_counryname.setAdapter(countryAdapter);
-
-
-
 
 
         // quick Recyclerview set layout and Adapter
@@ -249,8 +201,6 @@ public class dashboard_fragment extends Fragment {
         quickRecyclerview.setLayoutManager(new GridLayoutManager(getContext(), 3));
         quickRecyclerview.setAdapter(quickAdapter);
         quickRecyclerview.setNestedScrollingEnabled(false);
-
-
 
 
         phoneicon.setOnClickListener(new View.OnClickListener() {
@@ -268,8 +218,6 @@ public class dashboard_fragment extends Fragment {
         });
 
 
-
-
         // set preference funtion and on click function
 
 
@@ -279,7 +227,6 @@ public class dashboard_fragment extends Fragment {
                 startActivity(new Intent(getContext(), program_preference_Activity.class));
             }
         });
-
 
 
         // floating button
@@ -349,29 +296,25 @@ public class dashboard_fragment extends Fragment {
     }
 
 
-
-
     // shared element transmission
 
     private void config() {
-        setExitSharedElementCallback(new SharedElementCallback(){});
+        setExitSharedElementCallback(new SharedElementCallback() {
+        });
         getActivity().getWindow().setSharedElementsUseOverlay(false);
     }
 
 
-
     // share with friends and earn function
 
-    void sendlinkwithfriends()
-    {
+    void sendlinkwithfriends() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share with Friends");
-        String shareMessage= "\nLet me recommend you this application\n\n";
+        String shareMessage = "\nLet me recommend you this application\n\n";
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
         startActivity(Intent.createChooser(shareIntent, "Choose on Application"));
     }
-
 
 
     // notification clicked function
@@ -379,8 +322,7 @@ public class dashboard_fragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int getid = item.getItemId();
-        if (getid==R.id.notification)
-        {
+        if (getid == R.id.notification) {
             Toast.makeText(getContext(), "Clicked Notification", Toast.LENGTH_SHORT).show();
         }
 

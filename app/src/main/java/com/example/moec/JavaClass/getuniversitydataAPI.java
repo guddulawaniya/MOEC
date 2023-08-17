@@ -29,7 +29,7 @@ public class getuniversitydataAPI {
     Context context;
     RecyclerView recyclerView;
     String registrationURL;
-    Boolean check=false;
+    Boolean check;
 
 
     public getuniversitydataAPI(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, Boolean check) {
@@ -66,8 +66,7 @@ public class getuniversitydataAPI {
 
                         JSONArray array = obj.getJSONArray("data");
 
-                        for (int i=0;i< array.length();++i)
-                        {
+                        for (int i = 0; i < array.length(); ++i) {
 
                             JSONObject jsonObject = array.getJSONObject(i);
 
@@ -81,28 +80,24 @@ public class getuniversitydataAPI {
                             String intake = jsonObject.getString("intakes");
                             String criteria = jsonObject.getString("criteria");
                             String courseid = jsonObject.getString("id");
-                            String favoratevalue = jsonObject.getString("favorites");
+//                            String favoratevalue = jsonObject.getString("favorites");
 
 
-                            list.add(new module_all_program(coursename,duration,fees,countryname,universityname,
-                                    baseurl+logo,intake,OfficalLink,criteria,courseid,favoratevalue));
+                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid, "no"));
                         }
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
 
                     }
 
-                    if (check){
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-                    }else {
+                    if (check) {
+                        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+                    } else {
                         recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     }
 
-
-                    All_program_Adapter adapter = new All_program_Adapter(list,context,1);
+                    All_program_Adapter adapter = new All_program_Adapter(list, context, 1);
                     recyclerView.setAdapter(adapter);
-
-
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -121,10 +116,7 @@ public class getuniversitydataAPI {
                 } catch (Exception ex) {
                     return ex.getMessage();
                 }
-
             }
-
-
         }
 
         registration obj = new registration();
