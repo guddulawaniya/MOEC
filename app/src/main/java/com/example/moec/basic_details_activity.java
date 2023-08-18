@@ -53,7 +53,7 @@ import okhttp3.Response;
 public class basic_details_activity extends AppCompatActivity {
 
     private static final int SELECT_PICTURE = 200;
-    private TextView studentname, emailaddress, dob, gender, country, state, city, number, pincode, maritalstatus;
+    private TextView studentname, emailaddress, dob, gender, country, state, city, number, pincode, maritalstatus,address,nationality;
     private CardView editimage;
     private ImageView userpic;
     private ProgressBar imageprogressbar;
@@ -83,6 +83,8 @@ public class basic_details_activity extends AppCompatActivity {
         userpic = findViewById(R.id.setimage);
         imageprogressbar = findViewById(R.id.imageprogressbaar);
         progressBar = findViewById(R.id.progressBar);
+        address = findViewById(R.id.address);
+        nationality = findViewById(R.id.nationality);
 
         // Toolbar Expressions
 
@@ -237,6 +239,8 @@ public class basic_details_activity extends AppCompatActivity {
         city.setText(preferences.getString("city", ""));
         pincode.setText(preferences.getString("pincode", ""));
         maritalstatus.setText(preferences.getString("marital", ""));
+        address.setText(preferences.getString("address", ""));
+        nationality.setText(preferences.getString("nationality", ""));
 
     }
 

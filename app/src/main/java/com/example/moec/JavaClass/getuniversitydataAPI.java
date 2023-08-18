@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.All_program_Adapter;
+import com.example.moec.Adapters.reccomended_program_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 
 import org.json.JSONArray;
@@ -29,16 +30,14 @@ public class getuniversitydataAPI {
     Context context;
     RecyclerView recyclerView;
     String registrationURL;
-    Boolean check;
 
 
-    public getuniversitydataAPI(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, Boolean check) {
+    public getuniversitydataAPI(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;
         this.recyclerView = recyclerView;
         this.registrationURL = registrationURL;
-        this.check = check;
         Getuniversitydata();
     }
 
@@ -80,23 +79,17 @@ public class getuniversitydataAPI {
                             String intake = jsonObject.getString("intakes");
                             String criteria = jsonObject.getString("criteria");
                             String courseid = jsonObject.getString("id");
-//                            String favoratevalue = jsonObject.getString("favorites");
+                            String favoratevalue = jsonObject.getString("favorites");
 
+                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid, favoratevalue));
 
-                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid, "no"));
                         }
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
-
                     }
 
-                    if (check) {
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-                    } else {
-                        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    }
-
-                    All_program_Adapter adapter = new All_program_Adapter(list, context, 1);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    All_program_Adapter adapter = new All_program_Adapter(list, context);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {

@@ -123,6 +123,7 @@ public class Splash_Screen extends AppCompatActivity {
                         String level = userdata.getString("level");
                         String nationality = userdata.getString("nationality");
                         String timeline = userdata.getString("student_status");
+                        String marital_status = userdata.getString("marital_status");
 
 
                         editor.putString("Fname", first);
@@ -145,6 +146,7 @@ public class Splash_Screen extends AppCompatActivity {
                         editor.putString("courselevel", level);
                         editor.putString("nationality", nationality);
                         editor.putString("timeline", timeline);
+                        editor.putString("marital", marital_status);
                         editor.commit();
 
                         editor.commit();

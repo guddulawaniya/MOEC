@@ -35,7 +35,6 @@ public class Search_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        config();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
@@ -81,15 +80,15 @@ public class Search_Activity extends AppCompatActivity {
 //                return false;
 //            }
 //        });
-//
-//        search_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//            }
-//        });
 
+    /*    search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+*/
 
         list = new ArrayList<>();
         list.add("Middlesex University London, UK");
@@ -121,19 +120,6 @@ public class Search_Activity extends AppCompatActivity {
 
     }
 
-    private void config() {
-        findViewById(android.R.id.content).setTransitionName("search");
-
-        setEnterSharedElementCallback(new MaterialContainerTransformSharedElementCallback());
-        MaterialContainerTransform transform = new MaterialContainerTransform();
-        transform.addTarget(android.R.id.content);
-        transform.setDuration(500);
-
-        getWindow().setSharedElementEnterTransition(transform);
-        getWindow().setSharedElementReturnTransition(transform);
-
-
-    }
 
 
 }

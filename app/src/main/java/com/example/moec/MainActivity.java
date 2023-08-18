@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     TextView toolbartitle, textCartItemCount;
     int mCartItemCount = 100;
     ImageView Refine, searchbar;
-    LinearLayout searchfield;
+    LinearLayout searchelementLayouts;
     ImageView favorate;
     BottomNavigationView navigationView;
     ProgressBar progressBar;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             // finds the ids
             progressBar.setVisibility(View.GONE);
-            searchfield = findViewById(R.id.searchfield);
+            searchelementLayouts = findViewById(R.id.searchfield);
             favorate = findViewById(R.id.favourate_icon_toolbar);
             Refine = findViewById(R.id.refine_icon);
             toolbartitle = findViewById(R.id.toolbartitle);
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
             TextView application = findViewById(R.id.sideapplication);
+            TextView sideemail = findViewById(R.id.sideemail);
             TextView studentname = findViewById(R.id.studentname);
             TextView sidebarPreferenece = findViewById(R.id.sidebarPreferenece);
             TextView profiledetails = findViewById(R.id.profiledetails);
@@ -108,15 +109,18 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             SharedPreferences preferences = getSharedPreferences("registrationform", MODE_PRIVATE);
             String firstname = preferences.getString("Fname", "");
             String lastname = preferences.getString("Lname", "");
+            String email = preferences.getString("email", "");
             studentname.setText(firstname + " " + lastname);
+
+            sideemail.setText(email);
 
 
             searchbar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent1 = new Intent(MainActivity.this, Search_Activity.class);
-                    startActivity(intent1);
+                    Intent intent = new Intent(MainActivity.this, Search_Activity.class);
+                    startActivity(intent);
                 }
             });
 
@@ -152,8 +156,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 public void onClick(View view) {
 
                     Intent intent1 = new Intent(MainActivity.this, Favorate_Activity.class);
-                    Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, searchbar, "favorate").toBundle();
-                    startActivity(intent1, bundle);
+                    startActivity(intent1);
 
                 }
             });
@@ -187,8 +190,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             uploaddata.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(MainActivity.this, My_documents_upload.class);
-                    startActivity(intent);
+                    Intent intent2 = new Intent(MainActivity.this, My_documents_upload.class);
+                    startActivity(intent2);
                 }
             });
             setupBadge();
@@ -243,7 +246,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (R.id.dashboard == item.getItemId()) {
             navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
             Refine.setVisibility(View.GONE);
-            searchfield.setVisibility(View.VISIBLE);
+            searchelementLayouts.setVisibility(View.VISIBLE);
             favorate.setVisibility(View.VISIBLE);
             toolbartitle.setText("Dashboard");
             replacefragment(dashboard_fragment);
@@ -252,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             Refine.setVisibility(View.VISIBLE);
             toolbartitle.setText("Program");
             favorate.setVisibility(View.VISIBLE);
-            searchfield.setVisibility(View.VISIBLE);
+            searchelementLayouts.setVisibility(View.VISIBLE);
             replacefragment(program_fragment);
         } else if (R.id.application == item.getItemId()) {
             navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
@@ -260,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             Refine.setVisibility(View.GONE);
             toolbartitle.setText("Application");
             replacefragment(application_fragment);
-            searchfield.setVisibility(View.GONE);
+            searchelementLayouts.setVisibility(View.GONE);
             favorate.setVisibility(View.GONE);
         } else if (R.id.community == item.getItemId()) {
 
@@ -272,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else if (R.id.insight == item.getItemId()) {
             Refine.setVisibility(View.GONE);
             toolbartitle.setText("Insight");
-            searchfield.setVisibility(View.GONE);
+            searchelementLayouts.setVisibility(View.GONE);
             favorate.setVisibility(View.GONE);
             replacefragment(insights_fragment);
 

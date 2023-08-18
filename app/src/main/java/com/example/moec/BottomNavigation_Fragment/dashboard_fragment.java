@@ -32,6 +32,7 @@ import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getuniversitydata;
 import com.example.moec.JavaClass.getuniversitydataAPI;
+import com.example.moec.JavaClass.reccomended_programload_data;
 import com.example.moec.MainActivity;
 import com.example.moec.ModulesClass.Quick_Action_Module;
 import com.example.moec.ModulesClass.Top_country_module;
@@ -126,7 +127,7 @@ public class dashboard_fragment extends Fragment {
 
         // recommended program recyclerview and load data function..
 
-        new getuniversitydataAPI(progressBar, programArrayList, getContext(), recommandRecyclerview, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry, true);
+        new reccomended_programload_data(progressBar, programArrayList, getContext(), config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry, recommandRecyclerview);
 
 
         // hide and show set preference button and show recommended recyclerview
@@ -208,7 +209,7 @@ public class dashboard_fragment extends Fragment {
             public void onClick(View view) {
 
                 SharedPreferences.Editor editor = getActivity().getSharedPreferences("registrationform", MODE_PRIVATE).edit();
-                editor.putInt("timeline", 2);
+                editor.putString("timeline", "2");
                 editor.commit();
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:7037282643"));

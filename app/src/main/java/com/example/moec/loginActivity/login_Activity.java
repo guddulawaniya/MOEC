@@ -83,15 +83,17 @@ public class login_Activity extends AppCompatActivity {
                 String emailtext = emailidlg.getText().toString().trim();
                 String passtext = passwordlg.getText().toString().trim();
 
-                if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !passtext.isEmpty() && nt.isConnected()) {
+                if (!emailtext.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailtext).matches() && !passtext.isEmpty()) {
                     logindata(emailtext, passtext);
 
 
-                } else if (!nt.isConnected()) {
-                    Toast.makeText(login_Activity.this, "Please Check Your Internet Connection", Toast.LENGTH_SHORT).show();
                 } else if (emailtext.isEmpty()) {
                     emaillayoutlg.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
                     emaillayoutlg.setError("Required*");
+                    emailidlg.requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(emailtext).matches()) {
+                    emaillayoutlg.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
+                    emaillayoutlg.setError("Invalid email");
                     emailidlg.requestFocus();
                 } else if (passtext.isEmpty()) {
                     passlayoutlg.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
@@ -131,7 +133,7 @@ public class login_Activity extends AppCompatActivity {
         layout.startAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.shake_text));
         layout.setBoxStrokeErrorColor(ColorStateList.valueOf(Color.RED));
         layout.setErrorTextColor(ColorStateList.valueOf(Color.RED));
-        layout.setError("Invalid Id and Password ");
+        layout.setError("Invalid");
         text.requestFocus();
     }
 
@@ -184,13 +186,14 @@ public class login_Activity extends AppCompatActivity {
 
 
     void logindata(String emailtext, String passtext) {
+        progressBar.show();
         String pass = null;
         try {
             pass = URLEncoder.encode(passtext, Charsets.UTF_8.name());
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-        progressBar.show();
+
         String registrationURL = config.Base_url + "loginApi_data?" + "username=" + emailtext + "&password=" + pass;
 
 
@@ -261,8 +264,12 @@ public class login_Activity extends AppCompatActivity {
                         startActivity(intent);
                         overridePendingTransition(R.anim.right_in_activity, R.anim.left_out_activity);
                         finish();
+
+                        progressBar.dismiss();
                     } else {
-                        Toast.makeText(getApplicationContext(), "failed"+object, Toast.LENGTH_SHORT).show();
+                        errorshow(passlayoutlg,passwordlg);
+                        progressBar.dismiss();
+                        Toast.makeText(getApplicationContext(), "Invalid Email and Passsword ", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

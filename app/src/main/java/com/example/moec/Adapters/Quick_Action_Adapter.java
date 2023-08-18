@@ -26,7 +26,7 @@ import com.example.moec.test_Activity;
 
 import java.util.ArrayList;
 
-public class Quick_Action_Adapter extends RecyclerView.Adapter<Quick_Action_Adapter.viewdholder> {
+            public class Quick_Action_Adapter extends RecyclerView.Adapter<Quick_Action_Adapter.viewdholder> {
 
 
     ArrayList<Quick_Action_Module> list;

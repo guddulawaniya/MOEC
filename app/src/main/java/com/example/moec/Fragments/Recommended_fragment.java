@@ -60,7 +60,7 @@ public class Recommended_fragment extends Fragment {
 
 
         // getdata from api and load data
-        new getuniversitydataAPI(progressBar, list, getContext(), recyclerView, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry, false);
+        new getuniversitydataAPI(progressBar, list, getContext(), recyclerView, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry);
 
 
         // setpreference button and updates also

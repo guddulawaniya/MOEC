@@ -10,13 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.JavaClass.updateAPIcall;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.Program_details;
 import com.example.moec.R;
@@ -24,51 +22,32 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapter.viewholder> {
+public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.viewholder> {
 
-    ArrayList<module_all_program> list;
     Context context;
-    int likehide;
+    ArrayList<module_all_program> list;
 
-    public All_program_Adapter(ArrayList<module_all_program> list, Context context,int likehide) {
-        this.list = list;
+    public Favorate_Adapter(Context context, ArrayList<module_all_program> list) {
         this.context = context;
-        this.likehide = likehide;
-
-    }
-    public All_program_Adapter(ArrayList<module_all_program> list, Context context) {
         this.list = list;
-        this.context = context;
-
     }
 
     @NonNull
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_programs_card_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reccommended_program, parent, false);
         return new viewholder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
+
         module_all_program module = list.get(position);
         holder.coursename.setText(module.getCoursename());
         holder.duration.setText(module.getDuration());
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
 
-
-
-        if (module.getFavoratevalue().equals("yes")) {
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-        }
-
-        else if (module.getFavoratevalue()!=null){
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-        }
-        else {
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-        }
         Picasso.get()
                 .load(module.getUniversityimage())
                 .resize(300, 100)
@@ -77,10 +56,11 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
         } else holder.fees.setText(module.getFees() + " Months");
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 SharedPreferences.Editor editor = context.getSharedPreferences("programdetails", Context.MODE_PRIVATE).edit();
                 editor.putString("coursename", module.getCoursename());
                 editor.putString("duration", module.getDuration());
@@ -97,26 +77,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
                 Intent intent = new Intent(context, Program_details.class);
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, holder.itemView, "item").toBundle();
                 context.startActivity(intent, bundle);
-
-            }
-        });
-        holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String sms = null;
-                if (module.getFavoratevalue().equals("no")) {
-
-                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                    new module_all_program("yes");
-                    sms = "yes";
-                } else {
-
-                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-                    sms = "no";
-                    new module_all_program("yes");
-                }
-                new updateAPIcall(context, module.getCourseid(), sms);
 
             }
         });
@@ -142,7 +102,8 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
             favoriteiconbutton = itemView.findViewById(R.id.favoriteiconbutton);
             universityimage = itemView.findViewById(R.id.universityimage);
 
+            favoriteiconbutton.setVisibility(View.GONE);
+
         }
     }
 }
-

@@ -17,6 +17,20 @@ public class module_all_program {
         this.favoratevalue = favoratevalue;
     }
 
+    public module_all_program(String coursename, String duration, String fees, String countryname, String collegename, String universityimage, String intake, String link, String criteria, String courseid) {
+        this.coursename = coursename;
+        this.duration = duration;
+        this.fees = fees;
+        this.countryname = countryname;
+        this.collegename = collegename;
+        this.universityimage = universityimage;
+        this.intake = intake;
+        this.link = link;
+        this.criteria = criteria;
+        this.courseid = courseid;
+        this.favoratevalue = favoratevalue;
+    }
+
     public module_all_program(String favoratevalue) {
         this.favoratevalue = favoratevalue;
     }

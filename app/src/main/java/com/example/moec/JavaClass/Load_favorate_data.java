@@ -7,9 +7,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.All_program_Adapter;
+import com.example.moec.Adapters.Favorate_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 
 import org.json.JSONArray;
@@ -22,47 +23,52 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class favorategetdataAPI {
 
-    Context context;
+public class Load_favorate_data{
+
     ProgressBar progressBar;
     ArrayList<module_all_program> list;
+    Context context;
     RecyclerView recyclerView;
     LinearLayout emptylayout;
 
-    public favorategetdataAPI(Context context, ProgressBar progressBar, ArrayList<module_all_program> list,RecyclerView recyclerView,   LinearLayout emptylayout) {
-        this.context = context;
+
+    public Load_favorate_data(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, LinearLayout emptylayout) {
         this.progressBar = progressBar;
         this.list = list;
+        this.context = context;
         this.recyclerView = recyclerView;
         this.emptylayout = emptylayout;
-        getfavoratedata();
+        get_favorate_university_data();
     }
 
-    void getfavoratedata() {
+    void get_favorate_university_data() {
+
         progressBar.setVisibility(View.VISIBLE);
-
-        String registrationURL = config.Base_url + "favoritesCourseDataApi";
-
-
         class registration extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
 
             @Override
             protected void onPostExecute(String s) {
+
                 try {
                     JSONObject obj = new JSONObject(s);
                     String status = obj.getString("success");
-                    if (status.equals("true")) {
 
+                    String baseurl = obj.getString("logobaseurl");
+
+                    if (status.equals("true")) {
                         progressBar.setVisibility(View.GONE);
-                        String baseurl = obj.getString("logobaseurl");
 
                         JSONArray array = obj.getJSONArray("data");
 
-                        for (int i=0;i< array.length();++i)
-                        {
+                        for (int i = 0; i < array.length(); ++i) {
 
                             JSONObject jsonObject = array.getJSONObject(i);
+
                             String coursename = jsonObject.getString("course");
                             String universityname = jsonObject.getString("name");
                             String logo = jsonObject.getString("logo");
@@ -74,28 +80,28 @@ public class favorategetdataAPI {
                             String criteria = jsonObject.getString("criteria");
                             String courseid = jsonObject.getString("id");
 
-
-                            list.add(new module_all_program(coursename,duration,fees,countryname,universityname,
-                                    baseurl+logo,intake,OfficalLink,criteria,courseid));
+                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid));
                         }
-
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
-
                     }
-                    if (list.isEmpty()) {
-                        recyclerView.setVisibility(View.GONE);
-                        emptylayout.setVisibility(View.VISIBLE);
 
+                    if (!list.isEmpty())
+                    {
+                        emptylayout.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
                     }
                     else
                     {
-                        recyclerView.setVisibility(View.VISIBLE);
-                        emptylayout.setVisibility(View.GONE);
-
+                        emptylayout.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
                     }
-                    All_program_Adapter adapter = new All_program_Adapter(list,context,1);
+
+
+                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
+                    Favorate_Adapter adapter = new Favorate_Adapter(context, list);
                     recyclerView.setAdapter(adapter);
+
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
@@ -113,16 +119,12 @@ public class favorategetdataAPI {
                 } catch (Exception ex) {
                     return ex.getMessage();
                 }
-
             }
-
-
         }
-
         registration obj = new registration();
-        obj.execute(registrationURL);
+        obj.execute(config.Base_url+"favoritesCourseDataApi");
 
 
     }
-
 }
+

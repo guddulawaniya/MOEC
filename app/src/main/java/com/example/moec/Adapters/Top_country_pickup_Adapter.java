@@ -31,7 +31,7 @@ public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country
     @NonNull
     @Override
     public viewdholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.top_country_preferred_layout,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.top_country_preferred_layout, parent, false);
         return new viewdholder(view);
     }
 
@@ -46,24 +46,30 @@ public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country
             public void onClick(View view) {
 
                 Intent intent = new Intent(context, webviewActivity.class);
-                switch (id)
-                {
+                switch (id) {
                     case 0:
-                        intent.putExtra("url","https://www.meridean.org/study-in-canada");
-                        intent.putExtra("titlename","Canada");
+                        intent.putExtra("url", "https://www.meridean.org/study-in-canada");
+                        intent.putExtra("titlename", "Canada");
                         break;
                     case 1:
-                        intent.putExtra("url","https://www.meridean.org/study-in-australia");
-                        intent.putExtra("titlename","Australia");
+                        intent.putExtra("url", "https://www.meridean.org/study-in-australia");
+                        intent.putExtra("titlename", "Australia");
                         break;
-                    case 2:  intent.putExtra("url","https://www.merideanoverseas.in/study-in-uk");
-                        intent.putExtra("titlename","United Kingdom");
+                    case 2:
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-uk");
+                        intent.putExtra("titlename", "United Kingdom");
                         break;
-                    case 3:   intent.putExtra("url","https://www.meridean.org/study-in-usa");
-                        intent.putExtra("titlename","United States");
+                    case 3:
+                        intent.putExtra("url", "https://www.meridean.org/study-in-usa");
+                        intent.putExtra("titlename", "United States");
                         break;
-                    case 4:   intent.putExtra("url","https://www.merideanoverseas.in/cost-of-study-in-newzealand");
-                        intent.putExtra("titlename","New Zealand");
+                    case 4:
+                        intent.putExtra("url", "https://www.meridean.org/germany-summer-intake");
+                        intent.putExtra("titlename", "United States");
+                        break;
+                    case 5:
+                        intent.putExtra("url", "https://www.merideanoverseas.in/cost-of-study-in-newzealand");
+                        intent.putExtra("titlename", "New Zealand");
                         break;
                 }
 
@@ -84,6 +90,7 @@ public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country
 
         ImageView imageView;
         TextView countryname;
+
         public viewdholder(@NonNull View itemView) {
             super(itemView);
 

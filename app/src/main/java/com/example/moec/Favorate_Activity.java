@@ -10,10 +10,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.SharedElementCallback;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.All_program_Adapter;
+import com.example.moec.JavaClass.Load_favorate_data;
 import com.example.moec.JavaClass.favorategetdataAPI;
 import com.example.moec.ModulesClass.module_all_program;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
@@ -27,6 +29,7 @@ public class Favorate_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        config();
         setContentView(R.layout.activity_favorate);
 
         LinearLayout emptylayout = findViewById(R.id.linearLayout21);
@@ -47,19 +50,9 @@ public class Favorate_Activity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        new favorategetdataAPI(this,progressBar,list,recyclerView);
+        new Load_favorate_data(progressBar,list,this,recyclerView,emptylayout);
 
 
-        if (!list.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            emptylayout.setVisibility(View.VISIBLE);
-
-        }
-        else
-        { recyclerView.setVisibility(View.VISIBLE);
-            emptylayout.setVisibility(View.GONE);
-
-        }
         TextView descri_no_found = findViewById(R.id.descri_no_found);
         TextView cleartext = findViewById(R.id.cleartext);
         cleartext.setVisibility(View.GONE);
@@ -78,6 +71,11 @@ public class Favorate_Activity extends AppCompatActivity {
               finish();
             }
         });
+
+    }
+    private void config() {
+        setExitSharedElementCallback(new SharedElementCallback(){});
+        getWindow().setSharedElementsUseOverlay(false);
     }
 
 }

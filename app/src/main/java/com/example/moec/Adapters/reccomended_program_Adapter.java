@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
@@ -24,28 +23,24 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapter.viewholder> {
+public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomended_program_Adapter.viewholder> {
 
-    ArrayList<module_all_program> list;
+
     Context context;
-    int likehide;
+    ArrayList<module_all_program> list;
+    int id ;
 
-    public All_program_Adapter(ArrayList<module_all_program> list, Context context,int likehide) {
-        this.list = list;
+
+    public reccomended_program_Adapter(Context context, ArrayList<module_all_program> list, int id) {
         this.context = context;
-        this.likehide = likehide;
-
-    }
-    public All_program_Adapter(ArrayList<module_all_program> list, Context context) {
         this.list = list;
-        this.context = context;
-
+        this.id = id;
     }
 
     @NonNull
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_programs_card_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.reccommended_program, parent, false);
         return new viewholder(view);
     }
 
@@ -57,18 +52,12 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
 
-
-
         if (module.getFavoratevalue().equals("yes")) {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+        } else {
+            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
         }
 
-        else if (module.getFavoratevalue()!=null){
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-        }
-        else {
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-        }
         Picasso.get()
                 .load(module.getUniversityimage())
                 .resize(300, 100)
@@ -77,6 +66,8 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
         } else holder.fees.setText(module.getFees() + " Months");
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,28 +91,28 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
             }
         });
-        holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-                String sms = null;
-                if (module.getFavoratevalue().equals("no")) {
+                    String sms=null;
+                    if (module.getFavoratevalue().equals("no")) {
+                        sms= "yes";
+                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
 
-                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                    new module_all_program("yes");
-                    sms = "yes";
-                } else {
+                    } else {
 
-                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-                    sms = "no";
-                    new module_all_program("yes");
+                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+                        sms = "no";
+
+                    }
+                    new module_all_program(sms);
+                    new updateAPIcall(context, module.getCourseid(), sms);
+
                 }
-                new updateAPIcall(context, module.getCourseid(), sms);
+            });
 
-            }
-        });
-
-    }
+        }
 
     @Override
     public int getItemCount() {
@@ -144,5 +135,5 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
         }
     }
-}
 
+}
