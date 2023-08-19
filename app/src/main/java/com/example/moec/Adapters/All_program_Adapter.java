@@ -30,12 +30,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     Context context;
     int likehide;
 
-    public All_program_Adapter(ArrayList<module_all_program> list, Context context,int likehide) {
-        this.list = list;
-        this.context = context;
-        this.likehide = likehide;
-
-    }
     public All_program_Adapter(ArrayList<module_all_program> list, Context context) {
         this.list = list;
         this.context = context;
@@ -61,10 +55,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
         if (module.getFavoratevalue().equals("yes")) {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-        }
-
-        else if (module.getFavoratevalue()!=null){
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
         }
         else {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
@@ -103,18 +93,17 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(context, "postion : "+holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
                 String sms = null;
                 if (module.getFavoratevalue().equals("no")) {
 
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                    new module_all_program("yes");
                     sms = "yes";
                 } else {
 
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
                     sms = "no";
-                    new module_all_program("yes");
+
                 }
                 new updateAPIcall(context, module.getCourseid(), sms);
 

@@ -36,7 +36,6 @@ public class updateAPIcall {
 
         class registration extends AsyncTask<String, String, String> {
 
-
             protected String doInBackground(String... param) {
 
                 try {
@@ -49,9 +48,6 @@ public class updateAPIcall {
                 }
 
             }
-
-
-
         }
 
         registration obj = new registration();

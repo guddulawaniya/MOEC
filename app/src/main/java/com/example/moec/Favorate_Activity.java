@@ -14,12 +14,8 @@ import androidx.core.app.SharedElementCallback;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.All_program_Adapter;
 import com.example.moec.JavaClass.Load_favorate_data;
-import com.example.moec.JavaClass.favorategetdataAPI;
 import com.example.moec.ModulesClass.module_all_program;
-import com.google.android.material.transition.platform.MaterialContainerTransform;
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 import java.util.ArrayList;
 
@@ -35,7 +31,7 @@ public class Favorate_Activity extends AppCompatActivity {
         LinearLayout emptylayout = findViewById(R.id.linearLayout21);
         ImageView backbutton = findViewById(R.id.backbutton);
         Button explorebutton = findViewById(R.id.nofoundbutton);
-        ProgressBar  progressBar = findViewById(R.id.progressBar);
+        ProgressBar progressBar = findViewById(R.id.progressBar);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,13 +40,13 @@ public class Favorate_Activity extends AppCompatActivity {
         });
 
 
-        ArrayList<module_all_program>  list = new ArrayList<>();
+        ArrayList<module_all_program> list = new ArrayList<>();
 
         RecyclerView recyclerView = findViewById(R.id.courses_recyclerview);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        new Load_favorate_data(progressBar,list,this,recyclerView,emptylayout);
+        new Load_favorate_data(progressBar, list, this, recyclerView, emptylayout);
 
 
         TextView descri_no_found = findViewById(R.id.descri_no_found);
@@ -65,16 +61,18 @@ public class Favorate_Activity extends AppCompatActivity {
         explorebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              Intent intent = new  Intent(getApplicationContext(), MainActivity.class);
-              intent.putExtra("fmid",1);
-              startActivity(intent);
-              finish();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("fmid", 1);
+                startActivity(intent);
+                finish();
             }
         });
 
     }
+
     private void config() {
-        setExitSharedElementCallback(new SharedElementCallback(){});
+        setExitSharedElementCallback(new SharedElementCallback() {
+        });
         getWindow().setSharedElementsUseOverlay(false);
     }
 

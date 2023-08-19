@@ -17,6 +17,8 @@ public class Notification_Activity extends AppCompatActivity {
 
         ImageView backbutton = findViewById(R.id.backbutton);
         TextView toolbartitle = findViewById(R.id.toolbar_title);
+        Button nofoundbutton = findViewById(R.id.nofoundbutton);
+        nofoundbutton.setVisibility(View.GONE);
         toolbartitle.setText("Notifications");
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override

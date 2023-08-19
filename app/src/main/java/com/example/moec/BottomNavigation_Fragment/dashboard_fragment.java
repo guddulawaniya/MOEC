@@ -31,7 +31,6 @@ import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getuniversitydata;
-import com.example.moec.JavaClass.getuniversitydataAPI;
 import com.example.moec.JavaClass.reccomended_programload_data;
 import com.example.moec.MainActivity;
 import com.example.moec.ModulesClass.Quick_Action_Module;

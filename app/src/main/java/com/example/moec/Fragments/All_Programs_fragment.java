@@ -1,32 +1,23 @@
 package com.example.moec.Fragments;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.All_program_Adapter;
 import com.example.moec.JavaClass.config;
-import com.example.moec.JavaClass.getuniversitydataAPI;
-import com.example.moec.JavaClass.updateAPIcall;
+import com.example.moec.JavaClass.getCourse_All_dataa_API;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
-import com.example.moec.onClickInterface;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -50,7 +41,7 @@ public class All_Programs_fragment extends Fragment {
 
 
         // get the data from api
-        new getuniversitydataAPI(progressBar, list, getContext(), recyclerView, config.Base_url + "courseprogrameApiData");
+        new getCourse_All_dataa_API(progressBar, list, getContext(), recyclerView, config.Base_url + "courseprogrameApiData");
 
 
         return view;

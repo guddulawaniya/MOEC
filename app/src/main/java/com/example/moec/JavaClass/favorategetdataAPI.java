@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.All_program_Adapter;
+import com.example.moec.Adapters.Favorate_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 
 import org.json.JSONArray;
@@ -94,7 +95,7 @@ public class favorategetdataAPI {
                         emptylayout.setVisibility(View.GONE);
 
                     }
-                    All_program_Adapter adapter = new All_program_Adapter(list,context,1);
+                    Favorate_Adapter adapter = new Favorate_Adapter(context, list);
                     recyclerView.setAdapter(adapter);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

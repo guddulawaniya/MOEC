@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.Adapters.All_program_Adapter;
-import com.example.moec.Adapters.reccomended_program_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 
 import org.json.JSONArray;
@@ -23,7 +22,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class getuniversitydataAPI {
+public class getCourse_All_dataa_API {
 
     ProgressBar progressBar;
     ArrayList<module_all_program> list;
@@ -32,7 +31,7 @@ public class getuniversitydataAPI {
     String registrationURL;
 
 
-    public getuniversitydataAPI(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL) {
+    public getCourse_All_dataa_API(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;

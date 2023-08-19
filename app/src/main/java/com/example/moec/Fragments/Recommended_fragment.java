@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.JavaClass.config;
-import com.example.moec.JavaClass.getuniversitydataAPI;
+import com.example.moec.JavaClass.getCourse_All_dataa_API;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
 import com.example.moec.program_preference_Activity;
@@ -60,7 +60,7 @@ public class Recommended_fragment extends Fragment {
 
 
         // getdata from api and load data
-        new getuniversitydataAPI(progressBar, list, getContext(), recyclerView, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry);
+        new getCourse_All_dataa_API(progressBar, list, getContext(), recyclerView, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry);
 
 
         // setpreference button and updates also

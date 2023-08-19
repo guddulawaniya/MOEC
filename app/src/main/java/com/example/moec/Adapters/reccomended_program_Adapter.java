@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityOptionsCompat;
@@ -28,13 +29,11 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
 
     Context context;
     ArrayList<module_all_program> list;
-    int id ;
 
 
-    public reccomended_program_Adapter(Context context, ArrayList<module_all_program> list, int id) {
+    public reccomended_program_Adapter(Context context, ArrayList<module_all_program> list) {
         this.context = context;
         this.list = list;
-        this.id = id;
     }
 
     @NonNull
@@ -52,16 +51,19 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
 
-        if (module.getFavoratevalue().equals("yes")) {
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-        } else {
-            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-        }
+
 
         Picasso.get()
                 .load(module.getUniversityimage())
                 .resize(300, 100)
                 .into(holder.universityimage);
+
+        if (module.getFavoratevalue().equals("yes")) {
+            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+        }
+        else {
+            holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+        }
 
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
@@ -91,26 +93,25 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
 
             }
         });
-            holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "postion : "+holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                String sms = null;
+                if (module.getFavoratevalue().equals("no")) {
 
-                    String sms=null;
-                    if (module.getFavoratevalue().equals("no")) {
-                        sms= "yes";
-                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+                    sms = "yes";
+                } else {
 
-                    } else {
-
-                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-                        sms = "no";
-
-                    }
-                    new module_all_program(sms);
-                    new updateAPIcall(context, module.getCourseid(), sms);
+                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+                    sms = "no";
 
                 }
-            });
+                new updateAPIcall(context, module.getCourseid(), sms);
+
+            }
+        });
 
         }
 

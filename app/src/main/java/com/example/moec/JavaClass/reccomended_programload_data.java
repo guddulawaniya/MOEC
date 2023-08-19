@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.All_program_Adapter;
 import com.example.moec.Adapters.reccomended_program_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 
@@ -78,13 +77,15 @@ public class reccomended_programload_data {
                             String courseid = jsonObject.getString("id");
                             String favoratevalue = jsonObject.getString("favorites");
 
-                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid, favoratevalue));
+                            list.add(new module_all_program(coursename, duration, fees,
+                                    countryname, universityname, baseurl + logo,
+                                    intake, OfficalLink, criteria, courseid, favoratevalue));
                         }
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
 
                     }
-                    reccomended_program_Adapter adapter = new reccomended_program_Adapter(context,list,1);
+                    reccomended_program_Adapter adapter = new reccomended_program_Adapter(context,list);
                     recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
                     recyclerView.setAdapter(adapter);
 
