@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
     ArrayList<module_all_program> list;
     Context context;
-    int likehide;
 
     public All_program_Adapter(ArrayList<module_all_program> list, Context context) {
         this.list = list;
@@ -90,22 +90,25 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
             }
         });
-        holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
+
+        holder.likecheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "postion : "+holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                String sms = null;
-                if (module.getFavoratevalue().equals("no")) {
+                if (holder.likecheck.isChecked())
+                {
+                   if (module.getFavoratevalue().equals("yes"))
+                       Toast.makeText(context, "Course id : "+module.getCourseid(), Toast.LENGTH_SHORT).show();
 
+                    new updateAPIcall(context, module.getCourseid(), "yes");
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                    sms = "yes";
-                } else {
+                }
+                else
+                {
 
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-                    sms = "no";
-
+                    new updateAPIcall(context, module.getCourseid(), "no");
                 }
-                new updateAPIcall(context, module.getCourseid(), sms);
+
 
             }
         });
@@ -120,6 +123,7 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     public class viewholder extends RecyclerView.ViewHolder {
         TextView coursename, duration, countryname, collegename, fees;
         ImageView favoriteiconbutton, universityimage;
+        CheckBox likecheck;
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
@@ -129,6 +133,7 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
             collegename = itemView.findViewById(R.id.collegeAddress);
             fees = itemView.findViewById(R.id.tution_fee);
             favoriteiconbutton = itemView.findViewById(R.id.favoriteiconbutton);
+            likecheck = itemView.findViewById(R.id.likecheck);
             universityimage = itemView.findViewById(R.id.universityimage);
 
         }

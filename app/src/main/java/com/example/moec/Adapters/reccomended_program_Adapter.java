@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -93,22 +94,22 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
 
             }
         });
-        holder.favoriteiconbutton.setOnClickListener(new View.OnClickListener() {
+        holder.likecheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "postion : "+holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                String sms = null;
-                if (module.getFavoratevalue().equals("no")) {
+                if (holder.likecheck.isChecked())
+                {
 
+                    new updateAPIcall(context, module.getCourseid(), "yes");
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                    sms = "yes";
-                } else {
+                }
+                else
+                {
 
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
-                    sms = "no";
-
+                    new updateAPIcall(context, module.getCourseid(), "no");
                 }
-                new updateAPIcall(context, module.getCourseid(), sms);
+
 
             }
         });
@@ -124,12 +125,14 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
         TextView coursename, duration, countryname, collegename, fees;
         ImageView favoriteiconbutton, universityimage;
 
+        CheckBox likecheck;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             coursename = itemView.findViewById(R.id.coursename);
             duration = itemView.findViewById(R.id.course_duration);
             countryname = itemView.findViewById(R.id.countryname);
             collegename = itemView.findViewById(R.id.collegeAddress);
+            likecheck = itemView.findViewById(R.id.likecheck);
             fees = itemView.findViewById(R.id.tution_fee);
             favoriteiconbutton = itemView.findViewById(R.id.favoriteiconbutton);
             universityimage = itemView.findViewById(R.id.universityimage);
