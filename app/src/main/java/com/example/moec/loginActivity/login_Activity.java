@@ -234,6 +234,7 @@ public class login_Activity extends AppCompatActivity {
                         String level = userdata.getString("level");
                         String nationality = userdata.getString("nationality");
                         String timeline = userdata.getString("student_status");
+                        String userid = userdata.getString("user_id");
 
 
                         editor.putString("Fname", first);
@@ -249,7 +250,8 @@ public class login_Activity extends AppCompatActivity {
                         editor.putString("pincode", pincode);
                         editor.putString("interest", intrest);
                         editor.putString("examname", english);
-                        editor.putString("qualification", subject+"-"+gpa);
+                        editor.putString("qualification", subject);
+                        editor.putString("percentage", gpa);
                         editor.putString("intake", intake);
                         editor.putString("pre_country", country_pref_1);
                         editor.putString("subject", course_pref_2);
@@ -257,6 +259,7 @@ public class login_Activity extends AppCompatActivity {
                         editor.putString("nationality", nationality);
                         editor.putString("timeline", timeline);
                         editor.putString("password", passtext);
+                        editor.putString("userid", userid);
                         editor.commit();
 
                         editor.commit();

@@ -31,6 +31,7 @@ public class Search_Activity extends AppCompatActivity {
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
     CardView search_button;
+    SearchView searchView;
 
 
     @Override
@@ -45,6 +46,7 @@ public class Search_Activity extends AppCompatActivity {
 //        search_button = findViewById(R.id.search_button);
         listView = findViewById(R.id.listView);
         listView1 = findViewById(R.id.listView1);
+        searchView = findViewById(R.id.searchView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

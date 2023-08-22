@@ -2,8 +2,30 @@ package com.example.moec.ModulesClass;
 
 public class module_all_program {
     String coursename, duration, fees, countryname, collegename,universityimage,intake,link,criteria,courseid,favoratevalue;
+    String name,image;
 
-    public module_all_program(String coursename, String duration, String fees, String countryname, String collegename, String universityimage, String intake, String link, String criteria, String courseid,String favoratevalue) {
+    public module_all_program(String name, String image) {
+        this.name = name;
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public module_all_program(String coursename, String duration, String fees, String countryname, String collegename, String universityimage, String intake, String link, String criteria, String courseid, String favoratevalue) {
         this.coursename = coursename;
         this.duration = duration;
         this.fees = fees;

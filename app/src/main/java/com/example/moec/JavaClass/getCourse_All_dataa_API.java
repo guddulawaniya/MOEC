@@ -3,6 +3,7 @@ package com.example.moec.JavaClass;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -29,14 +30,16 @@ public class getCourse_All_dataa_API {
     Context context;
     RecyclerView recyclerView;
     String registrationURL;
+    LinearLayout emptylayout;
 
 
-    public getCourse_All_dataa_API(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL) {
+    public getCourse_All_dataa_API(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL,    LinearLayout emptylayout) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;
         this.recyclerView = recyclerView;
         this.registrationURL = registrationURL;
+        this.emptylayout = emptylayout;
         Getuniversitydata();
     }
 
@@ -68,6 +71,7 @@ public class getCourse_All_dataa_API {
 
                             JSONObject jsonObject = array.getJSONObject(i);
 
+
                             String coursename = jsonObject.getString("course");
                             String universityname = jsonObject.getString("name");
                             String logo = jsonObject.getString("logo");
@@ -82,10 +86,23 @@ public class getCourse_All_dataa_API {
 
                             list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid, favoratevalue));
 
+
                         }
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
                     }
+
+                    if (!list.isEmpty())
+                    {
+                        emptylayout.setVisibility(View.GONE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        emptylayout.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
+                    }
+
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     All_program_Adapter adapter = new All_program_Adapter(list, context);

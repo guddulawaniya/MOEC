@@ -54,14 +54,14 @@ public class program_preference_Activity extends AppCompatActivity {
 
                       String countryname = preferences.getString("pre_country","");
                       String interest = preferences.getString("interest","");
-                      String Education = preferences.getString("qualification","course_level");
+                      String Education = preferences.getString("qualification","");
                       String percentage = preferences.getString("percentage","");
                       String englishtest = preferences.getString("examname","");
 
 
                       selectcountry.setText(countryname);
                       selectEducation.setText(interest);
-                      selectCourse.setText(Education+" "+percentage);
+                      selectCourse.setText(Education+"-"+percentage);
                       selectTest.setText(englishtest);
 
                   }

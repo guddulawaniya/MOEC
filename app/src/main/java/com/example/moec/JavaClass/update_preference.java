@@ -21,16 +21,20 @@ import java.net.URL;
 public class update_preference {
 
     Context context;
+    String updatesURL;
 
-    public update_preference(Context context) {
+    public update_preference(Context context,String updatesURL) {
         this.context = context;
+        this.updatesURL = updatesURL;
+        UpdatesAPI();
+
     }
 
     AlertDialog.Builder builder;
     ProgressDialog progressBar;
+    private  void UpdatesAPI( ) {
 
-   public void UpdatesAPI(String updatesURL) {
-
+//        Toast.makeText(context, "URL : "+updatesURL, Toast.LENGTH_SHORT).show();
         progressBar = new ProgressDialog(context);
         progressBar.setCancelable(true);
         progressBar.setIcon(R.drawable.logo_symbol_colour);
@@ -40,13 +44,8 @@ public class update_preference {
 
         builder = new AlertDialog.Builder(context);
         builder.setTitle("Update User details");
-
         progressBar.show();
         class registration extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
 
             @Override
             protected void onPostExecute(String s) {
@@ -58,10 +57,10 @@ public class update_preference {
                     if (status.equals("true")) {
                         progressBar.dismiss();
 
-                        Toast.makeText(context, "Successfully Updated exam details" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Successfully Updated details" , Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "failed Please try again..", Toast.LENGTH_SHORT).show();
                         progressBar.dismiss();
 
                     }
@@ -84,8 +83,6 @@ public class update_preference {
                 }
 
             }
-
-
         }
 
         registration obj = new registration();

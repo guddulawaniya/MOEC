@@ -1,7 +1,5 @@
 package com.example.moec.Adapters;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.ModulesClass.interest_module;
+import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
 import com.example.moec.onClickInterface;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Adapter.viewholder> {
 
-    ArrayList<interest_module> list ;
+    ArrayList<module_all_program> list ;
     private int checkedPosition = -1;
     onClickInterface onclickInterface;
 
-    public interest_area_Adapter(ArrayList<interest_module> list, onClickInterface onclickInterface) {
+    public interest_area_Adapter(ArrayList<module_all_program> list, onClickInterface onclickInterface) {
         this.list = list;
         this.onclickInterface = onclickInterface;
     }
@@ -39,9 +38,12 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        interest_module module = list.get(position);
-        holder.image.setImageResource(module.getImage());
-        holder.textview.setText(module.getText());
+        module_all_program module = list.get(position);
+        holder.textview.setText(module.getName());
+        Picasso.get()
+                .load(module.getImage())
+                .fit()
+                .into(holder.image);
         holder.bind();
 
 
@@ -52,7 +54,7 @@ public class interest_area_Adapter extends RecyclerView.Adapter<interest_area_Ad
                 holder.ringlinear.setVisibility(View.VISIBLE);
 
                 int position=holder.getAdapterPosition();
-                String text = module.getText();
+                String text = module.getName();
 
                 onclickInterface.setClick(position,text);
                 checkedPosition = position;

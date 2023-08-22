@@ -83,7 +83,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
                 editor.putString("criteria", module.getCriteria());
                 editor.putString("courseid", module.getCourseid());
                 editor.commit();
-
                 Intent intent = new Intent(context, Program_details.class);
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, holder.itemView, "item").toBundle();
                 context.startActivity(intent, bundle);
@@ -119,7 +118,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     public int getItemCount() {
         return list.size();
     }
-
     public class viewholder extends RecyclerView.ViewHolder {
         TextView coursename, duration, countryname, collegename, fees;
         ImageView favoriteiconbutton, universityimage;

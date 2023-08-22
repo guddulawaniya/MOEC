@@ -3,15 +3,15 @@ package com.example.moec.JavaClass;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.Adapters.Favorate_Adapter;
+import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
+import com.example.moec.onClickInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,27 +23,27 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-
-public class Load_favorate_data{
+public class get_country_data {
 
     ProgressBar progressBar;
-    ArrayList<module_all_program> list;
+    ArrayList<module_all_program> list=new ArrayList<>();
     Context context;
     RecyclerView recyclerView;
-    LinearLayout emptylayout;
+    String registrationURL;
+    onClickInterface onclickInterface;
 
 
-
-    public Load_favorate_data(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, LinearLayout emptylayout) {
+    public get_country_data(ProgressBar progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface) {
         this.progressBar = progressBar;
-        this.list = list;
         this.context = context;
         this.recyclerView = recyclerView;
-        this.emptylayout = emptylayout;
-        get_favorate_university_data();
+        this.registrationURL = registrationURL;
+        this.onclickInterface = onclickInterface;
+        Getuniversitydata();
     }
 
-    void get_favorate_university_data() {
+
+    void Getuniversitydata() {
 
         progressBar.setVisibility(View.VISIBLE);
         class registration extends AsyncTask<String, String, String> {
@@ -66,41 +66,21 @@ public class Load_favorate_data{
 
                         JSONArray array = obj.getJSONArray("data");
 
-                        for (int i = 0; i < array.length(); ++i) {
+                        for (int i = 0; i < 14; ++i) {
+
 
                             JSONObject jsonObject = array.getJSONObject(i);
 
-                            String coursename = jsonObject.getString("course");
-                            String universityname = jsonObject.getString("name");
-                            String logo = jsonObject.getString("logo");
-                            String countryname = jsonObject.getString("country_id");
-                            String fees = jsonObject.getString("fees");
-                            String duration = jsonObject.getString("duration");
-                            String OfficalLink = jsonObject.getString("links");
-                            String intake = jsonObject.getString("intakes");
-                            String criteria = jsonObject.getString("criteria");
-                            String courseid = jsonObject.getString("id");
-
-                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid));
+                            String countryname = jsonObject.getString("country");
+                            String image = jsonObject.getString("flag");
+                            list.add(new module_all_program(countryname,baseurl+image));
                         }
                     } else {
-                        Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
                     }
 
-                    if (!list.isEmpty())
-                    {
-                        emptylayout.setVisibility(View.GONE);
-                        recyclerView.setVisibility(View.VISIBLE);
-                    }
-                    else
-                    {
-                        emptylayout.setVisibility(View.VISIBLE);
-                        recyclerView.setVisibility(View.GONE);
-                    }
-
-
-                    recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    Favorate_Adapter adapter = new Favorate_Adapter(context, list);
+                    recyclerView.setLayoutManager(new GridLayoutManager(context,3));
+                    most_prefered_destination_Adapter adapter = new most_prefered_destination_Adapter(list, context,onclickInterface);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -122,10 +102,10 @@ public class Load_favorate_data{
                 }
             }
         }
+
         registration obj = new registration();
-        obj.execute(config.Base_url+"favoritesCourseDataApi");
+        obj.execute(registrationURL);
 
 
     }
 }
-

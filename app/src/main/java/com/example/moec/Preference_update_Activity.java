@@ -1,12 +1,10 @@
 package com.example.moec;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +16,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,19 +29,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.get_country_data;
+import com.example.moec.JavaClass.get_subject_data;
 import com.example.moec.JavaClass.update_preference;
-import com.example.moec.ModulesClass.interest_module;
-import com.example.moec.ModulesClass.most_prefered_destination_module;
+import com.example.moec.ModulesClass.module_all_program;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class Preference_update_Activity extends AppCompatActivity {
@@ -52,6 +45,7 @@ public class Preference_update_Activity extends AppCompatActivity {
     page3 page3object;
 
     page5 page5object;
+    ProgressBar progressBar;
     LinearLayout linearpage1, linearpage2,linearpage3,linearpage4;
 
     @Override
@@ -60,6 +54,7 @@ public class Preference_update_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_preference_update);
 
         Button savebutton = findViewById(R.id.savebutton);
+        progressBar = findViewById(R.id.progressBar);
 
         linearpage1 = findViewById(R.id.linearpage1);
         linearpage2 = findViewById(R.id.linearpage2);
@@ -212,14 +207,9 @@ public class Preference_update_Activity extends AppCompatActivity {
 
    private class page1{
 
-        ArrayList<most_prefered_destination_module> mostpreferedlist=  new ArrayList<>();
-
-
         RecyclerView mostpreferedRecyclerview = findViewById(R.id.mostpreferedRecyclerview);
         void setdataonRecyclerview() {
 
-
-            mostpreferedRecyclerview.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
 
             onClickInterface  onclickInterface = new onClickInterface() {
                 @Override
@@ -234,38 +224,15 @@ public class Preference_update_Activity extends AppCompatActivity {
                 }
             };
 
-            // nested scolling set false
-            mostpreferedRecyclerview.setNestedScrollingEnabled(false);
+            new get_country_data(progressBar,getApplicationContext(),mostpreferedRecyclerview,config.Base_url+"crmcountriesApiData",onclickInterface);
 
-            // object Adapters
-            most_prefered_destination_Adapter mostAdapter = new most_prefered_destination_Adapter(mostpreferedlist, getApplicationContext(),onclickInterface);
-
-            // set adapter on recycler view
-            mostpreferedRecyclerview.setAdapter(mostAdapter);
-
-
-
-            // add data on list
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.uk_flag, "UK"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.us_flag, "USA"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.flag_canada, "Canada"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.australia_flag, "Australia"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.flag_canada, "Italy"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.germany_flag, "Germany"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.zealand_flag, "New Zealand"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.dubai_flag, "Dubai"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.poland_flag, "Poland"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.ireland_flag, "Ireland"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.latvia_flag, "Latvia"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.mauritius_flg, "Mauritius"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.malta_flag, "Malta"));
 
         }
     }
    private class page2 {
         RecyclerView recyclerView = findViewById(R.id.interest_recyclerview);
 
-        ArrayList<interest_module> list = new ArrayList<>();
+        ArrayList<module_all_program> list = new ArrayList<>();
         void setdataonRecyclerview() {
 
             onClickInterface  onclickInterface = new onClickInterface() {
@@ -283,30 +250,9 @@ public class Preference_update_Activity extends AppCompatActivity {
                 }
             };
 
-            // object of interest Adapter
-            interest_area_Adapter adapter = new interest_area_Adapter(list,onclickInterface);
+            new get_subject_data(progressBar,list,getApplicationContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface);
 
 
-            // set layout manager on recyclerview
-            recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
-
-            recyclerView.setAdapter(adapter);
-
-            // add data on list
-
-            list.add(new interest_module(R.drawable.architecture, "Architecture"));
-            list.add(new interest_module(R.drawable.art___design, "Design"));
-            list.add(new interest_module(R.drawable.engineering, "Engineering"));
-            list.add(new interest_module(R.drawable.business___management, "Business"));
-            list.add(new interest_module(R.drawable.hospitality, "Hospitality & Tourism"));
-            list.add(new interest_module(R.drawable.humanities, "Humanities & Social Science"));
-            list.add(new interest_module(R.drawable.law___legal_studies, "Law"));
-            list.add(new interest_module(R.drawable.marketing, "Marketing & Advertising"));
-            list.add(new interest_module(R.drawable.media___communication, "Media & Journalism"));
-            list.add(new interest_module(R.drawable.health___nursing, "Medical"));
-            list.add(new interest_module(R.drawable.science, "Science"));
-            list.add(new interest_module(R.drawable.sports___fitness, "Sport & Nutrition"));
-            list.add(new interest_module(R.drawable.education, "Education"));
         }
 
     }
@@ -502,8 +448,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 "&speakingscore=" + speakText +
                 "&over_allscore=" + overText;
 
-        update_preference preference = new update_preference(Preference_update_Activity.this);
-        preference.UpdatesAPI(registrationURL);
+    new update_preference(Preference_update_Activity.this,registrationURL);
     }
    private class page5 {
 

@@ -30,12 +30,12 @@ import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.get_subject_data;
 import com.example.moec.JavaClass.getuniversitydata;
 import com.example.moec.JavaClass.reccomended_programload_data;
 import com.example.moec.MainActivity;
 import com.example.moec.ModulesClass.Quick_Action_Module;
 import com.example.moec.ModulesClass.Top_country_module;
-import com.example.moec.ModulesClass.interest_module;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.New_Application;
 import com.example.moec.R;
@@ -77,7 +77,7 @@ public class dashboard_fragment extends Fragment {
 
         // instances arraylist and declared arraylists
 
-        ArrayList<interest_module> list = new ArrayList<>();
+        ArrayList<module_all_program> list = new ArrayList<>();
         ArrayList<Quick_Action_Module> quickList = new ArrayList<>();
         ArrayList<Top_country_module> topcountry_pickup_list = new ArrayList<>();
 
@@ -126,21 +126,15 @@ public class dashboard_fragment extends Fragment {
 
         // recommended program recyclerview and load data function..
 
-        new reccomended_programload_data(progressBar, programArrayList, getContext(), config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry, recommandRecyclerview);
+        new reccomended_programload_data(progressBar, programArrayList, getContext(),
+                config.Base_url + "courseApiDatawithcountry?" +
+                        "countryname=" + preferenceCountry, recommandRecyclerview,setpreference_student);
 
 
         // hide and show set preference button and show recommended recyclerview
 
 
-        if (preferenceCountry != null && interest != null && education != null && examname != null) {
 
-            setpreference_student.setVisibility(View.GONE);
-            recommandRecyclerview.setVisibility(View.VISIBLE);
-
-        } else {
-            setpreference_student.setVisibility(View.VISIBLE);
-            recommandRecyclerview.setVisibility(View.GONE);
-        }
 
 
         // check out more recommended programs as your preference
@@ -260,25 +254,7 @@ public class dashboard_fragment extends Fragment {
         quickList.add(new Quick_Action_Module(R.drawable.accomodation, "Find Accommodation"));
         quickList.add(new Quick_Action_Module(R.drawable.loan, "Education Loan"));
 
-        // subjects list
 
-        list.add(new interest_module(R.drawable.architecture, "Architecture"));
-        list.add(new interest_module(R.drawable.computer, "Computer Science"));
-        list.add(new interest_module(R.drawable.graphic_design, "Design"));
-        list.add(new interest_module(R.drawable.engineering, "Engineering"));
-        list.add(new interest_module(R.drawable.business, "Business"));
-        list.add(new interest_module(R.drawable.hospitality, "Hospitality \n& Tourism"));
-        list.add(new interest_module(R.drawable.humanities, "Humanities \n& Social Science"));
-        list.add(new interest_module(R.drawable.law, "Law"));
-        list.add(new interest_module(R.drawable.management, "Management"));
-        list.add(new interest_module(R.drawable.marketing, "Marketing \n& Advertising"));
-        list.add(new interest_module(R.drawable.media___communication, "Media \n& Journalism"));
-        list.add(new interest_module(R.drawable.medical_symbol, "Medical"));
-        list.add(new interest_module(R.drawable.creative_thinking, "Performing \n& Creative Arts"));
-        list.add(new interest_module(R.drawable.science, "Science"));
-        list.add(new interest_module(R.drawable.sports___fitness, "Sport \n& Nutrition"));
-        list.add(new interest_module(R.drawable.translation, "Languages"));
-        list.add(new interest_module(R.drawable.education, "Education"));
 
         onclickInterface = new onClickInterface() {
             @Override
@@ -287,10 +263,8 @@ public class dashboard_fragment extends Fragment {
             }
         };
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
-        interest_area_Adapter adapter = new interest_area_Adapter(list, onclickInterface);
-        recyclerView.setAdapter(adapter);
+        new get_subject_data(progressBar,list,getContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface,true);
 
         return view;
     }
@@ -320,7 +294,6 @@ public class dashboard_fragment extends Fragment {
     // notification clicked function
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         int getid = item.getItemId();
         if (getid == R.id.notification) {
             Toast.makeText(getContext(), "Clicked Notification", Toast.LENGTH_SHORT).show();

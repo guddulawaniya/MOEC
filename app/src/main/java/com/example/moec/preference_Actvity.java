@@ -1,12 +1,10 @@
 package com.example.moec;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,38 +20,25 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chaos.view.PinView;
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.get_country_data;
+import com.example.moec.JavaClass.get_subject_data;
 import com.example.moec.JavaClass.update_preference;
-import com.example.moec.ModulesClass.interest_module;
-import com.example.moec.ModulesClass.most_prefered_destination_module;
-import com.example.moec.loginActivity.login_Activity;
+import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.loginActivity.registration_Activity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.shuhart.stepview.StepView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-
-import kotlin.text.Charsets;
 
 public class preference_Actvity extends AppCompatActivity {
 
@@ -68,6 +53,7 @@ public class preference_Actvity extends AppCompatActivity {
     page2 page2class;
     page1 page1class;
     TextView toolbar_title, cleartext;
+    ProgressBar progressBar;
 
 
     SharedPreferences preferences;
@@ -83,6 +69,7 @@ public class preference_Actvity extends AppCompatActivity {
         page1 = findViewById(R.id.page1);
         page2 = findViewById(R.id.page2);
         page5 = findViewById(R.id.page5);
+        progressBar = findViewById(R.id.progressBar);
         toolbar_title = findViewById(R.id.toolbar_title);
         cleartext = findViewById(R.id.cleartext);
         toolbar_title.setText("Preferences");
@@ -292,8 +279,8 @@ public class preference_Actvity extends AppCompatActivity {
         String speaking = preferences.getString("speak", null);
         String ovarall = preferences.getString("overall", null);
 
-        String registrationURL = config.Base_url + "setPreferenceApiData?" +
 
+        String registrationURL = config.Base_url + "setPreferenceApiData?" +
                 "user_id=" +userid+
                 "&des_country=" + pre_country +
                 "&intrest=" + interest +
@@ -307,8 +294,7 @@ public class preference_Actvity extends AppCompatActivity {
                 "&over_allscore=" + ovarall;
         stepcount--;
 
-        update_preference preference = new update_preference(preference_Actvity.this);
-        preference.UpdatesAPI(registrationURL);
+        new update_preference(preference_Actvity.this,registrationURL);
 
     }
 
@@ -333,15 +319,10 @@ public class preference_Actvity extends AppCompatActivity {
     // page number 1 class
     class page1 {
 
-        ArrayList<most_prefered_destination_module> mostpreferedlist = new ArrayList<>();
-
 
         RecyclerView mostpreferedRecyclerview = findViewById(R.id.mostpreferedRecyclerview);
 
         void setdataonRecyclerview() {
-
-
-            mostpreferedRecyclerview.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
 
 
             onClickInterface onclickInterface = new onClickInterface() {
@@ -358,30 +339,10 @@ public class preference_Actvity extends AppCompatActivity {
                 }
             };
 
-            // nested scolling set false
-            mostpreferedRecyclerview.setNestedScrollingEnabled(false);
 
-            // object Adapters
-            most_prefered_destination_Adapter mostAdapter = new most_prefered_destination_Adapter(mostpreferedlist, getApplicationContext(), onclickInterface);
-
-            // set adapter on recycler view
-            mostpreferedRecyclerview.setAdapter(mostAdapter);
+            new get_country_data(progressBar,getApplicationContext(),mostpreferedRecyclerview,config.Base_url+"crmcountriesApiData",onclickInterface);
 
 
-            // add data on list
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.uk_flag, "UK"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.us_flag, "USA"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.flag_canada, "Canada"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.australia_flag, "Australia"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.flag_canada, "Italy"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.germany_flag, "Germany"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.zealand_flag, "New Zealand"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.dubai_flag, "Dubai"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.poland_flag, "Poland"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.ireland_flag, "Ireland"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.latvia_flag, "Latvia"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.mauritius_flg, "Mauritius"));
-            mostpreferedlist.add(new most_prefered_destination_module(R.drawable.malta_flag, "Malta"));
 
         }
     }
@@ -392,7 +353,7 @@ public class preference_Actvity extends AppCompatActivity {
     class page2 {
         RecyclerView recyclerView = findViewById(R.id.interest_recyclerview);
         boolean checkselectcountry = false;
-        ArrayList<interest_module> list = new ArrayList<>();
+        ArrayList<module_all_program> list = new ArrayList<>();
 
         void setdataonRecyclerview() {
 
@@ -409,30 +370,8 @@ public class preference_Actvity extends AppCompatActivity {
                 }
             };
 
-            // object of interest Adapter
-            interest_area_Adapter adapter = new interest_area_Adapter(list, onclickInterface);
+            new get_subject_data(progressBar,list,getApplicationContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface);
 
-
-            // set layout manager on recyclerview
-            recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
-
-            recyclerView.setAdapter(adapter);
-
-            // add data on list
-
-            list.add(new interest_module(R.drawable.architecture, "Architecture"));
-            list.add(new interest_module(R.drawable.art___design, "Design"));
-            list.add(new interest_module(R.drawable.engineering, "Engineering"));
-            list.add(new interest_module(R.drawable.business___management, "Business"));
-            list.add(new interest_module(R.drawable.hospitality, "Hospitality & Tourism"));
-            list.add(new interest_module(R.drawable.humanities, "Humanities & Social Science"));
-            list.add(new interest_module(R.drawable.law___legal_studies, "Law"));
-            list.add(new interest_module(R.drawable.marketing, "Marketing & Advertising"));
-            list.add(new interest_module(R.drawable.media___communication, "Media & Journalism"));
-            list.add(new interest_module(R.drawable.health___nursing, "Medical"));
-            list.add(new interest_module(R.drawable.science, "Science"));
-            list.add(new interest_module(R.drawable.sports___fitness, "Sport & Nutrition"));
-            list.add(new interest_module(R.drawable.education, "Education"));
         }
 
     }

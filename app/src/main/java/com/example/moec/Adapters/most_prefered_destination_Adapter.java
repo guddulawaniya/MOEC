@@ -12,22 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moec.ModulesClass.most_prefered_destination_module;
+import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
 import com.example.moec.onClickInterface;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most_prefered_destination_Adapter.viewholder> {
 
 
-    ArrayList<most_prefered_destination_module> list;
+    ArrayList<module_all_program> list;
 
     Context context;
      onClickInterface onclickInterface;
     int checkedPosition = -1;
 
-    public most_prefered_destination_Adapter(ArrayList<most_prefered_destination_module> list, Context context, onClickInterface onclickInterface) {
+    public most_prefered_destination_Adapter(ArrayList<module_all_program> list, Context context, onClickInterface onclickInterface) {
         this.list = list;
         this.context = context;
         this.onclickInterface = onclickInterface;
@@ -43,9 +44,11 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-        most_prefered_destination_module module = list.get(position);
-        holder.image.setImageResource(module.getImage());
-        holder.textview.setText(module.getText());
+        module_all_program module = list.get(position);
+        Picasso.get()
+                .load(module.getImage())
+                .into(holder.image);
+        holder.textview.setText(module.getName());
         holder.bind();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +60,7 @@ public class most_prefered_destination_Adapter extends RecyclerView.Adapter<most
 
                     int position=holder.getAdapterPosition();
 
-                     String text = module.getText();
+                     String text = module.getName();
                     onclickInterface.setClick(position, text);
                     checkedPosition = position;
 

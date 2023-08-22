@@ -50,7 +50,6 @@ public class Splash_Screen extends AppCompatActivity {
         String emailtext = preferences.getString("email",null);
         String setpassword = preferences.getString("password",null);
 
-        InternetConnection nt = new InternetConnection(this);
 
 
         if (emailtext!=null && setpassword!=null) {
@@ -139,7 +138,8 @@ public class Splash_Screen extends AppCompatActivity {
                         editor.putString("pincode", pincode);
                         editor.putString("interest", intrest);
                         editor.putString("examname", english);
-                        editor.putString("qualification", subject+"-"+gpa);
+                        editor.putString("qualification", subject);
+                        editor.putString("percentage", gpa);
                         editor.putString("intake", intake);
                         editor.putString("pre_country", country_pref_1);
                         editor.putString("subject", course_pref_2);

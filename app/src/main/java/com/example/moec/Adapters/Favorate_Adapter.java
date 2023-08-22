@@ -26,6 +26,8 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
 
     Context context;
     ArrayList<module_all_program> list;
+    boolean hidelike=false;
+
 
     public Favorate_Adapter(Context context, ArrayList<module_all_program> list) {
         this.context = context;
@@ -91,6 +93,7 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
     public class viewholder extends RecyclerView.ViewHolder {
         TextView coursename, duration, countryname, collegename, fees;
         ImageView favoriteiconbutton, universityimage;
+
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
