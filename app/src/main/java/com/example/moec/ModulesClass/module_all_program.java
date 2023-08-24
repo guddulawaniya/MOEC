@@ -4,6 +4,7 @@ public class module_all_program {
     String coursename, duration, fees, countryname, collegename,universityimage,intake,link,criteria,courseid,favoratevalue;
     String name,image;
 
+
     public module_all_program(String name, String image) {
         this.name = name;
         this.image = image;

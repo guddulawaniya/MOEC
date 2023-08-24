@@ -53,15 +53,15 @@
 
 
                 <AutoCompleteTextView
-
+                    android:id="@+id/topicselection"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:autoSizeMaxTextSize="16dp"
 
+                    android:autoSizeMaxTextSize="16dp"
                     android:autoSizeMinTextSize="12dp"
                     android:fontFamily="@font/poppins"
-                    android:hint="Select"
 
+                    android:hint="Select"
                     android:inputType="none"
                     android:padding="10dp"
                     android:textColor="@color/black"
@@ -98,7 +98,7 @@
 
 
                 <AutoCompleteTextView
-                    android:id="@+id/programSelection"
+                    android:id="@+id/countryselection"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:autoSizeMaxTextSize="16dp"
@@ -148,6 +148,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
 
+                    android:id="@+id/messagebox"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/poppins"
@@ -164,14 +165,14 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/submitbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/primarycolor"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="50dp"
-            android:text="Send" />
+            android:text="Submit" />
 
 
     </LinearLayout>

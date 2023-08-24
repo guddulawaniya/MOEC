@@ -10,9 +10,9 @@
     <item android:title="Applications"
         android:id="@+id/application"
         android:icon="@drawable/plus_icon_square"/>
-    <item android:title="Community"
+ <!--   <item android:title="Community"
         android:id="@+id/community"
-        android:icon="@drawable/community_icon"/>
+        android:icon="@drawable/community_icon"/>-->
     <item android:title="Insights"
         android:id="@+id/insight"
         android:icon="@drawable/insights_icon"/>

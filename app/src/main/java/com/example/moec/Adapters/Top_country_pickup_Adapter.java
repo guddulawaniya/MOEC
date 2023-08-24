@@ -12,18 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moec.ModulesClass.Top_country_module;
+import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
 import com.example.moec.webviewActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country_pickup_Adapter.viewdholder> {
 
 
-    ArrayList<Top_country_module> list;
+    ArrayList<module_all_program> list;
     Context context;
 
-    public Top_country_pickup_Adapter(Context context, ArrayList<Top_country_module> list) {
+    public Top_country_pickup_Adapter(Context context, ArrayList<module_all_program> list) {
         this.list = list;
         this.context = context;
     }
@@ -37,9 +39,13 @@ public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country
 
     @Override
     public void onBindViewHolder(@NonNull viewdholder holder, int position) {
-        Top_country_module module = list.get(position);
-        holder.imageView.setImageResource(module.getCountryimage());
-        holder.countryname.setText(module.getCountryname());
+        module_all_program module = list.get(position);
+
+        Picasso.get()
+                .load(module.getImage())
+                .fit()
+                .into(holder.imageView);
+        holder.countryname.setText(module.getName());
         int id = position;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,28 +54,33 @@ public class Top_country_pickup_Adapter extends RecyclerView.Adapter<Top_country
                 Intent intent = new Intent(context, webviewActivity.class);
                 switch (id) {
                     case 0:
-                        intent.putExtra("url", "https://www.meridean.org/study-in-canada");
-                        intent.putExtra("titlename", "Canada");
-                        break;
-                    case 1:
-                        intent.putExtra("url", "https://www.meridean.org/study-in-australia");
-                        intent.putExtra("titlename", "Australia");
-                        break;
-                    case 2:
                         intent.putExtra("url", "https://www.merideanoverseas.in/study-in-uk");
+
                         intent.putExtra("titlename", "United Kingdom");
                         break;
+                    case 1:
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-canada");
+                        intent.putExtra("titlename", "Canada");
+                        break;
+                    case 2:
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-latvia");
+                        intent.putExtra("titlename", "Latvia");
+                        break;
                     case 3:
-                        intent.putExtra("url", "https://www.meridean.org/study-in-usa");
-                        intent.putExtra("titlename", "United States");
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-new-zealand");
+                        intent.putExtra("titlename", "New zealand");
                         break;
                     case 4:
-                        intent.putExtra("url", "https://www.meridean.org/germany-summer-intake");
-                        intent.putExtra("titlename", "United States");
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-italy");
+                        intent.putExtra("titlename", "Italy");
                         break;
                     case 5:
-                        intent.putExtra("url", "https://www.merideanoverseas.in/cost-of-study-in-newzealand");
-                        intent.putExtra("titlename", "New Zealand");
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-australia");
+                        intent.putExtra("titlename", "Australia");
+                        break;
+                    case 6:
+                        intent.putExtra("url", "https://www.merideanoverseas.in/study-in-usa");
+                        intent.putExtra("titlename", "USA");
                         break;
                 }
 

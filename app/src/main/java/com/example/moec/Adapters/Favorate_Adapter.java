@@ -55,6 +55,11 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
                 .resize(300, 100)
                 .into(holder.universityimage);
 
+        if (module.getDuration().equals("null"))
+        {
+            holder.duration.setText("");
+        }else holder.duration.setText(module.getDuration());
+
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
         } else holder.fees.setText(module.getFees() + " Months");
@@ -74,6 +79,7 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
                 editor.putString("weblink", module.getLink());
                 editor.putString("criteria", module.getCriteria());
                 editor.putString("courseid", module.getCourseid());
+                editor.putString("favoratevalue", module.getFavoratevalue());
                 editor.commit();
 
                 Intent intent = new Intent(context, Program_details.class);

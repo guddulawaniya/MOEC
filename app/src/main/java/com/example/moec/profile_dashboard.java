@@ -1,35 +1,18 @@
 package com.example.moec;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
 
 import com.example.moec.loginActivity.login_Activity;
-import com.example.moec.loginActivity.login_Activity_with_mobile_no;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.theartofdev.edmodo.cropper.CropImage;
-
-import java.util.List;
 
 
 public class profile_dashboard extends AppCompatActivity {
@@ -54,6 +37,7 @@ public class profile_dashboard extends AppCompatActivity {
         TextView emailaddress = findViewById(R.id.emailaddress);
         TextView dob = findViewById(R.id.dob);
         TextView gender = findViewById(R.id.gender);
+        ImageView setimage = findViewById(R.id.setimage);
 
         TextView my_preference_profile = findViewById(R.id.my_preference_profile);
 
@@ -69,6 +53,15 @@ public class profile_dashboard extends AppCompatActivity {
         String contact =  preferences.getString("number","");
         String dobget=  preferences.getString("DOb","");
         String genderget=  preferences.getString("g","");
+
+        String imageurl = preferences.getString("image",null);
+        if (imageurl != null) {
+            byte[] decodedBytes = Base64.decode(imageurl, Base64.DEFAULT);
+            Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+
+            // Display the decodedBitmap in an ImageView
+            setimage.setImageBitmap(decodedBitmap);
+        }
 
 
 

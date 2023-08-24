@@ -3,10 +3,14 @@ package com.example.moec;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +23,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -29,8 +32,6 @@ import com.example.moec.BottomNavigation_Fragment.dashboard_fragment;
 import com.example.moec.BottomNavigation_Fragment.insights_fragment;
 import com.example.moec.BottomNavigation_Fragment.program_fragment;
 import com.example.moec.JavaClass.InternetConnection;
-import com.example.moec.JavaClass.config;
-import com.example.moec.JavaClass.update_preference;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     TextView toolbartitle, textCartItemCount;
     int mCartItemCount = 100;
-    ImageView Refine, searchbar;
+    ImageView  searchbar,profile_icon,profile_iconmain;
     LinearLayout searchelementLayouts;
     ImageView favorate;
     BottomNavigationView navigationView;
@@ -65,9 +66,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             progressBar.setVisibility(View.GONE);
             searchelementLayouts = findViewById(R.id.searchfield);
             favorate = findViewById(R.id.favourate_icon_toolbar);
-            Refine = findViewById(R.id.refine_icon);
             toolbartitle = findViewById(R.id.toolbartitle);
             searchbar = findViewById(R.id.searchbar);
+            profile_icon = findViewById(R.id.profile_icon);
+            profile_iconmain = findViewById(R.id.profile_icon_toolbar);
 
             textCartItemCount = findViewById(R.id.notification_badge);
             navigationView = findViewById(R.id.bottomNavigationView);
@@ -84,13 +86,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             TextView uploaddata = findViewById(R.id.sidedocument_upload);
 
 
+
             TextView sharelink = findViewById(R.id.sharelink);
             sharelink.setPaintFlags(sharelink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
 
 
-            Refine.setVisibility(View.GONE);
             navigationView.setOnItemSelectedListener(this::onNavigationItemSelected);
             navigationView.setSelectedItemId(R.id.dashboard);
 
@@ -114,6 +116,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             sideemail.setText(email);
 
+            String imageurl = preferences.getString("image",null);
+            if (imageurl != null) {
+                byte[] decodedBytes = Base64.decode(imageurl, Base64.DEFAULT);
+                Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+
+                // Display the decodedBitmap in an ImageView
+                profile_icon.setImageBitmap(decodedBitmap);
+                profile_iconmain.setImageBitmap(decodedBitmap);
+            }
+
 
             searchbar.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -125,12 +137,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             });
 
 
-            Refine.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(getApplicationContext(), Refine_Activity.class));
-                }
-            });
             sidebarPreferenece.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -245,14 +251,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         if (R.id.dashboard == item.getItemId()) {
             navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
-            Refine.setVisibility(View.GONE);
             searchelementLayouts.setVisibility(View.VISIBLE);
             favorate.setVisibility(View.VISIBLE);
             toolbartitle.setText("Dashboard");
             replacefragment(dashboard_fragment);
         } else if (R.id.program == item.getItemId()) {
             navigationView.setItemActiveIndicatorColor(ColorStateList.valueOf(getColor(R.color.primarycolor)));
-            Refine.setVisibility(View.VISIBLE);
             toolbartitle.setText("Program");
             favorate.setVisibility(View.VISIBLE);
             searchelementLayouts.setVisibility(View.VISIBLE);
@@ -260,20 +264,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else if (R.id.application == item.getItemId()) {
             navigationView.setItemTextAppearanceActive(R.style.BottomNavigationView);
 
-            Refine.setVisibility(View.GONE);
+
             toolbartitle.setText("Application");
             replacefragment(application_fragment);
             searchelementLayouts.setVisibility(View.GONE);
             favorate.setVisibility(View.GONE);
-        } else if (R.id.community == item.getItemId()) {
+        }
+      /*  else if (R.id.community == item.getItemId()) {
+            searchelementLayouts.setVisibility(View.GONE);
 
-            Refine.setVisibility(View.GONE);
             favorate.setVisibility(View.GONE);
             toolbartitle.setText("Community");
             replacefragment(community_fragment);
 
-        } else if (R.id.insight == item.getItemId()) {
-            Refine.setVisibility(View.GONE);
+        } */
+        else if (R.id.insight == item.getItemId()) {
+
             toolbartitle.setText("Insight");
             searchelementLayouts.setVisibility(View.GONE);
             favorate.setVisibility(View.GONE);

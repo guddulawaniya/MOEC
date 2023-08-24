@@ -1,15 +1,12 @@
 package com.example.moec;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,15 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
-import java.util.Calendar;
-
 public class New_Application extends AppCompatActivity {
 
 
-
-    String[] selection = { "My Preferred", "Expert Advice", };
-    String[] institudelist = { "My Preferred", "Expert Advice", };
-    String[] campuslist = { "My Preferred", "Expert Advice", };
+    String[] selection = {"My Preferred", "Expert Advice",};
+    String[] institudelist = {"My Preferred", "Expert Advice",};
+    String[] campuslist = {"My Preferred", "Expert Advice",};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +32,9 @@ public class New_Application extends AppCompatActivity {
 
         TextView title = findViewById(R.id.toolbar_title);
 
-        AutoCompleteTextView programSelection = findViewById(R.id.programSelection);
+        AutoCompleteTextView programSelection = findViewById(R.id.countryselection);
         AutoCompleteTextView institudecomplete = findViewById(R.id.institudeAutocomplete);
-        AutoCompleteTextView campuscomplete = findViewById(R.id.campusautocamplete);
+      //  AutoCompleteTextView campuscomplete = findViewById(R.id.campusautocamplete);
         AutoCompleteTextView selectcourse = findViewById(R.id.selectcourse);
         AutoCompleteTextView intakeinput = findViewById(R.id.intakeinput);
 
@@ -54,15 +48,13 @@ public class New_Application extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,  R.layout.countrylist_layout, selection);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this, R.layout.countrylist_layout, selection);
 
 
-                programSelection.setThreshold(1);
-                programSelection.setAdapter(adapter);
-                programSelection.setTextColor(Color.BLACK);
-                programSelection.setDropDownBackgroundResource(R.color.background_blue_shadew);
-
-
+        programSelection.setThreshold(1);
+        programSelection.setAdapter(adapter);
+        programSelection.setTextColor(Color.BLACK);
+        programSelection.setDropDownBackgroundResource(R.color.background_blue_shadew);
 
 
         LinearLayout uploadlinear = findViewById(R.id.uploadlinear);
@@ -73,17 +65,15 @@ public class New_Application extends AppCompatActivity {
         canclebutton.setImageResource(R.drawable.close_icon);
 
 
-
-
         institudecomplete.setThreshold(1);
         institudecomplete.setAdapter(adapter);
         institudecomplete.setTextColor(Color.BLACK);
         institudecomplete.setDropDownBackgroundResource(R.color.background_blue_shadew);
 
-        campuscomplete.setThreshold(1);
+       /* campuscomplete.setThreshold(1);
         campuscomplete.setAdapter(adapter);
         campuscomplete.setTextColor(Color.BLACK);
-        campuscomplete.setDropDownBackgroundResource(R.color.background_blue_shadew);
+        campuscomplete.setDropDownBackgroundResource(R.color.background_blue_shadew);*/
 
         selectcourse.setThreshold(1);
         selectcourse.setAdapter(adapter);
@@ -100,11 +90,10 @@ public class New_Application extends AppCompatActivity {
         });
 
 
-
         canclebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             onBackPressed();
+                onBackPressed();
             }
         });
 
@@ -151,7 +140,6 @@ public class New_Application extends AppCompatActivity {
 
         getWindow().setSharedElementEnterTransition(transform);
         getWindow().setSharedElementReturnTransition(transform);
-
 
 
     }

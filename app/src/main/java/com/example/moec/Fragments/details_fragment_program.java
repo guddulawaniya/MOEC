@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.moec.R;
+import com.example.moec.webviewActivity;
 import com.google.android.material.chip.Chip;
 
 
@@ -33,7 +34,7 @@ public class details_fragment_program extends Fragment {
 
         LinearLayout websitelinerlayout = view.findViewById(R.id.websitelinerlayout);
         Chip visit = view.findViewById(R.id.visitwebsitebutton);
-        TextView applicationfess = view.findViewById(R.id.applicationfees);
+//        TextView applicationfees = view.findViewById(R.id.applicationfees);
         TextView tuitionfee = view.findViewById(R.id.tution_fee);
 
 
@@ -42,15 +43,20 @@ public class details_fragment_program extends Fragment {
         SharedPreferences preferences = getContext().getSharedPreferences("programdetails",MODE_PRIVATE);
         TextView setlink = view.findViewById(R.id.linkset);
         weblink =  preferences.getString("weblink",null);
-        setlink.setText(weblink);
+
         String fees = preferences.getString("fees",null);
+        String intaketext = preferences.getString("intake",null);
 
-        if (fees.equals("null"))
+
+
+        if (weblink.equals("null") || weblink.isEmpty())
         {
-            tuitionfee.setText("");
+            websitelinerlayout.setVisibility(View.GONE);
         }
-        else tuitionfee.setText(fees);
-
+        else {
+            websitelinerlayout.setVisibility(View.VISIBLE);
+            setlink.setText(weblink);
+        }
 
 
 
@@ -76,8 +82,8 @@ public class details_fragment_program extends Fragment {
 
     void websiteview()
     {
-        Uri uri = Uri.parse(weblink); // missing 'http://' will cause crashed
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        Intent intent = new Intent(getContext(), webviewActivity.class);
+        intent.putExtra("url",weblink);
         startActivity(intent);
     }
 }

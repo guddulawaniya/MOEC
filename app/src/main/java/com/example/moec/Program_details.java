@@ -20,7 +20,6 @@ import com.squareup.picasso.Picasso;
 
 public class Program_details extends AppCompatActivity {
 
-    int like= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +40,7 @@ public class Program_details extends AppCompatActivity {
         TextView universityname = findViewById(R.id.univeristyname);
         TextView countryname  = findViewById(R.id.countryname);
         ImageView universityimage  = findViewById(R.id.universityimage);
+        ImageView favorateicon = findViewById(R.id.favorateicon);
 
         SharedPreferences preferences = getSharedPreferences("programdetails",MODE_PRIVATE);
 
@@ -48,10 +48,15 @@ public class Program_details extends AppCompatActivity {
         universityname.setText(preferences.getString("collegename",null));
         countryname.setText(preferences.getString("countryname",null));
         String courseid = preferences.getString("courseid",null);
+        String favoratevalue = preferences.getString("favoratevalue",null);
 
-
-
-        ImageView favorateicon = findViewById(R.id.favorateicon);
+        if (favoratevalue.equals("yes"))
+        {
+            favorateicon.setImageResource(R.drawable.favorite_heart);
+        }
+        else{
+            favorateicon.setImageResource(R.drawable.favorite_icon);
+        }
 
 
 
@@ -73,15 +78,14 @@ public class Program_details extends AppCompatActivity {
         favorateicon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (like==0)
+                if (favoratevalue.isEmpty())
                 {
-                    like = 1;
                     favorateicon.setImageResource(R.drawable.favorite_heart);
                     new updateAPIcall(Program_details.this,courseid,"yes");
                 }
                 else{
                     favorateicon.setImageResource(R.drawable.favorite_icon);
-                    like = 0;
+
                     new updateAPIcall(Program_details.this,courseid,"no");
                 }
             }

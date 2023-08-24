@@ -233,7 +233,7 @@ public class login_Activity extends AppCompatActivity {
                         String course_pref_2 = userdata.getString("course_pref_1");
                         String level = userdata.getString("level");
                         String nationality = userdata.getString("nationality");
-                        String timeline = userdata.getString("student_status");
+                        int timeline = userdata.getInt("student_status");
                         String userid = userdata.getString("user_id");
 
 
@@ -257,7 +257,7 @@ public class login_Activity extends AppCompatActivity {
                         editor.putString("subject", course_pref_2);
                         editor.putString("courselevel", level);
                         editor.putString("nationality", nationality);
-                        editor.putString("timeline", timeline);
+                        editor.putInt("timeline", timeline);
                         editor.putString("password", passtext);
                         editor.putString("userid", userid);
                         editor.commit();

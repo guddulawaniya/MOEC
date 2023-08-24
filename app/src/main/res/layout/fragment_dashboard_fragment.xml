@@ -225,7 +225,8 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/quickRecyclerview"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:scrollbars="none"
+                            android:layout_height="250dp"
                             android:layout_margin="16dp" />
 
                     </LinearLayout>
@@ -256,6 +257,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/interestlayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -276,6 +278,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="15dp" />
+
+                        <Button
+                            android:id="@+id/saveinsterestfields"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/primarycolor"
+                            android:text="Save"
+                            android:visibility="gone" />
+
 
                     </LinearLayout>
 
@@ -459,7 +471,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="100dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -471,6 +482,7 @@
                             android:text="Universities"
                             android:textColor="@color/text_color"
                             android:textSize="20sp"
+                            android:letterSpacing="0.02"
                             android:textStyle="bold" />
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -478,6 +490,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="16dp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="50dp"
+
+                            android:rotationX="0"
+                            android:rotationY="0"
+                            android:text=""
+                            android:textColor="@color/background_blue_shadew"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>

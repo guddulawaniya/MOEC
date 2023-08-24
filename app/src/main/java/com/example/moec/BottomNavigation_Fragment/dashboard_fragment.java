@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.get_country_data;
 import com.example.moec.JavaClass.get_subject_data;
 import com.example.moec.JavaClass.getuniversitydata;
 import com.example.moec.JavaClass.reccomended_programload_data;
@@ -53,6 +55,7 @@ public class dashboard_fragment extends Fragment {
 
 
     int[] images = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
+    String interesttext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,7 +82,6 @@ public class dashboard_fragment extends Fragment {
 
         ArrayList<module_all_program> list = new ArrayList<>();
         ArrayList<Quick_Action_Module> quickList = new ArrayList<>();
-        ArrayList<Top_country_module> topcountry_pickup_list = new ArrayList<>();
 
         ArrayList<module_all_program> programArrayList = new ArrayList<>();
 
@@ -99,9 +101,12 @@ public class dashboard_fragment extends Fragment {
         CardView sharefrieds = view.findViewById(R.id.refer_friends);
         TextView sharelink = view.findViewById(R.id.sharelink);
         TextView view_all = view.findViewById(R.id.view_all);
+        Button saveinsterestfields = view.findViewById(R.id.saveinsterestfields);
         ImageView phoneicon = view.findViewById(R.id.phoneimage);
         LinearLayout floatingActionButton = view.findViewById(R.id.floatingActionButton2);
         sharelink.setPaintFlags(sharelink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+
 
 
         // get des_country..
@@ -112,6 +117,15 @@ public class dashboard_fragment extends Fragment {
         String education = preferences.getString("qualification", null);
         String examname = preferences.getString("examname", null);
         String userid = preferences.getString("userid", null);
+        LinearLayout interestlayout = view.findViewById(R.id.interestlayout);
+        if (!interest.isEmpty())
+        {
+
+            interestlayout.setVisibility(View.GONE);
+        }else
+        {
+            interestlayout.setVisibility(View.VISIBLE);
+        }
 
 //        Toast.makeText(getContext(), "user_id : "+userid, Toast.LENGTH_SHORT).show();
 
@@ -182,13 +196,6 @@ public class dashboard_fragment extends Fragment {
         });
 
 
-        // Top countries Adapter and layout set
-
-        Top_country_pickup_Adapter countryAdapter = new Top_country_pickup_Adapter(getContext(), topcountry_pickup_list);
-        recyclerview_top_counryname.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerview_top_counryname.setAdapter(countryAdapter);
-
-
         // quick Recyclerview set layout and Adapter
 
         Quick_Action_Adapter quickAdapter = new Quick_Action_Adapter(getContext(), quickList);
@@ -237,13 +244,7 @@ public class dashboard_fragment extends Fragment {
 
         // top countries list
 
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.flag_canada, "Canada"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.australia_flag, "Australia"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.uk_flag, "UK"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.us_flag, "USA"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.germany_flag, "Germany"));
-        topcountry_pickup_list.add(new Top_country_module(R.drawable.zealand_flag, "New Zealand"));
-
+        new get_country_data(progressBar,getContext(),recyclerview_top_counryname,config.Base_url+"crmcountriesApiData",onclickInterface,1);
 
         // quick access list
 
@@ -256,16 +257,29 @@ public class dashboard_fragment extends Fragment {
 
 
 
+
+        saveinsterestfields.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+                editor.putString("interest",interesttext);
+                editor.commit();
+
+            }
+        });
+
+
         onclickInterface = new onClickInterface() {
             @Override
             public void setClick(int abc, String text) {
+                saveinsterestfields.setVisibility(View.VISIBLE);
+                interesttext=text;
 
             }
         };
 
 
         new get_subject_data(progressBar,list,getContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface,true);
-
         return view;
     }
 

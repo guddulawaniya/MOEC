@@ -4,11 +4,16 @@ import android.app.AlertDialog;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Settings;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -35,6 +40,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -43,6 +49,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -61,6 +69,7 @@ public class basic_details_activity extends AppCompatActivity {
 
     Timer mytimer;
     ProgressBar progressBar;
+    private File selectedImageFile;
 
 
     @Override
@@ -87,6 +96,15 @@ public class basic_details_activity extends AppCompatActivity {
         nationality = findViewById(R.id.nationality);
 
         // Toolbar Expressions
+         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
+         String imageurl = preferences.getString("image",null);
+        if (imageurl != null) {
+            byte[] decodedBytes = Base64.decode(imageurl, Base64.DEFAULT);
+            Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+
+            // Display the decodedBitmap in an ImageView
+            userpic.setImageBitmap(decodedBitmap);
+        }
 
         TextView title = findViewById(R.id.toolbar_title);
         title.setText("Basic Information");
@@ -154,47 +172,81 @@ public class basic_details_activity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == SELECT_PICTURE ) {
-                Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageData = baos.toByteArray();
-//                upload(imageData);
+        if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
+           // image_to_Base64(imageUri);
+            selectedImageFile = new File(getRealPathFromURI(imageUri));
+            userpic.setImageURI(imageUri);
 
-                // Now you can proceed to upload the imageData to the server.
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+              String image =   encodeImage(bitmap);
+              SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
+              editor.putString("image",image);
+              editor.commit();
+              recreate();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        }
-    }
 
+          //  Toast.makeText(this, "File Path : "+selectedImageFile, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    private String getRealPathFromURI(Uri contentUri) {
+
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String filePath = cursor.getString(column_index);
+        cursor.close();
+        return filePath;
+    }
+    private String encodeImage(Bitmap image) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
+    }
 
     void imageChooser() {
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, SELECT_PICTURE);
 
     }
 
-    void upload(byte[] imageData){
+    public void uploadImage(File imageFile) {
         OkHttpClient client = new OkHttpClient();
+
+        // Prepare the request body
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("image", "image.jpg", RequestBody.create(MediaType.parse("image/jpeg"), imageData))
+                .addFormDataPart("image", imageFile.getName(), RequestBody.create(MediaType.parse("image/*"), imageFile))
                 .build();
 
+        // Create the request
         Request request = new Request.Builder()
                 .url(UPLOAD_IMAGE_URL)
                 .post(requestBody)
                 .build();
 
-        try {
-            Response response = client.newCall(request).execute();
-            // Handle the response from the server
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Execute the request
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Toast.makeText(basic_details_activity.this, "Failed uploading  ", Toast.LENGTH_SHORT).show();
+                // Handle failure
+            }
 
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Toast.makeText(basic_details_activity.this, "Successfully upload image ", Toast.LENGTH_SHORT).show();
+                // Handle response
+            }
+        });
     }
 
     private void showSettingsDialog() {

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -31,11 +32,27 @@ public class Requirements_fragments extends Fragment {
 
         Button preferenceButton =  view.findViewById(R.id.nofoundbutton);
         preferenceButton.setText("Visit");
+
+       String link =  preferences.getString("weblink",null);
+
+
+        preferenceButton.setVisibility(View.GONE);
+
+       if (link==null || link.equals("null"))
+       {
+           preferenceButton.setVisibility(View.GONE);
+
+       }
+       else
+       {      preferenceButton.setVisibility(View.VISIBLE);
+
+
+       }
        preferenceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                websiteview(preferences.getString("weblink",null));
+                websiteview(link);
             }
         });
         descri_no_found.setText("Please Visit the Website");

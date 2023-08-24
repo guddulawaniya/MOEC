@@ -59,12 +59,25 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
                 .resize(300, 100)
                 .into(holder.universityimage);
 
+
+        if (module.getCoursename().equals("null"))
+        {
+            holder.itemView.setVisibility(View.GONE);
+        }else  holder.coursename.setText(module.getCoursename());
+
+
         if (module.getFavoratevalue().equals("yes")) {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
         }
         else {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
         }
+
+
+        if (module.getDuration().equals("null"))
+        {
+            holder.duration.setText("");
+        }else holder.duration.setText(module.getDuration());
 
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
@@ -86,6 +99,7 @@ public class reccomended_program_Adapter extends RecyclerView.Adapter<reccomende
                 editor.putString("weblink", module.getLink());
                 editor.putString("criteria", module.getCriteria());
                 editor.putString("courseid", module.getCourseid());
+                editor.putString("favoratevalue", module.getFavoratevalue());
                 editor.commit();
 
                 Intent intent = new Intent(context, Program_details.class);

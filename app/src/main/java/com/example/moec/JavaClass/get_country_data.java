@@ -1,16 +1,22 @@
 package com.example.moec.JavaClass;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
+import com.example.moec.R;
 import com.example.moec.onClickInterface;
 
 import org.json.JSONArray;
@@ -27,10 +33,13 @@ public class get_country_data {
 
     ProgressBar progressBar;
     ArrayList<module_all_program> list=new ArrayList<>();
+    ArrayList<module_all_program> topcountrylist=new ArrayList<>();
     Context context;
     RecyclerView recyclerView;
     String registrationURL;
     onClickInterface onclickInterface;
+    int dashboard_call_check=0;
+
 
 
     public get_country_data(ProgressBar progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface) {
@@ -39,6 +48,15 @@ public class get_country_data {
         this.recyclerView = recyclerView;
         this.registrationURL = registrationURL;
         this.onclickInterface = onclickInterface;
+        Getuniversitydata();
+    }
+    public get_country_data(ProgressBar progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface,int dashboard_call_check) {
+        this.progressBar = progressBar;
+        this.context = context;
+        this.recyclerView = recyclerView;
+        this.registrationURL = registrationURL;
+        this.onclickInterface = onclickInterface;
+        this.dashboard_call_check = dashboard_call_check;
         Getuniversitydata();
     }
 
@@ -66,22 +84,53 @@ public class get_country_data {
 
                         JSONArray array = obj.getJSONArray("data");
 
-                        for (int i = 0; i < 14; ++i) {
+                        if (dashboard_call_check==1)
+                        {
+                            for (int i = 1; i < 8; ++i) {
 
 
-                            JSONObject jsonObject = array.getJSONObject(i);
+                                JSONObject jsonObject = array.getJSONObject(i);
 
-                            String countryname = jsonObject.getString("country");
-                            String image = jsonObject.getString("flag");
-                            list.add(new module_all_program(countryname,baseurl+image));
+                                String countryname = jsonObject.getString("country");
+                                String image = jsonObject.getString("flag");
+
+                                topcountrylist.add(new module_all_program(countryname,baseurl+image));
+                            }
+                        }else
+                        {
+                            for (int i = 1; i < array.length(); ++i) {
+
+
+                                JSONObject jsonObject = array.getJSONObject(i);
+
+                                String countryname = jsonObject.getString("country");
+                                String image = jsonObject.getString("flag");
+
+                                list.add(new module_all_program(countryname,baseurl+image));
+                            }
                         }
+
+
                     } else {
                         Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
                     }
 
-                    recyclerView.setLayoutManager(new GridLayoutManager(context,3));
-                    most_prefered_destination_Adapter adapter = new most_prefered_destination_Adapter(list, context,onclickInterface);
-                    recyclerView.setAdapter(adapter);
+                    if (dashboard_call_check==1)
+                    {
+                        recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+                        Top_country_pickup_Adapter adapters = new Top_country_pickup_Adapter(context, topcountrylist);
+                        recyclerView.setAdapter(adapters);
+                    } else
+                    {
+                        recyclerView.setLayoutManager(new GridLayoutManager(context,3));
+                        most_prefered_destination_Adapter adapter = new most_prefered_destination_Adapter(list, context,onclickInterface);
+                        recyclerView.setAdapter(adapter);
+                    }
+
+
+
+
+
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

@@ -61,7 +61,7 @@
                     android:padding="15dp"
                     android:layout_gravity="center"
                     android:scaleType="centerInside"
-                    android:src="@drawable/marketing" />
+                    />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -99,7 +99,7 @@
                     android:padding="3dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/baseline_done_icon_24"
-                    android:tint="@color/white" />
+                    app:tint="@color/white" />
 
             </androidx.cardview.widget.CardView>
 

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.moec.loginActivity.login_Activity_with_mobile_no;
+import com.example.moec.loginActivity.login_Activity;
 
 public class Setting_Actvity extends AppCompatActivity {
 
@@ -26,7 +26,7 @@ public class Setting_Actvity extends AppCompatActivity {
 
         builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
 
-           startActivity(new Intent(Setting_Actvity.this, login_Activity_with_mobile_no.class));
+           startActivity(new Intent(Setting_Actvity.this, login_Activity.class));
            finish();
         });
 

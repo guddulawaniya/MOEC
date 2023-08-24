@@ -8,62 +8,71 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:background="@color/white"
         android:layout_marginEnd="16dp"
         android:orientation="vertical">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:backgroundTint="@color/white"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/background_blue_shadew"
+                android:hint="Search Here"
+                app:navigationIconTint="@color/secondarycolor" />
+        </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
+            android:id="@+id/suggestiontextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Suggestions" />
 
-        <ListView
-            android:id="@+id/listView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="10dp" />
+
     </LinearLayout>
 
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/searchbar_scrolling_view_behavior">
-        <!-- Screen content goes here. -->
 
 
-    </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.search.SearchBar
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/background_blue_shadew"
-            android:hint="Search Here"
-            app:navigationIconTint="@color/secondarycolor" />
-    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.search.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
-        android:backgroundTint="@color/background_blue_shadew"
         android:hint="write something"
         app:layout_anchor="@id/search_bar">
 
 
-        <ListView
-            android:id="@+id/listView1"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Suggestions" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/suggestionlRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="10dp" />
+
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
     </com.google.android.material.search.SearchView>
 
+    <LinearLayout
+        android:id="@+id/nofounddata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
+        <include layout="@layout/no_found_layout" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

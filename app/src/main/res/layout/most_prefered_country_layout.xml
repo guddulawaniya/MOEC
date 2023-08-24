@@ -52,7 +52,6 @@
                     android:layout_width="80dp"
                     android:scaleType="fitXY"
                     android:layout_height="80dp"
-                    android:src="@drawable/australia_flag"
                     app:layout_constraintBottom_toBottomOf="@+id/ringlinear"
                     app:layout_constraintEnd_toEndOf="@+id/ringlinear"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -98,7 +97,7 @@
                     android:padding="3dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/baseline_done_icon_24"
-                    android:tint="@color/white" />
+                    app:tint="@color/white" />
 
             </androidx.cardview.widget.CardView>
 

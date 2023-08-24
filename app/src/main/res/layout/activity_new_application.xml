@@ -65,7 +65,7 @@
 
 
                     <AutoCompleteTextView
-                        android:id="@+id/programSelection"
+                        android:id="@+id/countryselection"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:autoSizeMaxTextSize="16dp"
@@ -141,7 +141,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <LinearLayout
+               <!-- <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                         android:textSize="14sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
+-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -496,7 +496,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
+              <!--  <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -546,7 +546,7 @@
 
 
 
-                </LinearLayout>
+                </LinearLayout>-->
 
             </LinearLayout>
 

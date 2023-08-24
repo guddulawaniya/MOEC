@@ -6,6 +6,8 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
+
 import com.example.moec.Adapters.Univerity_Course_Adapter;
 import com.example.moec.ModulesClass.Univerity_Course_Module;
 import org.json.JSONArray;
@@ -58,6 +60,8 @@ public class getuniversitydata {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
 
                     }
+
+
                     universtyRecyclerview.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
                     Univerity_Course_Adapter univerity_course_adapter = new Univerity_Course_Adapter(context, university_list);
                     universtyRecyclerview.setAdapter(univerity_course_adapter);

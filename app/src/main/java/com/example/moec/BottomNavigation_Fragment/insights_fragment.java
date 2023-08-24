@@ -2,7 +2,6 @@ package com.example.moec.BottomNavigation_Fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
@@ -47,7 +46,8 @@ public class insights_fragment extends Fragment {
 
 
         SharedPreferences preferences = getContext().getSharedPreferences("registrationform", MODE_PRIVATE);
-        stepcount = Integer.parseInt(preferences.getString("timeline","0"));
+
+        stepcount = preferences.getInt("timeline",0);
 
         CardView studenttimeline = view.findViewById(R.id.studenttimelinecard);
         studenttimeline.setOnClickListener(new View.OnClickListener() {

@@ -46,11 +46,21 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
         module_all_program module = list.get(position);
-        holder.coursename.setText(module.getCoursename());
-        holder.duration.setText(module.getDuration());
+
         holder.countryname.setText(module.getCountryname());
         holder.collegename.setText(module.getCollegename());
+        Picasso.get()
+                .load(module.getUniversityimage())
+                .resize(300, 100)
+                .into(holder.universityimage);
 
+
+
+
+        if (module.getCoursename().equals("null"))
+        {
+            holder.itemView.setVisibility(View.GONE);
+        }else  holder.coursename.setText(module.getCoursename());
 
 
         if (module.getFavoratevalue().equals("yes")) {
@@ -59,14 +69,19 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         else {
             holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
         }
-        Picasso.get()
-                .load(module.getUniversityimage())
-                .resize(300, 100)
-                .into(holder.universityimage);
+
+
+        if (module.getDuration().equals("null"))
+        {
+            holder.duration.setText("");
+        }else holder.duration.setText(module.getDuration());
 
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
         } else holder.fees.setText(module.getFees() + " Months");
+
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,10 +93,12 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
                 editor.putString("collegename", module.getCollegename());
                 editor.putString("imageURL", module.getUniversityimage());
                 editor.putString("fees", module.getFees());
+                editor.putString("applicationfees", module.getFees());
                 editor.putString("intake", module.getIntake());
                 editor.putString("weblink", module.getLink());
                 editor.putString("criteria", module.getCriteria());
                 editor.putString("courseid", module.getCourseid());
+                editor.putString("favoratevalue", module.getFavoratevalue());
                 editor.commit();
                 Intent intent = new Intent(context, Program_details.class);
                 Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, holder.itemView, "item").toBundle();
@@ -95,9 +112,6 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
             public void onClick(View view) {
                 if (holder.likecheck.isChecked())
                 {
-                   if (module.getFavoratevalue().equals("yes"))
-                       Toast.makeText(context, "Course id : "+module.getCourseid(), Toast.LENGTH_SHORT).show();
-
                     new updateAPIcall(context, module.getCourseid(), "yes");
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
                 }

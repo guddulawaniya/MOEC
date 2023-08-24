@@ -2,6 +2,8 @@ package com.example.moec;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.SharedElementCallback;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.os.Bundle;
@@ -13,11 +15,18 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.getCourse_All_dataa_API;
+import com.example.moec.ModulesClass.module_all_program;
+import com.google.android.material.search.SearchBar;
 import com.google.android.material.search.SearchView;
 import com.google.android.material.transition.platform.MaterialContainerTransform;
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
@@ -26,40 +35,50 @@ import java.util.ArrayList;
 
 public class Search_Activity extends AppCompatActivity {
 
-    ListView listView, listView1;
 
-    ArrayList<String> list;
-    ArrayAdapter<String> adapter;
-    CardView search_button;
+    ArrayList<module_all_program> list;
+    RecyclerView searchrecyclerview,suggestionlRecyclerview;
     SearchView searchView;
+    ProgressBar progressBar;
+    LinearLayout nofounddata;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        config();
 
         TextView toolbartitle = findViewById(R.id.toolbar_title);
         TextView cleartext = findViewById(R.id.cleartext);
+        TextView suggestiontextview = findViewById(R.id.suggestiontextview);
 
         ImageView backbutton = findViewById(R.id.backbutton);
 //        search_button = findViewById(R.id.search_button);
-        listView = findViewById(R.id.listView);
-        listView1 = findViewById(R.id.listView1);
+//        listView = findViewById(R.id.searchrecyclerview);
+        progressBar = findViewById(R.id.progressBar);
+        searchrecyclerview = findViewById(R.id.searchrecyclerview);
+        suggestionlRecyclerview = findViewById(R.id.suggestionlRecyclerview);
         searchView = findViewById(R.id.searchView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        });
+        nofounddata = findViewById(R.id.nofounddata);
+         Button updateprefernce = findViewById(R.id.nofoundbutton);
+        updateprefernce.setVisibility(View.GONE);
+        TextView title = findViewById(R.id.title);
+        TextView descri_no_found = findViewById(R.id.descri_no_found);
+        title.setText("Not Found Record");
+        descri_no_found.setText("");
 
 
         SearchView searchView = findViewById(R.id.searchView);
+        SearchBar search_bar = findViewById(R.id.search_bar);
         searchView.getEditText().setOnEditorActionListener((v, actionId, event) -> {
 
-            Toast.makeText(this, "search : " + searchView.getText(), Toast.LENGTH_SHORT).show();
+            list.clear();
 
+            String query = searchView.getText().toString();
+            filter(query);
+            search_bar.setText(query);
+            suggestiontextview.setText("Result");
             searchView.hide();
             return false;
         });
@@ -93,20 +112,6 @@ public class Search_Activity extends AppCompatActivity {
 */
 
         list = new ArrayList<>();
-        list.add("Middlesex University London, UK");
-        list.add("University of East London, UK");
-        list.add("De Montfort University, UK");
-        list.add("Canterbury Christ Church University, UK");
-        list.add("Keele University, UK");
-        list.add("Birmingham City University, UK");
-        list.add("University for the Creative Arts, UK");
-        list.add("University of Liverpool, UK");
-        list.add("Canterbury Christ Church University, UK");
-        list.add("Keele University, UK");
-
-        adapter = new ArrayAdapter<>(this, R.layout.search_card, list);
-        listView.setAdapter(adapter);
-        listView1.setAdapter(adapter);
 
 
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +127,16 @@ public class Search_Activity extends AppCompatActivity {
 
     }
 
+    private void filter(String query) {
+         new getCourse_All_dataa_API(progressBar, list, Search_Activity.this, suggestionlRecyclerview, config.Base_url + "searchcourseprogrameApiData?search="+query,nofounddata);
+        new getCourse_All_dataa_API(progressBar, list, Search_Activity.this, searchrecyclerview, config.Base_url + "searchcourseprogrameApiData?search="+query,nofounddata);
 
+    }
+
+    private void config() {
+        setExitSharedElementCallback(new SharedElementCallback() {
+        });
+       getWindow().setSharedElementsUseOverlay(false);
+    }
 
 }
