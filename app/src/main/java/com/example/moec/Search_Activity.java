@@ -1,24 +1,22 @@
 package com.example.moec;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.SharedElementCallback;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.os.Bundle;
 
-import android.transition.Explode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,12 +24,16 @@ import android.widget.Toast;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getCourse_All_dataa_API;
 import com.example.moec.ModulesClass.module_all_program;
+import com.example.moec.Room_database.database_module;
+import com.example.moec.Room_database.myAdapter;
+import com.example.moec.Room_database.searchfunction_call;
+import com.example.moec.Room_database.userViewModel;
 import com.google.android.material.search.SearchBar;
 import com.google.android.material.search.SearchView;
-import com.google.android.material.transition.platform.MaterialContainerTransform;
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Search_Activity extends AppCompatActivity {
 
@@ -41,7 +43,10 @@ public class Search_Activity extends AppCompatActivity {
     SearchView searchView;
     ProgressBar progressBar;
     LinearLayout nofounddata;
-
+    private userViewModel viewModel;
+    searchfunction_call call;
+    Button outlinedButton;
+    List<String> checkdata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +57,7 @@ public class Search_Activity extends AppCompatActivity {
         TextView toolbartitle = findViewById(R.id.toolbar_title);
         TextView cleartext = findViewById(R.id.cleartext);
         TextView suggestiontextview = findViewById(R.id.suggestiontextview);
-
+        SearchBar search_bar = findViewById(R.id.search_bar);
         ImageView backbutton = findViewById(R.id.backbutton);
 //        search_button = findViewById(R.id.search_button);
 //        listView = findViewById(R.id.searchrecyclerview);
@@ -60,6 +65,7 @@ public class Search_Activity extends AppCompatActivity {
         searchrecyclerview = findViewById(R.id.searchrecyclerview);
         suggestionlRecyclerview = findViewById(R.id.suggestionlRecyclerview);
         searchView = findViewById(R.id.searchView);
+        outlinedButton = findViewById(R.id.outlinedButton);
         nofounddata = findViewById(R.id.nofounddata);
          Button updateprefernce = findViewById(R.id.nofoundbutton);
         updateprefernce.setVisibility(View.GONE);
@@ -67,10 +73,59 @@ public class Search_Activity extends AppCompatActivity {
         TextView descri_no_found = findViewById(R.id.descri_no_found);
         title.setText("Not Found Record");
         descri_no_found.setText("");
+        searchrecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        checkdata = new ArrayList<>();
 
+
+        viewModel = new ViewModelProvider(this, (ViewModelProvider.Factory) ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(userViewModel.class);
+        viewModel.getLiveData().observe(this, new Observer<List<database_module>>() {
+            @Override
+            public void onChanged(List<database_module> users) {
+                Collections.reverse(users);
+
+                for (int i=0;i<users.size();i++)
+                {
+
+                }
+                myAdapter adapter = new myAdapter(users,call);
+
+                searchrecyclerview.setAdapter(adapter);
+
+            }
+        });
+
+        call= new searchfunction_call() {
+            @Override
+            public void settext(String textdata) {
+                searchView.show();
+                searchView.setText(textdata);
+                filter(textdata);
+
+            }
+        };
 
         SearchView searchView = findViewById(R.id.searchView);
-        SearchBar search_bar = findViewById(R.id.search_bar);
+
+        list = new ArrayList<>();
+
+        searchView.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         searchView.getEditText().setOnEditorActionListener((v, actionId, event) -> {
 
             list.clear();
@@ -78,40 +133,16 @@ public class Search_Activity extends AppCompatActivity {
             String query = searchView.getText().toString();
             filter(query);
             search_bar.setText(query);
-            suggestiontextview.setText("Result");
-            searchView.hide();
+            suggestiontextview.setText("Suggestions");
+
+                viewModel.insert(new database_module(query));
+
+
             return false;
         });
 
 
-//        searchfieldtext.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                if(list.contains(query)){
-//                    adapter.getFilter().filter(query);
-//
-//                }
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
 
-    /*    search_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
-*/
-
-        list = new ArrayList<>();
 
 
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +160,7 @@ public class Search_Activity extends AppCompatActivity {
 
     private void filter(String query) {
          new getCourse_All_dataa_API(progressBar, list, Search_Activity.this, suggestionlRecyclerview, config.Base_url + "searchcourseprogrameApiData?search="+query,nofounddata);
-        new getCourse_All_dataa_API(progressBar, list, Search_Activity.this, searchrecyclerview, config.Base_url + "searchcourseprogrameApiData?search="+query,nofounddata);
+     //   new getCourse_All_dataa_API(progressBar, list, Search_Activity.this, searchrecyclerview, config.Base_url + "searchcourseprogrameApiData?search="+query,nofounddata);
 
     }
 

@@ -1,15 +1,13 @@
 package com.example.moec;
 
+import android.Manifest;
 import android.app.AlertDialog;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -23,10 +21,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
-
-
-
-import android.Manifest;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.moec.Fragments.Edit_fragment;
 import com.karumi.dexter.Dexter;
@@ -35,19 +31,10 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -61,13 +48,12 @@ import okhttp3.Response;
 public class basic_details_activity extends AppCompatActivity {
 
     private static final int SELECT_PICTURE = 200;
-    private TextView studentname, emailaddress, dob, gender, country, state, city, number, pincode, maritalstatus,address,nationality;
+    private TextView studentname, emailaddress, dob, gender, country, state, city, number, pincode, maritalstatus, address, nationality;
     private CardView editimage;
     private ImageView userpic;
     private ProgressBar imageprogressbar;
-    String UPLOAD_IMAGE_URL= "";
+    String UPLOAD_IMAGE_URL = "";
 
-    Timer mytimer;
     ProgressBar progressBar;
     private File selectedImageFile;
 
@@ -77,7 +63,6 @@ public class basic_details_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_details);
 
-        int style = AlertDialog.THEME_HOLO_LIGHT;
         studentname = findViewById(R.id.studentname);
         emailaddress = findViewById(R.id.emailaddress);
         dob = findViewById(R.id.dob);
@@ -96,8 +81,8 @@ public class basic_details_activity extends AppCompatActivity {
         nationality = findViewById(R.id.nationality);
 
         // Toolbar Expressions
-         SharedPreferences preferences = getSharedPreferences("registrationform",MODE_PRIVATE);
-         String imageurl = preferences.getString("image",null);
+        SharedPreferences preferences = getSharedPreferences("registrationform", MODE_PRIVATE);
+        String imageurl = preferences.getString("image", null);
         if (imageurl != null) {
             byte[] decodedBytes = Base64.decode(imageurl, Base64.DEFAULT);
             Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
@@ -105,6 +90,7 @@ public class basic_details_activity extends AppCompatActivity {
             // Display the decodedBitmap in an ImageView
             userpic.setImageBitmap(decodedBitmap);
         }
+
 
         TextView title = findViewById(R.id.toolbar_title);
         title.setText("Basic Information");
@@ -115,7 +101,7 @@ public class basic_details_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DialogFragment dialogFragment = new Edit_fragment();
-                dialogFragment.show(getSupportFragmentManager(),"fullScreenDialog");
+                dialogFragment.show(getSupportFragmentManager(), "fullScreenDialog");
             }
         });
 
@@ -174,27 +160,28 @@ public class basic_details_activity extends AppCompatActivity {
 
         if (requestCode == SELECT_PICTURE && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
-           // image_to_Base64(imageUri);
+            // image_to_Base64(imageUri);
             selectedImageFile = new File(getRealPathFromURI(imageUri));
             userpic.setImageURI(imageUri);
 
             Bitmap bitmap = null;
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
-              String image =   encodeImage(bitmap);
-              SharedPreferences.Editor editor = getSharedPreferences("registrationform",MODE_PRIVATE).edit();
-              editor.putString("image",image);
-              editor.commit();
-              recreate();
+                String image = encodeImage(bitmap);
+                SharedPreferences.Editor editor = getSharedPreferences("registrationform", MODE_PRIVATE).edit();
+                editor.putString("image", image);
+                editor.commit();
+                recreate();
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
-          //  Toast.makeText(this, "File Path : "+selectedImageFile, Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, "File Path : "+selectedImageFile, Toast.LENGTH_SHORT).show();
         }
 
     }
+
     private String getRealPathFromURI(Uri contentUri) {
 
         String[] proj = {MediaStore.Images.Media.DATA};
@@ -205,6 +192,7 @@ public class basic_details_activity extends AppCompatActivity {
         cursor.close();
         return filePath;
     }
+
     private String encodeImage(Bitmap image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -277,11 +265,11 @@ public class basic_details_activity extends AppCompatActivity {
         loadfunction();
         super.onStart();
     }
-    void loadfunction()
-    {
+
+    void loadfunction() {
 
         SharedPreferences preferences = getSharedPreferences("registrationform", MODE_PRIVATE);
-        studentname.setText(preferences.getString("Fname", "") +" "+ preferences.getString("Lname", ""));
+        studentname.setText(preferences.getString("Fname", "") + " " + preferences.getString("Lname", ""));
         emailaddress.setText(preferences.getString("email", ""));
         number.setText(preferences.getString("number", ""));
         dob.setText(preferences.getString("DOb", ""));

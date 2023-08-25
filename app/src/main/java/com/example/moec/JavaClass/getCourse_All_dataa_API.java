@@ -33,7 +33,7 @@ public class getCourse_All_dataa_API {
     LinearLayout emptylayout;
 
 
-    public getCourse_All_dataa_API(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL,    LinearLayout emptylayout) {
+    public getCourse_All_dataa_API(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, LinearLayout emptylayout) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;

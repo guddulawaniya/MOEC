@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textview"
     android:layout_width="match_parent"
-    android:text="Hello"
-    android:textSize="14dp"
-    android:textColor="@color/black"
-    android:layout_margin="10dp"
-    android:gravity="center_vertical"
+    android:layout_height="wrap_content"
     android:drawableStart="@drawable/clock_icon"
     android:drawablePadding="15dp"
+    android:gravity="center_vertical"
     android:padding="15dp"
-    android:layout_height="wrap_content">
+    android:text="Hello"
+    android:drawableEnd="@drawable/inword_arrow"
+    android:textColor="@color/black"
+    android:textSize="14dp">
 
 </TextView>
