@@ -22,7 +22,7 @@ public class fetchdata_Class {
         new InsertNoteAyncTask(userDao).execute(user);
 
     }
-    public void find_record(database_module user){
+    public void search_data(database_module user){
         new finddata_updateNoteAyncTask(userDao).execute(user);
 
     }
