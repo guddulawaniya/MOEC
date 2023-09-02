@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.R;
 import com.example.moec.onClickInterface;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 
 public class get_country_data {
 
-    ProgressBar progressBar;
+    LinearLayout progressBar;
     ArrayList<module_all_program> list=new ArrayList<>();
     ArrayList<module_all_program> topcountrylist=new ArrayList<>();
     Context context;
@@ -42,7 +44,7 @@ public class get_country_data {
 
 
 
-    public get_country_data(ProgressBar progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface) {
+    public get_country_data(LinearLayout progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface) {
         this.progressBar = progressBar;
         this.context = context;
         this.recyclerView = recyclerView;
@@ -50,7 +52,7 @@ public class get_country_data {
         this.onclickInterface = onclickInterface;
         Getuniversitydata();
     }
-    public get_country_data(ProgressBar progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface,int dashboard_call_check) {
+    public get_country_data(LinearLayout progressBar, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface,int dashboard_call_check) {
         this.progressBar = progressBar;
         this.context = context;
         this.recyclerView = recyclerView;
@@ -152,8 +154,14 @@ public class get_country_data {
             }
         }
 
-        registration obj = new registration();
-        obj.execute(registrationURL);
+        InternetConnection nt = new InternetConnection(context);
+        if (nt.isConnected()) {
+            registration obj = new registration();
+            obj.execute(registrationURL);
+        } else {
+            Toast.makeText(context, "Unable Internet Connection", Toast.LENGTH_SHORT).show();
+
+        }
 
 
     }

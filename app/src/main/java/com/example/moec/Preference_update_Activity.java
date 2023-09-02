@@ -224,7 +224,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 }
             };
 
-            new get_country_data(progressBar,getApplicationContext(),mostpreferedRecyclerview,config.Base_url+"crmcountriesApiData",onclickInterface);
+         //   new get_country_data(progressBar,getApplicationContext(),mostpreferedRecyclerview,config.Base_url+"crmcountriesApiData",onclickInterface);
 
 
         }
@@ -250,7 +250,7 @@ public class Preference_update_Activity extends AppCompatActivity {
                 }
             };
 
-            new get_subject_data(progressBar,list,getApplicationContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface);
+         //   new get_subject_data(progressBar,list,getApplicationContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface);
 
 
         }

@@ -3,6 +3,7 @@ package com.example.moec.JavaClass;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.example.moec.Adapters.interest_area_Adapter;
 import com.example.moec.Adapters.most_prefered_destination_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 import com.example.moec.onClickInterface;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,7 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class get_subject_data {
-    ProgressBar progressBar;
+    LinearLayout progressBar;
     ArrayList<module_all_program> list;
     Context context;
     RecyclerView recyclerView;
@@ -35,7 +37,7 @@ public class get_subject_data {
     boolean check=false;
 
 
-    public get_subject_data(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface,Boolean check) {
+    public get_subject_data(LinearLayout progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface,Boolean check) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;
@@ -45,7 +47,7 @@ public class get_subject_data {
         this.check = check;
         Getuniversitydata();
     }
-    public get_subject_data(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface) {
+    public get_subject_data(LinearLayout progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, onClickInterface onclickInterface) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;
@@ -72,9 +74,10 @@ public class get_subject_data {
                     JSONObject obj = new JSONObject(s);
                     String status = obj.getString("success");
 
-                    String baseurl = obj.getString("logobaseurl");
+
 
                     if (status.equals("true")) {
+                        String baseurl = obj.getString("logobaseurl");
                         progressBar.setVisibility(View.GONE);
 
                         JSONArray array = obj.getJSONArray("data");
@@ -123,9 +126,14 @@ public class get_subject_data {
             }
         }
 
-        registration obj = new registration();
-        obj.execute(registrationURL);
+        InternetConnection nt = new InternetConnection(context);
+        if (nt.isConnected()) {
+            registration obj = new registration();
+            obj.execute(registrationURL);
+        } else {
+            Toast.makeText(context, "Unable Internet Connection", Toast.LENGTH_SHORT).show();
 
+        }
 
     }
 }

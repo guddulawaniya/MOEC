@@ -14,8 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moec.Adapters.shimmer_program_Adapter;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getCourse_All_dataa_API;
 import com.example.moec.ModulesClass.module_all_program;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 public class Recommended_fragment extends Fragment {
 
 
+    RecyclerView simmer_layout_recyclerview;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommended_fragment, container, false);
@@ -37,6 +40,11 @@ public class Recommended_fragment extends Fragment {
         TextView descri_no_found = view.findViewById(R.id.descri_no_found);
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
         RecyclerView recyclerView = view.findViewById(R.id.recommendedRecyclerview);
+        simmer_layout_recyclerview = view.findViewById(R.id.simmer_layout);
+
+        shimmer_program_Adapter shimmereffect_adpater = new shimmer_program_Adapter();
+        simmer_layout_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        simmer_layout_recyclerview.setAdapter(shimmereffect_adpater);
 
 
         // array instances and declares array list
@@ -60,7 +68,7 @@ public class Recommended_fragment extends Fragment {
 
 
         // getdata from api and load data
-        new getCourse_All_dataa_API(progressBar, list, getContext(), recyclerView, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry,notfoundaLayout);
+        new getCourse_All_dataa_API(simmer_layout_recyclerview, list, getContext(), recyclerView, config.Base_url + "courseApiDatawithcountry?" + "countryname=" + preferenceCountry,notfoundaLayout);
 
 
         // setpreference button and updates also

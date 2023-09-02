@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -78,7 +79,7 @@ public class Program_details extends AppCompatActivity {
         favorateicon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (favoratevalue.isEmpty())
+                if (favoratevalue.equals("no")||favoratevalue==null)
                 {
                     favorateicon.setImageResource(R.drawable.favorite_heart);
                     new updateAPIcall(Program_details.this,courseid,"yes");

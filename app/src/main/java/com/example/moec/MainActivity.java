@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Base64;
 import android.view.Gravity;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -25,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.moec.BottomNavigation_Fragment.application_fragment;
 import com.example.moec.BottomNavigation_Fragment.community_fragment;
@@ -43,9 +46,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     int mCartItemCount = 100;
     ImageView  searchbar,profile_icon,profile_iconmain;
     LinearLayout searchelementLayouts;
+    private SwipeRefreshLayout swipeRefreshLayout;
     ImageView favorate;
     BottomNavigationView navigationView;
-    ProgressBar progressBar;
+
+    InternetConnection nt;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -54,16 +59,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
         config();
 
-        progressBar = findViewById(R.id.progressBar);
-
-        // internet file object and check
-
-        InternetConnection nt = new InternetConnection(this);
-        if (nt.isConnected()) {
-
 
             // finds the ids
-            progressBar.setVisibility(View.GONE);
+
             searchelementLayouts = findViewById(R.id.searchfield);
             favorate = findViewById(R.id.favourate_icon_toolbar);
             toolbartitle = findViewById(R.id.toolbartitle);
@@ -73,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             textCartItemCount = findViewById(R.id.notification_badge);
             navigationView = findViewById(R.id.bottomNavigationView);
+        swipeRefreshLayout = findViewById(R.id.main_activity_effect_layout);
 
 
             TextView application = findViewById(R.id.sideapplication);
@@ -90,13 +89,43 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             TextView sharelink = findViewById(R.id.sharelink);
             sharelink.setPaintFlags(sharelink.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
+            nt = new InternetConnection(MainActivity.this);
+
+        navigationView.setOnItemSelectedListener(this::onNavigationItemSelected);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Simulate a background task that takes some time (e.g., fetching data from the internet)
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                         nt = new InternetConnection(MainActivity.this);
+                         swipeRefreshLayout.setRefreshing(false);
+
+                        if (nt.isConnected())
+                        {
+                            swipeRefreshLayout.setVisibility(View.GONE);
+                            navigationView.setSelectedItemId(R.id.dashboard);
+                        }
+
+                    }
+
+                }, 1000);
+            }
+        });
 
 
+        if (nt.isConnected())
+        {
+            swipeRefreshLayout.setVisibility(View.GONE);
 
-            navigationView.setOnItemSelectedListener(this::onNavigationItemSelected);
             navigationView.setSelectedItemId(R.id.dashboard);
-
-
+        }
+        else
+        {
+            Toast.makeText(MainActivity.this, "Unable Internet Connection", Toast.LENGTH_SHORT).show();
+        }
 
             Intent intent = getIntent();
 
@@ -202,29 +231,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             });
             setupBadge();
 
-        } else {
-            View parentLayout = findViewById(R.id.drawerlayout);
-            Snackbar snackbar = Snackbar.make(parentLayout, " Check Your Internet Connection !", Snackbar.LENGTH_INDEFINITE);
-
-            snackbar.setAction("Open", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent();
-                    intent.setAction(Settings.ACTION_DATA_ROAMING_SETTINGS);
-
-                    startActivity(intent);
-
-                    snackbar.dismiss();
-                }
-            });
-
-            // Show the Snackbar
-            snackbar.show();
-
-        }
     }
-
 
     void draweropen() {
         DrawerLayout drawerlayout = findViewById(R.id.drawerlayout);
@@ -311,7 +318,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     textCartItemCount.setVisibility(View.GONE);
                 }
             } else {
-                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 99)));
+                textCartItemCount.setText(String.valueOf(Math.min(mCartItemCount, 10)));
                 if (textCartItemCount.getVisibility() != View.VISIBLE) {
                     textCartItemCount.setVisibility(View.VISIBLE);
                 }

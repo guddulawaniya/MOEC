@@ -2,549 +2,515 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="fab"
-    android:id="@+id/constraintLayout"
+    android:background="@color/background_color"
     android:transitionGroup="true"
-    android:background="@color/white"
+    android:transitionName="fab"
     tools:context=".BottomNavigation_Fragment.dashboard_fragment">
 
 
-        <LinearLayout
-            android:id="@+id/linearLayout16"
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="vertical">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    app:sliderAnimationDuration="600"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorEnabled="false" />
 
                 <LinearLayout
+                    android:id="@+id/linearLayout11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.smarteist.autoimageslider.SliderView
-                        android:id="@+id/slider"
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_centerInParent="true"
-                        app:sliderAnimationDuration="600"
-                        app:sliderIndicatorAnimationDuration="600"
-                        app:sliderIndicatorEnabled="false" />
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border_outline">
 
-                    <LinearLayout
-                        android:id="@+id/linearLayout11"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/border_outline">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentStart="true"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentBottom="true"
-                                android:layout_marginStart="15dp"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/oswald"
-                                    android:text="Contact your Coodinator | "
-                                    android:textColor="@color/text_color"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/oswald"
-                                    android:text="Counselor Name "
-                                    android:textColor="@color/text_color"
-                                    android:textSize="16sp" />
-                            </LinearLayout>
-
-                            <View
-                                android:id="@+id/divider10"
-                                android:layout_width="2dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginEnd="20dp"
-                                android:layout_toStartOf="@+id/phoneimage"
-                                android:background="#231A519E" />
-
-
-                            <ImageView
-                                android:id="@+id/phoneimage"
-                                android:layout_width="40dp"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentBottom="true"
-                                android:layout_marginEnd="10dp"
-                                android:padding="3dp"
-                                app:srcCompat="@drawable/phone" />
-
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="15dp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/oswald"
-                                android:text="Recommended Programs"
+                                android:text="Contact your Coodinator | "
                                 android:textColor="@color/text_color"
-                                android:textSize="20sp"
+                                android:textSize="@dimen/text_size_14sp"
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/view_all"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignParentBottom="true"
-                                android:fontFamily="@font/poppins"
-                                android:text="View All"
+                                android:text="Counselor Name "
                                 android:textColor="@color/text_color"
-                                android:textSize="14sp" />
-                        </RelativeLayout>
+                                android:textSize="@dimen/hint_text_size_12sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="1dp"
-                            android:fontFamily="@font/poppins"
-                            android:text="Based on your preferences"
-                            android:textColor="@color/hint_color"
-                            android:textSize="13sp" />
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:orientation="vertical">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recommandedRecyclerview"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_marginBottom="8dp"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/setpreference_hombutton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:backgroundTint="@color/background_blue_shadew"
-                                app:cardCornerRadius="50dp"
-                                app:strokeColor="@color/iconcolor"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.5"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.5">
-
-                                <TextView
-                                    android:id="@+id/textView14"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="15dp"
-                                    android:drawableRight="@drawable/arrow_right"
-                                    android:fontFamily="@font/poppins"
-                                    android:gravity="center"
-                                    android:paddingStart="10dp"
-                                    android:paddingEnd="10dp"
-                                    android:text="Set your preference"
-                                    android:textColor="@color/text_color"
-                                    android:textSize="16dp"
-                                    app:drawableTint="@color/text_color" />
-                            </com.google.android.material.card.MaterialCardView>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <View
+                            android:id="@+id/divider10"
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="20dp"
+                            android:layout_toStartOf="@+id/phoneimage"
+                            android:background="#231A519E" />
 
 
-                    </LinearLayout>
+                        <ImageView
+                            android:id="@+id/phoneimage"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="10dp"
+                            android:padding="3dp"
+                            app:srcCompat="@drawable/phone" />
 
-                    <LinearLayout
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/background_blue_shadew"
-                        android:orientation="vertical">
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="15dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Quick Actions"
-                            android:textColor="@color/text_color"
-                            android:textSize="20sp"
+                            android:text="Recommended Programs"
+                            android:textColor="@color/heading_color"
+                            android:textSize="@dimen/heading_text_size_18sp"
                             android:textStyle="bold" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/quickRecyclerview"
-                            android:layout_width="match_parent"
-                            android:scrollbars="none"
-                            android:layout_height="250dp"
-                            android:layout_margin="16dp" />
+                        <TextView
+                            android:id="@+id/view_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:text="View All"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </RelativeLayout>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Top Preferred Countries"
-                            android:textColor="@color/text_color"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="1dp"
+                        android:text="Based on your preferences"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/hint_text_size_12sp" />
 
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/top_country_pickups"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="16dp" />
+                </LinearLayout>
 
-                    </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/interestlayout"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recommandedRecyclerview"
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="16dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/setpreference_hombutton"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/background_blue_shadew"
+                        app:cardCornerRadius="50dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:strokeColor="@color/iconcolor">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Interests"
-                            android:textColor="@color/text_color"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/interest_recyclerview"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="15dp" />
-
-                        <Button
-                            android:id="@+id/saveinsterestfields"
+                            android:id="@+id/textView14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:backgroundTint="@color/primarycolor"
-                            android:text="Save"
-                            android:visibility="gone" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Refre &amp; Earn"
-                            android:textColor="@color/text_color"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/refer_friends"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:layout_margin="16dp"
-                            android:backgroundTint="@color/white"
-                            android:elevation="2dp"
-                            app:cardCornerRadius="10dp"
-                            app:cardElevation="1dp"
-
-                            app:cardPreventCornerOverlap="false">
-
-                            <LinearLayout
-                                android:id="@+id/linearLayout10"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/background_gradient_color"
-                                android:orientation="horizontal"
-                                app:layout_constraintBottom_toTopOf="@+id/divider3"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent">
-
-                                <com.airbnb.lottie.LottieAnimationView
-                                    android:id="@+id/animationView"
-                                    android:layout_width="120dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="10dp"
-                                    app:lottie_autoPlay="true"
-                                    app:lottie_loop="true"
-                                    app:lottie_url="https://assets6.lottiefiles.com/packages/lf20_ehegqmwn.json" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="10dp"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <TextView
-
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/poppins"
-                                        android:text="Refer a Friend"
-                                        android:textColor="@color/white"
-                                        android:textSize="16dp" />
-
-                                    <TextView
-
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/oswald"
-                                        android:text="Earn your tution fee"
-                                        android:textColor="@color/text_color"
-                                        android:textSize="12dp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:id="@+id/sharelink"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="15dp"
-                                        android:autoLink="all"
-                                        android:fontFamily="@font/poppins"
-                                        android:text="Copy &amp; share your referral code"
-                                        android:textColor="@color/text_color"
-                                        android:textSize="12dp" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Latest Study Abroad Updates"
-                            android:textColor="@color/text_color"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="300dp"
                             android:layout_margin="15dp"
-                            android:backgroundTint="@color/white"
-                            app:strokeColor="#EDE8E8"
-                            app:cardCornerRadius="10dp"
-                            app:cardPreventCornerOverlap="false">
+                            android:drawableRight="@drawable/arrow_right"
+                            android:gravity="center"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="Set your preference"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/text_size_14sp"
+                            app:drawableTint="@color/text_color" />
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background_blue_shadew"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Quick Actions"
+                        android:textColor="@color/heading_color"
+                        android:textSize="@dimen/heading_text_size_18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/quickRecyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:layout_margin="16dp"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Top Preferred Countries"
+                        android:textColor="@color/heading_color"
+                        android:textSize="@dimen/heading_text_size_18sp"
+                        android:textStyle="bold" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/top_country_pickups"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/interestlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Interests"
+                        android:textColor="@color/heading_color"
+                        android:textSize="@dimen/heading_text_size_18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/interest_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp" />
+
+                    <Button
+                        android:id="@+id/saveinsterestfields"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/primarycolor"
+                        android:text="Save"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Refre &amp; Earn"
+                        android:textColor="@color/heading_color"
+                        android:textSize="@dimen/heading_text_size_18sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/refer_friends"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_margin="16dp"
+                        android:backgroundTint="#6082B6">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toTopOf="@+id/divider3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <ImageView
+                                android:layout_width="140dp"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/share_with_friends" />
 
                             <LinearLayout
-
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/white"
-                                android:orientation="vertical"
-                                app:layout_constraintBottom_toTopOf="@+id/divider3"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent">
-
-
-                                <ImageView
-                                    android:id="@+id/imageView8"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:minHeight="120dp"
-                                    android:scaleType="fitXY"
-                                    app:srcCompat="@drawable/group_image" />
+                                android:layout_height="match_parent"
+                                android:layout_margin="10dp"
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="10dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:fontFamily="@font/oswald"
-                                    android:singleLine="true"
-                                    android:text="Study in Canada Quotes For International Student 2023"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold" />
+                                    android:text="Share with your friends"
+                                    android:textColor="@color/white"
+                                    android:textSize="16dp" />
 
                                 <TextView
-                                    android:layout_width="match_parent"
+
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="3dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:fontFamily="@font/poppins"
-                                    android:text="Canada has long been a beacob for international students seeking quality education in a diverse and welcoming eviroment. From its picturesque landscapes to its world-renowned universities,its no wo.."
-                                    android:textColor="@color/hint_color"
-                                    android:textSize="12sp" />
+                                    android:layout_marginTop="2dp"
+                                    android:text="Earn Tuition fees"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/hint_text_size_12sp" />
 
                                 <TextView
-                                    android:layout_width="match_parent"
+                                    android:id="@+id/sharelink"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="8dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:fontFamily="@font/poppins"
-                                    android:text="30 May 2023"
-                                    android:textColor="@color/black"
-                                    android:textSize="12sp" />
+                                    android:layout_marginTop="15dp"
+                                    android:autoLink="all"
+                                    android:text="Copy &amp; share your referral code"
+                                    android:textColor="#0721AC"
+                                    android:textSize="12dp" />
                             </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                        </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Latest Study Abroad Updates"
+                        android:textColor="@color/heading_color"
+                        android:textSize="@dimen/heading_text_size_18sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginTop="15dp"
-                            android:fontFamily="@font/oswald"
-                            android:text="Universities"
-                            android:textColor="@color/text_color"
-                            android:textSize="20sp"
-                            android:letterSpacing="0.02"
-                            android:textStyle="bold" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:layout_margin="15dp"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="10dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:strokeColor="#EDE8E8">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/universtyRecyclerview"
+                        <LinearLayout
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp" />
+                            android:background="@color/white"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toTopOf="@+id/divider3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
 
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginBottom="50dp"
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:minHeight="120dp"
+                                android:scaleType="fitXY"
+                                app:srcCompat="@drawable/group_image" />
 
-                            android:rotationX="0"
-                            android:rotationY="0"
-                            android:text=""
-                            android:textColor="@color/background_blue_shadew"
-                            android:textSize="30sp"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:singleLine="true"
+                                android:text="Study in Canada Quotes For International Student 2023"
+                                android:textColor="@color/heading_color"
+                                android:textSize="@dimen/heading_text_size_18sp"
+                                android:textStyle="bold" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="10dp"
+                                android:text="Canada has long been a beacob for international students seeking quality education in a diverse and welcoming eviroment. From its picturesque landscapes to its world-renowned universities,its no wo.."
+                                android:textColor="@color/hint_color"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="30 May 2023"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
                 </LinearLayout>
-            </ScrollView>
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/floatingActionButton2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/fab_bg"
-            android:gravity="center"
-            android:transitionName="fab"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:letterSpacing="0.02"
+                        android:text="Universities"
+                        android:textColor="@color/heading_color"
+                        android:textSize="@dimen/heading_text_size_18sp"
+                        android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/add_icon"
-                app:tint="@color/white" />
-        </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/universtyRecyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#9FF3F7FB"
-        android:indeterminateTint="@color/primarycolor"
-        android:padding="160dp"
-        android:visibility="gone"
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="50dp"
+
+                        android:rotationX="0"
+                        android:rotationY="0"
+                        android:text=""
+                        android:textColor="@color/background_blue_shadew"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/fab_bg"
+        android:gravity="center"
+        android:transitionName="fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:src="@drawable/add_icon"
+            app:tint="@color/white" />
+    </LinearLayout>
+    <include
+        layout="@layout/dashboard_shimmer_effect_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

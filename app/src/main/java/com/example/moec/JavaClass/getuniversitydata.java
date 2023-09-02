@@ -6,13 +6,14 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.moec.Adapters.Univerity_Course_Adapter;
 import com.example.moec.ModulesClass.Univerity_Course_Module;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -34,7 +35,7 @@ public class getuniversitydata {
     void Getuniversitydata() {
 
         String registrationURL = config.Base_url + "universitiesApiData";
-        university_list=new ArrayList<>();
+        university_list = new ArrayList<>();
 
         class registration extends AsyncTask<String, String, String> {
             @Override
@@ -84,8 +85,14 @@ public class getuniversitydata {
                 }
             }
         }
-        registration obj = new registration();
-        obj.execute(registrationURL);
+        InternetConnection nt = new InternetConnection(context);
+        if (nt.isConnected()) {
+            registration obj = new registration();
+            obj.execute(registrationURL);
+        } else {
+            Toast.makeText(context, "Unable Internet Connection", Toast.LENGTH_SHORT).show();
+
+        }
 
 
     }

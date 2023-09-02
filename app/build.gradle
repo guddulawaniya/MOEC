@@ -67,6 +67,10 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-livedata:2.3.1")
     implementation ("androidx.room:room-runtime:2.3.0")
     annotationProcessor ("androidx.room:room-compiler:2.3.0")
+    implementation ("com.mig35:carousellayoutmanager:1.4.6")
+    implementation "com.facebook.shimmer:shimmer:0.5.0"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
 
 
 

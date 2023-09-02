@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moec.Adapters.All_program_Adapter;
 import com.example.moec.Adapters.Favorate_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
 
@@ -80,8 +81,9 @@ public class Load_favorate_data{
                             String intake = jsonObject.getString("intakes");
                             String criteria = jsonObject.getString("criteria");
                             String courseid = jsonObject.getString("id");
+                            String favoratevalue = jsonObject.getString("favorites");
 
-                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid));
+                            list.add(new module_all_program(coursename, duration, fees, countryname, universityname, baseurl + logo, intake, OfficalLink, criteria, courseid,favoratevalue));
                         }
                     } else {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
@@ -100,7 +102,7 @@ public class Load_favorate_data{
 
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    Favorate_Adapter adapter = new Favorate_Adapter(context, list);
+                    All_program_Adapter adapter = new All_program_Adapter(list, context);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {

@@ -3,17 +3,22 @@ package com.example.moec.JavaClass;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.moec.Adapters.reccomended_program_Adapter;
 import com.example.moec.ModulesClass.module_all_program;
-import com.google.android.material.carousel.CarouselLayoutManager;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.carousel.MaskableFrameLayout;
+import com.google.android.material.carousel.MultiBrowseCarouselStrategy;
+import com.mig35.carousellayoutmanager.CarouselLayoutManager;
+import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
+import com.mig35.carousellayoutmanager.CenterScrollListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,15 +32,15 @@ import java.util.ArrayList;
 
 public class reccomended_programload_data {
 
-    ProgressBar progressBar;
+    LinearLayout progressBar;
     ArrayList<module_all_program> list;
     Context context;
     String registrationURL;
     RecyclerView recyclerView;
     CardView setpreference_student;
 
-    public reccomended_programload_data(ProgressBar progressBar, ArrayList<module_all_program> list,
-                                        Context context, String registrationURL, RecyclerView recyclerView,  CardView setpreference_student) {
+    public reccomended_programload_data(LinearLayout progressBar, ArrayList<module_all_program> list,
+                                        Context context, String registrationURL, RecyclerView recyclerView, CardView setpreference_student) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;
@@ -70,13 +75,10 @@ public class reccomended_programload_data {
                         JSONArray array = obj.getJSONArray("data");
 
 
-                        if (array.isNull(0))
-                        {
+                        if (array.isNull(0)) {
                             setpreference_student.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
-                        }
-                        else
-                        {
+                        } else {
                             setpreference_student.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
                             for (int i = 0; i < 6; ++i) {
@@ -104,9 +106,17 @@ public class reccomended_programload_data {
                         Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
 
                     }
-                    reccomended_program_Adapter adapter = new reccomended_program_Adapter(context, list);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-                    recyclerView.setAdapter(adapter);
+
+                     CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true);
+                    layoutManager.setMaxVisibleItems(1);
+                    layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setHasFixedSize(true);
+                    recyclerView.setAdapter(new reccomended_program_Adapter(context, list));
+
+                    recyclerView.addOnScrollListener(new CenterScrollListener());
+
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -128,9 +138,16 @@ public class reccomended_programload_data {
             }
         }
 
-        registration obj = new registration();
-        obj.execute(registrationURL);
+        InternetConnection nt = new InternetConnection(context);
+        if (nt.isConnected()) {
+            registration obj = new registration();
+            obj.execute(registrationURL);
+        } else {
+            Toast.makeText(context, "Unable Internet Connection", Toast.LENGTH_SHORT).show();
+
+        }
 
 
     }
+
 }

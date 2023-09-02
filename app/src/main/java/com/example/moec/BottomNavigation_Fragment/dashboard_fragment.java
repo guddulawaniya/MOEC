@@ -30,6 +30,7 @@ import com.example.moec.Adapters.Quick_Action_Adapter;
 import com.example.moec.Adapters.SliderAdapter;
 import com.example.moec.Adapters.Top_country_pickup_Adapter;
 import com.example.moec.Adapters.interest_area_Adapter;
+import com.example.moec.Adapters.reccomended_program_Adapter;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.get_country_data;
 import com.example.moec.JavaClass.get_subject_data;
@@ -43,6 +44,11 @@ import com.example.moec.New_Application;
 import com.example.moec.R;
 import com.example.moec.onClickInterface;
 import com.example.moec.program_preference_Activity;
+import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.carousel.MaskableFrameLayout;
+import com.mig35.carousellayoutmanager.CarouselLayoutManager;
+import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
+import com.mig35.carousellayoutmanager.CenterScrollListener;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
@@ -50,7 +56,7 @@ import java.util.ArrayList;
 public class dashboard_fragment extends Fragment {
 
 
-    ProgressBar progressBar;
+    LinearLayout shimmereffect_Layout;
     onClickInterface onclickInterface;
 
 
@@ -63,10 +69,6 @@ public class dashboard_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dashboard_fragment, container, false);
         config();
 
-        //loader id find
-
-        progressBar = view.findViewById(R.id.progressBar);
-
 
         // auto image slider
 
@@ -76,7 +78,6 @@ public class dashboard_fragment extends Fragment {
         sliderView.setSliderAdapter(adapterslider);
         sliderView.setScrollTimeInSec(3);
         sliderView.setAutoCycle(true);
-
 
         // instances arraylist and declared arraylists
 
@@ -138,9 +139,9 @@ public class dashboard_fragment extends Fragment {
         new getuniversitydata(getContext(), recyclerViewuniversity);
 
 
+        shimmereffect_Layout = view.findViewById(R.id.dashboard_shimmer_effect_layout);
         // recommended program recyclerview and load data function..
-
-        new reccomended_programload_data(progressBar, programArrayList, getContext(),
+        new reccomended_programload_data(shimmereffect_Layout, programArrayList, getContext(),
                 config.Base_url + "courseApiDatawithcountry?" +
                         "countryname=" + preferenceCountry, recommandRecyclerview,setpreference_student);
 
@@ -195,6 +196,14 @@ public class dashboard_fragment extends Fragment {
             }
         });
 
+        // vertical and cycle layout
+/*        final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.VERTICAL, true);
+        layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(new reccomended_program_Adapter(getContext(), list));
+        recyclerView.addOnScrollListener(new CenterScrollListener());*/
 
         // quick Recyclerview set layout and Adapter
 
@@ -244,7 +253,7 @@ public class dashboard_fragment extends Fragment {
 
         // top countries list
 
-        new get_country_data(progressBar,getContext(),recyclerview_top_counryname,config.Base_url+"crmcountriesApiData",onclickInterface,1);
+        new get_country_data(shimmereffect_Layout,getContext(),recyclerview_top_counryname,config.Base_url+"crmcountriesApiData",onclickInterface,1);
 
         // quick access list
 
@@ -279,7 +288,7 @@ public class dashboard_fragment extends Fragment {
         };
 
 
-        new get_subject_data(progressBar,list,getContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface,true);
+        new get_subject_data(shimmereffect_Layout,list,getContext(),recyclerView,config.Base_url+"crmsubjectApiData",onclickInterface,true);
         return view;
     }
 
@@ -287,9 +296,9 @@ public class dashboard_fragment extends Fragment {
     // shared element transmission
 
     private void config() {
-        setExitSharedElementCallback(new SharedElementCallback() {
-        });
+        setExitSharedElementCallback(new SharedElementCallback() {});
         getActivity().getWindow().setSharedElementsUseOverlay(false);
+
     }
 
 

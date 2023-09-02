@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:background="@color/white"
     android:layout_height="match_parent">
 
@@ -333,16 +334,15 @@
                     android:src="@drawable/required_icon"/>
             </LinearLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/countrylayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/countrylayout"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
                 app:boxBackgroundColor="@color/white"
+                app:boxCornerRadiusTopEnd="8dp"
                 app:boxCornerRadiusTopStart="8dp"
                 app:boxStrokeColor="@color/primarycolor"
                 app:endIconDrawable="@drawable/arrow_down"
@@ -354,12 +354,11 @@
                     android:id="@+id/countryfrom"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:dropDownSelector="@color/background_blue_shadew"
                     android:fontFamily="@font/poppins"
                     android:inputType="none"
+                    android:singleLine="true"
                     android:padding="10dp"
-                    android:background="@color/white"
-                    android:autoSizeMinTextSize="12dp"
-                    android:autoSizeMaxTextSize="16dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/iconcolor"
                     android:textSize="14sp"
@@ -367,9 +366,6 @@
                     />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
-
 
 
             <LinearLayout
@@ -412,7 +408,6 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/statelayout"
                         app:boxCornerRadiusBottomEnd="8dp"
-
                         app:boxCornerRadiusBottomStart="8dp"
                         app:boxBackgroundColor="@color/white"
                         app:boxCornerRadiusTopEnd="8dp"
@@ -425,7 +420,6 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/state"
-
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:dropDownSelector="@color/background_blue_shadew"

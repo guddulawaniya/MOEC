@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/noprogramFoundid"
     android:layout_width="match_parent"
+    android:background="@color/background_color"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -42,10 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/oswald"
-            android:text="Program not found"
-            android:textColor="@color/text_color"
-            android:textSize="20sp"
+            android:text="Program Not Found"
+            android:textColor="@color/heading_color"
+            android:textSize="@dimen/heading_text_size_18sp"
             android:textStyle="bold" />
 
 
@@ -54,11 +54,10 @@
             android:layout_width="226dp"
             android:layout_height="49dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins"
             android:gravity="center"
             android:text="No programfound , Kindly update your Preferences"
             android:textColor="@color/hint_color"
-            android:textSize="12sp" />
+            android:textSize="@dimen/hint_text_size_12sp" />
 
         <Button
             android:id="@+id/nofoundbutton"
@@ -66,7 +65,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/primarycolor"
-            android:fontFamily="@font/oswald"
             android:text="Update Preferences" />
 
 

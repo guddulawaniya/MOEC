@@ -2,6 +2,8 @@ package com.example.moec;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moec.BottomSheets.upload_document_bottom_sheet;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class My_documents_upload extends AppCompatActivity {
 
@@ -72,7 +75,9 @@ public class My_documents_upload extends AppCompatActivity {
 
     void openbottomsheet()
     {
+
         upload_document_bottom_sheet upload = new upload_document_bottom_sheet();
+        upload.setSharedElementEnterTransition(true);
         upload.show(getSupportFragmentManager(),"upload data");
 
     }

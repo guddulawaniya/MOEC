@@ -42,6 +42,7 @@ public class studentline_module {
     }
 
     String stepcout, stepname, completdate;
+
     int image;
 
 }

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/programfragment"
+    android:background="@color/background_color"
     android:orientation="vertical"
     tools:context=".BottomNavigation_Fragment.program_fragment">
 

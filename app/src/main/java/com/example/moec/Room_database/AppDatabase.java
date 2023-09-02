@@ -47,10 +47,7 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-        /*    userDao.insert(new database_module("guddu"));
-            userDao.insert(new database_module("guddu"));
-            userDao.insert(new database_module("guddu"));
-            userDao.insert(new database_module("guddu"));*/
+
 
             return null;
         }

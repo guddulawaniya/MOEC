@@ -2,11 +2,13 @@ package com.example.moec.JavaClass;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,21 +27,33 @@ import java.util.ArrayList;
 
 public class getCourse_All_dataa_API {
 
-    ProgressBar progressBar;
+    RecyclerView progressBar;
     ArrayList<module_all_program> list;
     Context context;
     RecyclerView recyclerView;
     String registrationURL;
     LinearLayout emptylayout;
+    All_program_Adapter adapter;
+    int currentsize,nextlimit;
 
 
-    public getCourse_All_dataa_API(ProgressBar progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, LinearLayout emptylayout) {
+    public getCourse_All_dataa_API(RecyclerView progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, LinearLayout emptylayout) {
         this.progressBar = progressBar;
         this.list = list;
         this.context = context;
         this.recyclerView = recyclerView;
         this.registrationURL = registrationURL;
         this.emptylayout = emptylayout;
+        Getuniversitydata();
+    }
+    public getCourse_All_dataa_API(int currentsize,RecyclerView progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, LinearLayout emptylayout) {
+        this.progressBar = progressBar;
+        this.list = list;
+        this.context = context;
+        this.recyclerView = recyclerView;
+        this.registrationURL = registrationURL;
+        this.emptylayout = emptylayout;
+        this.currentsize = currentsize;
         Getuniversitydata();
     }
 
@@ -55,22 +69,21 @@ public class getCourse_All_dataa_API {
 
             @Override
             protected void onPostExecute(String s) {
+                list.clear();
 
                 try {
                     JSONObject obj = new JSONObject(s);
                     String status = obj.getString("success");
 
-                    String baseurl = obj.getString("logobaseurl");
-
                     if (status.equals("true")) {
                         progressBar.setVisibility(View.GONE);
+                        String baseurl = obj.getString("logobaseurl");
 
                         JSONArray array = obj.getJSONArray("data");
 
                         for (int i = 0; i < array.length(); ++i) {
 
                             JSONObject jsonObject = array.getJSONObject(i);
-
 
                             String coursename = jsonObject.getString("course");
                             String universityname = jsonObject.getString("name");
@@ -89,7 +102,7 @@ public class getCourse_All_dataa_API {
 
                         }
                     } else {
-                        Toast.makeText(context, "failed" + obj, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Failed ", Toast.LENGTH_SHORT).show();
                     }
 
                     if (!list.isEmpty())
@@ -105,7 +118,7 @@ public class getCourse_All_dataa_API {
 
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                    All_program_Adapter adapter = new All_program_Adapter(list, context);
+                    adapter = new All_program_Adapter(list, context);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -128,9 +141,15 @@ public class getCourse_All_dataa_API {
             }
         }
 
-        registration obj = new registration();
-        obj.execute(registrationURL);
+        InternetConnection nt = new InternetConnection(context);
+        if (nt.isConnected()) {
+            registration obj = new registration();
+            obj.execute(registrationURL);
+        } else {
+            Toast.makeText(context, "Unable Internet Connection", Toast.LENGTH_SHORT).show();
 
+        }
 
     }
+
 }

@@ -54,13 +54,7 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
                 .resize(300, 100)
                 .into(holder.universityimage);
 
-
-
-
-        if (module.getCoursename().equals("null"))
-        {
-            holder.itemView.setVisibility(View.GONE);
-        }else  holder.coursename.setText(module.getCoursename());
+        holder.coursename.setText(module.getCoursename());
 
 
         if (module.getFavoratevalue().equals("yes")) {
@@ -78,7 +72,10 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
 
         if (module.getFees().equals("null")) {
             holder.fees.setText("");
-        } else holder.fees.setText(module.getFees() + " Months");
+        }
+        else holder.fees.setText(module.getFees() + " Months");
+
+
 
 
 
@@ -110,17 +107,24 @@ public class All_program_Adapter extends RecyclerView.Adapter<All_program_Adapte
         holder.likecheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (holder.likecheck.isChecked())
-                {
-                    new updateAPIcall(context, module.getCourseid(), "yes");
-                    holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
-                }
-                else
-                {
-
+                if (module.getFavoratevalue().equals("yes")){
                     holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
                     new updateAPIcall(context, module.getCourseid(), "no");
+                }else
+                {
+                    if (holder.likecheck.isChecked())
+                    {
+                        new updateAPIcall(context, module.getCourseid(), "yes");
+                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_heart);
+                    }
+                    else
+                    {
+
+                        holder.favoriteiconbutton.setImageResource(R.drawable.favorite_icon);
+                        new updateAPIcall(context, module.getCourseid(), "no");
+                    }
                 }
+
 
 
             }

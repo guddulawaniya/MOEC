@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -79,7 +80,7 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
                 editor.putString("weblink", module.getLink());
                 editor.putString("criteria", module.getCriteria());
                 editor.putString("courseid", module.getCourseid());
-                editor.putString("favoratevalue", module.getFavoratevalue());
+             //   editor.putString("favoratevalue", module.getFavoratevalue());
                 editor.commit();
 
                 Intent intent = new Intent(context, Program_details.class);
@@ -99,6 +100,7 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
     public class viewholder extends RecyclerView.ViewHolder {
         TextView coursename, duration, countryname, collegename, fees;
         ImageView favoriteiconbutton, universityimage;
+        ConstraintLayout checkboxlayout;
 
 
         public viewholder(@NonNull View itemView) {
@@ -109,9 +111,9 @@ public class Favorate_Adapter extends RecyclerView.Adapter<Favorate_Adapter.view
             collegename = itemView.findViewById(R.id.collegeAddress);
             fees = itemView.findViewById(R.id.tution_fee);
             favoriteiconbutton = itemView.findViewById(R.id.favoriteiconbutton);
+            checkboxlayout = itemView.findViewById(R.id.checkboxlayout);
             universityimage = itemView.findViewById(R.id.universityimage);
 
-            favoriteiconbutton.setVisibility(View.GONE);
 
         }
     }
