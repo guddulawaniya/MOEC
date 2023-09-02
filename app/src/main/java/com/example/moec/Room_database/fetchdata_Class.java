@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class fetchdata_Class {
     private  SearchDao userDao;
@@ -22,10 +23,7 @@ public class fetchdata_Class {
         new InsertNoteAyncTask(userDao).execute(user);
 
     }
-    public void find_record(database_module user){
-        new finddata_updateNoteAyncTask(userDao).execute(user);
 
-    }
     public void update(database_module user){
         new updateNoteAyncTask(userDao).execute(user);
 
@@ -43,6 +41,7 @@ public class fetchdata_Class {
         return liveData;
     }
 
+
     private static  class  InsertNoteAyncTask  extends AsyncTask<database_module,Void,Void>{
         private  SearchDao userDao;
 
@@ -53,19 +52,6 @@ public class fetchdata_Class {
         @Override
         protected Void doInBackground(database_module... users) {
             userDao.insert(users[0]);
-            return null;
-        }
-    }
-    private static  class  finddata_updateNoteAyncTask  extends AsyncTask<database_module,Void,Void>{
-        private  SearchDao userDao;
-
-        public finddata_updateNoteAyncTask(SearchDao userDao) {
-            this.userDao = userDao;
-        }
-
-        @Override
-        protected Void doInBackground(database_module... users) {
-            userDao.update(users[0]);
             return null;
         }
     }

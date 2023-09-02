@@ -8,13 +8,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:background="@color/white"
-        android:layout_marginEnd="16dp"
+
         android:orientation="vertical">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/background_color"
             android:layout_height="wrap_content">
 
             <com.google.android.material.search.SearchBar
@@ -28,13 +26,31 @@
 
         <TextView
             android:id="@+id/suggestiontextview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_height="wrap_content"
             android:text="Suggestions" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp">
+
+            <LinearLayout
+                android:id="@+id/nofounddata"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <include layout="@layout/no_found_layout" />
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/simmer_efffect_layout"
@@ -45,7 +61,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/searchrecyclerview"
@@ -80,7 +98,6 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:hint="write something"
         app:layout_anchor="@id/search_bar">
 
@@ -101,12 +118,4 @@
         <!-- Search suggestions/results go here (ScrollView, RecyclerView, etc.). -->
     </com.google.android.material.search.SearchView>
 
-    <LinearLayout
-        android:id="@+id/nofounddata"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-        <include layout="@layout/no_found_layout" />
-    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

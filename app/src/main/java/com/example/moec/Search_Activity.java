@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.SharedElementCallback;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,8 @@ import com.example.moec.Adapters.shimmer_program_Adapter;
 import com.example.moec.JavaClass.config;
 import com.example.moec.JavaClass.getCourse_All_dataa_API;
 import com.example.moec.ModulesClass.module_all_program;
+import com.example.moec.Room_database.AppDatabase;
+import com.example.moec.Room_database.SearchDao;
 import com.example.moec.Room_database.database_module;
 import com.example.moec.Room_database.myAdapter;
 import com.example.moec.Room_database.searchfunction_call;
@@ -42,9 +45,11 @@ public class Search_Activity extends AppCompatActivity {
     ProgressBar progressBar;
     LinearLayout nofounddata;
     private userViewModel viewModel;
+    private AppDatabase database;
+    private SearchDao noteDao;
     searchfunction_call call;
     Button outlinedButton;
-    List<String> checkdata;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,39 +78,62 @@ public class Search_Activity extends AppCompatActivity {
         title.setText("Not Found Record");
         descri_no_found.setText("");
         searchrecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        checkdata = new ArrayList<>();
+        SearchView searchView = findViewById(R.id.searchView);
+
+        list = new ArrayList<>();
+
+
+        database = AppDatabase.getInstance(this);
+        noteDao = database.userDao();
+
+
+        LiveData<List<database_module>> searchResults = searchNotes("guddu");
+
+        searchResults.observe(Search_Activity.this, new Observer<List<database_module>>() {
+            @Override
+            public void onChanged(List<database_module> databaseModules) {
+
+                for (int i = 0; i < databaseModules.size(); i++) {
+                    myAdapter adapter = new myAdapter(databaseModules, call);
+                    suggestionlRecyclerview.setAdapter(adapter);
+                }
+            }
+        });
 
 
         viewModel = new ViewModelProvider(this).get(userViewModel.class);
 
-        viewModel.getLiveData().observe(this, new Observer<List<database_module>>() {
-            @Override
-            public void onChanged(List<database_module> users) {
-                Collections.reverse(users);
 
-                for (int i = 0; i < users.size(); i++) {
-                    myAdapter adapter = new myAdapter(users, call);
-                    searchrecyclerview.setAdapter(adapter);
-                    suggestionlRecyclerview.setAdapter(adapter);
-                }
+//        viewModel.deleteAllUsers();
 
 
-            }
-        });
 
         call = new searchfunction_call() {
             @Override
             public void settext(String textdata) {
-                searchView.setText(textdata);
+                list.clear();
                 search_bar.setText(textdata);
                 filter(textdata);
 
             }
         };
 
-        SearchView searchView = findViewById(R.id.searchView);
+        viewModel.getLiveData().observe(Search_Activity.this, new Observer<List<database_module>>() {
+            @Override
+            public void onChanged(List<database_module> users) {
 
-        list = new ArrayList<>();
+
+                Collections.reverse(users);
+                for (int i = 0; i < users.size(); i++) {
+                    myAdapter adapter = new myAdapter(users, call);
+                    searchrecyclerview.setAdapter(adapter);
+                    suggestionlRecyclerview.setAdapter(adapter);
+                }
+            }
+        });
+
+
+
 
         searchView.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
@@ -116,9 +144,8 @@ public class Search_Activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if (charSequence.length() > 2) {
-                    // viewModel.search_data(new database_module(charSequence.toString()));
-                }
+                searchNotes(charSequence.toString());
+
 
             }
 
@@ -128,16 +155,21 @@ public class Search_Activity extends AppCompatActivity {
             }
         });
 
+
         searchView.getEditText().setOnEditorActionListener((v, actionId, event) -> {
 
-            list.clear();
-            String query = searchView.getText().toString();
-            filter(query);
-            searchView.hide();
-            search_bar.setText(query);
-            suggestiontextview.setText("Suggestions");
 
-            viewModel.insert(new database_module(query));
+            String query = searchView.getText().toString();
+            if (!query.isEmpty())
+            {
+                filter(query);
+
+                search_bar.setText(query);
+                suggestiontextview.setText("Results :");
+                viewModel.insert(new database_module(query));
+            }
+            searchView.hide();
+
 
             return false;
 
@@ -162,8 +194,12 @@ public class Search_Activity extends AppCompatActivity {
 
     }
 
-    private void filter(String query) {
-        //     new getCourse_All_dataa_API(simmer_efffect_layout, list, Search_Activity.this, suggestionlRecyclerview, config.Base_url + "searchcourseprogrameApiData?search="+query,nofounddata);
+    private LiveData<List<database_module>> searchNotes(String searchQuery) {
+        return noteDao.searchNotes(searchQuery);
+    }
+
+    public void filter(String query) {
+
         new getCourse_All_dataa_API(simmer_efffect_layout, list, Search_Activity.this, searchrecyclerview, config.Base_url + "searchcourseprogrameApiData?search=" + query, nofounddata);
 
     }

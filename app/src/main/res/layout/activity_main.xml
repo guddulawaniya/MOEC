@@ -8,9 +8,11 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+       >
 
         <include
             android:id="@+id/include5"
@@ -62,6 +64,7 @@
         <include layout="@layout/sidenavbar_profile"/>
     </com.google.android.material.navigation.NavigationView>
 
-    <include layout="@layout/main_activity_effect_layout"/>
+    <include layout="@layout/main_activity_effect_layout"
+        android:visibility="gone"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

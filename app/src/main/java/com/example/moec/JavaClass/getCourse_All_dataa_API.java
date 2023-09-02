@@ -34,7 +34,6 @@ public class getCourse_All_dataa_API {
     String registrationURL;
     LinearLayout emptylayout;
     All_program_Adapter adapter;
-    int currentsize,nextlimit;
 
 
     public getCourse_All_dataa_API(RecyclerView progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, LinearLayout emptylayout) {
@@ -46,20 +45,10 @@ public class getCourse_All_dataa_API {
         this.emptylayout = emptylayout;
         Getuniversitydata();
     }
-    public getCourse_All_dataa_API(int currentsize,RecyclerView progressBar, ArrayList<module_all_program> list, Context context, RecyclerView recyclerView, String registrationURL, LinearLayout emptylayout) {
-        this.progressBar = progressBar;
-        this.list = list;
-        this.context = context;
-        this.recyclerView = recyclerView;
-        this.registrationURL = registrationURL;
-        this.emptylayout = emptylayout;
-        this.currentsize = currentsize;
-        Getuniversitydata();
-    }
 
 
     void Getuniversitydata() {
-
+        list.clear();
         progressBar.setVisibility(View.VISIBLE);
         class registration extends AsyncTask<String, String, String> {
             @Override
@@ -69,7 +58,7 @@ public class getCourse_All_dataa_API {
 
             @Override
             protected void onPostExecute(String s) {
-                list.clear();
+
 
                 try {
                     JSONObject obj = new JSONObject(s);

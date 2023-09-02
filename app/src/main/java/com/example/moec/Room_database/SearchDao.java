@@ -13,11 +13,12 @@ public interface SearchDao {
     @Query("SELECT * FROM search_Text")
     LiveData<List<database_module>> getAlldata();
 
-    @Query("SELECT * FROM search_Text where searchtext = :id")
-    database_module find_record(String id);
+    @Query("SELECT * FROM search_Text WHERE searchtext LIKE '%' || :searchQuery || '%'")
+    LiveData<List<database_module>> searchNotes(String searchQuery);
 
-    @Insert
-    void insert(database_module users);
+
+    @Insert()
+    void insert(database_module user);
     @Update
     void update(database_module user);
 

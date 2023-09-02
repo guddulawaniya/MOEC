@@ -93,9 +93,6 @@ public class Edit_fragment extends DialogFragment {
         progressDialog.setMessage("Please Wait..");
 
 
-
-
-
         builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Update Profile");
 
@@ -159,6 +156,8 @@ public class Edit_fragment extends DialogFragment {
             }
         });
         InternetConnection nt = new InternetConnection(getContext());
+
+
         if (!pincode.getText().toString().isEmpty() ) {
 
             if (nt.isConnected())
@@ -168,7 +167,6 @@ public class Edit_fragment extends DialogFragment {
             else {
                 Toast.makeText(getContext(), "Please Your  Internet Connectiion ", Toast.LENGTH_SHORT).show();
             }
-
 
         }
 
@@ -189,7 +187,7 @@ public class Edit_fragment extends DialogFragment {
         String qualification = preferences.getString("qualification","");
         userid = preferences.getString("userid","");
 
-//        fetchAddressdata(getpincode);
+        fetchAddressdata(getpincode);
 
         firstname.setText(getfirstname);
         lastname.setText(getlastname);
@@ -279,11 +277,6 @@ public class Edit_fragment extends DialogFragment {
 
         class registration extends AsyncTask<String, String, String> {
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-            @Override
             protected void onPostExecute(String s) {
 
                 try {
@@ -336,12 +329,10 @@ public class Edit_fragment extends DialogFragment {
 
             }
 
-
         }
 
         registration obj = new registration();
         obj.execute(registrationURL);
-
 
     }
 
@@ -353,10 +344,6 @@ public class Edit_fragment extends DialogFragment {
 
 
         class registration extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
 
             @Override
             protected void onPostExecute(String s) {

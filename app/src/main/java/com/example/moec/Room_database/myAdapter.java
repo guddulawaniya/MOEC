@@ -9,7 +9,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moec.JavaClass.config;
+import com.example.moec.JavaClass.getCourse_All_dataa_API;
 import com.example.moec.R;
+import com.example.moec.Search_Activity;
 
 import java.util.List;
 
@@ -20,7 +23,6 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.viewholder> {
     public myAdapter(List<database_module> list,searchfunction_call call) {
         this.list = list;
         this.call = call;
-
 
     }
 
@@ -35,8 +37,7 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.viewholder> {
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
         database_module module = list.get(position);
-
-           holder.name.setText(module.getText());
+        holder.name.setText(module.getText());
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +47,11 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.viewholder> {
             }
         });
 
-
-
     }
 
     @Override
     public int getItemCount() {
-        return 15;
+        return list.size();
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
@@ -65,4 +64,5 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.viewholder> {
 
         }
     }
+
 }

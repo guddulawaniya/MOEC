@@ -23,33 +23,10 @@ public abstract class AppDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, "search_database")
                     .allowMainThreadQueries()
-                    .addCallback(callback)
                     .build();
         }
+
         return instance;
     }
 
-    private static Callback callback = new Callback() {
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-
-            new populateAsyncTask(instance).execute();
-        }
-    };
-
-    private static class populateAsyncTask extends AsyncTask<Void, Void, Void> {
-
-        private SearchDao userDao;
-
-        public populateAsyncTask(AppDatabase db) {
-            userDao = db.userDao();
-        }
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-
-            return null;
-        }
-    }
 }
