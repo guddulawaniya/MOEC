@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.SharedElementCallback;
@@ -39,8 +40,7 @@ public class Search_Activity extends AppCompatActivity {
 
 
     ArrayList<module_all_program> list;
-    RecyclerView searchrecyclerview, simmer_efffect_layout,
-            suggestionlRecyclerview;
+    RecyclerView searchrecyclerview, simmer_efffect_layout, suggestionlRecyclerview;
     SearchView searchView;
     ProgressBar progressBar;
     LinearLayout nofounddata;
@@ -50,6 +50,7 @@ public class Search_Activity extends AppCompatActivity {
     searchfunction_call call;
     Button outlinedButton;
 
+    boolean checkdata = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,50 +88,51 @@ public class Search_Activity extends AppCompatActivity {
         noteDao = database.userDao();
 
 
-        LiveData<List<database_module>> searchResults = searchNotes("guddu");
 
-        searchResults.observe(Search_Activity.this, new Observer<List<database_module>>() {
-            @Override
-            public void onChanged(List<database_module> databaseModules) {
-
-                for (int i = 0; i < databaseModules.size(); i++) {
-                    myAdapter adapter = new myAdapter(databaseModules, call);
-                    suggestionlRecyclerview.setAdapter(adapter);
-                }
-            }
-        });
 
 
         viewModel = new ViewModelProvider(this).get(userViewModel.class);
 
-
-//        viewModel.deleteAllUsers();
 
 
 
         call = new searchfunction_call() {
             @Override
             public void settext(String textdata) {
-                list.clear();
                 search_bar.setText(textdata);
                 filter(textdata);
 
             }
         };
 
-        viewModel.getLiveData().observe(Search_Activity.this, new Observer<List<database_module>>() {
-            @Override
-            public void onChanged(List<database_module> users) {
+
+            viewModel.getLiveData().observe(Search_Activity.this, new Observer<List<database_module>>() {
+                @Override
+                public void onChanged(List<database_module> users) {
+
+                    if (checkdata)
+                    {
+                        Collections.reverse(users);
+                        for (int i = 0; i < users.size(); i++) {
+                            myAdapter adapter = new myAdapter(users, call);
+                            searchrecyclerview.setAdapter(adapter);
+                            suggestionlRecyclerview.setAdapter(adapter);
+                        }
+                    }
+                    if (users.isEmpty())
+                    {
+                        nofounddata.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    { nofounddata.setVisibility(View.GONE);
+
+                    }
 
 
-                Collections.reverse(users);
-                for (int i = 0; i < users.size(); i++) {
-                    myAdapter adapter = new myAdapter(users, call);
-                    searchrecyclerview.setAdapter(adapter);
-                    suggestionlRecyclerview.setAdapter(adapter);
                 }
-            }
-        });
+            });
+
+
 
 
 
@@ -144,7 +146,19 @@ public class Search_Activity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                searchNotes(charSequence.toString());
+                LiveData<List<database_module>> searchResults = searchNotes(charSequence.toString());
+
+
+                searchResults.observe(Search_Activity.this, new Observer<List<database_module>>() {
+                    @Override
+                    public void onChanged(List<database_module> databaseModules) {
+
+                        for (int i = 0; i < databaseModules.size(); i++) {
+                            myAdapter adapter = new myAdapter(databaseModules, call);
+                            suggestionlRecyclerview.setAdapter(adapter);
+                        }
+                    }
+                });
 
 
             }
@@ -163,13 +177,13 @@ public class Search_Activity extends AppCompatActivity {
             if (!query.isEmpty())
             {
                 filter(query);
+                checkdata=false;
 
                 search_bar.setText(query);
                 suggestiontextview.setText("Results :");
                 viewModel.insert(new database_module(query));
             }
             searchView.hide();
-
 
             return false;
 

@@ -302,7 +302,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         transaction.replace(R.id.Frame_laout, fragment);
-        transaction.addToBackStack(null);
         transaction.commit();
 
 

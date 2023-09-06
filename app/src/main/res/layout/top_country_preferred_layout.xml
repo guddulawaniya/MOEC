@@ -14,6 +14,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/white"
         app:strokeColor="@color/stroke_color"
+        app:cardElevation="@dimen/shadow_3dp"
         android:minWidth="200dp"
         android:minHeight="150dp"
         app:cardCornerRadius="10dp">

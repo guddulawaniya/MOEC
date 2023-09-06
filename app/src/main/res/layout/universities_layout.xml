@@ -14,6 +14,8 @@
             android:backgroundTint="@color/white"
             android:minWidth="200dp"
             android:minHeight="150dp"
+            android:outlineSpotShadowColor="@color/hint_color"
+            app:cardElevation="@dimen/shadow_3dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -17,7 +18,7 @@ public interface SearchDao {
     LiveData<List<database_module>> searchNotes(String searchQuery);
 
 
-    @Insert()
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(database_module user);
     @Update
     void update(database_module user);
